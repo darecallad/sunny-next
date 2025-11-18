@@ -10,8 +10,21 @@ import { useLanguage } from "@/context/language-context";
 export function HeroSection() {
   const { locale } = useLanguage();
   return (
-    <section className="relative overflow-hidden border-b border-border/40 bg-gradient-to-b from-amber-50 via-white to-white">
-      <div className="container mx-auto px-4 py-12">
+    <section className="relative overflow-hidden border-b border-border/40">
+      {/* Background image with overlay */}
+      <div className="absolute inset-0">
+        <Image
+          src="/images/hero-pexels.jpg"
+          alt="Background"
+          fill
+          className="object-cover"
+          priority
+          quality={85}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-white/60 to-white/70" />
+      </div>
+      
+      <div className="container relative z-10 mx-auto px-4 py-12">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_380px] lg:items-center">
           <div className="space-y-8">
             <div className="space-y-4">
@@ -21,7 +34,7 @@ export function HeroSection() {
               <h1 className="text-4xl font-semibold leading-tight text-foreground sm:text-5xl">
                 {heroContent.title[locale]}
               </h1>
-              <p className="text-lg text-muted-foreground">
+              <p className="text-lg font-medium text-gray-700">
                 {heroContent.description[locale]}
               </p>
             </div>
@@ -51,18 +64,22 @@ export function HeroSection() {
             </dl>
           </div>
           <div className="space-y-4">
-            <div className="relative overflow-hidden rounded-[32px] border border-white/30 bg-[#223659] text-white shadow-2xl shadow-primary/20">
-              <Image
-                src="/images/hero-banner.webp"
-                alt="Families learning together at Sunny Child Care"
-                width={640}
-                height={760}
-                className="h-full w-full object-cover opacity-90"
-                priority
-                sizes="(min-width: 1024px) 380px, 90vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#111c30] via-[#111c30]/40 to-transparent" />
-              <div className="relative z-10 flex h-full flex-col gap-6 p-6">
+            <div className="relative overflow-hidden rounded-[32px] border border-white/30 bg-[#2a3f5f] text-white shadow-2xl shadow-primary/20">
+              {/* Top image - visible */}
+              <div className="relative h-64 w-full">
+                <Image
+                  src="/images/hero-pexels.jpg"
+                  alt="Happy children at Sunny Child Care"
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="(min-width: 1024px) 380px, 90vw"
+                />
+              </div>
+              
+              {/* Content section with darker background */}
+              <div className="relative bg-gradient-to-b from-[#2a3f5f] to-[#1a2940]">
+                <div className="flex flex-col gap-6 p-6">
                 <div className="flex items-center gap-3">
                   <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/90 p-2 shadow-lg shadow-black/40">
                     <Image
@@ -112,6 +129,7 @@ export function HeroSection() {
                   <p className="text-base font-medium">{siteConfig.contact.address}</p>
                   <p>{siteConfig.contact.hours[locale]}</p>
                 </div>
+              </div>
               </div>
             </div>
           </div>

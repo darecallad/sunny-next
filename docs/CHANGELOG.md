@@ -38,13 +38,18 @@ All notable changes to the Sunny Child Care Next.js project will be documented i
   - Tagline display below logo (per user request)
 
 #### Hero Section (`src/components/sections/hero-section.tsx`)
-- **Background:** Pexels image (hero-pexels.jpg) with overlay
-- **Layout:** Single centered overlay card (max-w-3xl) on full-width background
-- **Content:** Title, description, dual CTA buttons, stats row
-- **Removed Elements:**
-  - Announcement banner at top
-  - Small girl side card
-  - Badge/ArrowRight imports (cleaned after announcement removal)
+- **Background Image:** `hero-pexels.jpg` displayed across entire section with optimized overlay
+- **Visual Hierarchy:** Balanced background visibility with text readability
+  - Background overlay: `from-white/50 via-white/60 to-white/70` (50-70% opacity)
+  - Ensures background is subtly visible without overwhelming content
+- **Left Content Area:**
+  - Title, description, CTA buttons, statistics with proper z-index layering
+  - Description text: `text-gray-700 font-medium` for improved readability
+- **Right Card Structure:**
+  - Top section: Clear visible photo (hero-pexels.jpg, h-64) without heavy overlay
+  - Bottom section: Dark gradient background (#2a3f5f to #1a2940) for content
+  - Logo badge, Programs section, Visit Us section with excellent contrast
+- **Z-index Management:** Removed `-z-10` from background, added `z-10` to content container for proper layering
 
 #### Footer Component (`src/components/layout/site-footer.tsx`)
 - **Logo Section:** Stacked Flogo + tagline in max-w-sm container with matching widths
@@ -133,6 +138,20 @@ All notable changes to the Sunny Child Care Next.js project will be documented i
 - [ ] Contributing guidelines
 
 ### 🔧 Recent Fixes & Changes
+
+#### November 18, 2025
+- **Hero Section Final Optimization:** ✅ Completed
+  - Adjusted background overlay to 50-70% opacity for better balance
+  - Enhanced description text readability with `font-medium text-gray-700`
+  - Fixed z-index layering: removed `-z-10` from background, added `z-10` to content
+  - Right card top photo now displays clearly without heavy overlay
+  - Background image subtly visible across entire section
+  - Achieved optimal visual hierarchy: readable text + visible background
+  
+- **Hero Section Restructure:**
+  - Fixed right card to show clear photo at top (hero-pexels.jpg, no overlay)
+  - Separated card into two sections: visible photo (h-64) and dark content area
+  - Improved contrast between photo section and content section
 
 #### November 17, 2025
 - **Header Simplification:**
