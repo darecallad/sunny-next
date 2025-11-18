@@ -18,23 +18,15 @@ export function SiteFooter() {
       <div className="container mx-auto space-y-8 px-4 py-12">
         <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr_1fr]">
           <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 p-1 shadow-lg shadow-black/30 ring-1 ring-white/20">
-                <Image
-                  src="/images/Flogo.png"
-                  alt="Sunny Child Care logo"
-                  width={48}
-                  height={48}
-                  className="h-full w-full object-contain"
-                />
-              </span>
-              <div>
-                <p className="text-xs uppercase tracking-[0.5em] text-white/70">
-                  {siteConfig.name}
-                </p>
-                <p className="text-2xl font-semibold">{siteConfig.nameZh}</p>
-              </div>
-            </div>
+            <Link href="/" className="inline-flex items-center rounded-3xl bg-white/5 p-2 shadow-lg shadow-black/30 ring-1 ring-white/10">
+              <Image
+                src="/images/Flogo.png"
+                alt="Sunny Child Care bilingual logo"
+                width={180}
+                height={64}
+                className="h-14 w-auto object-contain"
+              />
+            </Link>
             <p className="text-sm uppercase tracking-[0.3em] text-amber-200">
               {siteConfig.tagline[locale]}
             </p>

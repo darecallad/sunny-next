@@ -29,30 +29,25 @@ import { useLanguage } from "@/context/language-context";
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const { locale } = useLanguage();
+  const phoneParts = siteConfig.contact.phone.split(" ");
+  const areaCode = phoneParts[0] ?? siteConfig.contact.phone;
+  const phoneRest = phoneParts.slice(1).join(" ") || phoneParts[0] || siteConfig.contact.phone;
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[#27466f]/95 text-white shadow-lg shadow-black/10 backdrop-blur">
       <div className="container mx-auto flex items-center justify-between gap-4 px-4 py-4">
         <div className="flex items-center gap-3">
-          <Link href="/" className="flex items-center gap-3">
-            <span className="relative inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 p-1 shadow-lg shadow-black/30 ring-1 ring-white/20">
+          <Link href="/" className="inline-flex items-center">
+            <span className="inline-flex items-center rounded-3xl bg-white/5 p-1 shadow-lg shadow-black/30 ring-1 ring-white/20">
               <Image
                 src="/images/Flogo.png"
-                alt="Sunny Child Care logo"
-                width={40}
-                height={40}
-                className="h-full w-full object-contain"
+                alt="Sunny Child Care bilingual logo"
+                width={168}
+                height={56}
+                className="h-12 w-auto object-contain"
                 priority
               />
             </span>
-            <div>
-              <p className="text-[0.7rem] uppercase tracking-[0.55em] text-white/80">
-                {siteConfig.name}
-              </p>
-              <p className="text-lg font-semibold leading-tight text-white">
-                {siteConfig.nameZh}
-              </p>
-            </div>
           </Link>
           <Badge className="hidden md:inline-flex border-white/30 bg-white/15 text-xs font-medium text-white" variant="outline">
             {siteConfig.tagline[locale]}
@@ -117,15 +112,20 @@ export function SiteHeader() {
         <div className="hidden items-center gap-5 md:flex">
           <LanguageToggle />
           <div className="text-right">
-            <p className="text-[0.65rem] font-semibold uppercase tracking-[0.5em] text-amber-200">
+            <p className="text-[0.6rem] font-semibold uppercase tracking-[0.6em] text-[#f6e4a6]">
               {locale === "en" ? "Call us" : "專線"}
             </p>
             <a
-              className="flex items-center justify-end gap-2 text-2xl font-bold text-white drop-shadow"
+              className="group inline-flex items-center gap-3 text-2xl font-bold text-white"
               href={`tel:${siteConfig.contact.phone.replace(/\D/g, "")}`}
             >
-              <Phone className="h-5 w-5 text-amber-200" />
-              {siteConfig.contact.phone}
+              <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[#f6e4a6]/60 text-[#f6e4a6] transition group-hover:bg-[#f6e4a6]/10">
+                <Phone className="h-4 w-4" />
+              </span>
+              <span className="flex flex-col leading-tight tracking-wide">
+                <span className="text-lg">{areaCode}</span>
+                <span className="text-2xl">{phoneRest}</span>
+              </span>
             </a>
           </div>
           <Button
