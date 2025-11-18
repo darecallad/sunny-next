@@ -265,8 +265,8 @@ export const testimonials: Testimonial[] = [
       zh: "女兒每天衝著想上學，現在中英文都能自然表達，還常帶回驚喜作品。",
     },
     author: "Rachel W.",
-    source: { en: "Yelp", zh: "Yelp 評論" },
-    href: "https://www.yelp.com/biz/sunny-house-daycare-sunnyvale",
+    source: { en: "Parent Testimonial", zh: "家長分享" },
+    href: "https://www.google.com/maps/place/Sunny+Child+Care+Center/@37.3789363,-121.940731,17z/data=!4m18!1m9!3m8!1s0x808fcbd7e7cb599b:0x5feb29d49ff1cc8d!2sSunny+Child+Care+Center!8m2!3d37.3789363!4d-121.9381561!9m1!1b1!16s%2Fg%2F11v9vt1x4y!3m7!1s0x808fcbd7e7cb599b:0x5feb29d49ff1cc8d!8m2!3d37.3789363!4d-121.9381561!9m1!1b1!16s%2Fg%2F11v9vt1x4y?entry=ttu&g_ep=EgoyMDI1MTExMi4wIKXMDSoASAFQAw%3D%3D",
   },
   {
     quote: {
@@ -274,7 +274,8 @@ export const testimonials: Testimonial[] = [
       zh: "老師關心孩子的飲食、社交與學習，每天的即時回饋讓我們超安心。",
     },
     author: "Grace L.",
-    source: { en: "Parent Survey", zh: "家長問卷" },
+    source: { en: "Parent Testimonial", zh: "家長分享" },
+    href: "https://www.google.com/maps/place/Sunny+Child+Care+Center/@37.3789363,-121.940731,17z/data=!4m18!1m9!3m8!1s0x808fcbd7e7cb599b:0x5feb29d49ff1cc8d!2sSunny+Child+Care+Center!8m2!3d37.3789363!4d-121.9381561!9m1!1b1!16s%2Fg%2F11v9vt1x4y!3m7!1s0x808fcbd7e7cb599b:0x5feb29d49ff1cc8d!8m2!3d37.3789363!4d-121.9381561!9m1!1b1!16s%2Fg%2F11v9vt1x4y?entry=ttu&g_ep=EgoyMDI1MTExMi4wIKXMDSoASAFQAw%3D%3D",
   },
   {
     quote: {
@@ -282,7 +283,8 @@ export const testimonials: Testimonial[] = [
       zh: "這裡就像大家庭，孩子更自信，也會唱好多中英文童謠。",
     },
     author: "William C.",
-    source: { en: "Google Reviews", zh: "Google 評論" },
+    source: { en: "Parent Testimonial", zh: "家長分享" },
+    href: "https://www.google.com/maps/place/Sunny+Child+Care+Center/@37.3789363,-121.940731,17z/data=!4m18!1m9!3m8!1s0x808fcbd7e7cb599b:0x5feb29d49ff1cc8d!2sSunny+Child+Care+Center!8m2!3d37.3789363!4d-121.9381561!9m1!1b1!16s%2Fg%2F11v9vt1x4y!3m7!1s0x808fcbd7e7cb599b:0x5feb29d49ff1cc8d!8m2!3d37.3789363!4d-121.9381561!9m1!1b1!16s%2Fg%2F11v9vt1x4y?entry=ttu&g_ep=EgoyMDI1MTExMi4wIKXMDSoASAFQAw%3D%3D",
   },
 ];
 

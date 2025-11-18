@@ -28,9 +28,6 @@ export function SiteFooter() {
                   className="h-12 w-full object-contain"
                 />
               </Link>
-              <div className="mt-3 inline-flex w-full items-center justify-center rounded-3xl border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-white">
-                {siteConfig.tagline[locale]}
-              </div>
             </div>
             <p className="max-w-md text-base text-white/80">
               {locale === "en" ? siteConfig.description : siteConfig.descriptionZh}
@@ -78,17 +75,10 @@ export function SiteFooter() {
           </div>
         </div>
         <Separator className="border-white/20" />
-        <div className="flex flex-col gap-4 py-2 text-xs text-white/70 md:flex-row md:items-center md:justify-between">
+        <div className="py-2 text-center text-xs text-white/70">
           <p>
             © {new Date().getFullYear()} {siteConfig.name}. {locale === "en" ? "All rights reserved." : "版權所有"}
           </p>
-          <div className="flex flex-wrap gap-4">
-            {siteConfig.socials.map((social) => (
-              <Link key={social.title} href={social.href} className="hover:text-white">
-                {social.title}
-              </Link>
-            ))}
-          </div>
         </div>
       </div>
     </footer>

@@ -17,11 +17,6 @@ export function VideoSpotlight() {
               {spotlight.title[locale]}
             </h2>
             <p className="text-lg text-muted-foreground">{spotlight.description[locale]}</p>
-            <p className="text-sm text-muted-foreground">
-              {locale === "en"
-                ? "Families love seeing the classrooms in action before their visit."
-                : "家長最喜歡透過影片先感受課室氛圍。"}
-            </p>
           </div>
           <div className="aspect-video overflow-hidden rounded-2xl border border-border/60 bg-black/70 shadow-2xl">
             <iframe

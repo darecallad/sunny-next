@@ -2,9 +2,9 @@
 
 All notable changes to the Sunny Child Care Next.js project will be documented in this file.
 
-## [Current] - 2025-11-17
+## [Current] - 2025-11-18
 
-### ✅ Completed
+### ✅ Completed - Homepage
 
 #### Project Setup & Foundation
 - **Framework:** Next.js 16 with React 19, TypeScript 5, Tailwind CSS 4
@@ -52,9 +52,25 @@ All notable changes to the Sunny Child Care Next.js project will be documented i
 - **Z-index Management:** Removed `-z-10` from background, added `z-10` to content container for proper layering
 
 #### Footer Component (`src/components/layout/site-footer.tsx`)
-- **Logo Section:** Stacked Flogo + tagline in max-w-sm container with matching widths
+- **Logo Section:** Single Flogo.png display (removed tagline below logo)
 - **Content:** Description, contact info, navigation links, social links
+- **Quick Links:** All 14 navigation items with verified working hrefs
+- **Contact Information:** Clickable phone and email links
 - **Styling:** Consistent border radius and shadow styling matching header
+
+#### Video Spotlight Section (`src/components/sections/video-spotlight.tsx`)
+- **YouTube Embed:** Sunny Child Care campus tour video
+- **Layout:** Two-column (text left, video right) with amber gradient background
+- **Content:** Badge, title, description (removed redundant subtitle)
+- **Styling:** Rounded borders, shadow effects
+
+#### Testimonials Section (`src/components/sections/testimonials.tsx`)
+- **Layout:** Three-column grid of testimonial cards
+- **Content:** Parent testimonials with author names and source badges
+- **Links:** All "Read full story" links point to correct Google Maps page
+  - URL: `https://www.google.com/maps/place/Sunny+Child+Care+Center/@37.3789363,-121.940731...`
+- **Typography:** `text-balance` class for optimal line breaks
+- **Styling:** White cards on amber gradient background
 
 #### Language Toggle (`src/components/layout/language-toggle.tsx`)
 - **Design:** Pill toggle with border-white/30, bg-[#324f7a]/70 container
@@ -83,6 +99,13 @@ All notable changes to the Sunny Child Care Next.js project will be documented i
 - ✅ `/summer` - Summer Program (夏令營)
 - ✅ `/resources` - Resources (親職資源)
 - ✅ `/` - Homepage with hero, features, testimonials, CTA sections
+
+#### Homepage Sections - All Completed ✅
+- **Hero Section:** Background image, dual-column layout with CTA cards
+- **Features Section:** Grid of key features and benefits
+- **Video Spotlight Section:** Campus tour video embed
+- **Testimonials Section:** Three parent testimonials with Google Maps links
+- **CTA Section:** Final call-to-action for booking tours
 
 #### Code Quality
 - **Linting:** ESLint 9 configured, all code passes `npm run lint`
@@ -140,18 +163,30 @@ All notable changes to the Sunny Child Care Next.js project will be documented i
 ### 🔧 Recent Fixes & Changes
 
 #### November 18, 2025
-- **Hero Section Final Optimization:** ✅ Completed
+- **Homepage Completion:** ✅ All sections finalized and optimized
+  
+- **Footer Updates:**
+  - Removed tagline display ("Mandarin-English immersion in San Jose")
+  - Verified all 14 Quick Links have correct hrefs and are clickable
+  - Simplified logo section to single Flogo display
+  
+- **Testimonials Section:**
+  - Updated all "Read full story" links to correct Google Maps URL
+  - Changed from "Google Reviews" to "Parent Testimonial" for accuracy
+  - Applied `text-balance` to description for better text wrapping
+  - Correct location: Sunny Child Care Center, 2586 Seaboard Ave, San Jose, CA 95131
+  
+- **Video Spotlight Section:**
+  - Removed redundant subtitle text
+  - Kept clean layout with title and main description only
+  
+- **Hero Section Final Optimization:**
   - Adjusted background overlay to 50-70% opacity for better balance
   - Enhanced description text readability with `font-medium text-gray-700`
   - Fixed z-index layering: removed `-z-10` from background, added `z-10` to content
-  - Right card top photo now displays clearly without heavy overlay
+  - Right card top photo displays clearly without heavy overlay
   - Background image subtly visible across entire section
   - Achieved optimal visual hierarchy: readable text + visible background
-  
-- **Hero Section Restructure:**
-  - Fixed right card to show clear photo at top (hero-pexels.jpg, no overlay)
-  - Separated card into two sections: visible photo (h-64) and dark content area
-  - Improved contrast between photo section and content section
 
 #### November 17, 2025
 - **Header Simplification:**

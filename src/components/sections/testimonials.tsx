@@ -22,7 +22,7 @@ export function TestimonialsSection() {
           <h2 className="mt-3 text-3xl font-semibold text-foreground sm:text-4xl">
             {locale === "en" ? "Parent testimonials" : "家長推薦"}
           </h2>
-          <p className="mt-3 text-lg text-muted-foreground">
+          <p className="mt-3 text-balance text-lg text-muted-foreground">
             {locale === "en"
               ? "Real stories from families who trust Sunny Child Care with their little learners every day."
               : "來自每天和我們一起陪伴孩子的家長故事。"}
