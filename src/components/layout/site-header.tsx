@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, Phone } from "lucide-react";
@@ -21,30 +22,40 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Badge } from "@/components/ui/badge";
+import { LanguageToggle } from "@/components/layout/language-toggle";
 import { navigation, siteConfig } from "@/data/site";
+import { useLanguage } from "@/context/language-context";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const { locale } = useLanguage();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#27466f]/95 text-white shadow-lg shadow-black/10 backdrop-blur">
       <div className="container mx-auto flex items-center justify-between gap-4 px-4 py-4">
         <div className="flex items-center gap-3">
-          <Link href="/" className="flex items-center gap-2">
-            <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-primary text-primary-foreground font-semibold">
-              SC
+          <Link href="/" className="flex items-center gap-3">
+            <span className="relative inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 p-1 shadow-lg shadow-black/30 ring-1 ring-white/20">
+              <Image
+                src="/images/Flogo.png"
+                alt="Sunny Child Care logo"
+                width={40}
+                height={40}
+                className="h-full w-full object-contain"
+                priority
+              />
             </span>
             <div>
-              <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground">
-                Sunny
+              <p className="text-[0.7rem] uppercase tracking-[0.55em] text-white/80">
+                {siteConfig.name}
               </p>
-              <p className="text-lg font-semibold leading-tight text-foreground">
-                Child Care
+              <p className="text-lg font-semibold leading-tight text-white">
+                {siteConfig.nameZh}
               </p>
             </div>
           </Link>
-          <Badge className="hidden md:inline-flex" variant="secondary">
-            {siteConfig.shortTagline}
+          <Badge className="hidden md:inline-flex border-white/30 bg-white/15 text-xs font-medium text-white" variant="outline">
+            {siteConfig.tagline[locale]}
           </Badge>
         </div>
 
@@ -52,32 +63,32 @@ export function SiteHeader() {
           <NavigationMenu>
             <NavigationMenuList>
               {navigation.map((item) => (
-                <NavigationMenuItem key={item.title}>
+                <NavigationMenuItem key={item.title.en}>
                   {item.children && item.children.length ? (
                     <>
-                      <NavigationMenuTrigger className="bg-transparent text-base font-medium">
-                        {item.title}
+                      <NavigationMenuTrigger className="bg-transparent text-base font-semibold text-white/90 hover:text-white">
+                        {item.title[locale]}
                       </NavigationMenuTrigger>
                       <NavigationMenuContent>
                         <ul className="grid w-[320px] gap-3 p-4">
                           {item.children.map((child) => (
-                            <li key={child.title}>
+                            <li key={child.title.en}>
                               <NavigationMenuLink asChild>
                                 <Link
                                   href={child.href ?? "#"}
-                                  className="block rounded-lg p-3 leading-none no-underline transition-colors hover:bg-muted"
+                                  className="block rounded-lg p-3 leading-none no-underline transition-colors hover:bg-primary/5"
                                 >
-                                  <div className="text-sm font-semibold">
-                                    {child.title}
+                                  <div className="text-sm font-semibold text-foreground">
+                                    {child.title[locale]}
                                     {child.badge && (
                                       <Badge className="ml-2" variant="secondary">
-                                        {child.badge}
+                                        {child.badge[locale]}
                                       </Badge>
                                     )}
                                   </div>
                                   {child.description && (
                                     <p className="mt-1 text-sm text-muted-foreground">
-                                      {child.description}
+                                      {child.description[locale]}
                                     </p>
                                   )}
                                 </Link>
@@ -90,10 +101,10 @@ export function SiteHeader() {
                   ) : (
                     <NavigationMenuLink asChild>
                       <Link
-                        className="text-base font-medium"
+                        className="text-base font-semibold text-white/90 hover:text-white"
                         href={item.href ?? "#"}
                       >
-                        {item.title}
+                        {item.title[locale]}
                       </Link>
                     </NavigationMenuLink>
                   )}
@@ -103,24 +114,31 @@ export function SiteHeader() {
           </NavigationMenu>
         </nav>
 
-        <div className="hidden items-center gap-4 md:flex">
+        <div className="hidden items-center gap-5 md:flex">
+          <LanguageToggle />
           <div className="text-right">
-            <p className="text-xs uppercase tracking-wide text-muted-foreground">
-              Call us
+            <p className="text-[0.65rem] font-semibold uppercase tracking-[0.5em] text-amber-200">
+              {locale === "en" ? "Call us" : "專線"}
             </p>
             <a
-              className="text-lg font-semibold text-foreground"
+              className="flex items-center justify-end gap-2 text-2xl font-bold text-white drop-shadow"
               href={`tel:${siteConfig.contact.phone.replace(/\D/g, "")}`}
             >
+              <Phone className="h-5 w-5 text-amber-200" />
               {siteConfig.contact.phone}
             </a>
           </div>
-          <Button asChild size="lg">
-            <Link href="/admission/tuition">Book a tour</Link>
+          <Button
+            asChild
+            size="lg"
+            className="rounded-full bg-[#f2a63b] px-8 text-base font-semibold text-[#1f2b3d] shadow-lg shadow-black/30 hover:bg-[#e7932c]"
+          >
+            <Link href="/admission/tuition">{locale === "en" ? "Book a tour" : "預約參觀"}</Link>
           </Button>
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
+          <LanguageToggle className="bg-white/5" />
           <Button variant="outline" size="icon" asChild>
             <a href={`tel:${siteConfig.contact.phone.replace(/\D/g, "")}`}>
               <Phone className="h-5 w-5" />
@@ -138,20 +156,20 @@ export function SiteHeader() {
               </SheetHeader>
               <div className="mt-6 space-y-6">
                 {navigation.map((item) => (
-                  <div key={item.title} className="space-y-2">
+                  <div key={item.title.en} className="space-y-2">
                     <p className="font-semibold text-sm text-muted-foreground">
-                      {item.title}
+                      {item.title[locale]}
                     </p>
                     <div className="space-y-1">
                       {(item.children?.length ? item.children : [item]).map(
                         (child) => (
                           <Link
-                            key={child.title + child.href}
+                            key={child.title.en + child.href}
                             href={child.href ?? "#"}
                             className="block rounded-lg px-3 py-2 text-base font-medium text-foreground hover:bg-muted"
                             onClick={() => setOpen(false)}
                           >
-                            {child.title}
+                            {child.title[locale]}
                           </Link>
                         )
                       )}
