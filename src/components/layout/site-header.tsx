@@ -29,29 +29,35 @@ import { useLanguage } from "@/context/language-context";
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const { locale } = useLanguage();
-  const phoneParts = siteConfig.contact.phone.split(" ");
-  const areaCode = phoneParts[0] ?? siteConfig.contact.phone;
-  const phoneRest = phoneParts.slice(1).join(" ") || phoneParts[0] || siteConfig.contact.phone;
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[#27466f]/95 text-white shadow-lg shadow-black/10 backdrop-blur">
       <div className="container mx-auto flex items-center justify-between gap-4 px-4 py-4">
-        <div className="flex items-center gap-3">
-          <Link href="/" className="inline-flex items-center">
-            <span className="inline-flex items-center rounded-3xl bg-white/5 p-1 shadow-lg shadow-black/30 ring-1 ring-white/20">
-              <Image
-                src="/images/Flogo.png"
-                alt="Sunny Child Care bilingual logo"
-                width={168}
-                height={56}
-                className="h-12 w-auto object-contain"
-                priority
-              />
-            </span>
+        <div className="hidden flex-col gap-2 lg:flex">
+          <Link href="/" className="inline-flex w-[260px] items-center justify-center rounded-3xl bg-white/5 px-4 py-2 shadow-lg shadow-black/30 ring-1 ring-white/15">
+            <Image
+              src="/images/Flogo.png"
+              alt="Sunny Child Care bilingual logo"
+              width={200}
+              height={56}
+              className="h-12 w-full object-contain"
+              priority
+            />
           </Link>
-          <Badge className="hidden md:inline-flex border-white/30 bg-white/15 text-xs font-medium text-white" variant="outline">
+          <div className="inline-flex w-[260px] items-center justify-center rounded-3xl border border-white/25 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.4em] text-white">
             {siteConfig.tagline[locale]}
-          </Badge>
+          </div>
+        </div>
+        <div className="flex flex-1 items-center gap-2 lg:hidden">
+          <Link href="/" className="inline-flex items-center rounded-2xl bg-white/5 px-3 py-2 shadow ring-1 ring-white/15">
+            <Image
+              src="/images/Flogo.png"
+              alt="Sunny Child Care bilingual logo"
+              width={140}
+              height={48}
+              className="h-10 w-auto object-contain"
+            />
+          </Link>
         </div>
 
         <nav className="hidden items-center lg:flex">
@@ -109,23 +115,20 @@ export function SiteHeader() {
           </NavigationMenu>
         </nav>
 
-        <div className="hidden items-center gap-5 md:flex">
+        <div className="hidden flex-1 items-center justify-end gap-5 md:flex">
           <LanguageToggle />
-          <div className="text-right">
-            <p className="text-[0.6rem] font-semibold uppercase tracking-[0.6em] text-[#f6e4a6]">
+          <div className="flex flex-col text-right">
+            <p className="text-[0.65rem] font-semibold uppercase tracking-[0.55em] text-[#f6e4a6]">
               {locale === "en" ? "Call us" : "專線"}
             </p>
             <a
-              className="group inline-flex items-center gap-3 text-2xl font-bold text-white"
+              className="inline-flex items-center gap-3 text-2xl font-bold text-white"
               href={`tel:${siteConfig.contact.phone.replace(/\D/g, "")}`}
             >
-              <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[#f6e4a6]/60 text-[#f6e4a6] transition group-hover:bg-[#f6e4a6]/10">
+              <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[#f6e4a6]/60 text-[#f6e4a6]">
                 <Phone className="h-4 w-4" />
               </span>
-              <span className="flex flex-col leading-tight tracking-wide">
-                <span className="text-lg">{areaCode}</span>
-                <span className="text-2xl">{phoneRest}</span>
-              </span>
+              <span className="tracking-wide">{siteConfig.contact.phone}</span>
             </a>
           </div>
           <Button

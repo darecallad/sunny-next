@@ -15,7 +15,7 @@ export function LanguageToggle({ className = "" }: { className?: string }) {
 
   return (
     <div
-      className={`inline-flex items-center gap-1 rounded-full border border-white/25 bg-white/10 p-1 text-xs font-semibold uppercase shadow-lg shadow-black/10 ${className}`}
+      className={`inline-flex items-center rounded-full border border-white/30 bg-[#324f7a]/70 p-1 text-xs font-semibold uppercase shadow-lg shadow-black/20 ${className}`}
     >
       {locales.map((value) => (
         <Button
@@ -25,8 +25,8 @@ export function LanguageToggle({ className = "" }: { className?: string }) {
           variant="ghost"
           className={
             locale === value
-              ? "h-8 rounded-full bg-[#f2a63b] px-4 text-[#1f2b3d] shadow"
-              : "h-8 rounded-full px-3 text-white/70 hover:text-white"
+              ? "h-9 rounded-full bg-[#f2a63b] px-5 text-[#1f2b3d] shadow"
+              : "h-9 rounded-full px-4 text-white/70 hover:text-white"
           }
           onClick={() => handleToggle(value)}
         >
