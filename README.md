@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
+
+# Sunny Child Care (Next.js)
+Mandarin-English immersion childcare site rebuilt with modern React, shadcn/ui, and Tailwind CSS 4.
+
+</div>
+
+## Overview
+
+This repo is stage one of the Sunny Child Care migration from a legacy Express + static HTML site to a fully componentized Next.js 16 application. The new stack gives us:
+
+- **App Router + Server Components** for fast, cacheable marketing pages
+- **shadcn/ui** with Tailwind v4 design tokens aligned to Sunny’s warm brand palette
+- **Modular content data** (`src/data/site.ts`) so marketing copy stays close to the code without repeating HTML
+- **Reusable sections** (hero, value grid, video spotlight, testimonials, CTA) that map directly to the original Sunny storytelling
+
+## Tech Stack
+
+- Next.js 16 · React 19 · TypeScript 5
+- Tailwind CSS 4 with custom tokens + Montserrat / Noto Sans TC fonts
+- shadcn/ui components (button, card, badge, navigation menu, sheet, separator)
+- Lucide icons, class-variance-authority utilities, tailwind-merge helpers
 
 ## Getting Started
 
-First, run the development server:
+Prereqs: Node.js 18.18+ (or 20+), npm 9+
 
-```bash
+```powershell
+cd sunny-next
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit [http://localhost:3000](http://localhost:3000) to explore the rebuilt homepage.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `npm run dev` – start the local dev server
+- `npm run lint` – run ESLint against the entire project
+- `npm run build` – create an optimized production build
+- `npm run start` – serve the production build locally
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+	app/              # App Router entrypoints/layout
+	components/
+		layout/         # Header, footer
+		sections/       # Homepage sections (hero, testimonials, etc.)
+		ui/             # Generated shadcn/ui primitives
+	data/
+		site.ts         # Navigation, hero copy, value props, testimonials
+	lib/
+		fonts.ts        # Google font helpers
+		utils.ts        # cn() helper from shadcn
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Public assets currently rely on gradients/typography; migrating existing imagery from the legacy repo is tracked as a follow-up task.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Migration Roadmap
 
-## Deploy on Vercel
+1. **Content parity** – bring in About, Programs, Admission, Resources, and seasonal pages as App Router routes backed by structured data files.
+2. **Interactive forms** – rebuild the tour request + contact workflow using React Hook Form + a Next.js API route wired to Nodemailer (leveraging the existing Gmail OAuth credentials).
+3. **Asset library** – import photos/icons from the legacy `docs/images` tree, optimize with `next/image`, and codify brand guidelines.
+4. **Localization** – reuse the Waymaker CPR language toggle to present key sections in both English and Traditional Chinese.
+5. **Deployment** – point Vercel (or preferred hosting) at this repo with environment secrets (`EMAIL_USER`, `EMAIL_PASSWORD`, etc.) configured.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Create a feature branch from `main`.
+2. Keep sections modular—most content should live in `src/data` or dedicated `sections/` components.
+3. Run `npm run lint` before opening a PR.
+
+Questions? Open an issue or ping the team on Slack—let’s keep the sunshine going ☀️
