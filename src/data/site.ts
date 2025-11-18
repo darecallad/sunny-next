@@ -134,7 +134,6 @@ export const navigation: NavItem[] = [
     ],
   },
   { title: { en: "Resources", zh: "親職資源" }, href: "/resources" },
-  { title: { en: "Discounts", zh: "優惠活動" }, href: "/discount" },
 ];
 
 export const heroContent = {

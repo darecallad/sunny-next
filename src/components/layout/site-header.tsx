@@ -33,32 +33,16 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[#27466f]/95 text-white shadow-lg shadow-black/10 backdrop-blur">
       <div className="container mx-auto flex items-center justify-between gap-4 px-4 py-4">
-        <div className="hidden flex-col gap-2 lg:flex">
-          <Link href="/" className="inline-flex w-[260px] items-center justify-center rounded-3xl bg-white/5 px-4 py-2 shadow-lg shadow-black/30 ring-1 ring-white/15">
-            <Image
-              src="/images/Flogo.png"
-              alt="Sunny Child Care bilingual logo"
-              width={200}
-              height={56}
-              className="h-12 w-full object-contain"
-              priority
-            />
-          </Link>
-          <div className="inline-flex w-[260px] items-center justify-center rounded-3xl border border-white/25 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.4em] text-white">
-            {siteConfig.tagline[locale]}
-          </div>
-        </div>
-        <div className="flex flex-1 items-center gap-2 lg:hidden">
-          <Link href="/" className="inline-flex items-center rounded-2xl bg-white/5 px-3 py-2 shadow ring-1 ring-white/15">
-            <Image
-              src="/images/Flogo.png"
-              alt="Sunny Child Care bilingual logo"
-              width={140}
-              height={48}
-              className="h-10 w-auto object-contain"
-            />
-          </Link>
-        </div>
+        <Link href="/" className="inline-flex items-center rounded-3xl bg-white/5 px-4 py-2 shadow-lg shadow-black/30 ring-1 ring-white/15">
+          <Image
+            src="/images/Flogo.png"
+            alt="Sunny Child Care bilingual logo"
+            width={200}
+            height={56}
+            className="h-12 w-auto object-contain"
+            priority
+          />
+        </Link>
 
         <nav className="hidden items-center lg:flex">
           <NavigationMenu>

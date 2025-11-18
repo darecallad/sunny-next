@@ -2,11 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { announcement, careHighlights, heroContent, siteConfig } from "@/data/site";
+import { careHighlights, heroContent, siteConfig } from "@/data/site";
 import { useLanguage } from "@/context/language-context";
 
 export function HeroSection() {
@@ -14,18 +12,6 @@ export function HeroSection() {
   return (
     <section className="relative overflow-hidden border-b border-border/40 bg-gradient-to-b from-amber-50 via-white to-white">
       <div className="container mx-auto px-4 py-12">
-        <div className="mb-6 flex flex-wrap items-center gap-3 text-sm">
-          <Badge variant="outline" className="bg-white">
-            {announcement.badge[locale]}
-          </Badge>
-          <Link
-            href={announcement.href}
-            className="inline-flex items-center gap-2 font-medium text-primary"
-          >
-            {announcement.title[locale]}
-            <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_380px] lg:items-center">
           <div className="space-y-8">
             <div className="space-y-4">
