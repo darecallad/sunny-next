@@ -10,11 +10,12 @@ All notable changes to the Sunny Child Care Next.js project will be documented i
 - **Framework:** Next.js 16 with React 19, TypeScript 5, Tailwind CSS 4
 - **UI Components:** shadcn/ui integration (Button, Badge, Navigation Menu, Sheet, Separator)
 - **Localization System:** Custom LanguageProvider context with localStorage persistence
-- **Asset Migration:** Copied key assets from legacy Sunny project:
+- **Asset Migration:** Cleaned up and optimized project assets:
   - `Flogo.png` - Bilingual logo (陽光雙語 | Sunny Child Care)
   - `hero-pexels.jpg` - Hero background (pexels-yan-krukau-8612914.jpg)
-  - `legacy-hero.webp` - Alternative hero background
-  - `sunny-logomark.png` - Brand logomark
+  - `sunny-logomark.png` - Brand logomark (also used as favicon)
+  - Removed unused Next.js default assets (file.svg, globe.svg, next.svg, vercel.svg, window.svg)
+  - Removed unused legacy hero images (hero-banner.png/.webp, legacy-hero.png/.webp)
 
 #### Data Structure & Content
 - **Central Data File:** `src/data/site.ts` with TypeScript interfaces
@@ -163,6 +164,21 @@ All notable changes to the Sunny Child Care Next.js project will be documented i
 ### 🔧 Recent Fixes & Changes
 
 #### November 18, 2025
+- **Homepage Statistics Update:**
+  - Updated "Families served" stat from 200+ to 400+ in both English and Chinese
+  
+- **Favicon Implementation:**
+  - Replaced default favicon.ico with sunny-logomark.png
+  - Created `src/app/icon.png` for automatic Next.js favicon handling
+  - Added `icons` metadata to layout.tsx for proper favicon configuration
+  - Removed old favicon.ico file
+  
+- **Project Cleanup:**
+  - Removed unused Next.js default SVG files (file.svg, globe.svg, next.svg, vercel.svg, window.svg)
+  - Removed unused legacy hero images (hero-banner.png/.webp, legacy-hero.png/.webp)
+  - Cleaned public folder: now contains only actively used assets
+  - Final asset inventory: Flogo.png, hero-pexels.jpg, sunny-logomark.png
+
 - **Homepage Completion:** ✅ All sections finalized and optimized
   
 - **Footer Updates:**

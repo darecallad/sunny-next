@@ -13,6 +13,10 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   metadataBase: new URL("https://www.sunnychildcare.com"),
+  icons: {
+    icon: "/images/sunny-logomark.png",
+    apple: "/images/sunny-logomark.png",
+  },
   openGraph: {
     title: siteConfig.name,
     description: siteConfig.description,

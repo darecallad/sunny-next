@@ -160,7 +160,7 @@ export const heroContent = {
   stats: [
     {
       label: { en: "Families served", zh: "服務家庭" },
-      value: { en: "200+", zh: "200+" },
+      value: { en: "400+", zh: "400+" },
     },
     {
       label: { en: "Teacher ratio", zh: "師生比" },

@@ -28,7 +28,7 @@ export function HeroSection() {
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_380px] lg:items-center">
           <div className="space-y-8">
             <div className="space-y-4">
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">
+              <p className="inline-block rounded-md bg-white/90 px-4 py-2 text-sm font-bold uppercase tracking-[0.3em] text-primary shadow-md backdrop-blur-sm">
                 {heroContent.eyebrow[locale]}
               </p>
               <h1 className="text-4xl font-semibold leading-tight text-foreground sm:text-5xl">
@@ -81,7 +81,7 @@ export function HeroSection() {
               <div className="relative bg-gradient-to-b from-[#2a3f5f] to-[#1a2940]">
                 <div className="flex flex-col gap-6 p-6">
                 <div className="flex items-center gap-3">
-                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/90 p-2 shadow-lg shadow-black/40">
+                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#2a3f5f] p-2 shadow-lg shadow-black/40">
                     <Image
                       src="/images/sunny-logomark.png"
                       alt="Sunny logomark"
