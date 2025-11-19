@@ -99,7 +99,7 @@ export const navigation: NavItem[] = [
       },
       {
         title: { en: "Testimonials", zh: "家長回饋" },
-        href: "#testimonials",
+        href: "/#testimonials",
         description: {
           en: "Stories from families",
           zh: "家長真實分享",

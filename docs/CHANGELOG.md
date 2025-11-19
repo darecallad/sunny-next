@@ -164,9 +164,16 @@ All notable changes to the Sunny Child Care Next.js project will be documented i
 ### 🔧 Recent Fixes & Changes
 
 #### November 18, 2025
+- **Testimonials Navigation Fix:** ✅
+  - Updated testimonials link in navigation from `#testimonials` to `/#testimonials`
+  - Now correctly jumps to homepage testimonials section from any page
+  - Works in both header navigation menu and footer quick links
+  - Section already has proper `id="testimonials"` anchor
+
 - **Location Page Completion:** ✅
   - Created full Location/Contact page (`/locations`)
   - **Google Maps Integration:** Embedded interactive map showing Sunny Child Care Center location
+  - **Layout Alignment:** Map and Contact Information sections have equal height (items-stretch)
   - **Contact Information Section:** 
     - Address: 2586 Seaboard Ave, San Jose, CA 95131
     - Phone: (510) 333-5943 (clickable tel: link)
