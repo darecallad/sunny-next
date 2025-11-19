@@ -196,9 +196,9 @@ export default function TuitionPage() {
                     </h2>
                     <div className="grid gap-6 md:grid-cols-2">
                       <div className="space-y-3">
-                        <Label>
+                        <p className="text-sm font-medium">
                           {locale === "en" ? "Chinese Tour" : "中文導覽"} *
-                        </Label>
+                        </p>
                         <div className="flex gap-6">
                           <label className="flex items-center gap-2">
                             <input
@@ -263,10 +263,11 @@ export default function TuitionPage() {
                           </div>
                           <div className="grid grid-cols-3 gap-3">
                             <div className="space-y-1">
-                              <Label className="text-sm text-gray-600">
+                              <Label htmlFor={`child-${index}-month`} className="text-sm text-gray-600">
                                 {locale === "en" ? "Month" : "月"}
                               </Label>
                               <Input
+                                id={`child-${index}-month`}
                                 type="number"
                                 min="1"
                                 max="12"
@@ -278,10 +279,11 @@ export default function TuitionPage() {
                               />
                             </div>
                             <div className="space-y-1">
-                              <Label className="text-sm text-gray-600">
+                              <Label htmlFor={`child-${index}-day`} className="text-sm text-gray-600">
                                 {locale === "en" ? "Day" : "日"}
                               </Label>
                               <Input
+                                id={`child-${index}-day`}
                                 type="number"
                                 min="1"
                                 max="31"
@@ -293,10 +295,11 @@ export default function TuitionPage() {
                               />
                             </div>
                             <div className="space-y-1">
-                              <Label className="text-sm text-gray-600">
+                              <Label htmlFor={`child-${index}-year`} className="text-sm text-gray-600">
                                 {locale === "en" ? "Year" : "年"}
                               </Label>
                               <Input
+                                id={`child-${index}-year`}
                                 type="number"
                                 min="2017"
                                 max={new Date().getFullYear()}

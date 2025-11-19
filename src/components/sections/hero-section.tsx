@@ -72,7 +72,6 @@ export function HeroSection() {
                   alt="Diverse group of children engaging in bilingual learning activities at Sunny Child Care"
                   fill
                   className="object-cover"
-                  priority
                   sizes="(min-width: 1024px) 380px, 90vw"
                 />
               </div>
