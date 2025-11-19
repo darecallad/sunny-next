@@ -26,41 +26,38 @@ export default function ProcessPage() {
       </section>
 
       {/* Steps Section */}
-      <section className="py-16">
+      <section className="bg-gradient-to-b from-white to-gray-50 py-16">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-4xl">
-            <ul className="space-y-8">
+            <div className="space-y-12">
               {admissionProcessContent.steps.map((step, index) => (
-                <li key={index}>
-                  <div className="space-y-3">
-                    <h2 className="text-2xl font-semibold text-[#324f7a]">
-                      {step.title[locale]}
-                    </h2>
-                    <p className="text-lg leading-relaxed text-gray-700">
-                      {step.description[locale]}
-                    </p>
-                  </div>
-                </li>
+                <div 
+                  key={index}
+                  className="rounded-lg bg-white p-8 shadow-sm border border-gray-100"
+                >
+                  <h2 className="text-2xl font-semibold text-[#324f7a] mb-4">
+                    {step.title[locale]}
+                  </h2>
+                  <p className="text-lg leading-relaxed text-gray-700">
+                    {step.description[locale]}
+                  </p>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Bottom Banner Section */}
+      {/* CTA Section with Hand Background */}
       <section 
-        className="py-24 bg-cover bg-center relative"
+        className="py-24 bg-cover bg-center relative border-t border-gray-200"
         style={{
           backgroundImage: "url('/images/banners/process-bottom.webp')",
           backgroundPosition: "50% 50%",
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/50" />
-      </section>
-
-      {/* CTA Section */}
-      <section className="bg-white py-16">
-        <div className="container mx-auto px-4 text-center">
+        <div className="absolute inset-0 bg-white/90" />
+        <div className="container mx-auto px-4 text-center relative z-10">
           <h2 className="text-3xl font-semibold text-foreground">
             {locale === "en" ? "Ready to Get Started?" : "準備好開始了嗎？"}
           </h2>
