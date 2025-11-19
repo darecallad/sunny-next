@@ -4,6 +4,59 @@ All notable changes to the Sunny Child Care Next.js project will be documented i
 
 ## [Current] - 2025-11-18
 
+### ✅ Completed - Programs Pages
+
+#### Four Program Pages Implementation
+- **Purpose:** Created complete program pages with bilingual content, banners, and CTAs
+- **Content Added to `src/data/site.ts`:**
+  - `programsContent` export with four program sections
+  - Each program includes: hero title, description paragraphs, schedule title
+  - Full English and Chinese translations for all content
+
+- **Infant & Toddler Page (`/programs/infant`):**
+  - Hero banner with infant.webp background (positioned 50% 60%)
+  - Three descriptive paragraphs about developmental approach
+  - Focus on four developmental domains: Cognitive, Perceptual Motor, Speech & Language, Social Intelligence
+  - Daily schedule section placeholder
+  - CTA section with tour booking and phone buttons
+
+- **Preschool Page (`/programs/preschool`):**
+  - Hero banner with preschool.webp background
+  - Three descriptive paragraphs about ages 2-6 development
+  - Emphasis on playful learning and performing arts integration
+  - Foreign language exposure and individualized attention
+  - Daily schedule section placeholder
+  - CTA section
+
+- **Pre-K / TK / Kindergarten Page (`/programs/kindergarten`):**
+  - Hero banner with kindergarten.webp background (positioned 0% 50%)
+  - Two descriptive paragraphs about fundamental skills cultivation
+  - Focus on math, science, social studies, and language arts
+  - Lifelong learning and intellectual growth messaging
+  - Daily schedule section placeholder
+  - CTA section
+
+- **Menus Page (`/programs/menus`):**
+  - Hero banner with menu.webp background
+  - Single descriptive paragraph about nutritional requirements
+  - Download button with FileDown icon linking to Google Drive menu PDF
+  - Bottom decorative banner (menu-bottom.webp - food photo)
+  - CTA section
+
+- **Banner Images Added:**
+  - `/images/banners/menu-bottom.webp` - Decorative food photo for menus page
+
+- **Common Features:**
+  - Consistent page structure across all programs
+  - Hero sections with dark gradient overlays (black/60 to black/40)
+  - White text on dark backgrounds for hero titles
+  - Gray-50 background for schedule/download sections
+  - Navy (#324f7a) colored section titles
+  - Large readable body text (text-lg)
+  - Responsive layouts with max-w-4xl content containers
+  - Amber (#f2a63b) CTA buttons
+  - Navy outline secondary buttons
+
 ### ✅ Completed - Admission Process Page
 
 #### Process Page Implementation

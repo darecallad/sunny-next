@@ -419,3 +419,140 @@ export const admissionProcessContent = {
     },
   ],
 };
+
+export const programsContent = {
+  infant: {
+    hero: {
+      title: { en: "Infant & Toddler", zh: "嬰幼班" },
+    },
+    description: [
+      {
+        en: "Infants are naturally inclined to learn and exhibit unique developmental patterns. The initial years of life are a remarkable phase for human development.",
+        zh: "嬰兒天生就有學習的傾向，並展現出獨特的發展模式。生命的最初幾年是人類發展的關鍵階段。",
+      },
+      {
+        en: "At Sunny Child Care, we take a proactive approach to assess and foster the cognitive and physical growth of our infants and toddlers in a nurturing environment, laying a strong foundation for their future success in both school and life.",
+        zh: "在 Sunny，我們採取積極的方法，在培育環境中評估和促進嬰幼兒的認知和身體成長，為他們在學校和生活中的未來成功奠定堅實的基礎。",
+      },
+      {
+        en: "As early childhood educators and caregivers, we employ developmental domains to support various facets of each child's overall development. Grouping related behaviors and skills into these domains allows us to readily evaluate each child's progress. Our exclusive infant and toddler curriculum relies on four key developmental domains: Cognitive, Perceptual Motor, Speech & Language, and Social Intelligence.",
+        zh: "作為幼兒教育者和照顧者，我們運用發展領域來支持每個孩子整體發展的各個方面。將相關的行為和技能分組到這些領域中，使我們能夠輕鬆評估每個孩子的進步。我們專屬的嬰幼兒課程依賴於四個關鍵發展領域：認知、感知運動、語言和社交智能。",
+      },
+    ],
+    scheduleTitle: { en: "Infant & Young Toddler Daily Schedule", zh: "嬰幼兒每日作息表" },
+    schedule: [
+      { time: "08:30 - 09:15 am", activity: "Arrival / Free Play Time", isBold: false },
+      { time: "09:15 - 09:30 am", activity: "Clean up / Wash hands / Diaper Checks", isBold: false },
+      { time: "09:30 - 10:00 am", activity: "Snack Time / Water Time / Get ready for outside", isBold: false },
+      { time: "10:00 - 10:30 am", activity: "Playground Time", isBold: true },
+      { time: "10:30 - 10:45 am", activity: "Change shoes / Wash hands / Water Time", isBold: false },
+      { time: "10:45 - 11:00 am", activity: "Morning Circle Time (English/ Chinese)", isBold: true },
+      { time: "11:00 - 11:30 am", activity: "Structured Activity - Sensory / Art", isBold: true },
+      { time: "11:30 - 12:15 pm", activity: "Clean up / Wash Hands / Lunchtime / Water Time", isBold: false },
+      { time: "12:15 - 12:45 pm", activity: "Diaper Checks / Prepare Cots", isBold: false },
+      { time: "12:45 - 01:00 pm", activity: "Bedtime Story", isBold: true },
+      { time: "01:00 - 03:00 pm", activity: "Nap Time", isBold: false },
+      { time: "03:00 - 03:30 pm", activity: "Getting Up / Diaper Checks / Water Time", isBold: false },
+      { time: "03:30 - 03:45 pm", activity: "Afternoon Circle Time (English / Chinese)", isBold: true },
+      { time: "03:45 - 04:15 pm", activity: "Playground Time", isBold: true },
+      { time: "04:15 - 05:00 pm", activity: "Change shoes / Wash hands/ Dinnertime / Water Time", isBold: false },
+      { time: "05:00 - 05:15 pm", activity: "Music / Movement Time", isBold: true },
+      { time: "05:15 - 05:30 pm", activity: "Diaper Checks / Water Time", isBold: false },
+      { time: "05:30 - 06:00 pm", activity: "Free Play Time and Clean Up", isBold: false },
+    ],
+    note: { 
+      en: "Infants are on their own schedule for eating and sleeping; diaper checks every two hours.",
+      zh: "嬰兒按照自己的時間表進食和睡覺；每兩小時檢查尿布。"
+    },
+  },
+  preschool: {
+    hero: {
+      title: { en: "Preschool", zh: "幼兒園" },
+    },
+    description: [
+      {
+        en: "Between the ages of 2 and 6, children undergo significant growth. They enhance their physical coordination, consolidate ideas, grasp more intricate games, and embark on a journey of self-discovery and social interaction.",
+        zh: "在 2 到 6 歲之間，兒童經歷顯著的成長。他們增強身體協調能力，鞏固想法，掌握更複雜的遊戲，並踏上自我發現和社交互動的旅程。",
+      },
+      {
+        en: "Encouraging playful learning is the most effective method to help children remember and subsequently apply the concepts they acquire. At Sunny Child Care, we seamlessly integrate play and performing arts into our daily activities.",
+        zh: "鼓勵遊戲式學習是幫助孩子記住並隨後應用所學概念的最有效方法。在 Sunny，我們將遊戲和表演藝術無縫整合到日常活動中。",
+      },
+      {
+        en: "Additionally, we introduce and progressively expand foreign language exposure within our preschool curriculum. Our dedicated teachers offer individualized attention to cater to the specific needs of each child, ensuring a well-rounded and personalized learning experience.",
+        zh: "此外，我們在幼兒園課程中引入並逐步擴大外語接觸。我們敬業的老師提供個性化關注，滿足每個孩子的特定需求，確保全面和個性化的學習體驗。",
+      },
+    ],
+    scheduleTitle: { en: "Preschool Daily Schedule", zh: "幼兒園每日作息表" },
+    schedule: [
+      { time: "08:30 - 09:15 am", activity: "Arrival / Free Play Time", isBold: false },
+      { time: "09:15 - 09:45 am", activity: "Table Activities / Work Time", isBold: true },
+      { time: "09:45 - 10:00 am", activity: "Clean up / Wash hands / Bathroom & Diaper Checks", isBold: false },
+      { time: "10:00 - 10:15 am", activity: "Snack Time / Water Time / Get ready for outside", isBold: false },
+      { time: "10:15 - 10:45 am", activity: "Playground Time", isBold: true },
+      { time: "10:45 - 11:00 am", activity: "Change shoes / Wash hands / Water Time", isBold: false },
+      { time: "11:00 - 11:30 am", activity: "Morning Circle Time (English/ Chinese)", isBold: true },
+      { time: "11:30 - 11:45 am", activity: "Structured Activity - Sensory / Art", isBold: true },
+      { time: "11:45 - 12:30 pm", activity: "Clean up / Wash hands/ Lunchtime / Water Time", isBold: false },
+      { time: "12:30 - 01:00 pm", activity: "Bathroom & Diaper Checks / Prepare Cots", isBold: false },
+      { time: "01:00 - 03:00 pm", activity: "Bedtime Story / Nap Time", isBold: false },
+      { time: "03:00 - 03:15 pm", activity: "Getting Up / Bathroom & Diaper Check / Water Time", isBold: false },
+      { time: "03:15 - 03:45 pm", activity: "Afternoon Circle Time (English / Chinese)", isBold: true },
+      { time: "03:45 - 04:15 pm", activity: "Playground Time", isBold: true },
+      { time: "04:15 - 05:00 pm", activity: "Change shoes / Wash hands/ Dinnertime / Water Time", isBold: false },
+      { time: "05:00 - 05:15 pm", activity: "Music / Movement Time", isBold: true },
+      { time: "05:15 - 05:45 pm", activity: "Free Play Time", isBold: false },
+      { time: "05:45 - 06:00 pm", activity: "Story Time and Clean Up (Classroom Merge)", isBold: true },
+    ],
+  },
+  kindergarten: {
+    hero: {
+      title: { en: "Pre-K / TK / Kindergarten", zh: "學前班 / 過渡幼兒園 / 小學" },
+    },
+    description: [
+      {
+        en: "Our kindergarten curriculum places a strong emphasis on cultivating fundamental skills, laying a solid groundwork that equips students for their future educational journey in subjects such as mathematics, science, social studies, and language arts.",
+        zh: "我們的小學課程非常重視培養基本技能，奠定堅實的基礎，為學生在數學、科學、社會研究和語言藝術等科目的未來教育之旅做好準備。",
+      },
+      {
+        en: "These foundational skills are essential not only for immediate academic success but also for fostering a lifelong love for learning and intellectual growth. Through a comprehensive and engaging curriculum, we aim to provide students with a well-rounded educational experience that nurtures their curiosity and fosters a deep understanding of the world around them.",
+        zh: "這些基礎技能不僅對即時的學業成功至關重要，而且對於培養終身學習熱愛和智力成長也至關重要。通過全面而引人入勝的課程，我們旨在為學生提供全面的教育體驗，培養他們的好奇心，並促進對周圍世界的深入理解。",
+      },
+    ],
+    scheduleTitle: { en: "Pre-K / TK / Kindergarten Daily Schedule", zh: "學前班每日作息表" },
+    schedule: [
+      { time: "08:30 - 09:00 am", activity: "Arrival / Free Play Time", isBold: false },
+      { time: "09:00 - 09:45 am", activity: "Table Activities / Work Time", isBold: true },
+      { time: "09:45 - 10:00 am", activity: "Clean Up / Wash Hands / Bathroom Checks", isBold: false },
+      { time: "10:00 - 10:15 am", activity: "Snack Time / Water Time / Get ready for circle", isBold: false },
+      { time: "10:15 - 10:45 am", activity: "Morning Circle Time (English/ Chinese)", isBold: true },
+      { time: "10:45 - 11:15 am", activity: "Structured Activity - STEAM", isBold: true },
+      { time: "11:15 - 11:30 am", activity: "Change Shoes / Water Time", isBold: false },
+      { time: "11:30 - 12:00 pm", activity: "Playground Time", isBold: true },
+      { time: "12:00 - 12:45 pm", activity: "Change Shoes / Wash Hands / Lunchtime", isBold: false },
+      { time: "12:45 - 01:00 pm", activity: "Bathroom Checks / Prepare Cots", isBold: false },
+      { time: "01:00 - 01:15 pm", activity: "Group Reading", isBold: true },
+      { time: "01:15 - 02:30 pm", activity: "Nap Time, Non-Napper: Reading / Writing", isBold: false },
+      { time: "02:30 - 02:45 pm", activity: "Getting Up / Bathroom Checks / Get ready for outdoor", isBold: false },
+      { time: "02:45 - 03:15 pm", activity: "Playground Time", isBold: true },
+      { time: "03:15 - 03:30 pm", activity: "Change Shoes / Wash Hands / Bathroom Checks / Water Time", isBold: false },
+      { time: "03:30 - 03:45 pm", activity: "Afternoon Circle Time (English / Chinese)", isBold: true },
+      { time: "03:45 - 04:15 pm", activity: "Group Work Time", isBold: true },
+      { time: "04:15 - 05:00 pm", activity: "Change shoes / Wash hands/ Dinnertime / Water Time", isBold: false },
+      { time: "05:00 - 05:15 pm", activity: "Music / Movement Time", isBold: true },
+      { time: "05:15 - 05:45 pm", activity: "Free Play Time", isBold: false },
+      { time: "05:45 - 06:00 pm", activity: "Story Time and Clean Up (Classroom Merge)", isBold: true },
+    ],
+  },
+  menus: {
+    hero: {
+      title: { en: "Menus", zh: "營養餐點" },
+    },
+    description: {
+      en: "Our meal plans for children are carefully crafted to meet their unique nutritional requirements and support their growth and development. These meal plans are thoughtfully designed to provide a balanced and wholesome diet that includes a variety of food groups, ensuring that children receive the essential nutrients they need for optimal health.",
+      zh: "我們為兒童精心設計的餐點計劃旨在滿足他們獨特的營養需求，支持他們的成長和發展。這些餐點計劃經過精心設計，提供均衡和健康的飲食，包括多種食物類別，確保兒童獲得最佳健康所需的基本營養素。",
+    },
+    downloadText: { en: "Download Menu", zh: "下載菜單" },
+    downloadLink: "https://drive.google.com/file/d/1km_8gzJTu_f8Cza7CiJVWbbfQQvSHjFx/view?usp=drive_link",
+  },
+};

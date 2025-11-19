@@ -1,15 +1,95 @@
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Menus | 營養餐點",
-  description: "Nutritious meals for growing minds",
-};
+import Link from "next/link";
+import { FileDown } from "lucide-react";
+
+import { useLanguage } from "@/context/language-context";
+import { programsContent, siteConfig } from "@/data/site";
 
 export default function MenusPage() {
+  const { locale } = useLanguage();
+  const content = programsContent.menus;
+
   return (
-    <div className="container mx-auto px-4 py-16">
-      <h1 className="mb-4 text-4xl font-bold">Menus</h1>
-      <p className="text-lg text-gray-600">Content coming soon...</p>
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section 
+        className="border-b border-border/40 py-16 bg-cover relative"
+        style={{
+          backgroundImage: "url('/images/banners/menu.webp')",
+          backgroundPosition: "50% 135%",
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/40" />
+        <div className="container mx-auto px-4 relative z-10">
+          <h1 className="text-4xl font-semibold text-white sm:text-5xl">
+            {content.hero.title[locale]}
+          </h1>
+        </div>
+      </section>
+
+      {/* Description Section */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="mx-auto max-w-4xl">
+            <p className="text-lg leading-relaxed text-gray-700 text-center">
+              {content.description[locale]}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Download Section */}
+      <section className="bg-gray-50 py-16">
+        <div className="container mx-auto px-4">
+          <div className="mx-auto max-w-2xl text-center">
+            <a
+              href={content.downloadLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-14 items-center justify-center gap-3 rounded-md bg-[#324f7a] px-10 text-base font-medium text-white shadow-lg transition-colors hover:bg-[#324f7a]/90"
+            >
+              <FileDown className="h-5 w-5" />
+              {content.downloadText[locale]}
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section with Food Background */}
+      <section 
+        className="py-24 bg-cover bg-center relative border-t border-gray-200"
+        style={{
+          backgroundImage: "url('/images/banners/menu-bottom.webp')",
+          backgroundPosition: "center center",
+        }}
+      >
+        <div className="absolute inset-0 bg-white/90" />
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <h2 className="text-3xl font-semibold text-foreground">
+            {locale === "en" ? "Ready to Get Started?" : "準備好開始了嗎？"}
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-700">
+            {locale === "en"
+              ? "Schedule a tour to experience our nurturing environment and meet our dedicated team."
+              : "預約參觀，體驗我們溫馨的環境，認識我們敬業的團隊。"}
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <Link
+              href="/admission/tuition"
+              className="inline-flex h-11 items-center justify-center rounded-md bg-[#f2a63b] px-8 text-sm font-medium text-white shadow transition-colors hover:bg-[#f2a63b]/90"
+            >
+              {locale === "en" ? "Schedule a Tour" : "預約參觀"}
+            </Link>
+            <a
+              href={`tel:${siteConfig.contact.phone.replace(/\D/g, "")}`}
+              className="inline-flex h-11 items-center justify-center rounded-md border border-[#324f7a] bg-transparent px-8 text-sm font-medium text-[#324f7a] shadow-sm transition-colors hover:bg-[#324f7a]/10"
+            >
+              {locale === "en" ? `Call ${siteConfig.contact.phone}` : `電話 ${siteConfig.contact.phone}`}
+            </a>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
