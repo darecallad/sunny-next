@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# tour booking data (contains personal information)
+/data/
+data/tour-bookings.json

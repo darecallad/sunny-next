@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { transporter } from "@/lib/email";
+import { saveBooking } from "@/lib/tour-bookings";
 
 export async function POST(request: NextRequest) {
   try {
@@ -10,7 +11,7 @@ export async function POST(request: NextRequest) {
       email,
       phone,
       chineseTour,
-      contactMethod,
+      tourDateTime,
       children,
       startDate,
       message,
@@ -23,6 +24,32 @@ export async function POST(request: NextRequest) {
         { error: "Missing required fields" },
         { status: 400 }
       );
+    }
+
+    // 從 tourDateTime 提取日期 (YYYY-MM-DD)
+    let tourDate = "";
+    if (tourDateTime) {
+      const dateMatch = tourDateTime.match(/^(\d{4}-\d{2}-\d{2})/);
+      if (dateMatch) {
+        tourDate = dateMatch[1];
+      }
+    }
+
+    // 保存預約資訊（用於提醒郵件）
+    if (tourDate) {
+      await saveBooking({
+        firstName,
+        lastName,
+        email,
+        phone,
+        tourDateTime,
+        tourDate,
+        children: children || [],
+        chineseTour: chineseTour || "No",
+        startDate: startDate || "",
+        message: message || "",
+        locale: locale || "en",
+      });
     }
 
     // 準備子女資訊
@@ -74,10 +101,6 @@ export async function POST(request: NextRequest) {
                   <span class="label">Phone / 電話:</span>
                   <span class="value">${phone}</span>
                 </div>
-                <div class="field">
-                  <span class="label">Preferred Contact / 聯絡方式:</span>
-                  <span class="value">${contactMethod || "Not specified"}</span>
-                </div>
               </div>
 
               <div class="section">
@@ -90,6 +113,10 @@ export async function POST(request: NextRequest) {
 
               <div class="section">
                 <div class="section-title">📅 Tour Details / 參觀詳情</div>
+                <div class="field">
+                  <span class="label">Tour Date & Time / 參觀日期時間:</span>
+                  <span class="value">${tourDateTime || "Not specified"}</span>
+                </div>
                 <div class="field">
                   <span class="label">Chinese Tour / 中文導覽:</span>
                   <span class="value">${chineseTour === "Yes" ? "✅ Yes / 是" : "❌ No / 否"}</span>
@@ -136,7 +163,6 @@ export async function POST(request: NextRequest) {
 Name / 姓名: ${firstName} ${lastName}
 Email: ${email}
 Phone / 電話: ${phone}
-Preferred Contact / 聯絡方式: ${contactMethod || "Not specified"}
 
 👶 CHILD INFORMATION / 子女資訊
 --------------------------------------------
@@ -144,6 +170,7 @@ ${childrenInfo || "Not provided"}
 
 📅 TOUR DETAILS / 參觀詳情
 --------------------------------------------
+Tour Date & Time / 參觀日期時間: ${tourDateTime || "Not specified"}
 Chinese Tour / 中文導覽: ${chineseTour === "Yes" ? "Yes / 是" : "No / 否"}
 Desired Start Date / 期望開始日期: ${startDate || "Not specified"}
 Language / 語言: ${locale === "en" ? "English" : "繁體中文"}

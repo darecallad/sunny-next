@@ -2,23 +2,92 @@
 
 All notable changes to the Sunny Child Care Next.js project will be documented in this file.
 
-## [November 18, 2025] - Tuition Form Optimization
+## [November 18, 2025] - Tuition Form Optimization & Automated Reminder System
 
-### 🎯 Tour Booking Form Improvements
-**Simplified tuition/tour request form for better user experience:**
-- **Removed Field:**
-  - Deleted "Preferred Contact Method" dropdown from Tour Preferences section
-  - Simplified form layout - now only includes Chinese Tour radio buttons in preferences
-  - Removed `contactMethod` state variable and related logic
-  - Email data no longer includes contact method preference
-- **Required Field Updates:**
-  - Added required indicator (*) to "Child Information" section heading
-  - Clarified that child DOB information is mandatory for tour requests
-  - Maintains existing required validation on all child date fields
-- **Form Structure:** Cleaner, more focused layout with essential fields only
-- **Files Modified:**
-  - `src/app/admission/tuition/page.tsx` - Form component and state management
-- **Impact:** Streamlined booking process with fewer optional fields
+### 🤖 自動提醒郵件系統 / Automated Reminder Email System
+**實現預約前一天自動發送提醒郵件功能：**
+
+#### 新增功能 / New Features
+1. **預約資料存儲系統**
+   - 創建 `src/lib/tour-bookings.ts` - 預約資料管理模組
+   - 自動保存所有預約到 `data/tour-bookings.json`
+   - 資料結構包含：ID、聯絡資訊、參觀日期時間、子女資訊等
+
+2. **提醒郵件 API**
+   - 創建 `/api/send-reminders` 端點
+   - 自動檢查明天的預約並發送提醒郵件
+   - Bearer token 認證保護
+   - 標記已發送避免重複
+
+3. **動態日期選擇器**
+   - 自動生成接下來 4 週的星期三選項
+   - 智能計算：如果今天是星期三且已過 10:30 AM，從下週開始
+   - 雙語顯示：`11/20 Wednesday 10:30 AM - Chinese Tour` / `11/20 週三 上午 10:30 中文 Tour`
+
+#### 提醒郵件內容 / Reminder Email Content
+- 📅 參觀日期和時間
+- 👤 預約人資訊
+- 📍 中心地址、電話、營業時間
+- 💡 參觀內容介紹（雙語）
+- 🗺️ Google Maps 導航連結
+- ☎️ 改期聯絡方式
+
+#### 設置說明 / Setup Instructions
+- 創建 `docs/reminder-email-setup.md` - 完整設置指南
+- 支援三種執行方式：
+  1. Vercel Cron Jobs（生產環境推薦）
+  2. 外部 Cron 服務（如 cron-job.org）
+  3. 本地腳本（開發/測試）
+- 創建 `scripts/send-reminders.js` - 測試用腳本
+- 新增 `npm run send-reminders` 命令
+
+#### 安全性 / Security
+- 新增 `CRON_SECRET` 環境變數用於 API 認證
+- Authorization header 驗證機制
+- 預約資料添加到 `.gitignore`（保護個人資訊）
+
+#### 技術細節 / Technical Details
+- 使用 JSON 文件存儲（可升級到資料庫）
+- Node.js fs/promises 模組進行文件操作
+- 自動創建 `data/` 目錄
+- 每個預約有唯一 ID 和時間戳
+- `reminderSent` 標記防止重複發送
+
+### 🎯 表單改進 / Tour Booking Form Improvements
+
+#### 移除欄位 / Removed Fields
+- 刪除 "Preferred Contact Method" 下拉選單
+- 簡化表單流程，減少非必要欄位
+- 移除相關狀態管理和 API 處理
+
+#### 新增欄位 / New Fields
+- **偏好參觀日期時間** - 動態生成的星期三 10:30 AM 選項
+  - 位置：Timeline 區塊第一個欄位
+  - 自動計算接下來 4 週的可選日期
+  - 根據當前語言顯示適當格式
+
+#### 必填欄位標記 / Required Field Updates
+- "Child Information" / "子女資訊" 添加必填標記 (*)
+- 明確告知家長必須提供子女出生日期
+
+#### 檔案修改 / Files Modified
+- `src/app/admission/tuition/page.tsx` - 表單邏輯和 UI
+- `src/app/api/tour/route.ts` - API 處理和郵件模板
+- `src/lib/tour-bookings.ts` - 新增預約資料管理
+- `src/app/api/send-reminders/route.ts` - 新增提醒郵件 API
+- `scripts/send-reminders.js` - 新增測試腳本
+- `.env.local.example` - 新增 CRON_SECRET 說明
+- `.gitignore` - 新增 data/ 目錄排除
+- `package.json` - 新增 send-reminders 腳本
+
+### 📊 系統狀態 / System Status
+- ✅ Build 成功：19 routes (17 static, 2 dynamic APIs)
+- ✅ TypeScript 編譯通過
+- ✅ 所有功能測試完成
+
+### 📖 相關文檔 / Related Documentation
+- 查看 `docs/reminder-email-setup.md` 了解完整設置步驟
+- 使用 `npm run send-reminders` 測試提醒系統
 
 ---
 
