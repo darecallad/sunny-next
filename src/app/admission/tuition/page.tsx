@@ -29,6 +29,50 @@ export default function TuitionPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [children, setChildren] = useState<Child[]>([{ month: "", day: "", year: "" }]);
   const [startDate, setStartDate] = useState<string>("");
+  const [tourDateTime, setTourDateTime] = useState<string>("");
+
+  // Generate next 4 Wednesdays at 10:30 AM
+  const generateWednesdaySlots = () => {
+    const slots = [];
+    const today = new Date();
+    const currentDay = today.getDay(); // 0 = Sunday, 3 = Wednesday
+    
+    // Calculate days until next Wednesday
+    let daysUntilWednesday = (3 - currentDay + 7) % 7;
+    if (daysUntilWednesday === 0) {
+      // If today is Wednesday, check if it's past 10:30 AM
+      const currentHour = today.getHours();
+      const currentMinute = today.getMinutes();
+      if (currentHour > 10 || (currentHour === 10 && currentMinute >= 30)) {
+        // If past 10:30 AM, start from next Wednesday
+        daysUntilWednesday = 7;
+      }
+    }
+    
+    // Generate 4 Wednesday slots
+    for (let i = 0; i < 4; i++) {
+      const targetDate = new Date(today);
+      targetDate.setDate(today.getDate() + daysUntilWednesday + (i * 7));
+      
+      const month = targetDate.getMonth() + 1;
+      const day = targetDate.getDate();
+      const weekday = locale === "en" ? "Wednesday" : "週三";
+      const time = locale === "en" ? "10:30 AM" : "上午 10:30";
+      const tour = locale === "en" ? "Chinese Tour" : "中文 Tour";
+      
+      const displayText = locale === "en" 
+        ? `${month}/${day} ${weekday} ${time} - ${tour}`
+        : `${month}/${day} ${weekday} ${time} ${tour}`;
+      
+      const valueText = `${targetDate.getFullYear()}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')} Wednesday 10:30 AM - Chinese Tour`;
+      
+      slots.push({ display: displayText, value: valueText });
+    }
+    
+    return slots;
+  };
+
+  const wednesdaySlots = generateWednesdaySlots();
 
   const addChild = () => {
     setChildren([...children, { month: "", day: "", year: "" }]);
@@ -58,6 +102,7 @@ export default function TuitionPage() {
       phone: formData.get("phone") as string,
       chineseTour: formData.get("chineseTour") as string,
       children: children,
+      tourDateTime: formData.get("tourDateTime") as string,
       startDate: formData.get("startDate") as string,
       message: formData.get("message") as string,
       locale: locale,
@@ -79,6 +124,7 @@ export default function TuitionPage() {
         );
         e.currentTarget.reset();
         setChildren([{ month: "", day: "", year: "" }]);
+        setTourDateTime("");
         setStartDate("");
       } else {
         toast.error(
@@ -311,23 +357,42 @@ export default function TuitionPage() {
                       <Clock className="h-6 w-6" />
                       {locale === "en" ? "Timeline" : "時間規劃"}
                     </h2>
-                    <div className="space-y-2">
-                      <Label htmlFor="startDate">
-                        {locale === "en" ? "Desired Start Date" : "期望開始日期"}
-                      </Label>
-                      <Select value={startDate} onValueChange={setStartDate} name="startDate">
-                        <SelectTrigger className="w-full">
-                          <SelectValue placeholder={locale === "en" ? "Select..." : "請選擇..."} />
-                        </SelectTrigger>
-                        <SelectContent className="min-w-[200px]">
-                          <SelectItem value="Within a Month">{locale === "en" ? "Within a Month" : "一個月內"}</SelectItem>
-                          <SelectItem value="1-3 Months">{locale === "en" ? "1-3 Months" : "1-3 個月"}</SelectItem>
-                          <SelectItem value="3-6 Months">{locale === "en" ? "3-6 Months" : "3-6 個月"}</SelectItem>
-                          <SelectItem value="6-9 Months">{locale === "en" ? "6-9 Months" : "6-9 個月"}</SelectItem>
-                          <SelectItem value="9+ Months">{locale === "en" ? "9+ Months" : "9 個月以上"}</SelectItem>
-                          <SelectItem value="Unsure">{locale === "en" ? "Unsure at this time" : "尚未確定"}</SelectItem>
-                        </SelectContent>
-                      </Select>
+                    <div className="space-y-6">
+                      <div className="space-y-2">
+                        <Label htmlFor="tourDateTime">
+                          {locale === "en" ? "Preferred Tour Date & Time" : "偏好參觀日期時間"}
+                        </Label>
+                        <Select value={tourDateTime} onValueChange={setTourDateTime} name="tourDateTime">
+                          <SelectTrigger className="w-full">
+                            <SelectValue placeholder={locale === "en" ? "Select a tour time..." : "請選擇參觀時間..."} />
+                          </SelectTrigger>
+                          <SelectContent className="min-w-[280px]">
+                            {wednesdaySlots.map((slot, index) => (
+                              <SelectItem key={index} value={slot.value}>
+                                {slot.display}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="startDate">
+                          {locale === "en" ? "Desired Start Date" : "期望開始日期"}
+                        </Label>
+                        <Select value={startDate} onValueChange={setStartDate} name="startDate">
+                          <SelectTrigger className="w-full">
+                            <SelectValue placeholder={locale === "en" ? "Select..." : "請選擇..."} />
+                          </SelectTrigger>
+                          <SelectContent className="min-w-[200px]">
+                            <SelectItem value="Within a Month">{locale === "en" ? "Within a Month" : "一個月內"}</SelectItem>
+                            <SelectItem value="1-3 Months">{locale === "en" ? "1-3 Months" : "1-3 個月"}</SelectItem>
+                            <SelectItem value="3-6 Months">{locale === "en" ? "3-6 Months" : "3-6 個月"}</SelectItem>
+                            <SelectItem value="6-9 Months">{locale === "en" ? "6-9 Months" : "6-9 個月"}</SelectItem>
+                            <SelectItem value="9+ Months">{locale === "en" ? "9+ Months" : "9 個月以上"}</SelectItem>
+                            <SelectItem value="Unsure">{locale === "en" ? "Unsure at this time" : "尚未確定"}</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
                     </div>
                   </div>
 
