@@ -45,6 +45,7 @@ export default function ResourcesPage() {
                       alt={`${item.title.en} - ${item.description.en.slice(0, 80)}`}
                       fill
                       className="object-contain"
+                      sizes="(min-width: 1024px) 50vw, 90vw"
                     />
                   </div>
                 </div>

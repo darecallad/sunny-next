@@ -33,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" data-scroll-behavior="smooth">
       <body className={`${montserrat.variable} ${notoSans.variable} antialiased`}>
         <LanguageProvider>
           <div className="flex min-h-screen flex-col bg-background text-foreground">
