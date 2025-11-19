@@ -556,3 +556,62 @@ export const programsContent = {
     downloadLink: "https://drive.google.com/file/d/1km_8gzJTu_f8Cza7CiJVWbbfQQvSHjFx/view?usp=drive_link",
   },
 };
+
+export const resourcesContent = {
+  hero: {
+    title: { en: "Resources", zh: "親職資源" },
+  },
+  items: [
+    {
+      image: "/images/resources/brightwheel.jpeg",
+      title: { en: "COMMUNICATION SYSTEM", zh: "溝通系統" },
+      description: {
+        en: "Sunny Child Care uses Brightwheel to connect with parents all day, every day!",
+        zh: "Sunny 使用 Brightwheel 每天與家長保持聯繫！",
+      },
+      buttonText: { en: "Learn More", zh: "了解更多" },
+      buttonLink: "https://mybrightwheel.com/solutions/parents/",
+      isExternal: true,
+    },
+    {
+      image: "/images/resources/calendar.jpeg",
+      title: { en: "SCHOOL YEAR CALENDARS", zh: "學年行事曆" },
+      description: {
+        en: "Download our school year calendars to stay informed about important dates and events.",
+        zh: "下載我們的學年行事曆，了解重要日期和活動。",
+      },
+      calendars: [
+        {
+          year: "2025/26",
+          link: "https://drive.usercontent.google.com/u/0/uc?id=1GAXD8PXO4MhhAOrxjTPw9HJf7UeNKZQn&export=download",
+        },
+        {
+          year: "2026/27",
+          link: "https://drive.usercontent.google.com/u/0/uc?id=1tC4FhwbKbj-Lpbn6wz_LySrayMP6KOJX&export=download",
+        },
+      ],
+    },
+    {
+      image: "/images/resources/parents.jpeg",
+      title: { en: "For Our Parents", zh: "給家長" },
+      description: {
+        en: "You can access our parent handbook through Brightwheel portal.",
+        zh: "您可以通過 Brightwheel 門戶訪問我們的家長手冊。",
+      },
+      buttonText: { en: "Parent Handbook", zh: "家長手冊" },
+      buttonLink: "https://mybrightwheel.com/solutions/parents/",
+      isExternal: true,
+    },
+    {
+      image: "/images/resources/staff.jpeg",
+      title: { en: "For Our Staff", zh: "給員工" },
+      description: {
+        en: "You can access the employee handbook through here.",
+        zh: "您可以在這裡訪問員工手冊。",
+      },
+      buttonText: { en: "Employee Handbook", zh: "員工手冊" },
+      buttonLink: "https://drive.google.com/file/d/1VhWORSDP_yJ_fTs6Qps4A67HQGy16neR/view?usp=drive_link",
+      isExternal: true,
+    },
+  ],
+};
