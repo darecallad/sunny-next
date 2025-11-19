@@ -2,6 +2,112 @@
 
 All notable changes to the Sunny Child Care Next.js project will be documented in this file.
 
+## [November 18, 2025] - Photo Gallery Completion
+
+### 📸 Photo Gallery Implementation
+**Complete photo gallery page with lightbox functionality:**
+- **Page:** `/about/photo-gallery` - Final content page completed
+- **Components:** 
+  - Installed shadcn Dialog component for lightbox functionality
+  - Used Card components for album covers
+  - Integrated lucide-react icons (ChevronLeft, ChevronRight, X)
+- **Album Structure:** Three photo albums with 184 total photos
+  1. **Our Classroom** - 40 photos showing learning spaces and facilities
+  2. **Halloween Party** - 79 photos from festive celebrations
+  3. **Easter Party** - 65 photos from spring activities
+- **Photos Migrated:** All 184 photos copied from legacy Sunny project
+  - Source: `Sunny/docs/images/center/`, `event/halloween/`, `easter/`
+  - Destination: `sunny-next/public/images/gallery/`
+  - Format: WebP for optimal performance
+- **Features Implemented:**
+  - Album grid view with cover images and photo counts
+  - Photo grid within each album (responsive 2-4 columns)
+  - Lightbox with full-screen image viewing
+  - Keyboard navigation (arrow keys for next/prev, Escape to close)
+  - Photo counter display (e.g., "5 / 40")
+  - Navigation buttons with hover effects
+  - Back to Albums navigation
+  - Bilingual titles and descriptions
+- **SEO Optimization:**
+  - Created `layout.tsx` with comprehensive metadata
+  - Keywords: daycare photo gallery, childcare photos, preschool activities
+  - OpenGraph and Twitter Card tags
+  - Canonical URL configuration
+- **UI/UX:**
+  - Hover effects on album cards and photos (scale-110)
+  - Dark gradient overlays on album covers
+  - Professional lightbox with semi-transparent navigation buttons
+  - Responsive grid layouts for all screen sizes
+  - Smooth transitions and animations
+- **Build Status:** ✅ Successful - 18 routes (17 static, 1 dynamic API)
+
+**This completes all content pages for the sunny-next website!** 🎉
+
+---
+
+## [November 18, 2025] - Content Cleanup & Bug Fixes
+
+### 🧹 Content Removal
+**Removed "Our Staff" content from navigation and pages:**
+- Removed "Our Staff" / "教學團隊" link from header navigation menu
+- Removed "For Our Staff" / "給員工" resource card from Resources page
+- Deleted `/about/our-staff` page completely
+- Updated navigation structure in `src/data/site.ts`
+- Reduced route count from 18 to 17 pages
+
+**Rationale:** Streamlined navigation and focused resources on parent-facing content.
+
+### 🐛 Bug Fixes & Improvements
+
+#### Image Optimization Issues
+1. **Fixed duplicate image preloading warning**
+   - **Issue:** `hero-pexels.jpg` was preloaded twice (background + card image)
+   - **Fix:** Removed `priority` attribute from card image, kept it on background
+   - **File:** `src/components/sections/hero-section.tsx`
+
+2. **Added missing `sizes` attributes**
+   - **Issue:** Multiple Image components with `fill` prop missing `sizes` attribute
+   - **Files Fixed:**
+     - `src/components/sections/hero-section.tsx` - Added `sizes="100vw"` to hero background
+     - `src/app/resources/page.tsx` - Added `sizes="(min-width: 1024px) 50vw, 90vw"`
+   - **Benefit:** Better responsive image optimization and eliminated Next.js warnings
+
+3. **Fixed image quality configuration**
+   - **Issue:** `quality={85}` not in configured range
+   - **Fix:** Removed custom quality prop, using default (75)
+   - **Added:** Complete image optimization config in `next.config.ts`
+     - AVIF and WebP format support
+     - Multiple device sizes and image sizes
+     - Cache TTL and security policies
+
+#### Accessibility Improvements
+4. **Fixed form label accessibility issues**
+   - **Issue:** Label elements missing `htmlFor` attributes in tuition form
+   - **Files Fixed:** `src/app/admission/tuition/page.tsx`
+   - **Changes:**
+     - Changed radio group label from `<Label>` to `<p>` (semantic HTML)
+     - Added unique IDs to all child DOB input fields (`child-${index}-month`, `-day`, `-year`)
+     - Added matching `htmlFor` attributes to all Label components
+   - **Benefit:** Screen readers can now properly associate labels with form fields
+
+5. **Fixed scroll-behavior warning**
+   - **Issue:** `scroll-behavior: smooth` on `<html>` element caused route transition warnings
+   - **Fix:** Changed from `className="scroll-smooth"` to `data-scroll-behavior="smooth"`
+   - **File:** `src/app/layout.tsx`
+   - **Benefit:** Smooth scrolling without interfering with Next.js routing
+
+### 📧 Email Configuration
+- Verified email system working correctly for both projects
+- Tested Gmail SMTP integration with tour booking form
+- Confirmed emails sending to: `Center.admin@sunnychildcare.com`
+
+### 🔧 Technical Updates
+- **Next.js Image Config:** Added comprehensive image optimization settings
+- **Build Verification:** All builds successful with 0 errors, 0 warnings
+- **Route Count:** 17 active pages (16 static, 1 dynamic API)
+
+---
+
 ## [November 18, 2025] - Comprehensive SEO Optimization
 
 ### 🎯 SEO Foundation Implementation

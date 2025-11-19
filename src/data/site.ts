@@ -82,14 +82,6 @@ export const navigation: NavItem[] = [
         },
       },
       {
-        title: { en: "Our Staff", zh: "教學團隊" },
-        href: "/about/our-staff",
-        description: {
-          en: "Meet the bilingual team",
-          zh: "雙語師資介紹",
-        },
-      },
-      {
         title: { en: "Photo Gallery", zh: "校園剪影" },
         href: "/about/photo-gallery",
         description: {
@@ -600,17 +592,6 @@ export const resourcesContent = {
       },
       buttonText: { en: "Parent Handbook", zh: "家長手冊" },
       buttonLink: "https://mybrightwheel.com/solutions/parents/",
-      isExternal: true,
-    },
-    {
-      image: "/images/resources/staff.jpeg",
-      title: { en: "For Our Staff", zh: "給員工" },
-      description: {
-        en: "You can access the employee handbook through here.",
-        zh: "您可以在這裡訪問員工手冊。",
-      },
-      buttonText: { en: "Employee Handbook", zh: "員工手冊" },
-      buttonLink: "https://drive.google.com/file/d/1VhWORSDP_yJ_fTs6Qps4A67HQGy16neR/view?usp=drive_link",
       isExternal: true,
     },
   ],
