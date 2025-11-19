@@ -121,7 +121,6 @@ export const navigation: NavItem[] = [
       { title: { en: "Infant & Toddler", zh: "嬰幼班" }, href: "/programs/infant" },
       { title: { en: "Preschool", zh: "幼兒園" }, href: "/programs/preschool" },
       { title: { en: "TK / Kindergarten", zh: "學前 / 小學" }, href: "/programs/kindergarten" },
-      { title: { en: "Summer", zh: "夏令營" }, href: "/summer" },
       { title: { en: "Menus", zh: "營養餐點" }, href: "/programs/menus" },
     ],
   },
@@ -383,4 +382,40 @@ export const aboutContent = {
       },
     ],
   },
+};
+
+export const admissionProcessContent = {
+  hero: {
+    title: { en: "Admission Process", zh: "入學流程" },
+  },
+  steps: [
+    {
+      title: { en: "Step 1: Campus Visit", zh: "第一步：校園參觀" },
+      description: {
+        en: "Hello! We're excited to meet your family as you explore our admissions process. To start, simply request a tour of our facility. Our Admissions team will contact you to arrange a date and time that suits your schedule.",
+        zh: "您好！我們很高興在您探索入學流程時與您的家庭見面。首先，只需申請參觀我們的校園。我們的招生團隊會與您聯繫，安排適合您的日期和時間。",
+      },
+    },
+    {
+      title: { en: "Step 2: Application or Waitlist", zh: "第二步：申請或候補名單" },
+      description: {
+        en: "Following your visit, you can complete our online application form or join our waitlist by submitting a waitlist application form. Our team will carefully review your application and may contact you with any questions to facilitate the enrollment process.",
+        zh: "參觀後，您可以填寫我們的線上申請表，或提交候補名單申請表加入我們的候補名單。我們的團隊會仔細審查您的申請，如有任何問題會與您聯繫，以促進入學流程。",
+      },
+    },
+    {
+      title: { en: "Step 3: Enrollment", zh: "第三步：註冊入學" },
+      description: {
+        en: "Upon successful application review and based on program availability, your child will receive an admission offer. If your child is offered enrollment, we will send you an enrollment invitation. You'll be required to complete necessary paperwork and make payments (registration fee, material fee, and security deposit) via Brightwheel to secure your child's spot. In cases where the desired program is full, your child will be added to a waitlist based on their application date.",
+        zh: "在成功審查申請並根據課程名額後，您的孩子將收到入學通知。如果您的孩子獲得入學資格，我們會向您發送註冊邀請。您需要完成必要的文件並透過 Brightwheel 支付費用（註冊費、材料費和押金）以確保您孩子的名額。如果所需課程已滿，您的孩子將根據申請日期加入候補名單。",
+      },
+    },
+    {
+      title: { en: "Step 4: Becoming Part of the Community", zh: "第四步：成為社區的一員" },
+      description: {
+        en: "Once you accept the program enrollment, we will provide you with additional information, including a parent's handbook. You can also schedule preparation days for your child to meet teachers and ease their transition to school. We eagerly anticipate welcoming your child into our community.",
+        zh: "一旦您接受課程註冊，我們會為您提供更多資訊，包括家長手冊。您還可以安排準備日，讓您的孩子與老師見面，輕鬆過渡到學校。我們熱切期待歡迎您的孩子加入我們的社區。",
+      },
+    },
+  ],
 };

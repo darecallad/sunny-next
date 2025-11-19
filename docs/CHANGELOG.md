@@ -4,6 +4,38 @@ All notable changes to the Sunny Child Care Next.js project will be documented i
 
 ## [Current] - 2025-11-18
 
+### ✅ Completed - Admission Process Page
+
+#### Process Page Implementation
+- **Purpose:** Created comprehensive admission process page with 4-step enrollment guide
+- **Content Added to `src/data/site.ts`:**
+  - `admissionProcessContent` export with bilingual content
+  - Hero section with title
+  - Four detailed steps:
+    1. Campus Visit - Tour request and scheduling
+    2. Application or Waitlist - Online form submission
+    3. Enrollment - Payment and paperwork via Brightwheel
+    4. Becoming Part of the Community - Orientation and preparation
+  - Full English and Chinese translations
+
+- **Page Structure (`src/app/admission/process/page.tsx`):**
+  - Hero section with banner background (`process.jpeg`)
+  - Steps section with numbered list layout
+  - Bottom decorative banner (`process-bottom.webp` - hand image)
+  - CTA section with "Schedule a Tour" and phone buttons
+  - Consistent styling with navy (#324f7a) step titles
+  - Large readable text (text-lg) for descriptions
+
+- **Banner Images:**
+  - `/images/banners/process.jpeg` - Main hero banner
+  - `/images/banners/process-bottom.webp` - Decorative bottom section (hand image)
+
+#### Navigation Cleanup
+- **Removed Summer Program Link:**
+  - Deleted "Summer" link from Programs dropdown in `src/data/site.ts`
+  - Programs menu now contains: Infant & Toddler, Preschool, TK/Kindergarten, Menus
+  - Removed `/summer` route from navigation (directory still exists for future use)
+
 ### ✅ Completed - Route Restructure
 
 #### Merged Booking into Tuition Page
