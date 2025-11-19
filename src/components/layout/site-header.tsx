@@ -164,7 +164,7 @@ export function SiteHeader() {
                   </div>
                 ))}
                 <Button asChild className="w-full" size="lg">
-                  <Link href="/booking" onClick={() => setOpen(false)}>
+                  <Link href="/admission/tuition" onClick={() => setOpen(false)}>
                     Schedule a tour
                   </Link>
                 </Button>

@@ -4,6 +4,30 @@ All notable changes to the Sunny Child Care Next.js project will be documented i
 
 ## [Current] - 2025-11-18
 
+### ✅ Completed - Route Restructure
+
+#### Merged Booking into Tuition Page
+- **Purpose:** Aligned with legacy Sunny site structure where "Tuition & Openings" page includes tour scheduling
+- **Changes:**
+  - Moved `/booking` page content to `/admission/tuition`
+  - Renamed component from `BookingPage` to `TuitionPage`
+  - Updated page title from "Schedule a Tour" to "Tuition & Openings"
+  - Deleted `/src/app/booking` directory
+  - Updated all navigation links and CTAs:
+    - `src/data/site.ts`: Removed "Schedule a Tour" from Admission dropdown
+    - `src/data/site.ts`: Updated CTA href from `/booking` to `/admission/tuition`
+    - `src/components/layout/site-header.tsx`: Updated mobile menu button
+    - `src/app/about/page.tsx`: Updated CTA link
+    - `src/app/locations/page.tsx`: Updated CTA link
+- **Result:** Navigation now matches legacy site structure with tour form on tuition page
+
+#### Location Banner Positioning
+- **Purpose:** Adjusted background image position to match legacy site visual style
+- **Implementation:**
+  - Added `backgroundPosition: '50% 70%'` to location page hero
+  - Image now shows more of the lower portion (toys and play area)
+  - Maintains consistent visual hierarchy with text overlay
+
 ### ✅ Completed - Banner Background Images
 
 #### Banner Image Migration

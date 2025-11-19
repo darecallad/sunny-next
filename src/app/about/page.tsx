@@ -130,7 +130,7 @@ export default function AboutPage() {
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link
-              href="/booking"
+              href="/admission/tuition"
               className="inline-flex h-11 items-center justify-center rounded-md bg-[#f2a63b] px-8 text-sm font-medium text-white shadow transition-colors hover:bg-[#f2a63b]/90"
             >
               {locale === "en" ? "Schedule a Tour" : "預約參觀"}

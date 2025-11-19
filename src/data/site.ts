@@ -130,7 +130,6 @@ export const navigation: NavItem[] = [
     children: [
       { title: { en: "Process", zh: "入學流程" }, href: "/admission/process" },
       { title: { en: "Tuition & Openings", zh: "學費與名額" }, href: "/admission/tuition" },
-      { title: { en: "Schedule a Tour", zh: "預約參觀" }, href: "/booking" },
     ],
   },
   { title: { en: "Resources", zh: "親職資源" }, href: "/resources" },
@@ -317,10 +316,10 @@ export const ctaContent = {
     zh: "親自體驗 Sunny 如何像家一樣溫暖。",
   },
   body: {
-    en: "Tours run daily. We’ll walk you through classrooms, menus, and the Mandarin-English immersion experience.",
+    en: "Tours run daily. We'll walk you through classrooms, menus, and the Mandarin-English immersion experience.",
     zh: "每日皆提供導覽，帶您參觀教室、菜單與雙語沉浸課程。",
   },
-  primaryCta: { label: { en: "Schedule a tour", zh: "預約參觀" }, href: "/booking" },
+  primaryCta: { label: { en: "Schedule a tour", zh: "預約參觀" }, href: "/admission/tuition" },
   secondaryLabel: { en: "Call admissions", zh: "電話洽詢" },
 };
 

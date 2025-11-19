@@ -47,9 +47,10 @@ export default function LocationsPage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section 
-        className="border-b border-border/40 py-16 bg-cover bg-center relative"
+        className="border-b border-border/40 py-16 bg-cover relative"
         style={{
           backgroundImage: "url('/images/banners/location.webp')",
+          backgroundPosition: "50% 155%",
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/40" />
@@ -130,7 +131,7 @@ export default function LocationsPage() {
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <a
-              href="/booking"
+              href="/admission/tuition"
               className="inline-flex h-11 items-center justify-center rounded-md bg-[#f2a63b] px-8 text-sm font-medium text-white shadow transition-colors hover:bg-[#f2a63b]/90"
             >
               {locale === "en" ? "Schedule a Tour" : "預約參觀"}
