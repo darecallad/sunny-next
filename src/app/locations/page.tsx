@@ -1,15 +1,143 @@
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Location | 交通與位置",
-  description: "Schedule an in-person tour | 預約現場參觀",
-};
+import { MapPin, Phone, Mail, Clock, FileText, UtensilsCrossed } from "lucide-react";
+
+import { useLanguage } from "@/context/language-context";
+import { siteConfig } from "@/data/site";
 
 export default function LocationsPage() {
+  const { locale } = useLanguage();
+
+  const locationInfo = [
+    {
+      icon: MapPin,
+      label: { en: "Address", zh: "地址" },
+      value: siteConfig.contact.address,
+    },
+    {
+      icon: Phone,
+      label: { en: "Phone Number", zh: "聯絡電話" },
+      value: siteConfig.contact.phone,
+      href: `tel:${siteConfig.contact.phone.replace(/\D/g, "")}`,
+    },
+    {
+      icon: Mail,
+      label: { en: "Email", zh: "電子郵件" },
+      value: siteConfig.contact.email,
+      href: `mailto:${siteConfig.contact.email}`,
+    },
+    {
+      icon: Clock,
+      label: { en: "Hours of Operation", zh: "營業時間" },
+      value: siteConfig.contact.hours[locale],
+    },
+    {
+      icon: FileText,
+      label: { en: "License", zh: "執照號碼" },
+      value: "434416296 & 434416297",
+    },
+    {
+      icon: UtensilsCrossed,
+      label: { en: "Meals", zh: "餐點服務" },
+      value: { en: "AM Snacks / Lunch / Dinner", zh: "早點 / 午餐 / 晚餐" }[locale],
+    },
+  ];
+
   return (
-    <div className="container mx-auto px-4 py-16">
-      <h1 className="mb-4 text-4xl font-bold">Location</h1>
-      <p className="text-lg text-gray-600">Content coming soon...</p>
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="border-b border-border/40 bg-gradient-to-b from-[#324f7a]/5 to-white py-16">
+        <div className="container mx-auto px-4">
+          <h1 className="text-4xl font-semibold text-foreground sm:text-5xl">
+            {locale === "en" ? "Visit Our Center" : "參觀我們的校園"}
+          </h1>
+          <p className="mt-4 text-lg text-gray-700">
+            {locale === "en"
+              ? "We're located in San Jose and welcome families to tour our bilingual campus."
+              : "我們位於聖荷西，歡迎家長預約參觀雙語校園。"}
+          </p>
+        </div>
+      </section>
+
+      {/* Map & Contact Info Section */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-stretch">
+            {/* Google Maps */}
+            <div className="flex flex-col overflow-hidden rounded-2xl border border-border shadow-lg">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.158780841948!2d-121.94073100000001!3d37.3789363!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fcbd7e7cb599b%3A0x5feb29d49ff1cc8d!2sSunny%20Child%20Care%20Center!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+                width="100%"
+                height="100%"
+                style={{ border: 0, minHeight: "450px" }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Sunny Child Care Center Location"
+              ></iframe>
+            </div>
+
+            {/* Contact Information */}
+            <div className="flex flex-col space-y-6">
+              <div>
+                <h2 className="mb-6 text-2xl font-semibold text-foreground">
+                  {locale === "en" ? "Contact Information" : "聯絡資訊"}
+                </h2>
+              </div>
+              <div className="space-y-6">
+                {locationInfo.map((item) => (
+                  <div key={item.label.en} className="flex items-start gap-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#324f7a]/10">
+                      <item.icon className="h-6 w-6 text-[#324f7a]" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-foreground">{item.label[locale]}</p>
+                      {item.href ? (
+                        <a
+                          href={item.href}
+                          className="mt-1 block text-gray-700 transition-colors hover:text-[#f2a63b]"
+                        >
+                          {item.value}
+                        </a>
+                      ) : (
+                        <p className="mt-1 text-gray-700">{item.value}</p>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="border-y border-border/40 bg-gradient-to-r from-[#f2a63b]/10 via-[#f2a63b]/5 to-white py-16">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-semibold text-foreground">
+            {locale === "en" ? "Ready to visit?" : "準備好參觀了嗎？"}
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-700">
+            {locale === "en"
+              ? "Schedule a personalized tour and see our classrooms, meet our bilingual teachers, and learn about our programs."
+              : "預約專屬導覽，參觀教室、認識雙語師資，了解我們的課程內容。"}
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <a
+              href="/booking"
+              className="inline-flex h-11 items-center justify-center rounded-md bg-[#f2a63b] px-8 text-sm font-medium text-white shadow transition-colors hover:bg-[#f2a63b]/90"
+            >
+              {locale === "en" ? "Schedule a Tour" : "預約參觀"}
+            </a>
+            <a
+              href={`tel:${siteConfig.contact.phone.replace(/\D/g, "")}`}
+              className="inline-flex h-11 items-center justify-center rounded-md border border-[#324f7a] bg-transparent px-8 text-sm font-medium text-[#324f7a] shadow-sm transition-colors hover:bg-[#324f7a]/10"
+            >
+              {locale === "en" ? "Call Us" : "電話聯絡"}
+            </a>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
