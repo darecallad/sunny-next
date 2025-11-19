@@ -2,6 +2,26 @@
 
 All notable changes to the Sunny Child Care Next.js project will be documented in this file.
 
+## [November 18, 2025] - Tuition Form Optimization
+
+### 🎯 Tour Booking Form Improvements
+**Simplified tuition/tour request form for better user experience:**
+- **Removed Field:**
+  - Deleted "Preferred Contact Method" dropdown from Tour Preferences section
+  - Simplified form layout - now only includes Chinese Tour radio buttons in preferences
+  - Removed `contactMethod` state variable and related logic
+  - Email data no longer includes contact method preference
+- **Required Field Updates:**
+  - Added required indicator (*) to "Child Information" section heading
+  - Clarified that child DOB information is mandatory for tour requests
+  - Maintains existing required validation on all child date fields
+- **Form Structure:** Cleaner, more focused layout with essential fields only
+- **Files Modified:**
+  - `src/app/admission/tuition/page.tsx` - Form component and state management
+- **Impact:** Streamlined booking process with fewer optional fields
+
+---
+
 ## [November 18, 2025] - Photo Gallery Completion
 
 ### 📸 Photo Gallery Implementation

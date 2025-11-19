@@ -28,7 +28,6 @@ export default function TuitionPage() {
   const { locale } = useLanguage();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [children, setChildren] = useState<Child[]>([{ month: "", day: "", year: "" }]);
-  const [contactMethod, setContactMethod] = useState<string>("");
   const [startDate, setStartDate] = useState<string>("");
 
   const addChild = () => {
@@ -58,7 +57,6 @@ export default function TuitionPage() {
       email: formData.get("email") as string,
       phone: formData.get("phone") as string,
       chineseTour: formData.get("chineseTour") as string,
-      contactMethod: formData.get("contactMethod") as string,
       children: children,
       startDate: formData.get("startDate") as string,
       message: formData.get("message") as string,
@@ -81,7 +79,6 @@ export default function TuitionPage() {
         );
         e.currentTarget.reset();
         setChildren([{ month: "", day: "", year: "" }]);
-        setContactMethod("");
         setStartDate("");
       } else {
         toast.error(
@@ -194,46 +191,30 @@ export default function TuitionPage() {
                       <Calendar className="h-6 w-6" />
                       {locale === "en" ? "Tour Preferences" : "參觀偏好"}
                     </h2>
-                    <div className="grid gap-6 md:grid-cols-2">
-                      <div className="space-y-3">
-                        <p className="text-sm font-medium">
-                          {locale === "en" ? "Chinese Tour" : "中文導覽"} *
-                        </p>
-                        <div className="flex gap-6">
-                          <label className="flex items-center gap-2">
-                            <input
-                              type="radio"
-                              name="chineseTour"
-                              value="Yes"
-                              required
-                              className="h-4 w-4 text-[#f2a63b] focus:ring-[#f2a63b]"
-                            />
-                            <span>{locale === "en" ? "Yes" : "是"}</span>
-                          </label>
-                          <label className="flex items-center gap-2">
-                            <input
-                              type="radio"
-                              name="chineseTour"
-                              value="No"
-                              className="h-4 w-4 text-[#f2a63b] focus:ring-[#f2a63b]"
-                            />
-                            <span>{locale === "en" ? "No" : "否"}</span>
-                          </label>
-                        </div>
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="contactMethod">
-                          {locale === "en" ? "Preferred Contact Method" : "聯絡方式"}
-                        </Label>
-                        <Select value={contactMethod} onValueChange={setContactMethod} name="contactMethod">
-                          <SelectTrigger className="w-full">
-                            <SelectValue placeholder={locale === "en" ? "Select..." : "請選擇..."} />
-                          </SelectTrigger>
-                          <SelectContent className="min-w-[200px]">
-                            <SelectItem value="Email">{locale === "en" ? "Email" : "電子郵件"}</SelectItem>
-                            <SelectItem value="Phone">{locale === "en" ? "Phone Call" : "電話"}</SelectItem>
-                          </SelectContent>
-                        </Select>
+                    <div className="space-y-3">
+                      <p className="text-sm font-medium">
+                        {locale === "en" ? "Chinese Tour" : "中文導覽"} *
+                      </p>
+                      <div className="flex gap-6">
+                        <label className="flex items-center gap-2">
+                          <input
+                            type="radio"
+                            name="chineseTour"
+                            value="Yes"
+                            required
+                            className="h-4 w-4 text-[#f2a63b] focus:ring-[#f2a63b]"
+                          />
+                          <span>{locale === "en" ? "Yes" : "是"}</span>
+                        </label>
+                        <label className="flex items-center gap-2">
+                          <input
+                            type="radio"
+                            name="chineseTour"
+                            value="No"
+                            className="h-4 w-4 text-[#f2a63b] focus:ring-[#f2a63b]"
+                          />
+                          <span>{locale === "en" ? "No" : "否"}</span>
+                        </label>
                       </div>
                     </div>
                   </div>
@@ -242,7 +223,7 @@ export default function TuitionPage() {
                   <div className="border-t border-gray-200 pt-8">
                     <h2 className="mb-6 flex items-center gap-2 text-2xl font-semibold text-[#324f7a]">
                       <Users className="h-6 w-6" />
-                      {locale === "en" ? "Child Information" : "子女資訊"}
+                      {locale === "en" ? "Child Information" : "子女資訊"} *
                     </h2>
                     <div className="space-y-4">
                       {children.map((child, index) => (
