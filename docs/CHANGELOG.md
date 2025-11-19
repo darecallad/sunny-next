@@ -164,6 +164,34 @@ All notable changes to the Sunny Child Care Next.js project will be documented i
 ### 🔧 Recent Fixes & Changes
 
 #### November 18, 2025
+- **About Sunny Page Completion:** ✅
+  - Created full About Us page (`/about`) with comprehensive content
+  - **Hero Section:** Title and introductory subtitle
+  - **Three Core Principles with Real Images:**
+    1. Health, Safety, and Wellness (Shield icon) - health-safety.webp
+    2. Fostering Personal Development (Heart icon) - personal-development.webp
+    3. Teachers Who Become Family (Users icon) - teachers-family.webp
+  - **Image Migration:** Copied three principle images from legacy Sunny project
+    - Source: `Sunny/docs/images/ourcenter/` (mask@1x.webp, remove@1x.webp, teacher@1x.webp)
+    - Destination: `public/images/about/` (renamed for clarity)
+    - Using Next.js Image component with priority loading for first image
+  - **Image Display Optimization:**
+    - Fixed height containers: h-64 (mobile) / lg:h-80 (desktop)
+    - `object-contain` mode ensures images display completely without cropping
+    - White background with p-4 padding for clean presentation
+    - Images maintain original aspect ratio and are centered
+  - **Visual Layout:** Alternating text/image grid layout with balanced heights
+  - **Philosophy Statement:** Highlighted section with play and research-based approach
+  - **Our Story Section:** 
+    - Five-paragraph narrative from 1995 founding to current mission
+    - Card-based design with white background and shadow
+    - Complete history: Taiwan origins (1995) → Bay Area expansion (2009) → Current mission
+  - **Call-to-Action Section:** Schedule tour and call us buttons
+  - **Content Source:** All content migrated from legacy about/aboutus.html
+  - **Data Structure:** New `aboutContent` export in site.ts with bilingual support
+  - **Bilingual Support:** Full English and Chinese translations
+  - **Brand Colors:** Navy (#324f7a) and Amber (#f2a63b) throughout
+
 - **Testimonials Navigation Fix:** ✅
   - Updated testimonials link in navigation from `#testimonials` to `/#testimonials`
   - Now correctly jumps to homepage testimonials section from any page

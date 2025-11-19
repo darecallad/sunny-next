@@ -323,3 +323,65 @@ export const ctaContent = {
   primaryCta: { label: { en: "Schedule a tour", zh: "預約參觀" }, href: "/booking" },
   secondaryLabel: { en: "Call admissions", zh: "電話洽詢" },
 };
+
+export const aboutContent = {
+  hero: {
+    title: { en: "About Us", zh: "關於我們" },
+    subtitle: {
+      en: "At Sunny Child Care, we embrace the following principles:",
+      zh: "在 Sunny，我們秉持以下核心理念：",
+    },
+  },
+  principles: [
+    {
+      title: { en: "Health, Safety, and Wellness", zh: "健康、安全與福祉" },
+      description: {
+        en: "Safety and wellness is our top priority, and we take it very seriously. We leave no detail, big or small, unattended when it comes to ensuring the well-being of your children. You can trust that your child is in the most capable hands every day at our center.",
+        zh: "安全與健康是我們的首要任務，我們非常重視這一點。無論大小細節，我們都不會忽略孩子的福祉。您可以放心，孩子每天都在我們最專業的照顧下。",
+      },
+    },
+    {
+      title: { en: "Fostering Personal Development", zh: "培養個人發展" },
+      description: {
+        en: "Education extends beyond acquiring knowledge; it's about nurturing the social and emotional growth that will serve children throughout their lives. In each of our classrooms, we create a micro-community where every child is supported in achieving success on their own terms.",
+        zh: "教育不僅僅是知識的獲取；更重要的是培養社交和情感成長，這將陪伴孩子一生。在每個教室中，我們創造一個小型社群，讓每個孩子都能以自己的方式獲得成功。",
+      },
+    },
+    {
+      title: { en: "Teachers Who Become Family", zh: "像家人一樣的老師" },
+      description: {
+        en: "Our teachers are not just educators; they are caregivers who genuinely care. They go beyond the role of teaching, taking into account each child's unique needs. At Sunny Child Care, your child will find mentors who believe in them, instilling the confidence to explore new experiences and form meaningful friendships.",
+        zh: "我們的老師不僅是教育者；他們是真心關懷的照顧者。他們超越教學角色，考慮每個孩子的獨特需求。在 Sunny，您的孩子會找到相信他們的導師，培養探索新體驗和建立有意義友誼的信心。",
+      },
+    },
+  ],
+  philosophy: {
+    en: "We uphold these principles within a curriculum and philosophical framework that is rooted in play and research-based approaches.",
+    zh: "我們在以遊戲和研究為基礎的課程和哲學框架中堅持這些原則。",
+  },
+  story: {
+    title: { en: "Our Story", zh: "我們的故事" },
+    paragraphs: [
+      {
+        en: "Established in 1995, our founders recognized the considerable challenges faced by working parents when it comes to childcare. What began as a large-scale childcare facility in Taiwan has evolved over the years. In 2009, we expanded our commitment to families by opening our first home-based childcare facility in the Bay Area.",
+        zh: "成立於 1995 年，我們的創辦人認識到職場父母在育兒方面面臨的巨大挑戰。從台灣的大型托育機構開始，多年來不斷發展。2009 年，我們在灣區開設了第一家家庭式托育中心，擴大對家庭的承諾。",
+      },
+      {
+        en: "At the core of our mission is the unwavering dedication to providing families with a nurturing and enriching environment that feels like a second home. We believe that a child's world expands with every step, crawl, roll, or hop into our classrooms.",
+        zh: "我們的使命核心是堅定不移地為家庭提供一個像第二個家一樣的培育和豐富環境。我們相信，孩子的世界會隨著每一步、每一次爬行、滾動或跳躍進入我們的教室而擴展。",
+      },
+      {
+        en: "Our classrooms and curriculums are meticulously designed to cater to the unique needs of each child. We're committed to helping children reach their full potential, fostering growth in intellect, emotional well-being, social skills, physical fitness, cognitive development, and cultural appreciation. All of this is offered through our immersive Mandarin-English program.",
+        zh: "我們的教室和課程經過精心設計，以滿足每個孩子的獨特需求。我們致力於幫助孩子發揮最大潛力，促進智力、情感健康、社交技能、體能、認知發展和文化欣賞的成長。所有這些都通過我們的中英雙語沉浸式課程提供。",
+      },
+      {
+        en: "With decades of experience in childcare, we've cultivated a safe and loving space that welcomes children from all backgrounds. We firmly place children's needs and interests at the heart of everything we do. Learning through play is at the forefront of our approach, and our highly-trained staff are not only dedicated teachers but also enthusiastic learners alongside the children.",
+        zh: "憑藉數十年的托育經驗，我們培育了一個安全且充滿愛的空間，歡迎來自各種背景的孩子。我們堅定地將孩子的需求和興趣放在我們所做一切的核心。透過遊戲學習是我們方法的前沿，我們訓練有素的員工不僅是敬業的老師，也是與孩子一起學習的熱情學習者。",
+      },
+      {
+        en: "Our mission is clear: to provide a nurturing, enriching, and supportive environment that promotes well-rounded development. We are proud to serve our community and look forward to being a trusted partner in your child's educational journey.",
+        zh: "我們的使命很明確：提供一個培育、豐富和支持性的環境，促進全面發展。我們很自豪能夠為社區服務，並期待成為您孩子教育旅程中值得信賴的夥伴。",
+      },
+    ],
+  },
+};

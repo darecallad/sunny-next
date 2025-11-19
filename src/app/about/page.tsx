@@ -1,15 +1,143 @@
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "About Sunny | 關於 Sunny",
-  description: "Mission, vision, and campus | 園所理念與校舍環境",
-};
+import Link from "next/link";
+import Image from "next/image";
+import { Shield, Heart, Users } from "lucide-react";
+
+import { useLanguage } from "@/context/language-context";
+import { aboutContent, siteConfig } from "@/data/site";
+import { Card, CardContent } from "@/components/ui/card";
+
+const principleIcons = [Shield, Heart, Users];
+const principleImages = [
+  "/images/about/health-safety.webp",
+  "/images/about/personal-development.webp",
+  "/images/about/teachers-family.webp",
+];
 
 export default function AboutPage() {
+  const { locale } = useLanguage();
+
   return (
-    <div className="container mx-auto px-4 py-16">
-      <h1 className="mb-4 text-4xl font-bold">About Sunny</h1>
-      <p className="text-lg text-gray-600">Content coming soon...</p>
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="border-b border-border/40 bg-gradient-to-b from-[#324f7a]/5 to-white py-16">
+        <div className="container mx-auto px-4">
+          <h1 className="text-4xl font-semibold text-foreground sm:text-5xl">
+            {aboutContent.hero.title[locale]}
+          </h1>
+          <p className="mt-6 text-xl text-gray-700">
+            {aboutContent.hero.subtitle[locale]}
+          </p>
+        </div>
+      </section>
+
+      {/* Principles Section */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="space-y-16">
+            {aboutContent.principles.map((principle, index) => {
+              const Icon = principleIcons[index];
+              const isEven = index % 2 === 0;
+              
+              return (
+                <div
+                  key={principle.title.en}
+                  className={`grid gap-8 lg:grid-cols-2 lg:items-center ${
+                    isEven ? "" : "lg:grid-flow-dense"
+                  }`}
+                >
+                  <div className={`space-y-4 ${isEven ? "" : "lg:col-start-2"}`}>
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#324f7a]/10">
+                        <Icon className="h-6 w-6 text-[#324f7a]" />
+                      </div>
+                      <h2 className="text-2xl font-semibold text-foreground">
+                        {principle.title[locale]}
+                      </h2>
+                    </div>
+                    <p className="text-lg leading-relaxed text-gray-700">
+                      {principle.description[locale]}
+                    </p>
+                  </div>
+                  <div
+                    className={`relative h-64 overflow-hidden rounded-2xl border border-border bg-white shadow-lg lg:h-80 ${isEven ? "lg:col-start-2" : "lg:col-start-1"}`}
+                  >
+                    <Image
+                      src={principleImages[index]}
+                      alt={principle.title.en}
+                      fill
+                      className="object-contain p-4"
+                      priority={index === 0}
+                      sizes="(min-width: 1024px) 50vw, 100vw"
+                    />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Philosophy Statement */}
+      <section className="border-y border-border/40 bg-[#324f7a]/5 py-12">
+        <div className="container mx-auto px-4">
+          <p className="mx-auto max-w-4xl text-center text-lg font-medium text-gray-700">
+            {aboutContent.philosophy[locale]}
+          </p>
+        </div>
+      </section>
+
+      {/* Our Story Section */}
+      <section className="bg-gradient-to-b from-white to-[#324f7a]/10 py-16">
+        <div className="container mx-auto px-4">
+          <div className="mx-auto max-w-4xl">
+            <h2 className="mb-8 text-center text-3xl font-semibold text-foreground sm:text-4xl">
+              {aboutContent.story.title[locale]}
+            </h2>
+            <Card className="bg-white/90 shadow-lg">
+              <CardContent className="space-y-6 p-8">
+                {aboutContent.story.paragraphs.map((paragraph, index) => (
+                  <p
+                    key={index}
+                    className="text-lg leading-relaxed text-gray-700"
+                  >
+                    {paragraph[locale]}
+                  </p>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="border-t border-border/40 bg-gradient-to-r from-[#f2a63b]/10 via-[#f2a63b]/5 to-white py-16">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-semibold text-foreground">
+            {locale === "en" ? "Ready to join our family?" : "準備加入我們的大家庭了嗎？"}
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-700">
+            {locale === "en"
+              ? "Schedule a tour to experience our nurturing environment and meet our dedicated team."
+              : "預約參觀，體驗我們溫馨的環境，認識我們敬業的團隊。"}
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <Link
+              href="/booking"
+              className="inline-flex h-11 items-center justify-center rounded-md bg-[#f2a63b] px-8 text-sm font-medium text-white shadow transition-colors hover:bg-[#f2a63b]/90"
+            >
+              {locale === "en" ? "Schedule a Tour" : "預約參觀"}
+            </Link>
+            <Link
+              href={`tel:${siteConfig.contact.phone.replace(/\D/g, "")}`}
+              className="inline-flex h-11 items-center justify-center rounded-md border border-[#324f7a] bg-transparent px-8 text-sm font-medium text-[#324f7a] shadow-sm transition-colors hover:bg-[#324f7a]/10"
+            >
+              {locale === "en" ? "Call Us" : "電話聯絡"}
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
