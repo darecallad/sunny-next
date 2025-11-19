@@ -39,7 +39,8 @@ export function SiteHeader() {
             alt="Sunny Child Care - Bilingual Childcare & Preschool in San Jose logo"
             width={200}
             height={56}
-            className="h-12 w-auto object-contain"
+            className="h-12 w-auto object-contain md:h-12 lg:h-12"
+            style={{ height: 'clamp(56px, 15vw, 64px)' }}
             priority
           />
         </Link>
@@ -125,12 +126,7 @@ export function SiteHeader() {
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
-          <LanguageToggle className="bg-white/5" />
-          <Button variant="outline" size="icon" asChild>
-            <a href={`tel:${siteConfig.contact.phone.replace(/\D/g, "")}`}>
-              <Phone className="h-5 w-5" />
-            </a>
-          </Button>
+          <LanguageToggle />
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
               <Button variant="secondary" size="icon">
@@ -141,10 +137,10 @@ export function SiteHeader() {
               <SheetHeader>
                 <SheetTitle>Navigate</SheetTitle>
               </SheetHeader>
-              <div className="mt-6 space-y-6">
+              <div className="mt-6 space-y-6 pl-4">
                 {navigation.map((item) => (
                   <div key={item.title.en} className="space-y-2">
-                    <p className="font-semibold text-sm text-muted-foreground">
+                    <p className="font-semibold text-sm text-muted-foreground pl-2">
                       {item.title[locale]}
                     </p>
                     <div className="space-y-1">
@@ -153,7 +149,7 @@ export function SiteHeader() {
                           <Link
                             key={child.title.en + child.href}
                             href={child.href ?? "#"}
-                            className="block rounded-lg px-3 py-2 text-base font-medium text-foreground hover:bg-muted"
+                            className="block rounded-lg px-4 py-2 text-base font-medium text-foreground hover:bg-muted"
                             onClick={() => setOpen(false)}
                           >
                             {child.title[locale]}
