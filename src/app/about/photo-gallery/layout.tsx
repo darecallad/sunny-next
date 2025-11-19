@@ -1,34 +1,47 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Photo Gallery | Sunny Child Care",
+  title: "Photo Gallery | Campus & Activities | Sunny Child Care San Jose",
   description:
-    "Explore photo albums showcasing daily activities, special events, and memorable moments at Sunny Child Care. View our classroom, Halloween party, Easter celebration, and more.",
+    "Explore Sunny Child Care's photo gallery featuring our classrooms, Halloween celebrations, Easter parties, and daily activities. See our vibrant bilingual learning environment in San Jose.",
   keywords: [
-    "daycare photo gallery",
-    "childcare photos",
-    "preschool activities",
-    "San Jose childcare photos",
-    "classroom pictures",
-    "daycare events",
+    "daycare photo gallery San Jose",
+    "preschool photos",
+    "childcare activities pictures",
+    "classroom photos San Jose",
+    "preschool events gallery",
+    "bilingual preschool photos",
+    "Halloween party photos",
+    "Easter celebration pictures",
+    "childcare facility photos",
   ],
   openGraph: {
-    title: "Photo Gallery | Sunny Child Care",
+    title: "Photo Gallery | Sunny Child Care San Jose",
     description:
-      "View photos of our vibrant learning spaces and special celebrations at Sunny Child Care in San Jose.",
-    url: "https://sunnychildcare.com/about/photo-gallery",
+      "View photos of our vibrant learning spaces, special celebrations, and daily activities at Sunny Child Care's bilingual preschool in San Jose.",
+    url: "https://www.sunnychildcare.com/about/photo-gallery",
     siteName: "Sunny Child Care",
     locale: "en_US",
+    alternateLocale: ["zh_CN"],
     type: "website",
+    images: [
+      {
+        url: "/images/banners/gallery.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Sunny Child Care photo gallery - children's activities and celebrations",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Photo Gallery | Sunny Child Care",
     description:
-      "View photos of our vibrant learning spaces and special celebrations at Sunny Child Care in San Jose.",
+      "View photos of our vibrant learning spaces and special celebrations at our San Jose bilingual preschool.",
+    images: ["/images/banners/gallery.jpg"],
   },
   alternates: {
-    canonical: "https://sunnychildcare.com/about/photo-gallery",
+    canonical: "https://www.sunnychildcare.com/about/photo-gallery",
   },
 };
 

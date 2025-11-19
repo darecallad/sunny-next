@@ -2,6 +2,110 @@
 
 All notable changes to the Sunny Child Care Next.js project will be documented in this file.
 
+## [November 19, 2025] - Contact Us Page & Form Implementation
+
+### 📧 Contact Us Feature Complete
+**Added comprehensive contact page with email functionality:**
+
+#### New Pages & Components
+1. **Contact Us Page** (`/contact`)
+   - Professional two-column layout:
+     - Left column (2/5): Contact information cards with icons
+     - Right column (3/5): Contact form with validation
+   - Contact Information Display:
+     - Phone: (510) 333-5943 (clickable)
+     - Email: Center.admin@sunnychildcare.com (clickable)
+     - Address: 2586 Seaboard Ave, San Jose, CA 95131 (Google Maps link)
+     - Hours: Mon-Fri, 8:30 AM - 6:00 PM
+   - CTA: "Schedule a Tour" button linking to `/admission/tuition`
+   - Color scheme: Navy (#324f7a) and Amber (#f2a63b)
+   - Full bilingual support (English/Chinese)
+
+2. **Contact Form Fields** (All Required)
+   - Name (text input)
+   - Email Address (email input with validation)
+   - Phone Number (tel input)
+   - Preferred Language (dropdown: English/中文)
+   - Message (textarea, 6 rows)
+   - Submit button with loading state
+   - Toast notifications for success/error feedback
+
+3. **Contact Email API** (`/api/contact`)
+   - POST endpoint with validation
+   - Sends two HTML emails:
+     - **Admin Notification**: To Center.admin@sunnychildcare.com
+       - Contains all form data (name, email, phone, message, preferred language)
+       - Reply-to set to visitor's email
+       - Timestamp in California timezone
+       - Professional HTML template with Sunny branding
+     - **Auto-reply**: To visitor's email
+       - Thank you message with 1-2 business day response time
+       - Includes center contact information
+       - Bilingual content based on form locale
+   - Error handling with proper HTTP status codes
+   - Uses nodemailer with Gmail SMTP
+
+4. **SEO Metadata** (`/contact/layout.tsx`)
+   - Title: "Contact Us | Sunny Child Care"
+   - Description: Mentions bilingual programs, enrollment inquiries, San Jose location
+   - Keywords: contact childcare, daycare contact, inquiry, contact form, bilingual preschool
+   - OpenGraph tags for social sharing
+   - Twitter Card configuration
+   - Canonical URL: sunnychildcare.com/contact
+
+#### Navigation Updates
+1. **Header Navigation**
+   - Moved "Contact Us" from main navigation to **Admission submenu**
+   - Now appears under Admission → Contact Us (after Tuition & Openings)
+   - Accessible via dropdown menu in header
+
+2. **Footer Quick Links**
+   - Footer automatically displays all flattened navigation items
+   - Contact Us now appears in footer Quick Links section
+   - Logic ensures all child nav items are included
+
+#### Technical Details
+- **Components Used:**
+  - shadcn/ui: Button, Card, Input, Label, Textarea, Select
+  - lucide-react: Mail, Phone, MapPin, Clock, Send icons
+  - Sonner: Toast notifications for user feedback
+- **Form Handling:**
+  - useRef hook for form reset after successful submission
+  - Controlled Select component for language preference
+  - Client-side validation (HTML5 required attributes)
+  - Server-side validation in API route
+- **Email Configuration:**
+  - Fixed environment variable: EMAIL_PASSWORD (was EMAIL_PASS)
+  - Gmail SMTP: Center.admin@sunnychildcare.com
+  - HTML email templates with responsive design
+  - Bilingual email content support
+
+#### Files Created
+- `src/app/contact/layout.tsx` - SEO metadata
+- `src/app/contact/page.tsx` - Contact page component
+- `src/app/api/contact/route.ts` - Email sending API
+
+#### Files Modified
+- `src/data/site.ts` - Added Contact Us to Admission submenu
+- `src/components/layout/site-footer.tsx` - Updated navigation flattening logic
+
+#### Design Features
+- Hero section with navy background and white text
+- Icon-based contact information cards (circular amber backgrounds)
+- Form inputs with consistent shadcn/ui styling
+- Hover effects and focus states
+- Responsive layout: stacks on mobile, side-by-side on desktop
+- Professional email templates with Sunny branding
+
+### 📊 Build Status
+- ✅ Next.js build successful
+- ✅ Contact form tested and working
+- ✅ Emails sending correctly to admin and visitors
+- ✅ All navigation links updated
+- ✅ SEO metadata configured
+
+---
+
 ## [November 18, 2025] - Tuition Form Optimization & Automated Reminder System
 
 ### 🤖 自動提醒郵件系統 / Automated Reminder Email System

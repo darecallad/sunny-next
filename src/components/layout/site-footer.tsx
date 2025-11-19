@@ -9,9 +9,14 @@ import { Separator } from "@/components/ui/separator";
 
 export function SiteFooter() {
   const { locale } = useLanguage();
-  const flatNav = navigation.flatMap((item) =>
-    item.children?.length ? item.children : [item]
-  );
+  
+  // Flatten navigation and ensure Contact Us is included
+  const flatNav = navigation.flatMap((item) => {
+    if (item.children?.length) {
+      return item.children;
+    }
+    return [item];
+  });
 
   return (
     <footer className="bg-[#27466f] text-white">

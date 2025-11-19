@@ -121,6 +121,7 @@ export const navigation: NavItem[] = [
     children: [
       { title: { en: "Process", zh: "入學流程" }, href: "/admission/process" },
       { title: { en: "Tuition & Openings", zh: "學費與名額" }, href: "/admission/tuition" },
+      { title: { en: "Contact Us", zh: "聯絡我們" }, href: "/contact" },
     ],
   },
   { title: { en: "Resources", zh: "親職資源" }, href: "/resources" },

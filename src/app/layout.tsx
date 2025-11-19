@@ -13,7 +13,29 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  keywords: [
+    "childcare San Jose",
+    "bilingual preschool",
+    "Mandarin English daycare",
+    "Chinese immersion preschool San Jose",
+    "dual language childcare",
+    "preschool San Jose CA",
+    "infant care San Jose",
+    "toddler daycare San Jose",
+    "kindergarten prep San Jose",
+    "STEAM preschool",
+  ],
+  authors: [{ name: "Sunny Child Care" }],
+  creator: "Sunny Child Care",
+  publisher: "Sunny Child Care",
   metadataBase: new URL("https://www.sunnychildcare.com"),
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en-US": "/",
+      "zh-CN": "/",
+    },
+  },
   icons: {
     icon: "/images/sunny-logomark.png",
     apple: "/images/sunny-logomark.png",
@@ -23,7 +45,37 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     url: "https://www.sunnychildcare.com",
     siteName: siteConfig.name,
+    locale: "en_US",
+    alternateLocale: ["zh_CN"],
     type: "website",
+    images: [
+      {
+        url: "/images/hero-pexels.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Sunny Child Care - Bilingual Mandarin-English Preschool in San Jose",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: ["/images/hero-pexels.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    // google: "your-google-site-verification-code",
   },
 };
 
