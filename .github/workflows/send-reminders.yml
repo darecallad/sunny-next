@@ -2,9 +2,11 @@ name: Send Tour Reminders
 
 on:
   schedule:
-    # 每天 UTC 9:00 執行（台灣時間下午 5:00）
-    # 調整為 UTC 1:00 = 台灣時間上午 9:00
-    - cron: '0 1 * * *'
+    # 每天加州時間早上 9:00 (太平洋時間)
+    # UTC 17:00 = 加州時間上午 9:00 (PST/UTC-8 冬季)
+    # UTC 16:00 = 加州時間上午 9:00 (PDT/UTC-7 夏季)
+    # 使用 UTC 17:00 適用於冬季時間
+    - cron: '0 17 * * *'
   workflow_dispatch: # 允許手動觸發
 
 jobs:
