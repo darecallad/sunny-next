@@ -21,12 +21,18 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="border-b border-border/40 bg-gradient-to-b from-[#324f7a]/5 to-white py-16">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-semibold text-foreground sm:text-5xl">
+      <section 
+        className="border-b border-border/40 py-16 bg-cover bg-center relative"
+        style={{
+          backgroundImage: "url('/images/banners/about.webp')",
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/40" />
+        <div className="container mx-auto px-4 relative z-10">
+          <h1 className="text-4xl font-semibold text-white sm:text-5xl">
             {aboutContent.hero.title[locale]}
           </h1>
-          <p className="mt-6 text-xl text-gray-700">
+          <p className="mt-6 text-xl text-white/95">
             {aboutContent.hero.subtitle[locale]}
           </p>
         </div>

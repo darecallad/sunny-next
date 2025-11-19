@@ -79,12 +79,19 @@ export default function BookingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-[#324f7a]/5">
       {/* Hero Section */}
-      <section className="border-b border-border/40 bg-gradient-to-b from-[#324f7a]/5 to-white py-16">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-semibold text-foreground sm:text-5xl">
+      <section 
+        className="border-b border-border/40 py-16 bg-cover bg-center relative"
+        style={{
+          backgroundImage: "url('/images/banners/booking.jpg')",
+          backgroundPosition: "50% 70%",
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/40" />
+        <div className="container mx-auto px-4 relative z-10">
+          <h1 className="text-4xl font-semibold text-white sm:text-5xl">
             {locale === "en" ? "Schedule a Tour" : "預約參觀"}
           </h1>
-          <p className="mt-6 max-w-3xl text-xl text-gray-700">
+          <p className="mt-6 max-w-3xl text-xl text-white/95">
             {locale === "en"
               ? "Complete the form to learn about our center team and schedule a visit."
               : "填寫表單，了解我們的教學團隊並預約參觀。"}
