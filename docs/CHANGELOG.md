@@ -164,6 +164,45 @@ All notable changes to the Sunny Child Care Next.js project will be documented i
 ### 🔧 Recent Fixes & Changes
 
 #### November 18, 2025
+- **Schedule a Tour Page & Email System Completion:** ✅
+  - Created full booking/tour request page (`/booking`) with comprehensive form
+  - **Email Integration:**
+    - Installed nodemailer + TypeScript types + dotenv
+    - Created `src/lib/email.ts` with Gmail SMTP transporter
+    - Created API route `/api/tour` for handling tour requests
+    - Email sends to: Center.admin@sunnychildcare.com
+    - Gmail SMTP using: darecallad0000@gmail.com (same as CPR project)
+  - **Email Testing:** ✅ **Verified Working**
+    - Created `scripts/test-email.js` for testing email functionality
+    - Successfully tested SMTP connection
+    - Test email delivered to Center.admin@sunnychildcare.com
+    - Message ID: `<8198d3ad-8466-adec-c71b-284f57936657@gmail.com>`
+    - Timestamp: 2025-11-18
+  - **Form Features:**
+    - Parent information: First name, last name, email, phone
+    - Tour preferences: Chinese tour (Yes/No), contact method (Email/Phone)
+    - Dynamic child management: Add/remove multiple children with DOB (MM/DD/YYYY)
+    - Timeline: Desired start date dropdown
+    - Comments/questions textarea
+  - **Form Validation:** All required fields enforced with HTML5 validation
+  - **Email Template:**
+    - Professional HTML email with Sunny branding (Navy #324f7a, Amber #f2a63b)
+    - Sections: Parent Info, Child Info, Tour Details, Comments
+    - Both HTML and plain text versions
+    - Reply-to set to parent's email for easy response
+  - **UI/UX:**
+    - Card-based design with sections divided by icons
+    - Success/error status messages
+    - Loading state during submission
+    - Fully bilingual (English/Chinese)
+    - Responsive grid layout
+  - **Environment Configuration:**
+    - Created `.env.local.example` with email setup instructions
+    - `.env.local` configured with working credentials
+    - Uses same EMAIL_USER and EMAIL_PASSWORD as CPR project
+    - Emails route to Sunny's official email address
+  - **Content Source:** Form structure based on legacy tuition.html
+
 - **About Sunny Page Completion:** ✅
   - Created full About Us page (`/about`) with comprehensive content
   - **Hero Section:** Title and introductory subtitle
