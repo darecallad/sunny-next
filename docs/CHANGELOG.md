@@ -4,54 +4,153 @@ All notable changes to the Sunny Child Care Next.js project will be documented i
 
 ## [Current] - 2025-11-18
 
-### ✅ Completed - Programs Pages
+### ✅ Completed - Shadcn/UI Component Enhancement
+
+#### Form Components Migration
+- **Purpose:** Replace native HTML form elements with shadcn/ui components for better UX and consistency
+- **Components Installed (5 new):**
+  1. `Input` - Text input fields with consistent styling
+  2. `Label` - Accessible form labels
+  3. `Textarea` - Multi-line text input
+  4. `Select` (with SelectContent, SelectItem, SelectTrigger, SelectValue) - Modern dropdown selector
+  5. `Sonner` - Toast notification system for user feedback
+
+- **Tour Booking Form Enhancement (`src/app/admission/tuition/page.tsx`):**
+  - Replaced all native `<input>` elements with shadcn `<Input>` component:
+    - Parent information: First Name, Last Name, Email, Phone
+    - Child DOB fields: Month, Day, Year inputs
+  - Replaced all `<label>` elements with shadcn `<Label>` component
+  - Replaced all `<select>` dropdowns with shadcn `<Select>` component:
+    - Preferred Contact Method dropdown (min-w-[200px])
+    - Desired Start Date dropdown (min-w-[200px])
+  - Replaced `<textarea>` with shadcn `<Textarea>` component for Comments/Questions
+  - Added controlled component state for Select components (contactMethod, startDate)
+
+- **Toast Notification System:**
+  - Integrated Sonner toast library for form submission feedback
+  - Added `<Toaster />` component to `src/app/layout.tsx` for global availability
+  - Replaced static success/error message divs with dynamic toast notifications:
+    - Success: "Tour request submitted successfully! We'll contact you soon."
+    - Error: "Failed to submit tour request. Please try again."
+    - Network Error: "An error occurred. Please try again later."
+  - Bilingual toast messages (English/Chinese)
+  - Auto-dismiss after 5 seconds
+  - Removed `submitStatus` state variable (no longer needed)
+
+- **Styling Improvements:**
+  - All form elements now use consistent shadcn/ui design system
+  - Better focus states and hover effects
+  - Improved accessibility with proper ARIA labels
+  - SelectContent width increased to min-w-[200px] for better readability
+  - SelectTrigger set to w-full for proper responsive behavior
+
+- **Component Usage Summary:**
+  - Total shadcn components now: 11 (was 6)
+  - All form inputs unified under shadcn design system
+  - Consistent spacing with `space-y-2` for label/input pairs
+  - Form validation remains intact with HTML5 required attributes
+
+### ✅ Completed - Resources Page
+
+#### Resources Page Implementation
+- **Purpose:** Created comprehensive resources page for parents and staff with downloadable materials and external links
+- **Content Added to `src/data/site.ts`:**
+  - `resourcesContent` export with hero section and items array
+  - Four resource sections with bilingual content:
+    1. Brightwheel Communication Platform - External link to mybrightwheel.com
+    2. School Year Calendars - Two download links (2025/26 and 2026/27)
+    3. Parent Handbook - External link to Brightwheel parent portal
+    4. Employee Handbook - External link to Google Drive
+  - Full English and Chinese translations for all content
+
+- **Page Structure (`src/app/resources/page.tsx`):**
+  - Hero section with resources.jpg banner (positioned 50% 50%)
+  - Four resource cards in 2-column grid layout
+  - Each card includes:
+    - Left side: Optimized illustration image (object-contain, h-80/lg:h-96, white background, p-8 padding)
+    - Right side: Navy title, gray description, action buttons
+  - Icons: ExternalLink for external links, Download for calendar downloads
+  - Buttons: Amber (#f2a63b) for external links, Navy (#324f7a) for downloads
+  - CTA section with tour booking links
+
+- **Image Optimization:**
+  - Changed from object-cover to object-contain for full image visibility without cropping
+  - Fixed height containers: 320px (mobile), 384px (desktop)
+  - White background with padding for clean presentation
+  - Images maintain original aspect ratio and are centered
+  - Four resource images migrated from legacy site:
+    - `brightwheel.jpeg` - Communication platform illustration
+    - `calendar.jpeg` - School calendar illustration
+    - `parents.jpeg` - Parent handbook illustration
+    - `staff.jpeg` - Employee handbook illustration
+
+- **Banner Images:**
+  - `/images/banners/resources.jpg` - Main hero banner
+
+### ✅ Completed - Programs Pages with Full Schedule Tables
 
 #### Four Program Pages Implementation
-- **Purpose:** Created complete program pages with bilingual content, banners, and CTAs
+- **Purpose:** Created complete program pages with bilingual content, banners, detailed daily schedules, and CTAs
 - **Content Added to `src/data/site.ts`:**
   - `programsContent` export with four program sections
-  - Each program includes: hero title, description paragraphs, schedule title
+  - Each program includes: hero title, description paragraphs, scheduleTitle, complete schedule arrays (18-21 time slots)
+  - Schedule data structure: `{ time: string, activity: { en: string, zh: string }, isBold: boolean }`
   - Full English and Chinese translations for all content
 
 - **Infant & Toddler Page (`/programs/infant`):**
   - Hero banner with infant.webp background (positioned 50% 60%)
   - Three descriptive paragraphs about developmental approach
   - Focus on four developmental domains: Cognitive, Perceptual Motor, Speech & Language, Social Intelligence
-  - Daily schedule section placeholder
+  - **Complete Daily Schedule Table** (18 time slots from 08:30 AM to 06:00 PM):
+    - Navy header (#324f7a) with white text
+    - Alternating white/gray-50 striped rows
+    - Bold activities highlighted in navy color (Morning Snack, Lunch, PM Snack, Afternoon Snack)
+    - Regular activities in gray-700
+    - Time ranges displayed in first column, activities in second column
+  - Note section: "Infants are on their own schedule for eating and sleeping; diaper checks every two hours"
   - CTA section with tour booking and phone buttons
 
 - **Preschool Page (`/programs/preschool`):**
   - Hero banner with preschool.webp background
   - Three descriptive paragraphs about ages 2-6 development
   - Emphasis on playful learning and performing arts integration
-  - Foreign language exposure and individualized attention
-  - Daily schedule section placeholder
-  - CTA section
+  - **Complete Daily Schedule Table** (18 time slots):
+    - Same professional table styling as infant page
+    - Bold highlights for meal times
+    - Activities include Learning Centers, Circle Time, Music & Dance, etc.
 
 - **Pre-K / TK / Kindergarten Page (`/programs/kindergarten`):**
   - Hero banner with kindergarten.webp background (positioned 0% 50%)
   - Two descriptive paragraphs about fundamental skills cultivation
   - Focus on math, science, social studies, and language arts
-  - Lifelong learning and intellectual growth messaging
-  - Daily schedule section placeholder
-  - CTA section
+  - **Complete Daily Schedule Table** (21 time slots):
+    - Extended schedule with additional activities
+    - Includes Group Reading, Non-Napper activities
+    - More structured learning activities for older children
 
 - **Menus Page (`/programs/menus`):**
-  - Hero banner with menu.webp background
+  - Hero banner with menu.webp background (positioned 50% 65%)
   - Single descriptive paragraph about nutritional requirements
   - Download button with FileDown icon linking to Google Drive menu PDF
-  - Bottom decorative banner (menu-bottom.webp - food photo)
-  - CTA section
+  - **Bottom CTA with Background Image:**
+    - menu-bottom.webp (food photo) as background image
+    - White/90 overlay for text readability
+    - Integrated "Ready to Get Started?" CTA section
+    - No separate bottom banner section
+  - Banner positioned lower to show more food content
 
 - **Banner Images Added:**
-  - `/images/banners/menu-bottom.webp` - Decorative food photo for menus page
+  - `/images/banners/menu-bottom.webp` - Decorative food photo used as CTA background
+  - Banner positioning adjustments: menu (50% 65%)
 
 - **Common Features:**
   - Consistent page structure across all programs
   - Hero sections with dark gradient overlays (black/60 to black/40)
   - White text on dark backgrounds for hero titles
-  - Gray-50 background for schedule/download sections
-  - Navy (#324f7a) colored section titles
+  - Gray-50 background for schedule sections
+  - Navy (#324f7a) colored section titles and table headers
+  - Professional table styling with alternating row colors
+  - Bold text highlighting for key activities (meal times)
   - Large readable body text (text-lg)
   - Responsive layouts with max-w-4xl content containers
   - Amber (#f2a63b) CTA buttons
@@ -87,7 +186,15 @@ All notable changes to the Sunny Child Care Next.js project will be documented i
 - **Removed Summer Program Link:**
   - Deleted "Summer" link from Programs dropdown in `src/data/site.ts`
   - Programs menu now contains: Infant & Toddler, Preschool, TK/Kindergarten, Menus
-  - Removed `/summer` route from navigation (directory still exists for future use)
+  - Removed `/summer` route from navigation completely
+
+#### Process Page Hand Image Positioning
+- **Purpose:** Match legacy site visual design with decorative hand image
+- **Implementation:**
+  - Changed process-bottom.webp from separate banner section to CTA background image
+  - Added white/90 overlay for text readability over hand photo
+  - CTA content now displays on top of hand image
+  - Same treatment as menu page bottom section
 
 ### ✅ Completed - Route Restructure
 
@@ -99,19 +206,20 @@ All notable changes to the Sunny Child Care Next.js project will be documented i
   - Updated page title from "Schedule a Tour" to "Tuition & Openings"
   - Deleted `/src/app/booking` directory
   - Updated all navigation links and CTAs:
-    - `src/data/site.ts`: Removed "Schedule a Tour" from Admission dropdown
-    - `src/data/site.ts`: Updated CTA href from `/booking` to `/admission/tuition`
-    - `src/components/layout/site-header.tsx`: Updated mobile menu button
+    - `src/data/site.ts`: Removed "Schedule a Tour" from Admission dropdown (now only Process and Tuition & Openings)
+    - `src/data/site.ts`: Updated CTA hrefs from `/booking` to `/admission/tuition`
+    - `src/components/layout/site-header.tsx`: Updated mobile menu "Schedule a Tour" button
     - `src/app/about/page.tsx`: Updated CTA link
     - `src/app/locations/page.tsx`: Updated CTA link
 - **Result:** Navigation now matches legacy site structure with tour form on tuition page
 
-#### Location Banner Positioning
-- **Purpose:** Adjusted background image position to match legacy site visual style
+#### Banner Positioning Adjustments
+- **Purpose:** Adjusted background image positions to match legacy site visual style and show optimal content
 - **Implementation:**
-  - Added `backgroundPosition: '50% 70%'` to location page hero
-  - Image now shows more of the lower portion (toys and play area)
-  - Maintains consistent visual hierarchy with text overlay
+  - Location page: `backgroundPosition: '50% 70%'` - Shows more of lower portion (toys and play area)
+  - Booking/Tuition page: `backgroundPosition: '50% 70%'` - Better vertical centering
+  - Menu page: `backgroundPosition: '50% 65%'` - Shows more food content
+  - All other banners: Default `bg-center` or custom positioning as needed
 
 ### ✅ Completed - Banner Background Images
 

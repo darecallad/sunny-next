@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import { Toaster } from "@/components/ui/sonner";
 import { siteConfig } from "@/data/site";
 import { LanguageProvider } from "@/context/language-context";
 import { montserrat, notoSans } from "@/lib/fonts";
@@ -40,6 +41,7 @@ export default function RootLayout({
             <main className="flex-1">{children}</main>
             <SiteFooter />
           </div>
+          <Toaster />
         </LanguageProvider>
       </body>
     </html>

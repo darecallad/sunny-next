@@ -1,6 +1,6 @@
 # Sunny Child Care Next.js Platform - Documentation Index
 
-_Last updated: November 17, 2025_
+_Last updated: November 18, 2025_
 
 Welcome to the comprehensive documentation for the Sunny Child Care Next.js platform. This index provides a roadmap for understanding, developing, and maintaining the bilingual childcare website.
 
@@ -76,25 +76,34 @@ Welcome to the comprehensive documentation for the Sunny Child Care Next.js plat
 sunny-next/
 ├── src/
 │   ├── app/              # Next.js pages and routes
-│   │   ├── about/        # About pages
-│   │   ├── admission/    # Admission pages
-│   │   ├── booking/      # Tour booking
-│   │   ├── locations/    # Location page
-│   │   ├── programs/     # Program pages
-│   │   ├── resources/    # Resources page
-│   │   ├── summer/       # Summer program
-│   │   ├── layout.tsx    # Root layout
+│   │   ├── about/        # About pages (About Sunny, Staff*, Gallery*)
+│   │   ├── admission/    # Admission pages (Process, Tuition with form)
+│   │   ├── locations/    # Location page with Google Maps
+│   │   ├── programs/     # Program pages (Infant, Preschool, Kindergarten, Menus)
+│   │   ├── resources/    # Resources page (4 resource cards)
+│   │   ├── api/          # API routes (tour booking email)
+│   │   ├── layout.tsx    # Root layout with LanguageProvider
 │   │   └── page.tsx      # Homepage
 │   ├── components/       # React components
 │   │   ├── layout/       # Header, Footer, Language Toggle
-│   │   ├── sections/     # Hero, Features, Testimonials
+│   │   ├── sections/     # Hero, Features, Testimonials, Video Spotlight
 │   │   └── ui/           # shadcn/ui components
 │   ├── context/          # React contexts (LanguageProvider)
-│   ├── data/             # Content data (site.ts)
-│   └── lib/              # Utilities
+│   ├── data/             # Content data (site.ts with all bilingual content)
+│   └── lib/              # Utilities (email.ts for Nodemailer)
 ├── public/
-│   └── images/           # Static assets (Flogo.png, hero images)
+│   └── images/           # Static assets
+│       ├── banners/      # 11+ page banners (about, location, programs, etc.)
+│       ├── about/        # About page images (3 principles)
+│       ├── resources/    # Resources page images (4 cards)
+│       ├── Flogo.png     # Main bilingual logo
+│       └── hero-pexels.jpg  # Homepage hero background
+├── scripts/              # Utility scripts (test-email.js)
 └── docs/                 # Documentation (you are here)
+    ├── CHANGELOG.md      # ⭐ Detailed project history
+    └── README.md         # This file
+
+* = Placeholder page (banner ready, content pending)
 ```
 
 ---
@@ -112,9 +121,19 @@ sunny-next/
   - Used in header (h-12, w-auto)
 
 ### Key Images
-- `hero-pexels.jpg` - Main hero background
-- `legacy-hero.webp` - Alternative hero
-- `sunny-logomark.png` - Brand logomark
+- `Flogo.png` - Main bilingual logo (陽光雙語 | Sunny Child Care)
+- `hero-pexels.jpg` - Homepage hero background
+- `sunny-logomark.png` - Brand logomark (also used as favicon)
+- **Banner Images** (11+ in `/images/banners/`):
+  - `about.webp`, `location.webp`, `booking.jpg`
+  - `staff.webp`, `gallery.jpg`
+  - `infant.webp`, `preschool.webp`, `kindergarten.webp`, `menu.webp`
+  - `process.jpeg`, `process-bottom.webp`, `menu-bottom.webp`
+  - `resources.jpg`
+- **About Page** (3 in `/images/about/`):
+  - `health-safety.webp`, `personal-development.webp`, `teachers-family.webp`
+- **Resources Page** (4 in `/images/resources/`):
+  - `brightwheel.jpeg`, `calendar.jpeg`, `parents.jpeg`, `staff.jpeg`
 
 ---
 
@@ -155,24 +174,34 @@ sunny-next/
 
 ---
 
-## 📊 Current Status (Nov 17, 2025)
+## 📊 Current Status (Nov 18, 2025)
 
 ### ✅ Completed
 - Core Next.js 16 setup with TypeScript & Tailwind
-- Header with bilingual navigation (13 menu items)
+- Header with bilingual navigation (11 menu items)
 - Footer with contact info and links
 - Language toggle (EN/中文) with localStorage
-- Hero section with background image
-- 13 page routes created (skeleton structure)
-- All navigation links functional
+- **Homepage** with hero, features, video spotlight, testimonials, CTA sections
+- **About Sunny** page with 3 principles, our story section
+- **Location** page with Google Maps integration
+- **Admission Process** page with 4-step guide
+- **Admission Tuition** page with tour booking form
+- **All 4 Programs pages** with complete daily schedule tables:
+  - Infant & Toddler (18 time slots)
+  - Preschool (18 time slots)
+  - TK/Kindergarten (21 time slots)
+  - Menus (download button + food image CTA)
+- **Resources** page with 4 resource cards and optimized images
+- **Email System** - Nodemailer with Gmail SMTP (tested and working)
+- **Banner Images** - 11+ hero banners with custom positioning
+- All navigation links functional and clean
 
 ### 🚧 Pending
-- Actual page content (currently placeholders)
-- Forms (booking, contact) implementation
-- Email integration (Nodemailer)
-- Complete asset migration from legacy site
-- SEO optimization
+- Photo Gallery page content (banner ready: gallery.jpg)
+- Our Staff page content (banner ready: staff.webp)
+- SEO metadata optimization
 - Performance optimization
+- Accessibility audit
 
 **For detailed status, see [CHANGELOG.md](CHANGELOG.md)**
 

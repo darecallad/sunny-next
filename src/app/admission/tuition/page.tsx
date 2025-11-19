@@ -2,10 +2,21 @@
 
 import { useState } from "react";
 import { Calendar, Users, Clock } from "lucide-react";
+import { toast } from "sonner";
 
 import { useLanguage } from "@/context/language-context";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 type Child = {
   month: string;
@@ -16,8 +27,9 @@ type Child = {
 export default function TuitionPage() {
   const { locale } = useLanguage();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
   const [children, setChildren] = useState<Child[]>([{ month: "", day: "", year: "" }]);
+  const [contactMethod, setContactMethod] = useState<string>("");
+  const [startDate, setStartDate] = useState<string>("");
 
   const addChild = () => {
     setChildren([...children, { month: "", day: "", year: "" }]);
@@ -38,7 +50,6 @@ export default function TuitionPage() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitStatus("idle");
 
     const formData = new FormData(e.currentTarget);
     const data = {
@@ -62,15 +73,32 @@ export default function TuitionPage() {
       });
 
       if (response.ok) {
-        setSubmitStatus("success");
+        toast.success(
+          locale === "en" 
+            ? "Tour request submitted successfully! We'll contact you soon." 
+            : "參觀申請已成功提交！我們會盡快聯絡您。",
+          { duration: 5000 }
+        );
         e.currentTarget.reset();
         setChildren([{ month: "", day: "", year: "" }]);
+        setContactMethod("");
+        setStartDate("");
       } else {
-        setSubmitStatus("error");
+        toast.error(
+          locale === "en" 
+            ? "Failed to submit tour request. Please try again." 
+            : "提交參觀申請失敗，請重試。",
+          { duration: 5000 }
+        );
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      setSubmitStatus("error");
+      toast.error(
+        locale === "en" 
+          ? "An error occurred. Please try again later." 
+          : "發生錯誤，請稍後再試。",
+        { duration: 5000 }
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -113,52 +141,48 @@ export default function TuitionPage() {
                       {locale === "en" ? "Your Information" : "您的資訊"}
                     </h2>
                     <div className="grid gap-6 md:grid-cols-2">
-                      <div>
-                        <label htmlFor="firstName" className="mb-2 block font-medium text-gray-700">
+                      <div className="space-y-2">
+                        <Label htmlFor="firstName">
                           {locale === "en" ? "First Name" : "名字"} *
-                        </label>
-                        <input
+                        </Label>
+                        <Input
                           type="text"
                           id="firstName"
                           name="firstName"
                           required
-                          className="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-[#f2a63b] focus:outline-none focus:ring-2 focus:ring-[#f2a63b]/20"
                         />
                       </div>
-                      <div>
-                        <label htmlFor="lastName" className="mb-2 block font-medium text-gray-700">
+                      <div className="space-y-2">
+                        <Label htmlFor="lastName">
                           {locale === "en" ? "Last Name" : "姓氏"} *
-                        </label>
-                        <input
+                        </Label>
+                        <Input
                           type="text"
                           id="lastName"
                           name="lastName"
                           required
-                          className="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-[#f2a63b] focus:outline-none focus:ring-2 focus:ring-[#f2a63b]/20"
                         />
                       </div>
-                      <div>
-                        <label htmlFor="email" className="mb-2 block font-medium text-gray-700">
+                      <div className="space-y-2">
+                        <Label htmlFor="email">
                           {locale === "en" ? "Email Address" : "電子郵件"} *
-                        </label>
-                        <input
+                        </Label>
+                        <Input
                           type="email"
                           id="email"
                           name="email"
                           required
-                          className="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-[#f2a63b] focus:outline-none focus:ring-2 focus:ring-[#f2a63b]/20"
                         />
                       </div>
-                      <div>
-                        <label htmlFor="phone" className="mb-2 block font-medium text-gray-700">
+                      <div className="space-y-2">
+                        <Label htmlFor="phone">
                           {locale === "en" ? "Phone Number" : "聯絡電話"} *
-                        </label>
-                        <input
+                        </Label>
+                        <Input
                           type="tel"
                           id="phone"
                           name="phone"
                           required
-                          className="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-[#f2a63b] focus:outline-none focus:ring-2 focus:ring-[#f2a63b]/20"
                         />
                       </div>
                     </div>
@@ -171,10 +195,10 @@ export default function TuitionPage() {
                       {locale === "en" ? "Tour Preferences" : "參觀偏好"}
                     </h2>
                     <div className="grid gap-6 md:grid-cols-2">
-                      <div>
-                        <label className="mb-3 block font-medium text-gray-700">
+                      <div className="space-y-3">
+                        <Label>
                           {locale === "en" ? "Chinese Tour" : "中文導覽"} *
-                        </label>
+                        </Label>
                         <div className="flex gap-6">
                           <label className="flex items-center gap-2">
                             <input
@@ -197,19 +221,19 @@ export default function TuitionPage() {
                           </label>
                         </div>
                       </div>
-                      <div>
-                        <label htmlFor="contactMethod" className="mb-2 block font-medium text-gray-700">
+                      <div className="space-y-2">
+                        <Label htmlFor="contactMethod">
                           {locale === "en" ? "Preferred Contact Method" : "聯絡方式"}
-                        </label>
-                        <select
-                          id="contactMethod"
-                          name="contactMethod"
-                          className="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-[#f2a63b] focus:outline-none focus:ring-2 focus:ring-[#f2a63b]/20"
-                        >
-                          <option value="">{locale === "en" ? "Select..." : "請選擇..."}</option>
-                          <option value="Email">{locale === "en" ? "Email" : "電子郵件"}</option>
-                          <option value="Phone">{locale === "en" ? "Phone Call" : "電話"}</option>
-                        </select>
+                        </Label>
+                        <Select value={contactMethod} onValueChange={setContactMethod} name="contactMethod">
+                          <SelectTrigger className="w-full">
+                            <SelectValue placeholder={locale === "en" ? "Select..." : "請選擇..."} />
+                          </SelectTrigger>
+                          <SelectContent className="min-w-[200px]">
+                            <SelectItem value="Email">{locale === "en" ? "Email" : "電子郵件"}</SelectItem>
+                            <SelectItem value="Phone">{locale === "en" ? "Phone Call" : "電話"}</SelectItem>
+                          </SelectContent>
+                        </Select>
                       </div>
                     </div>
                   </div>
@@ -238,11 +262,11 @@ export default function TuitionPage() {
                             )}
                           </div>
                           <div className="grid grid-cols-3 gap-3">
-                            <div>
-                              <label className="mb-1 block text-sm text-gray-600">
+                            <div className="space-y-1">
+                              <Label className="text-sm text-gray-600">
                                 {locale === "en" ? "Month" : "月"}
-                              </label>
-                              <input
+                              </Label>
+                              <Input
                                 type="number"
                                 min="1"
                                 max="12"
@@ -250,14 +274,14 @@ export default function TuitionPage() {
                                 value={child.month}
                                 onChange={(e) => updateChild(index, "month", e.target.value)}
                                 required
-                                className="w-full rounded-md border border-gray-300 px-3 py-2 text-center focus:border-[#f2a63b] focus:outline-none focus:ring-2 focus:ring-[#f2a63b]/20"
+                                className="text-center"
                               />
                             </div>
-                            <div>
-                              <label className="mb-1 block text-sm text-gray-600">
+                            <div className="space-y-1">
+                              <Label className="text-sm text-gray-600">
                                 {locale === "en" ? "Day" : "日"}
-                              </label>
-                              <input
+                              </Label>
+                              <Input
                                 type="number"
                                 min="1"
                                 max="31"
@@ -265,14 +289,14 @@ export default function TuitionPage() {
                                 value={child.day}
                                 onChange={(e) => updateChild(index, "day", e.target.value)}
                                 required
-                                className="w-full rounded-md border border-gray-300 px-3 py-2 text-center focus:border-[#f2a63b] focus:outline-none focus:ring-2 focus:ring-[#f2a63b]/20"
+                                className="text-center"
                               />
                             </div>
-                            <div>
-                              <label className="mb-1 block text-sm text-gray-600">
+                            <div className="space-y-1">
+                              <Label className="text-sm text-gray-600">
                                 {locale === "en" ? "Year" : "年"}
-                              </label>
-                              <input
+                              </Label>
+                              <Input
                                 type="number"
                                 min="2017"
                                 max={new Date().getFullYear()}
@@ -280,7 +304,7 @@ export default function TuitionPage() {
                                 value={child.year}
                                 onChange={(e) => updateChild(index, "year", e.target.value)}
                                 required
-                                className="w-full rounded-md border border-gray-300 px-3 py-2 text-center focus:border-[#f2a63b] focus:outline-none focus:ring-2 focus:ring-[#f2a63b]/20"
+                                className="text-center"
                               />
                             </div>
                           </div>
@@ -303,38 +327,39 @@ export default function TuitionPage() {
                       <Clock className="h-6 w-6" />
                       {locale === "en" ? "Timeline" : "時間規劃"}
                     </h2>
-                    <div>
-                      <label htmlFor="startDate" className="mb-2 block font-medium text-gray-700">
+                    <div className="space-y-2">
+                      <Label htmlFor="startDate">
                         {locale === "en" ? "Desired Start Date" : "期望開始日期"}
-                      </label>
-                      <select
-                        id="startDate"
-                        name="startDate"
-                        className="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-[#f2a63b] focus:outline-none focus:ring-2 focus:ring-[#f2a63b]/20"
-                      >
-                        <option value="">{locale === "en" ? "Select..." : "請選擇..."}</option>
-                        <option value="Within a Month">{locale === "en" ? "Within a Month" : "一個月內"}</option>
-                        <option value="1-3 Months">{locale === "en" ? "1-3 Months" : "1-3 個月"}</option>
-                        <option value="3-6 Months">{locale === "en" ? "3-6 Months" : "3-6 個月"}</option>
-                        <option value="6-9 Months">{locale === "en" ? "6-9 Months" : "6-9 個月"}</option>
-                        <option value="9+ Months">{locale === "en" ? "9+ Months" : "9 個月以上"}</option>
-                        <option value="Unsure">{locale === "en" ? "Unsure at this time" : "尚未確定"}</option>
-                      </select>
+                      </Label>
+                      <Select value={startDate} onValueChange={setStartDate} name="startDate">
+                        <SelectTrigger className="w-full">
+                          <SelectValue placeholder={locale === "en" ? "Select..." : "請選擇..."} />
+                        </SelectTrigger>
+                        <SelectContent className="min-w-[200px]">
+                          <SelectItem value="Within a Month">{locale === "en" ? "Within a Month" : "一個月內"}</SelectItem>
+                          <SelectItem value="1-3 Months">{locale === "en" ? "1-3 Months" : "1-3 個月"}</SelectItem>
+                          <SelectItem value="3-6 Months">{locale === "en" ? "3-6 Months" : "3-6 個月"}</SelectItem>
+                          <SelectItem value="6-9 Months">{locale === "en" ? "6-9 Months" : "6-9 個月"}</SelectItem>
+                          <SelectItem value="9+ Months">{locale === "en" ? "9+ Months" : "9 個月以上"}</SelectItem>
+                          <SelectItem value="Unsure">{locale === "en" ? "Unsure at this time" : "尚未確定"}</SelectItem>
+                        </SelectContent>
+                      </Select>
                     </div>
                   </div>
 
                   {/* Comments */}
                   <div className="border-t border-gray-200 pt-8">
-                    <label htmlFor="message" className="mb-2 block font-medium text-gray-700">
-                      {locale === "en" ? "Comments or Questions" : "備註或問題"}
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows={5}
-                      placeholder={locale === "en" ? "What would you like to learn on your tour?" : "您想在參觀時了解什麼？"}
-                      className="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-[#f2a63b] focus:outline-none focus:ring-2 focus:ring-[#f2a63b]/20"
-                    ></textarea>
+                    <div className="space-y-2">
+                      <Label htmlFor="message">
+                        {locale === "en" ? "Comments or Questions" : "備註或問題"}
+                      </Label>
+                      <Textarea
+                        id="message"
+                        name="message"
+                        rows={5}
+                        placeholder={locale === "en" ? "What would you like to learn on your tour?" : "您想在參觀時了解什麼？"}
+                      />
+                    </div>
                   </div>
 
                   {/* Submit Button */}
@@ -352,22 +377,6 @@ export default function TuitionPage() {
                         ? "Schedule Tour"
                         : "預約參觀"}
                     </Button>
-
-                    {submitStatus === "success" && (
-                      <div className="mt-4 rounded-md bg-green-50 p-4 text-center text-green-800">
-                        {locale === "en"
-                          ? "✅ Thank you! We'll contact you soon to schedule your tour."
-                          : "✅ 感謝您！我們會盡快與您聯繫安排參觀。"}
-                      </div>
-                    )}
-
-                    {submitStatus === "error" && (
-                      <div className="mt-4 rounded-md bg-red-50 p-4 text-center text-red-800">
-                        {locale === "en"
-                          ? "❌ Sorry, something went wrong. Please try again or call us."
-                          : "❌ 抱歉，發生錯誤。請重試或直接致電我們。"}
-                      </div>
-                    )}
                   </div>
                 </form>
               </CardContent>
