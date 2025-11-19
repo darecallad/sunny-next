@@ -95,7 +95,7 @@ async function sendReminderEmail(booking: any) {
 
             <div class="info-box">
               <p><span class="label">${isEnglish ? "Name" : "姓名"}:</span> ${booking.firstName} ${booking.lastName}</p>
-              <p><span class="label">${isEnglish ? "Chinese Tour" : "中文導覽"}:</span> ${booking.chineseTour === "Yes" ? (isEnglish ? "Yes" : "是") : (isEnglish ? "No" : "否")}</p>
+              <p><span class="label">${isEnglish ? "Tour Language" : "導覽語言"}:</span> ${booking.tourDateTime.includes("Chinese") ? (isEnglish ? "Chinese (Mandarin)" : "中文（國語）") : (isEnglish ? "English" : "英文")}</p>
             </div>
 
             <div style="background-color: #fff4e6; padding: 20px; border-radius: 5px; margin: 20px 0;">
@@ -160,7 +160,7 @@ ${isEnglish ? "Your tour is tomorrow!" : "您的參觀預約在明天！"}
 ${tourDateDisplay}
 
 ${isEnglish ? "Name" : "姓名"}: ${booking.firstName} ${booking.lastName}
-${isEnglish ? "Chinese Tour" : "中文導覽"}: ${booking.chineseTour === "Yes" ? (isEnglish ? "Yes" : "是") : (isEnglish ? "No" : "否")}
+${isEnglish ? "Tour Language" : "導覽語言"}: ${booking.tourDateTime.includes("Chinese") ? (isEnglish ? "Chinese (Mandarin)" : "中文（國語）") : (isEnglish ? "English" : "英文")}
 
 📍 ${isEnglish ? "Location" : "地點"}
 Sunny Child Care Center
@@ -186,17 +186,24 @@ Sunny Child Care / 陽光雙語托兒中心
 }
 
 function formatTourDateTime(tourDateTime: string, locale: string): string {
-  // tourDateTime format: "2025-11-19 Wednesday 10:30 AM - Chinese Tour"
+  // tourDateTime format: "2025-11-22 Friday 10:30 AM - Chinese Tour" or "2025-11-22 Friday 3:30 PM - English Tour"
   const isEnglish = locale === "en";
   
   if (isEnglish) {
     return tourDateTime;
   } else {
-    // 轉換成中文格式
+    // Convert to Chinese format
     const parts = tourDateTime.split(" ");
     const date = parts[0]; // YYYY-MM-DD
     const [year, month, day] = date.split("-");
-    return `${month}/${day} 週三 上午 10:30 中文 Tour`;
+    
+    const isChinese = tourDateTime.includes("Chinese");
+    const isMorning = tourDateTime.includes("10:30 AM");
+    
+    const time = isMorning ? "上午 10:30" : "下午 3:30";
+    const tour = isChinese ? "中文 Tour" : "英文 Tour";
+    
+    return `${month}/${day} 週五 ${time} ${tour}`;
   }
 }
 

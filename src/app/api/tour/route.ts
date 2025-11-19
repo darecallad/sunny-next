@@ -10,7 +10,6 @@ export async function POST(request: NextRequest) {
       lastName,
       email,
       phone,
-      chineseTour,
       tourDateTime,
       children,
       startDate,
@@ -45,7 +44,7 @@ export async function POST(request: NextRequest) {
         tourDateTime,
         tourDate,
         children: children || [],
-        chineseTour: chineseTour || "No",
+        chineseTour: tourDateTime?.includes("Chinese Tour") ? "Yes" : "No",
         startDate: startDate || "",
         message: message || "",
         locale: locale || "en",
@@ -118,10 +117,6 @@ export async function POST(request: NextRequest) {
                   <span class="value">${tourDateTime || "Not specified"}</span>
                 </div>
                 <div class="field">
-                  <span class="label">Chinese Tour / 中文導覽:</span>
-                  <span class="value">${chineseTour === "Yes" ? "✅ Yes / 是" : "❌ No / 否"}</span>
-                </div>
-                <div class="field">
                   <span class="label">Desired Start Date / 期望開始日期:</span>
                   <span class="value">${startDate || "Not specified"}</span>
                 </div>
@@ -171,7 +166,6 @@ ${childrenInfo || "Not provided"}
 📅 TOUR DETAILS / 參觀詳情
 --------------------------------------------
 Tour Date & Time / 參觀日期時間: ${tourDateTime || "Not specified"}
-Chinese Tour / 中文導覽: ${chineseTour === "Yes" ? "Yes / 是" : "No / 否"}
 Desired Start Date / 期望開始日期: ${startDate || "Not specified"}
 Language / 語言: ${locale === "en" ? "English" : "繁體中文"}
 

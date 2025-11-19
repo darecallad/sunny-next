@@ -31,48 +31,87 @@ export default function TuitionPage() {
   const [startDate, setStartDate] = useState<string>("");
   const [tourDateTime, setTourDateTime] = useState<string>("");
 
-  // Generate next 4 Wednesdays at 10:30 AM
-  const generateWednesdaySlots = () => {
+  // US Federal Holidays 2025-2026
+  const usHolidays = [
+    "2025-11-27", "2025-11-28", // Thanksgiving
+    "2025-12-25", // Christmas
+    "2026-01-01", // New Year's Day
+    "2026-01-19", // MLK Day
+    "2026-02-16", // Presidents' Day
+    "2026-05-25", // Memorial Day
+    "2026-07-03", "2026-07-04", // Independence Day
+    "2026-09-07", // Labor Day
+    "2026-10-12", // Columbus Day
+    "2026-11-11", // Veterans Day
+    "2026-11-26", "2026-11-27", // Thanksgiving
+    "2026-12-25", // Christmas
+  ];
+
+  // Generate next 3 Fridays with two time slots each
+  const generateFridaySlots = () => {
     const slots = [];
     const today = new Date();
-    const currentDay = today.getDay(); // 0 = Sunday, 3 = Wednesday
+    const currentDay = today.getDay(); // 0 = Sunday, 5 = Friday
     
-    // Calculate days until next Wednesday
-    let daysUntilWednesday = (3 - currentDay + 7) % 7;
-    if (daysUntilWednesday === 0) {
-      // If today is Wednesday, check if it's past 10:30 AM
+    // Calculate days until next Friday
+    let daysUntilFriday = (5 - currentDay + 7) % 7;
+    if (daysUntilFriday === 0) {
+      // If today is Friday, check if it's past 3:30 PM
       const currentHour = today.getHours();
       const currentMinute = today.getMinutes();
-      if (currentHour > 10 || (currentHour === 10 && currentMinute >= 30)) {
-        // If past 10:30 AM, start from next Wednesday
-        daysUntilWednesday = 7;
+      if (currentHour > 15 || (currentHour === 15 && currentMinute >= 30)) {
+        // If past 3:30 PM, start from next Friday
+        daysUntilFriday = 7;
       }
     }
     
-    // Generate 4 Wednesday slots
-    for (let i = 0; i < 4; i++) {
+    // Generate 3 Friday slots
+    let addedFridays = 0;
+    let weekOffset = 0;
+    
+    while (addedFridays < 3) {
       const targetDate = new Date(today);
-      targetDate.setDate(today.getDate() + daysUntilWednesday + (i * 7));
+      targetDate.setDate(today.getDate() + daysUntilFriday + (weekOffset * 7));
       
+      const year = targetDate.getFullYear();
       const month = targetDate.getMonth() + 1;
       const day = targetDate.getDate();
-      const weekday = locale === "en" ? "Wednesday" : "週三";
-      const time = locale === "en" ? "10:30 AM" : "上午 10:30";
-      const tour = locale === "en" ? "Chinese Tour" : "中文 Tour";
+      const dateString = `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
       
-      const displayText = locale === "en" 
-        ? `${month}/${day} ${weekday} ${time} - ${tour}`
-        : `${month}/${day} ${weekday} ${time} ${tour}`;
+      // Skip if it's a US holiday
+      if (!usHolidays.includes(dateString)) {
+        const weekday = locale === "en" ? "Friday" : "週五";
+        
+        // Morning slot: 10:30 AM - Chinese Tour
+        const morningTime = locale === "en" ? "10:30 AM" : "上午 10:30";
+        const morningTour = locale === "en" ? "Chinese Tour" : "中文 Tour";
+        const morningDisplay = locale === "en" 
+          ? `${month}/${day} ${weekday} ${morningTime} - ${morningTour}`
+          : `${month}/${day} ${weekday} ${morningTime} ${morningTour}`;
+        const morningValue = `${dateString} Friday 10:30 AM - Chinese Tour`;
+        
+        slots.push({ display: morningDisplay, value: morningValue });
+        
+        // Afternoon slot: 3:30 PM - English Tour
+        const afternoonTime = locale === "en" ? "3:30 PM" : "下午 3:30";
+        const afternoonTour = locale === "en" ? "English Tour" : "英文 Tour";
+        const afternoonDisplay = locale === "en" 
+          ? `${month}/${day} ${weekday} ${afternoonTime} - ${afternoonTour}`
+          : `${month}/${day} ${weekday} ${afternoonTime} ${afternoonTour}`;
+        const afternoonValue = `${dateString} Friday 3:30 PM - English Tour`;
+        
+        slots.push({ display: afternoonDisplay, value: afternoonValue });
+        
+        addedFridays++;
+      }
       
-      const valueText = `${targetDate.getFullYear()}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')} Wednesday 10:30 AM - Chinese Tour`;
-      
-      slots.push({ display: displayText, value: valueText });
+      weekOffset++;
     }
     
     return slots;
   };
 
-  const wednesdaySlots = generateWednesdaySlots();
+  const fridaySlots = generateFridaySlots();
 
   const addChild = () => {
     setChildren([...children, { month: "", day: "", year: "" }]);
@@ -100,7 +139,6 @@ export default function TuitionPage() {
       lastName: formData.get("lastName") as string,
       email: formData.get("email") as string,
       phone: formData.get("phone") as string,
-      chineseTour: formData.get("chineseTour") as string,
       children: children,
       tourDateTime: formData.get("tourDateTime") as string,
       startDate: formData.get("startDate") as string,
@@ -231,40 +269,6 @@ export default function TuitionPage() {
                     </div>
                   </div>
 
-                  {/* Tour Preferences */}
-                  <div className="border-t border-gray-200 pt-8">
-                    <h2 className="mb-6 flex items-center gap-2 text-2xl font-semibold text-[#324f7a]">
-                      <Calendar className="h-6 w-6" />
-                      {locale === "en" ? "Tour Preferences" : "參觀偏好"}
-                    </h2>
-                    <div className="space-y-3">
-                      <p className="text-sm font-medium">
-                        {locale === "en" ? "Chinese Tour" : "中文導覽"} *
-                      </p>
-                      <div className="flex gap-6">
-                        <label className="flex items-center gap-2">
-                          <input
-                            type="radio"
-                            name="chineseTour"
-                            value="Yes"
-                            required
-                            className="h-4 w-4 text-[#f2a63b] focus:ring-[#f2a63b]"
-                          />
-                          <span>{locale === "en" ? "Yes" : "是"}</span>
-                        </label>
-                        <label className="flex items-center gap-2">
-                          <input
-                            type="radio"
-                            name="chineseTour"
-                            value="No"
-                            className="h-4 w-4 text-[#f2a63b] focus:ring-[#f2a63b]"
-                          />
-                          <span>{locale === "en" ? "No" : "否"}</span>
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-
                   {/* Child Information */}
                   <div className="border-t border-gray-200 pt-8">
                     <h2 className="mb-6 flex items-center gap-2 text-2xl font-semibold text-[#324f7a]">
@@ -366,8 +370,8 @@ export default function TuitionPage() {
                           <SelectTrigger className="w-full">
                             <SelectValue placeholder={locale === "en" ? "Select a tour time..." : "請選擇參觀時間..."} />
                           </SelectTrigger>
-                          <SelectContent className="min-w-[280px]">
-                            {wednesdaySlots.map((slot, index) => (
+                          <SelectContent className="min-w-[320px]">
+                            {fridaySlots.map((slot, index) => (
                               <SelectItem key={index} value={slot.value}>
                                 {slot.display}
                               </SelectItem>
