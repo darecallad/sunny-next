@@ -108,7 +108,7 @@ export default function PhotoGalleryPage() {
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
                   src={album.coverImage}
-                  alt={album.title}
+                  alt={`${album.title} album cover showing ${album.description}`}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover transition-transform duration-300 group-hover:scale-110"
@@ -159,7 +159,7 @@ export default function PhotoGalleryPage() {
                 >
                   <Image
                     src={`/images/gallery/${currentAlbum.folder}/${i + 1}.webp`}
-                    alt={`${currentAlbum.title} ${i + 1}`}
+                    alt={`${currentAlbum.title} photo ${i + 1} of ${currentAlbum.photoCount}`}
                     fill
                     sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
                     className="object-cover transition-transform duration-300 group-hover:scale-110"
@@ -176,10 +176,14 @@ export default function PhotoGalleryPage() {
         <DialogContent
           className="max-w-7xl p-0"
           onKeyDown={handleKeyDown}
+          aria-describedby="lightbox-description"
         >
           <DialogTitle className="sr-only">
             {currentAlbum?.title} - Photo {selectedPhotoIndex + 1}
           </DialogTitle>
+          <p id="lightbox-description" className="sr-only">
+            Viewing photo {selectedPhotoIndex + 1} of {currentAlbum?.photoCount} from {currentAlbum?.title} album. Use arrow keys to navigate or Escape to close.
+          </p>
           <div className="relative">
             {/* Close Button */}
             <Button
@@ -214,7 +218,7 @@ export default function PhotoGalleryPage() {
               <div className="relative aspect-[4/3] w-full bg-black">
                 <Image
                   src={`/images/gallery/${currentAlbum.folder}/${selectedPhotoIndex + 1}.webp`}
-                  alt={`${currentAlbum.title} ${selectedPhotoIndex + 1}`}
+                  alt={`${currentAlbum.title} full size photo ${selectedPhotoIndex + 1} of ${currentAlbum.photoCount}`}
                   fill
                   sizes="100vw"
                   className="object-contain"
