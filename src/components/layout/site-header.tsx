@@ -36,7 +36,7 @@ export function SiteHeader() {
         <Link href="/" className="inline-flex items-center rounded-3xl bg-white/5 px-4 py-2 shadow-lg shadow-black/30 ring-1 ring-white/15">
           <Image
             src="/images/Flogo.png"
-            alt="Sunny Child Care bilingual logo"
+            alt="Sunny Child Care - Bilingual Childcare & Preschool in San Jose logo"
             width={200}
             height={56}
             className="h-12 w-auto object-contain"

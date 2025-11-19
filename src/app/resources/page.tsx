@@ -42,7 +42,7 @@ export default function ResourcesPage() {
                   <div className="relative w-full h-full">
                     <Image
                       src={item.image}
-                      alt={item.title[locale]}
+                      alt={`${item.title.en} - ${item.description.en.slice(0, 80)}`}
                       fill
                       className="object-contain"
                     />

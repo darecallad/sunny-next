@@ -71,7 +71,7 @@ export default function AboutPage() {
                   >
                     <Image
                       src={principleImages[index]}
-                      alt={principle.title.en}
+                      alt={`${principle.title.en} - ${principle.description.en.slice(0, 100)}`}
                       fill
                       className="object-contain p-4"
                       priority={index === 0}

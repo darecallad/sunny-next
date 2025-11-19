@@ -15,7 +15,7 @@ export function HeroSection() {
       <div className="absolute inset-0">
         <Image
           src="/images/hero-pexels.jpg"
-          alt="Background"
+          alt="Happy children learning and playing at Sunny Child Care bilingual preschool in San Jose"
           fill
           className="object-cover"
           priority
@@ -69,7 +69,7 @@ export function HeroSection() {
               <div className="relative h-64 w-full">
                 <Image
                   src="/images/hero-pexels.jpg"
-                  alt="Happy children at Sunny Child Care"
+                  alt="Diverse group of children engaging in bilingual learning activities at Sunny Child Care"
                   fill
                   className="object-cover"
                   priority
@@ -84,7 +84,7 @@ export function HeroSection() {
                   <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#2a3f5f] p-2 shadow-lg shadow-black/40">
                     <Image
                       src="/images/sunny-logomark.png"
-                      alt="Sunny logomark"
+                      alt="Sunny Child Care logomark - sun icon representing bright education"
                       width={40}
                       height={40}
                       className="h-full w-full object-contain"

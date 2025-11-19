@@ -22,7 +22,7 @@ export function SiteFooter() {
               <Link href="/" className="inline-flex w-full items-center justify-center rounded-3xl bg-white/5 px-4 py-3 shadow-lg shadow-black/30 ring-1 ring-white/10">
                 <Image
                   src="/images/Flogo.png"
-                  alt="Sunny Child Care bilingual logo"
+                  alt="Sunny Child Care - Bilingual Mandarin-English Preschool San Jose"
                   width={220}
                   height={64}
                   className="h-12 w-full object-contain"
