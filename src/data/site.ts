@@ -146,7 +146,7 @@ export const heroContent = {
   },
   secondaryCta: {
     label: { en: "Download brochure", zh: "下載簡介" },
-    href: "/resources",
+    href: "/about",
   },
   stats: [
     {
