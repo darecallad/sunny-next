@@ -2,6 +2,72 @@ import { NextRequest, NextResponse } from "next/server";
 import { transporter } from "@/lib/email";
 import { saveBooking } from "@/lib/tour-bookings";
 
+// 生成 .ics 日曆文件內容
+function generateICS(tourDateTime: string, firstName: string, lastName: string, email: string, phone: string): string {
+  // 解析 tour date/time (格式: "2025-11-22 (Friday) - 10:30 AM - Chinese Tour")
+  const dateMatch = tourDateTime.match(/^(\d{4}-\d{2}-\d{2})/);
+  const timeMatch = tourDateTime.match(/(\d{1,2}:\d{2}\s*[AP]M)/i);
+  const isChinese = tourDateTime.includes("Chinese");
+  
+  if (!dateMatch || !timeMatch) {
+    throw new Error("Invalid tour date/time format");
+  }
+
+  const tourDate = dateMatch[1]; // "2025-11-22"
+  const tourTime = timeMatch[1]; // "10:30 AM"
+  
+  // 轉換為 ISO 格式的日期時間
+  const [year, month, day] = tourDate.split("-").map(Number);
+  const [time, meridiem] = tourTime.split(" ");
+  let [hours, minutes] = time.split(":").map(Number);
+  
+  if (meridiem.toUpperCase() === "PM" && hours !== 12) hours += 12;
+  if (meridiem.toUpperCase() === "AM" && hours === 12) hours = 0;
+  
+  const startDate = new Date(year, month - 1, day, hours, minutes);
+  const endDate = new Date(startDate.getTime() + 60 * 60 * 1000); // 1 hour tour
+  
+  // 格式化為 iCal 格式 (YYYYMMDDTHHMMSS)
+  const formatICalDate = (date: Date) => {
+    const pad = (n: number) => n.toString().padStart(2, '0');
+    return `${date.getFullYear()}${pad(date.getMonth() + 1)}${pad(date.getDate())}T${pad(date.getHours())}${pad(date.getMinutes())}${pad(date.getSeconds())}`;
+  };
+  
+  const now = new Date();
+  const dtstamp = formatICalDate(now);
+  const dtstart = formatICalDate(startDate);
+  const dtend = formatICalDate(endDate);
+  const uid = `tour-${Date.now()}@sunnychildcare.com`;
+  
+  const language = isChinese ? "Chinese/中文" : "English";
+  const description = `Campus Tour for ${firstName} ${lastName}\\n\\nContact:\\nEmail: ${email}\\nPhone: ${phone}\\n\\nLanguage: ${language}\\n\\nLocation: Sunny Child Care\\n2586 Seaboard Ave, San Jose, CA 95131`;
+  
+  return `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Sunny Child Care//Tour Booking//EN
+CALSCALE:GREGORIAN
+METHOD:REQUEST
+BEGIN:VEVENT
+UID:${uid}
+DTSTAMP:${dtstamp}
+DTSTART:${dtstart}
+DTEND:${dtend}
+SUMMARY:Campus Tour - ${firstName} ${lastName} (${language})
+DESCRIPTION:${description}
+LOCATION:Sunny Child Care, 2586 Seaboard Ave, San Jose, CA 95131
+STATUS:CONFIRMED
+SEQUENCE:0
+ORGANIZER;CN=Sunny Child Care:mailto:Center.admin@sunnychildcare.com
+ATTENDEE;CN=${firstName} ${lastName};RSVP=TRUE:mailto:${email}
+BEGIN:VALARM
+TRIGGER:-PT24H
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Campus Tour Tomorrow
+END:VALARM
+END:VEVENT
+END:VCALENDAR`;
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -76,6 +142,8 @@ export async function POST(request: NextRequest) {
             .label { font-weight: bold; color: #324f7a; }
             .value { margin-left: 10px; }
             .message-box { background-color: white; padding: 20px; border-left: 4px solid #f2a63b; margin-top: 15px; }
+            .calendar-btn { display: inline-block; background-color: #f2a63b; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; font-weight: bold; margin: 10px 5px; }
+            .calendar-note { background-color: #fff3cd; border-left: 4px solid #f2a63b; padding: 15px; margin: 20px 0; }
             .footer { margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; text-align: center; color: #666; font-size: 12px; }
           </style>
         </head>
@@ -85,6 +153,20 @@ export async function POST(request: NextRequest) {
               <h1>🌟 New Tour Request</h1>
               <p>預約參觀申請</p>
             </div>
+            
+            <div class="calendar-note">
+              <strong>📅 Quick Add to Calendar:</strong><br>
+              Click the button below or open the attached .ics file to add this tour to your Google Calendar.
+              <div style="text-align: center; margin-top: 15px;">
+                <a href="${generateGoogleCalendarLink(tourDateTime, firstName, lastName, email, phone)}" class="calendar-btn" target="_blank">
+                  ➕ Add to Google Calendar
+                </a>
+              </div>
+              <p style="margin-top: 10px; font-size: 12px; color: #666;">
+                Or: Open the attached <strong>tour-booking.ics</strong> file to add to any calendar app.
+              </p>
+            </div>
+
             <div class="content">
               <div class="section">
                 <div class="section-title">👤 Parent Information / 家長資訊</div>
@@ -148,6 +230,34 @@ export async function POST(request: NextRequest) {
       </html>
     `;
 
+    // 生成 Google Calendar 鏈接的函數
+    function generateGoogleCalendarLink(tourDateTime: string, firstName: string, lastName: string, email: string, phone: string): string {
+      const dateMatch = tourDateTime.match(/^(\d{4}-\d{2}-\d{2})/);
+      const timeMatch = tourDateTime.match(/(\d{1,2}:\d{2}\s*[AP]M)/i);
+      const isChinese = tourDateTime.includes("Chinese");
+      
+      if (!dateMatch || !timeMatch) return "#";
+      
+      const tourDate = dateMatch[1].replace(/-/g, "");
+      const tourTime = timeMatch[1];
+      const [time, meridiem] = tourTime.split(" ");
+      let [hours, minutes] = time.split(":").map(Number);
+      
+      if (meridiem.toUpperCase() === "PM" && hours !== 12) hours += 12;
+      if (meridiem.toUpperCase() === "AM" && hours === 12) hours = 0;
+      
+      const startTime = `${hours.toString().padStart(2, '0')}${minutes.toString().padStart(2, '0')}00`;
+      const endHours = (hours + 1) % 24;
+      const endTime = `${endHours.toString().padStart(2, '0')}${minutes.toString().padStart(2, '0')}00`;
+      
+      const language = isChinese ? "Chinese/中文" : "English";
+      const title = encodeURIComponent(`Campus Tour - ${firstName} ${lastName} (${language})`);
+      const description = encodeURIComponent(`Campus Tour\n\nContact:\nEmail: ${email}\nPhone: ${phone}\n\nLanguage: ${language}\n\nLocation: Sunny Child Care\n2586 Seaboard Ave, San Jose, CA 95131`);
+      const location = encodeURIComponent("Sunny Child Care, 2586 Seaboard Ave, San Jose, CA 95131");
+      
+      return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${tourDate}T${startTime}/${tourDate}T${endTime}&details=${description}&location=${location}&ctz=America/Los_Angeles`;
+    }
+
     // 準備純文字版本
     const textContent = `
 新的預約參觀申請 / New Tour Request
@@ -191,6 +301,13 @@ This email was automatically sent from Sunny Child Care website
       subject: `🌟 新預約參觀 / New Tour Request - ${firstName} ${lastName}`,
       text: textContent,
       html: htmlContent,
+      attachments: tourDateTime ? [
+        {
+          filename: 'tour-booking.ics',
+          content: generateICS(tourDateTime, firstName, lastName, email, phone),
+          contentType: 'text/calendar; charset=utf-8; method=REQUEST'
+        }
+      ] : []
     };
 
     await transporter.sendMail(mailOptions);
