@@ -160,10 +160,15 @@ export default function TuitionPage() {
             : "參觀申請已成功提交！我們會盡快聯絡您。",
           { duration: 5000 }
         );
-        e.currentTarget.reset();
+        // Reset form state before resetting the form
         setChildren([{ month: "", day: "", year: "" }]);
         setTourDateTime("");
         setStartDate("");
+        // Use setTimeout to avoid accessing e.currentTarget after reset
+        setTimeout(() => {
+          const form = document.querySelector('form');
+          if (form) form.reset();
+        }, 0);
       } else {
         toast.error(
           locale === "en" 

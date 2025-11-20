@@ -12,7 +12,9 @@
 
 **Bilingual Mandarin-English Immersion Childcare Website** serving San Jose families with comprehensive programs for ages 0-6 years.
 
-[Documentation](docs/README.md) • [SEO Strategy](docs/seo-optimization.md) • [Changelog](docs/CHANGELOG.md)
+🌐 **Live Site**: [www.sunnychildcare.com](https://www.sunnychildcare.com)
+
+[Documentation](docs/README.md) • [SEO Strategy](docs/seo-optimization.md) • [GEO Optimization](docs/geo-local-seo.md) • [Changelog](docs/CHANGELOG.md)
 
 </div>
 
@@ -86,8 +88,10 @@
 - **Noto Sans TC Font** for authentic Chinese typography
 
 ### 📋 Interactive Tour Booking System
-- **Comprehensive Form**: Parent info, child details, preferred dates
-- **Smart Validation**: Real-time form validation with helpful error messages
+- **Comprehensive Form**: Parent info, child details, preferred dates with time slots
+- **Google Calendar Integration**: Automatic calendar events with .ics attachments
+- **One-Click Calendar**: "Add to Google Calendar" button in emails
+- **Smart Reminders**: 24-hour advance notifications
 - **Email Integration**: Nodemailer with Gmail SMTP
 - **Dual Notifications**: Automatic emails to both admin and parents
 - **Toast Notifications**: Sonner toast library for user feedback
@@ -113,15 +117,17 @@
 - **Service Area**: 2586 Seaboard Ave, San Jose, CA 95131
 - **Operating Hours**: Mon-Fri 8:30am-6pm
 
-### 🔍 SEO Optimization
-- **Comprehensive Metadata**: All 10 pages with optimized titles, descriptions, keywords
+### 🔍 SEO & Local Search Optimization
+- **San Jose Local SEO**: All 12 pages optimized for "San Jose, CA 95131"
+- **Geographic Targeting**: Full address (2586 Seaboard Ave) on key pages
+- **Google Search Console**: Verified and indexed
+- **Comprehensive Metadata**: All pages with optimized titles, descriptions, keywords
 - **Open Graph Tags**: Social media sharing optimization
 - **Twitter Cards**: Enhanced Twitter sharing
 - **LocalBusiness Schema**: JSON-LD structured data for Google
-- **Sitemap.xml**: Auto-generated with 10 routes
+- **Sitemap.xml**: Submitted with 12 routes
 - **Robots.txt**: Optimized crawling directives
-- **Image Alt Text**: All images with descriptive alt text
-- **Target Keywords**: Childcare San Jose, Bilingual Preschool, Mandarin English Daycare
+- **Target Keywords**: 80+ location-specific keywords including "childcare San Jose 95131", "bilingual preschool San Jose"
 
 ### 📱 Performance Optimized
 - **Next.js 16**: Latest App Router with Server Components
@@ -149,7 +155,9 @@
 - **Noto Sans TC** - Professional Traditional Chinese font
 
 ### Backend & Integration
-- **Nodemailer 7** - Email sending library
+- **Nodemailer 7** - Email sending library with calendar attachments
+- **iCalendar (RFC 5545)** - Standard .ics file generation
+- **Google Calendar API** - URL-based event creation
 - **Gmail SMTP** - Email service provider
 - **Next.js API Routes** - Server-side API endpoints
 
@@ -209,8 +217,9 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 **Test the site:**
 - ✅ Toggle between English and 中文
-- ✅ Navigate through all 10 pages
-- ✅ Submit tour booking form (check email)
+- ✅ Navigate through all 12 pages
+- ✅ Submit tour booking form (check email with calendar button)
+- ✅ Click "Add to Google Calendar" or download .ics attachment
 - ✅ Test mobile responsive design
 
 ### 4. Test Email Functionality
@@ -239,44 +248,48 @@ sunny-next/
 ├── src/
 │   ├── app/                    # Next.js App Router pages
 │   │   ├── page.tsx           # Homepage with hero, features, testimonials
-│   │   ├── layout.tsx         # Root layout with LanguageProvider
+│   │   ├── layout.tsx         # Root layout with LanguageProvider + GSC verification
 │   │   ├── globals.css        # Global styles and Tailwind
-│   │   ├── sitemap.ts         # Dynamic XML sitemap
+│   │   ├── sitemap.ts         # Dynamic XML sitemap (12 routes)
 │   │   ├── robots.ts          # Search engine directives
 │   │   ├── about/
 │   │   │   ├── page.tsx       # About Sunny with 3 principles
-│   │   │   ├── layout.tsx     # About page SEO metadata
-│   │   │   ├── our-staff/     # Staff page (placeholder)
-│   │   │   └── photo-gallery/ # Gallery page (placeholder)
+│   │   │   ├── layout.tsx     # About page SEO metadata (San Jose)
+│   │   │   ├── our-staff/     # Staff page
+│   │   │   └── photo-gallery/ # Gallery page
 │   │   ├── admission/
 │   │   │   ├── process/       # 4-step enrollment process
-│   │   │   │   └── layout.tsx # Process page SEO metadata
-│   │   │   └── tuition/       # Tour booking form with email
-│   │   │       └── layout.tsx # Tuition page SEO metadata
+│   │   │   │   └── layout.tsx # Process page SEO metadata (San Jose)
+│   │   │   └── tuition/       # Tour booking form with calendar integration
+│   │   │       └── layout.tsx # Tuition page SEO metadata (San Jose)
+│   │   ├── contact/
+│   │   │   ├── page.tsx       # Contact page with Google Maps
+│   │   │   └── layout.tsx     # Contact SEO metadata (San Jose 95131)
 │   │   ├── locations/
-│   │   │   ├── page.tsx       # Location with Google Maps
-│   │   │   └── layout.tsx     # Location SEO metadata
+│   │   │   ├── page.tsx       # Locations with Google Maps
+│   │   │   └── layout.tsx     # Location SEO metadata (San Jose 95131)
 │   │   ├── programs/
 │   │   │   ├── infant/        # Infant & Toddler program
-│   │   │   │   └── layout.tsx # Infant SEO metadata
+│   │   │   │   └── layout.tsx # Infant SEO metadata (San Jose)
 │   │   │   ├── preschool/     # Preschool program
-│   │   │   │   └── layout.tsx # Preschool SEO metadata
+│   │   │   │   └── layout.tsx # Preschool SEO metadata (San Jose)
 │   │   │   ├── kindergarten/  # Pre-K/TK/K program
-│   │   │   │   └── layout.tsx # Kindergarten SEO metadata
+│   │   │   │   └── layout.tsx # Kindergarten SEO metadata (San Jose)
 │   │   │   └── menus/         # Nutrition & menus
-│   │   │       └── layout.tsx # Menus SEO metadata
+│   │   │       └── layout.tsx # Menus SEO metadata (San Jose)
 │   │   ├── resources/
 │   │   │   ├── page.tsx       # Parent resources (4 cards)
-│   │   │   └── layout.tsx     # Resources SEO metadata
+│   │   │   └── layout.tsx     # Resources SEO metadata (San Jose)
 │   │   └── api/
 │   │       └── tour/
-│   │           └── route.ts   # Tour booking email API
+│   │           └── route.ts   # Tour booking with Google Calendar integration
 │   ├── components/
 │   │   ├── layout/
 │   │   │   ├── site-header.tsx    # Navigation with language toggle
 │   │   │   ├── site-footer.tsx    # Footer with contact info
 │   │   │   └── language-toggle.tsx # EN/中文 switcher
 │   │   ├── sections/
+│   │   │   ├── announcement-banner.tsx # Cupertino Feb 2026 announcement
 │   │   │   ├── hero-section.tsx       # Homepage hero
 │   │   │   ├── value-grid.tsx         # 3 core values
 │   │   │   ├── video-spotlight.tsx    # Video section
@@ -334,9 +347,13 @@ sunny-next/
 ├── scripts/
 │   └── test-email.js          # Email testing script
 ├── docs/
-│   ├── README.md              # Documentation index
-│   ├── CHANGELOG.md           # Detailed project history
-│   └── seo-optimization.md    # SEO strategy and tracking
+│   ├── README.md                        # Documentation index
+│   ├── CHANGELOG.md                     # Detailed project history
+│   ├── seo-optimization.md              # SEO strategy and tracking
+│   ├── geo-local-seo.md                 # San Jose local SEO guide
+│   ├── google-calendar-integration.md   # Calendar integration docs
+│   ├── google-search-console-quick-start.md # GSC setup (Chinese)
+│   └── seo-mobile-optimization.md       # Mobile SEO guide
 ├── next.config.ts             # Next.js configuration
 ├── tsconfig.json              # TypeScript configuration
 ├── tailwind.config.ts         # Tailwind configuration
@@ -356,6 +373,8 @@ Start here to understand the project:
 1. **[Documentation Index](docs/README.md)** - Complete overview and quick start
 2. **[Changelog](docs/CHANGELOG.md)** - Detailed project history and recent updates
 3. **[SEO Strategy](docs/seo-optimization.md)** - Search optimization plan and progress
+4. **[GEO Local SEO](docs/geo-local-seo.md)** - San Jose geographic targeting strategy
+5. **[Google Calendar Integration](docs/google-calendar-integration.md)** - Tour booking automation
 
 ### For Developers
 
@@ -373,14 +392,25 @@ Start here to understand the project:
 ### Key Documentation Files
 
 - **[README.md](docs/README.md)** - Documentation hub with quick start guide
-- **[CHANGELOG.md](docs/CHANGELOG.md)** - Complete project history (November 18, 2025)
-  - Shadcn/UI Component Enhancement
-  - Comprehensive SEO Optimization
-  - Image optimization and bug fixes
+- **[CHANGELOG.md](docs/CHANGELOG.md)** - Complete project history (November 19, 2025)
+  - Post-launch refinements (announcement banner, logo design, SEO)
+  - San Jose local SEO optimization (all 12 pages)
+  - Google Search Console verification
+  - Google Calendar integration
 - **[seo-optimization.md](docs/seo-optimization.md)** - SEO strategy document
+  - 80+ San Jose-specific keywords
   - Page-by-page optimization plan
-  - Target keywords and goals
   - Implementation progress tracking
+- **[geo-local-seo.md](docs/geo-local-seo.md)** - Geographic targeting guide
+  - Four-tier keyword strategy
+  - NAP consistency guidelines
+  - LocalBusiness schema
+  - Competitive analysis
+- **[google-calendar-integration.md](docs/google-calendar-integration.md)** - Calendar automation
+  - .ics file generation
+  - Google Calendar URL integration
+  - 24-hour reminders
+  - Testing checklist
 
 📖 **Always check [CHANGELOG.md](docs/CHANGELOG.md) first when resuming development!**
 
@@ -388,26 +418,29 @@ Start here to understand the project:
 
 ## 🔍 SEO Optimization Status
 
-### ✅ Completed (November 18, 2025)
-- **10/10 Pages** with comprehensive metadata (title, description, keywords)
-- **Open Graph** and **Twitter Card** tags on all pages
+### ✅ Completed (November 19, 2025)
+- **12/12 Pages** with San Jose local SEO optimization
+- **Google Search Console** verified and sitemap submitted
+- **80+ Location Keywords**: "San Jose", "San Jose, CA 95131", "2586 Seaboard Ave"
 - **LocalBusiness Schema** (JSON-LD) on homepage
-- **Sitemap.xml** with 10 routes and proper priorities
+- **Open Graph** and **Twitter Card** tags on all pages
+- **Sitemap.xml** with 12 routes submitted to GSC
 - **Robots.txt** with optimized crawling directives
-- **Image Alt Text** for all 7 core images with descriptive text
+- **Image Alt Text** for all images with descriptive text
 - **Canonical URLs** to prevent duplicate content issues
 
-### 🎯 Target Keywords
-- **Primary**: childcare San Jose, bilingual preschool, Mandarin English daycare
-- **Secondary**: infant care San Jose, toddler daycare, kindergarten prep, STEAM preschool
+### 🎯 Target Keywords (San Jose Local)
+- **Primary**: childcare San Jose 95131, bilingual preschool San Jose, daycare Seaboard Ave
+- **Secondary**: infant care San Jose, toddler daycare San Jose, kindergarten prep San Jose
+- **Geographic**: near me, San Jose CA, 95131 ZIP code
 
 ### 📊 Expected Results
-- Top 3 ranking for "childcare San Jose" within 6 months
-- 50% increase in organic traffic
-- Google Local Pack appearance
-- Enhanced social media sharing
+- Top 3 ranking for "childcare San Jose 95131" within 3 months
+- Google Local Pack appearance for "childcare near me" searches
+- 50% increase in organic traffic from San Jose area
+- Enhanced local map visibility
 
-**Full SEO Strategy**: [docs/seo-optimization.md](docs/seo-optimization.md)
+**Full SEO Strategy**: [docs/seo-optimization.md](docs/seo-optimization.md) · [GEO Optimization](docs/geo-local-seo.md)
 
 ---
 
@@ -450,8 +483,9 @@ EMAIL_TO=Center.admin@sunnychildcare.com
 ```
 
 **Build Output**:
-- ✅ 18 total routes (16 static, 2 dynamic)
+- ✅ 12 total routes with San Jose SEO
 - ✅ Optimized images with WebP/AVIF
+- ✅ Google Calendar integration with .ics attachments
 - ✅ TypeScript compilation passed
 - ✅ ESLint checks passed
 
@@ -480,15 +514,20 @@ Sunny Child Care provides high-quality Mandarin-English immersion childcare and 
 - **Nutritious Meals**: Chef-designed meals with organic options
 
 ### 30+ Years of Excellence
-Established in 1995, Sunny Child Care has been serving Bay Area families for over three decades with a commitment to developing confident, curious, and bilingual children.
+Established in 1995, Sunny Child Care has been serving San Jose and Bay Area families for over three decades with a commitment to developing confident, curious, and bilingual children.
+
+### 🎉 Coming Soon: Cupertino Location
+**Opening February 2026** - New location expanding to serve more families in the Bay Area!
 
 ### Why This Platform?
 This modern Next.js website showcases:
 - **Best Practices**: Latest React and Next.js patterns
-- **Bilingual Architecture**: Complete i18n implementation
-- **Performance**: Optimized for speed and SEO
+- **Bilingual Architecture**: Complete i18n implementation with language context
+- **Local SEO**: Comprehensive San Jose geographic targeting
+- **Performance**: Optimized for speed and SEO (Core Web Vitals)
 - **Accessibility**: WCAG 2.1 compliant design
-- **Maintainability**: Clean code with TypeScript
+- **Automation**: Google Calendar integration for tour bookings
+- **Maintainability**: Clean code with TypeScript and modular components
 
 ---
 
@@ -501,14 +540,24 @@ Built with modern web technologies:
 - [Radix UI](https://www.radix-ui.com/) - Accessible primitives
 - [Lucide](https://lucide.dev/) - Icon library
 - [Nodemailer](https://nodemailer.com/) - Email integration
+- [Google Fonts](https://fonts.google.com/) - Montserrat & Noto Sans TC fonts
+- [Vercel](https://vercel.com/) - Deployment platform
 
 ---
 
 ## 📄 License
 
-MIT License - see [LICENSE](LICENSE) file for details.
+MIT License
 
-Free to use for learning and reference. Please provide attribution if using significant portions of this codebase.
+Copyright (c) 2025 Sunny Child Care
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+See [LICENSE](LICENSE) file for full details.
 
 ---
 
@@ -520,71 +569,3 @@ Free to use for learning and reference. Please provide attribution if using sign
 
 **Built with ❤️ for Sunny Child Care | Serving San Jose families since 1995 | 自1995年起服務聖荷西家庭**
 
-## Overview
-
-This repo is stage one of the Sunny Child Care migration from a legacy Express + static HTML site to a fully componentized Next.js 16 application. The new stack gives us:
-
-- **App Router + Server Components** for fast, cacheable marketing pages
-- **shadcn/ui** with Tailwind v4 design tokens aligned to Sunny’s warm brand palette
-- **Modular content data** (`src/data/site.ts`) so marketing copy stays close to the code without repeating HTML
-- **Reusable sections** (hero, value grid, video spotlight, testimonials, CTA) that map directly to the original Sunny storytelling
-
-## Tech Stack
-
-- Next.js 16 · React 19 · TypeScript 5
-- Tailwind CSS 4 with custom tokens + Montserrat / Noto Sans TC fonts
-- shadcn/ui components (button, card, badge, navigation menu, sheet, separator)
-- Lucide icons, class-variance-authority utilities, tailwind-merge helpers
-
-## Getting Started
-
-Prereqs: Node.js 18.18+ (or 20+), npm 9+
-
-```powershell
-cd sunny-next
-npm install
-npm run dev
-```
-
-Visit [http://localhost:3000](http://localhost:3000) to explore the rebuilt homepage.
-
-## Available Scripts
-
-- `npm run dev` – start the local dev server
-- `npm run lint` – run ESLint against the entire project
-- `npm run build` – create an optimized production build
-- `npm run start` – serve the production build locally
-
-## Project Structure
-
-```
-src/
-	app/              # App Router entrypoints/layout
-	components/
-		layout/         # Header, footer
-		sections/       # Homepage sections (hero, testimonials, etc.)
-		ui/             # Generated shadcn/ui primitives
-	data/
-		site.ts         # Navigation, hero copy, value props, testimonials
-	lib/
-		fonts.ts        # Google font helpers
-		utils.ts        # cn() helper from shadcn
-```
-
-Public assets currently rely on gradients/typography; migrating existing imagery from the legacy repo is tracked as a follow-up task.
-
-## Migration Roadmap
-
-1. **Content parity** – bring in About, Programs, Admission, Resources, and seasonal pages as App Router routes backed by structured data files.
-2. **Interactive forms** – rebuild the tour request + contact workflow using React Hook Form + a Next.js API route wired to Nodemailer (leveraging the existing Gmail OAuth credentials).
-3. **Asset library** – import photos/icons from the legacy `docs/images` tree, optimize with `next/image`, and codify brand guidelines.
-4. **Localization** – reuse the Waymaker CPR language toggle to present key sections in both English and Traditional Chinese.
-5. **Deployment** – point Vercel (or preferred hosting) at this repo with environment secrets (`EMAIL_USER`, `EMAIL_PASSWORD`, etc.) configured.
-
-## Contributing
-
-1. Create a feature branch from `main`.
-2. Keep sections modular—most content should live in `src/data` or dedicated `sections/` components.
-3. Run `npm run lint` before opening a PR.
-
-Questions? Open an issue or ping the team on Slack—let’s keep the sunshine going ☀️
