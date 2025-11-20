@@ -159,7 +159,7 @@ export const heroContent = {
     },
     {
       label: { en: "Warm meals", zh: "每日熱餐" },
-      value: { en: "3 daily", zh: "每日 3 餐" },
+      value: { en: "3 meals a day", zh: "每日 3 餐" },
     },
   ],
 };
