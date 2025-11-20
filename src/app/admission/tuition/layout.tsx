@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Tuition & Openings | Schedule a Tour | Sunny Child Care San Jose",
+  title: "Tuition & Openings | Schedule a Tour | Sunny Child Care San Jose, CA",
   description:
-    "Explore tuition options and current openings at Sunny Child Care. Schedule a personalized campus tour to learn about our infant, toddler, preschool, and kindergarten programs in San Jose.",
+    "Explore tuition options and current openings at Sunny Child Care in San Jose, CA. Schedule a personalized campus tour to learn about our infant, toddler, preschool, and kindergarten programs. Competitive rates in San Jose area.",
   keywords: [
     "childcare tuition San Jose",
-    "daycare costs",
-    "preschool fees",
-    "schedule tour",
-    "childcare openings",
-    "enrollment availability",
-    "bilingual preschool rates",
-    "daycare pricing",
+    "daycare costs San Jose CA",
+    "preschool fees San Jose",
+    "schedule tour San Jose",
+    "childcare openings San Jose",
+    "enrollment availability San Jose",
+    "bilingual preschool rates San Jose",
+    "daycare pricing San Jose 95131",
+    "affordable childcare San Jose",
   ],
   openGraph: {
     title: "Tuition & Openings | Schedule Tour | Sunny Child Care",

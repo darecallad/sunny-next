@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { AnnouncementBanner } from "@/components/sections/announcement-banner";
 import { CtaBanner } from "@/components/sections/cta-banner";
 import { HeroSection } from "@/components/sections/hero-section";
 import { TestimonialsSection } from "@/components/sections/testimonials";
@@ -7,20 +8,22 @@ import { VideoSpotlight } from "@/components/sections/video-spotlight";
 import { LocalBusinessSchema } from "@/components/seo/local-business-schema";
 
 export const metadata: Metadata = {
-  title: "Sunny Child Care | Bilingual Childcare & Preschool in San Jose, CA",
+  title: "Sunny Child Care | Bilingual Childcare & Preschool in San Jose, CA 95131",
   description:
-    "Premier Mandarin-English immersion daycare in San Jose. Infant, toddler, preschool & kindergarten programs with nutritious meals, STEAM curriculum, and caring bilingual staff. Enroll today!",
+    "Premier Mandarin-English immersion daycare at 2586 Seaboard Ave, San Jose, CA 95131. Infant, toddler, preschool & kindergarten programs with nutritious meals, STEAM curriculum, and caring bilingual staff. Serving San Jose families since 1995. Enroll today!",
   keywords: [
     "childcare San Jose",
     "daycare San Jose",
     "preschool San Jose",
-    "bilingual preschool",
-    "Mandarin English daycare",
-    "Chinese immersion preschool",
+    "bilingual preschool San Jose",
+    "Mandarin English daycare San Jose",
+    "Chinese immersion preschool San Jose",
     "infant care San Jose",
-    "toddler daycare",
-    "kindergarten prep",
-    "STEAM preschool",
+    "toddler daycare San Jose",
+    "kindergarten prep San Jose",
+    "STEAM preschool San Jose",
+    "childcare San Jose 95131",
+    "daycare Seaboard Ave",
   ],
   openGraph: {
     title: "Sunny Child Care | Bilingual Childcare & Preschool in San Jose",
@@ -67,6 +70,7 @@ export default function HomePage() {
   return (
     <>
       <LocalBusinessSchema />
+      <AnnouncementBanner />
       <div className="space-y-0">
         <HeroSection />
         <ValueGrid />

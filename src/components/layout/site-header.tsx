@@ -33,7 +33,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[#27466f]/95 text-white shadow-lg shadow-black/10 backdrop-blur">
       <div className="container mx-auto flex items-center justify-between gap-4 px-4 py-4">
-        <Link href="/" className="inline-flex items-center rounded-3xl bg-white/5 px-4 py-2 shadow-lg shadow-black/30 ring-1 ring-white/15">
+        <Link href="/" className="inline-flex items-center px-4 py-2">
           <Image
             src="/images/Flogo.png"
             alt="Sunny Child Care - Bilingual Childcare & Preschool in San Jose logo"

@@ -24,7 +24,7 @@ export function SiteFooter() {
         <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr_1fr]">
           <div className="space-y-4">
             <div className="w-full max-w-sm">
-              <Link href="/" className="inline-flex w-full items-center justify-center rounded-3xl bg-white/5 px-4 py-3 shadow-lg shadow-black/30 ring-1 ring-white/10">
+              <Link href="/" className="inline-flex w-full items-center justify-center px-4 py-3">
                 <Image
                   src="/images/Flogo.png"
                   alt="Sunny Child Care - Bilingual Mandarin-English Preschool San Jose"

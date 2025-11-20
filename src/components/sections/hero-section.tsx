@@ -80,12 +80,12 @@ export function HeroSection() {
               <div className="relative bg-gradient-to-b from-[#2a3f5f] to-[#1a2940]">
                 <div className="flex flex-col gap-6 p-6">
                 <div className="flex items-center gap-3">
-                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#2a3f5f] p-2 shadow-lg shadow-black/40">
+                  <span className="inline-flex h-14 w-14 items-center justify-center p-2">
                     <Image
                       src="/images/sunny-logomark.png"
                       alt="Sunny Child Care logomark - sun icon representing bright education"
-                      width={40}
-                      height={40}
+                      width={48}
+                      height={48}
                       className="h-full w-full object-contain"
                     />
                   </span>

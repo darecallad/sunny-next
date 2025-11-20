@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Enrollment Process | How to Join Sunny Child Care in San Jose",
+  title: "Enrollment Process | How to Join Sunny Child Care in San Jose, CA",
   description:
-    "Simple 4-step enrollment at Sunny Child Care: Schedule a campus tour, submit application, complete enrollment via Brightwheel, and join our bilingual community. Start your journey today!",
+    "Simple 4-step enrollment at Sunny Child Care San Jose: Schedule a campus tour, submit application, complete enrollment via Brightwheel, and join our bilingual community. Serving San Jose families since 1995.",
   keywords: [
-    "childcare enrollment process",
+    "childcare enrollment process San Jose",
     "daycare admission San Jose",
-    "preschool enrollment steps",
-    "how to enroll",
+    "preschool enrollment steps San Jose CA",
+    "how to enroll San Jose",
     "Brightwheel enrollment",
     "campus tour San Jose",
-    "admission requirements",
+    "admission requirements San Jose",
+    "enroll childcare San Jose 95131",
   ],
   openGraph: {
     title: "Enrollment Process | Join Sunny Child Care",

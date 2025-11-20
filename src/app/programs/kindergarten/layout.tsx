@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Pre-K, TK & Kindergarten | School Readiness | Sunny Child Care",
+  title: "Pre-K, TK & Kindergarten | School Readiness | Sunny Child Care San Jose",
   description:
-    "Comprehensive kindergarten prep in San Jose with STEAM-focused curriculum. Math, science, literacy, bilingual education prepare children ages 4-6 for academic success in elementary school.",
+    "Comprehensive kindergarten prep in San Jose, CA with STEAM-focused curriculum. Math, science, literacy, bilingual education prepare children ages 4-6 for academic success. Serving San Jose elementary schools.",
   keywords: [
     "kindergarten prep San Jose",
     "TK program San Jose",
-    "transitional kindergarten",
-    "Pre-K San Jose",
-    "school readiness",
-    "kindergarten curriculum",
-    "STEAM kindergarten",
-    "bilingual kindergarten",
+    "transitional kindergarten San Jose",
+    "Pre-K San Jose CA",
+    "school readiness San Jose",
+    "kindergarten curriculum San Jose",
+    "STEAM kindergarten San Jose",
+    "bilingual kindergarten San Jose",
+    "kindergarten San Jose 95131",
   ],
   openGraph: {
     title: "Pre-K, TK & Kindergarten | School Readiness",

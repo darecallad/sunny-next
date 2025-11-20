@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Nutritious Meals & Menus | Sunny Child Care San Jose",
+  title: "Nutritious Meals & Menus | Sunny Child Care San Jose, CA",
   description:
-    "Chef-designed nutritious meals served daily at Sunny Child Care. View our rotating menu featuring warm lunches, organic milk, seasonal fruits. Accommodating dietary needs for healthy growing kids.",
+    "Chef-designed nutritious meals served daily at Sunny Child Care in San Jose. View our rotating menu featuring warm lunches, organic milk, seasonal fruits. Accommodating dietary needs for healthy growing kids.",
   keywords: [
-    "childcare nutrition",
+    "childcare nutrition San Jose",
     "preschool meals San Jose",
-    "daycare food menu",
-    "healthy childcare meals",
-    "nutritious lunch",
-    "organic milk",
-    "dietary accommodations",
-    "chef-designed meals",
+    "daycare food menu San Jose",
+    "healthy childcare meals San Jose CA",
+    "nutritious lunch San Jose",
+    "organic milk daycare",
+    "dietary accommodations San Jose",
+    "chef-designed meals San Jose",
+    "preschool menu San Jose 95131",
   ],
   openGraph: {
     title: "Nutritious Meals & Menus | Sunny Child Care",
