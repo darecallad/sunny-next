@@ -1,6 +1,6 @@
 "use client";
 
-import { MapPin, Phone, Mail, Clock, FileText, UtensilsCrossed } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, UtensilsCrossed } from "lucide-react";
 
 import { useLanguage } from "@/context/language-context";
 import { siteConfig } from "@/data/site";
@@ -30,11 +30,6 @@ export default function LocationsPage() {
       icon: Clock,
       label: { en: "Hours of Operation", zh: "營業時間" },
       value: siteConfig.contact.hours[locale],
-    },
-    {
-      icon: FileText,
-      label: { en: "License", zh: "執照號碼" },
-      value: "434416296 & 434416297",
     },
     {
       icon: UtensilsCrossed,
