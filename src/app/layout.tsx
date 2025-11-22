@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { siteConfig } from "@/data/site";
 import { LanguageProvider } from "@/context/language-context";
 import { montserrat, notoSans } from "@/lib/fonts";
+import { LocalBusinessSchema } from "@/components/seo/local-business-schema";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -87,6 +88,7 @@ export default function RootLayout({
   return (
     <html lang="en" data-scroll-behavior="smooth">
       <body className={`${montserrat.variable} ${notoSans.variable} antialiased`}>
+        <LocalBusinessSchema />
         <LanguageProvider>
           <div className="flex min-h-screen flex-col bg-background text-foreground">
             <SiteHeader />
