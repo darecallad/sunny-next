@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Preschool Program | Ages 2-6 | Mandarin-English | Sunny Child Care San Jose",
+  title: "Preschool Program | Ages 2-6 | Mandarin-English | Sunny Child Care San Jose | 幼兒園課程",
   description:
-    "Award-winning bilingual preschool in San Jose, CA for ages 2-6. Play-based learning, performing arts, STEAM curriculum, and daily Mandarin-English immersion. Serving San Jose families since 1995.",
+    "Award-winning bilingual preschool in San Jose, CA for ages 2-6. Play-based learning, performing arts, STEAM curriculum, and daily Mandarin-English immersion. 聖荷西雙語幼兒園，提供 2-6 歲幼兒全方位中英沉浸式教育。",
   keywords: [
     "preschool San Jose",
     "bilingual preschool San Jose",
@@ -14,11 +14,15 @@ export const metadata: Metadata = {
     "dual language preschool San Jose",
     "play-based learning San Jose",
     "preschool San Jose 95131",
+    "幼兒園課程",
+    "雙語幼兒園",
+    "聖荷西幼兒園",
+    "中文幼兒園",
   ],
   openGraph: {
-    title: "Preschool Program | Ages 2-6 | Mandarin-English",
+    title: "Preschool Program | Ages 2-6 | Mandarin-English | 幼兒園課程",
     description:
-      "Award-winning bilingual preschool with play-based learning, performing arts, STEAM curriculum, and Mandarin-English immersion. Ages 2-6 years.",
+      "Award-winning bilingual preschool with play-based learning, performing arts, STEAM curriculum, and Mandarin-English immersion. Ages 2-6 years. 聖荷西雙語幼兒園。",
     url: "https://www.sunnychildcare.com/programs/preschool",
     siteName: "Sunny Child Care",
     locale: "en_US",

@@ -23,8 +23,8 @@ export function LocalBusinessSchema() {
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: "37.3951",
-      longitude: "-121.9113",
+      latitude: "37.3789363",
+      longitude: "-121.9381561",
     },
     telephone: "(510) 333-5943",
     email: "Center.admin@sunnychildcare.com",
@@ -57,9 +57,9 @@ export function LocalBusinessSchema() {
     foundingDate: "1995",
     slogan: "Grow confident, curious, and bilingual",
     sameAs: [
-      // Add social media URLs when available
-      // "https://www.facebook.com/sunnychildcare",
-      // "https://www.instagram.com/sunnychildcare",
+      "https://www.instagram.com/sunnychildcare",
+      "https://www.facebook.com/sunnychildcare",
+      "https://www.youtube.com/@sunnychildcare",
     ],
     hasOfferCatalog: {
       "@type": "OfferCatalog",

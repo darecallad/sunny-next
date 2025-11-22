@@ -8,11 +8,12 @@ import { VideoSpotlight } from "@/components/sections/video-spotlight";
 import { LocalBusinessSchema } from "@/components/seo/local-business-schema";
 
 export const metadata: Metadata = {
-  title: "Sunny Child Care | Bilingual Childcare & Preschool in San Jose, CA 95131",
+  title: "Sunny Child Care | San Jose Bilingual Preschool & Childcare | 中英雙語幼兒園",
   description:
-    "Premier Mandarin-English immersion daycare at 2586 Seaboard Ave, San Jose, CA 95131. Infant, toddler, preschool & kindergarten programs with nutritious meals, STEAM curriculum, and caring bilingual staff. Serving San Jose families since 1995. Enroll today!",
+    "Top-rated bilingual childcare in San Jose (95131). Mandarin immersion preschool, infant care & kindergarten. 聖荷西首選中英雙語幼兒園，提供嬰幼兒照顧與學前教育。Enroll today!",
   keywords: [
     "childcare San Jose",
+    "San Jose childcare",
     "daycare San Jose",
     "preschool San Jose",
     "bilingual preschool San Jose",
@@ -24,11 +25,18 @@ export const metadata: Metadata = {
     "STEAM preschool San Jose",
     "childcare San Jose 95131",
     "daycare Seaboard Ave",
+    "san jose 雙語幼兒園",
+    "聖荷西幼兒園",
+    "聖荷西托兒所",
+    "中文幼兒園 San Jose",
+    "雙語教育",
+    "Mandarin immersion",
+    "child care near me",
   ],
   openGraph: {
-    title: "Sunny Child Care | Bilingual Childcare & Preschool in San Jose",
+    title: "Sunny Child Care | San Jose Bilingual Preschool & Childcare | 中英雙語幼兒園",
     description:
-      "Premier Mandarin-English immersion daycare with infant, toddler, preschool & kindergarten programs. Nutritious meals, STEAM curriculum, caring bilingual staff.",
+      "Premier Mandarin-English immersion daycare with infant, toddler, preschool & kindergarten programs. Nutritious meals, STEAM curriculum, caring bilingual staff. 聖荷西中英雙語幼兒園。",
     url: "https://www.sunnychildcare.com",
     siteName: "Sunny Child Care",
     locale: "en_US",
@@ -45,7 +53,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sunny Child Care | Bilingual Childcare in San Jose",
+    title: "Sunny Child Care | San Jose Bilingual Preschool & Childcare",
     description:
       "Premier Mandarin-English immersion daycare with comprehensive programs for infants through kindergarten. Enroll today!",
     images: ["/images/banners/hero-pexels.jpg"],

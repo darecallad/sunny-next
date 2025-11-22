@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Tuition & Openings | Schedule a Tour | Sunny Child Care San Jose, CA",
+  title: "Tuition & Openings | Schedule a Tour | Sunny Child Care San Jose | 學費與參觀",
   description:
-    "Explore tuition options and current openings at Sunny Child Care in San Jose, CA. Schedule a personalized campus tour to learn about our infant, toddler, preschool, and kindergarten programs. Competitive rates in San Jose area.",
+    "Explore tuition options and current openings at Sunny Child Care in San Jose, CA. Schedule a personalized campus tour to learn about our infant, toddler, preschool, and kindergarten programs. 查詢聖荷西 Sunny Child Care 學費與名額，立即預約參觀。",
   keywords: [
     "childcare tuition San Jose",
     "daycare costs San Jose CA",
@@ -14,11 +14,15 @@ export const metadata: Metadata = {
     "bilingual preschool rates San Jose",
     "daycare pricing San Jose 95131",
     "affordable childcare San Jose",
+    "學費",
+    "預約參觀",
+    "幼兒園名額",
+    "聖荷西托兒費用",
   ],
   openGraph: {
-    title: "Tuition & Openings | Schedule Tour | Sunny Child Care",
+    title: "Tuition & Openings | Schedule Tour | Sunny Child Care | 學費與參觀",
     description:
-      "Discover competitive tuition rates and current openings. Schedule your personalized campus tour to find the perfect program for your child aged 0-6 years.",
+      "Discover competitive tuition rates and current openings. Schedule your personalized campus tour to find the perfect program for your child aged 0-6 years. 查詢學費與名額，預約參觀。",
     url: "https://www.sunnychildcare.com/admission/tuition",
     siteName: "Sunny Child Care",
     locale: "en_US",

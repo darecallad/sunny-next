@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Pre-K, TK & Kindergarten | School Readiness | Sunny Child Care San Jose",
+  title: "Pre-K, TK & Kindergarten | School Readiness | Sunny Child Care San Jose | 學前班",
   description:
-    "Comprehensive kindergarten prep in San Jose, CA with STEAM-focused curriculum. Math, science, literacy, bilingual education prepare children ages 4-6 for academic success. Serving San Jose elementary schools.",
+    "Comprehensive kindergarten prep in San Jose, CA with STEAM-focused curriculum. Math, science, literacy, bilingual education prepare children ages 4-6 for academic success. 聖荷西學前班與幼小銜接課程，為孩子入學做好充分準備。",
   keywords: [
     "kindergarten prep San Jose",
     "TK program San Jose",
@@ -14,11 +14,15 @@ export const metadata: Metadata = {
     "STEAM kindergarten San Jose",
     "bilingual kindergarten San Jose",
     "kindergarten San Jose 95131",
+    "學前班",
+    "幼小銜接",
+    "聖荷西幼兒園",
+    "雙語學前教育",
   ],
   openGraph: {
-    title: "Pre-K, TK & Kindergarten | School Readiness",
+    title: "Pre-K, TK & Kindergarten | School Readiness | 學前班",
     description:
-      "Comprehensive kindergarten prep with STEAM curriculum, math, science, literacy, and bilingual education. Ages 4-6 ready for elementary success.",
+      "Comprehensive kindergarten prep with STEAM curriculum, math, science, literacy, and bilingual education. Ages 4-6 ready for elementary success. 聖荷西優質學前教育。",
     url: "https://www.sunnychildcare.com/programs/kindergarten",
     siteName: "Sunny Child Care",
     locale: "en_US",

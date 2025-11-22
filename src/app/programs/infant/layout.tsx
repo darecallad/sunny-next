@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Infant & Toddler Care | Ages 0-3 | Sunny Child Care San Jose, CA",
+  title: "Infant & Toddler Care | Ages 0-3 | Sunny Child Care San Jose | 嬰幼兒照顧",
   description:
-    "Nurturing infant and toddler care in San Jose, CA with bilingual exposure. Flexible schedules, sensory activities, developmental focus for ages 6-36 months. Low teacher-child ratios, nutritious meals daily at our San Jose location.",
+    "Nurturing infant and toddler care in San Jose, CA with bilingual exposure. Flexible schedules, sensory activities, developmental focus for ages 6-36 months. 聖荷西專業嬰幼兒照顧，提供 0-3 歲寶寶安全溫馨的雙語成長環境。",
   keywords: [
     "infant care San Jose",
     "toddler daycare San Jose",
@@ -14,11 +14,15 @@ export const metadata: Metadata = {
     "ages 0-3 daycare San Jose",
     "infant toddler care San Jose 95131",
     "baby daycare San Jose",
+    "嬰幼兒照顧",
+    "托嬰中心",
+    "聖荷西托嬰",
+    "寶寶照顧",
   ],
   openGraph: {
-    title: "Infant & Toddler Care | Ages 0-3 | Sunny Child Care",
+    title: "Infant & Toddler Care | Ages 0-3 | Sunny Child Care | 嬰幼兒照顧",
     description:
-      "Loving care for infants and toddlers ages 6-36 months. Bilingual exposure, sensory play, flexible schedules, and developmental activities in a nurturing environment.",
+      "Loving care for infants and toddlers ages 6-36 months. Bilingual exposure, sensory play, flexible schedules, and developmental activities in a nurturing environment. 聖荷西嬰幼兒照顧首選。",
     url: "https://www.sunnychildcare.com/programs/infant",
     siteName: "Sunny Child Care",
     locale: "en_US",
