@@ -40,16 +40,16 @@ export default function PreschoolPage() {
       </section>
 
       {/* Schedule Section */}
-      <section className="bg-gray-50 py-16">
+      <section className="bg-secondary/20 py-16">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-5xl">
-            <h2 className="text-3xl font-semibold text-[#324f7a] text-center mb-8">
+            <h2 className="text-3xl font-semibold text-primary text-center mb-8">
               {content.scheduleTitle[locale]}
             </h2>
             <div className="overflow-x-auto">
-              <table className="w-full bg-white rounded-lg shadow-sm border border-gray-200">
+              <table className="w-full bg-white rounded-lg shadow-sm border border-border">
                 <thead>
-                  <tr className="bg-[#324f7a] text-white">
+                  <tr className="bg-primary text-white">
                     <th className="px-6 py-4 text-left text-sm font-semibold">
                       {locale === "en" ? "Time" : "時間"}
                     </th>
@@ -60,12 +60,12 @@ export default function PreschoolPage() {
                 </thead>
                 <tbody>
                   {content.schedule.map((item, index) => (
-                    <tr key={index} className={index % 2 === 0 ? "bg-white" : "bg-gray-50"}>
-                      <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">
+                    <tr key={index} className={index % 2 === 0 ? "bg-white" : "bg-secondary/10"}>
+                      <td className="px-6 py-3 text-sm text-muted-foreground whitespace-nowrap">
                         {item.time}
                       </td>
                       <td className={`px-6 py-3 text-sm ${
-                        item.isBold ? "font-semibold text-[#324f7a]" : "text-gray-700"
+                        item.isBold ? "font-semibold text-primary" : "text-muted-foreground"
                       }`}>
                         {item.activity}
                       </td>
@@ -79,12 +79,12 @@ export default function PreschoolPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-white py-16">
+      <section className="bg-background py-16">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-semibold text-foreground">
             {locale === "en" ? "Ready to Get Started?" : "準備好開始了嗎？"}
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-700">
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
             {locale === "en"
               ? "Schedule a tour to experience our nurturing environment and meet our dedicated team."
               : "預約參觀，體驗我們溫馨的環境，認識我們敬業的團隊。"}
@@ -92,13 +92,13 @@ export default function PreschoolPage() {
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link
               href="/admission/tuition"
-              className="inline-flex h-11 items-center justify-center rounded-md bg-[#f2a63b] px-8 text-sm font-medium text-white shadow transition-colors hover:bg-[#f2a63b]/90"
+              className="inline-flex h-11 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-white shadow transition-colors hover:bg-primary/90"
             >
               {locale === "en" ? "Schedule a Tour" : "預約參觀"}
             </Link>
             <a
               href={`tel:${siteConfig.contact.phone.replace(/\D/g, "")}`}
-              className="inline-flex h-11 items-center justify-center rounded-md border border-[#324f7a] bg-transparent px-8 text-sm font-medium text-[#324f7a] shadow-sm transition-colors hover:bg-[#324f7a]/10"
+              className="inline-flex h-11 items-center justify-center rounded-md border border-primary bg-transparent px-8 text-sm font-medium text-primary shadow-sm transition-colors hover:bg-primary/10"
             >
               {locale === "en" ? `Call ${siteConfig.contact.phone}` : `電話 ${siteConfig.contact.phone}`}
             </a>

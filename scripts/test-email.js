@@ -63,12 +63,12 @@ Sunny Child Care - Email System Test
   <head>
     <meta charset="utf-8">
     <style>
-      body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+      body { font-family: Arial, sans-serif; line-height: 1.6; color: #424242; }
       .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-      .header { background-color: #324f7a; color: white; padding: 20px; text-align: center; border-radius: 5px; }
-      .content { background-color: #f9f9f9; padding: 30px; border-radius: 5px; margin-top: 20px; }
-      .success { background-color: #d4edda; border-left: 4px solid #28a745; padding: 15px; margin: 20px 0; }
-      .footer { margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; text-align: center; color: #666; font-size: 12px; }
+      .header { background-color: #7CB342; color: white; padding: 20px; text-align: center; border-radius: 5px; }
+      .content { background-color: #FFFFFF; padding: 30px; border-radius: 5px; margin-top: 20px; border: 1px solid #FFE0B2; }
+      .success { background-color: #F1F8E9; border-left: 4px solid #7CB342; padding: 15px; margin: 20px 0; }
+      .footer { margin-top: 30px; padding-top: 20px; border-top: 1px solid #FFE0B2; text-align: center; color: #757575; font-size: 12px; }
     </style>
   </head>
   <body>

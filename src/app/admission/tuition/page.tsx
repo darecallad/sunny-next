@@ -191,7 +191,7 @@ export default function TuitionPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-[#324f7a]/5">
+    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
       {/* Hero Section */}
       <section 
         className="border-b border-border/40 py-16 bg-cover bg-center relative"
@@ -222,7 +222,7 @@ export default function TuitionPage() {
                 <form onSubmit={handleSubmit} className="space-y-8">
                   {/* Parent Information */}
                   <div>
-                    <h2 className="mb-6 flex items-center gap-2 text-2xl font-semibold text-[#324f7a]">
+                    <h2 className="mb-6 flex items-center gap-2 text-2xl font-semibold text-primary">
                       <Users className="h-6 w-6" />
                       {locale === "en" ? "Your Information" : "您的資訊"}
                     </h2>
@@ -275,23 +275,23 @@ export default function TuitionPage() {
                   </div>
 
                   {/* Child Information */}
-                  <div className="border-t border-gray-200 pt-8">
-                    <h2 className="mb-6 flex items-center gap-2 text-2xl font-semibold text-[#324f7a]">
+                  <div className="border-t border-border pt-8">
+                    <h2 className="mb-6 flex items-center gap-2 text-2xl font-semibold text-primary">
                       <Users className="h-6 w-6" />
                       {locale === "en" ? "Child Information" : "子女資訊"} *
                     </h2>
                     <div className="space-y-4">
                       {children.map((child, index) => (
-                        <div key={index} className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+                        <div key={index} className="rounded-lg border border-border bg-secondary/10 p-4">
                           <div className="mb-3 flex items-center justify-between">
-                            <p className="font-medium text-gray-700">
+                            <p className="font-medium text-foreground">
                               {locale === "en" ? `Child ${index + 1} - Date of Birth` : `子女 ${index + 1} - 出生日期`}
                             </p>
                             {children.length > 1 && (
                               <button
                                 type="button"
                                 onClick={() => removeChild(index)}
-                                className="text-sm text-red-600 hover:text-red-700"
+                                className="text-sm text-destructive hover:text-destructive/80"
                               >
                                 {locale === "en" ? "Remove" : "移除"}
                               </button>
@@ -299,7 +299,7 @@ export default function TuitionPage() {
                           </div>
                           <div className="grid grid-cols-3 gap-3">
                             <div className="space-y-1">
-                              <Label htmlFor={`child-${index}-month`} className="text-sm text-gray-600">
+                              <Label htmlFor={`child-${index}-month`} className="text-sm text-muted-foreground">
                                 {locale === "en" ? "Month" : "月"}
                               </Label>
                               <Input
@@ -315,7 +315,7 @@ export default function TuitionPage() {
                               />
                             </div>
                             <div className="space-y-1">
-                              <Label htmlFor={`child-${index}-day`} className="text-sm text-gray-600">
+                              <Label htmlFor={`child-${index}-day`} className="text-sm text-muted-foreground">
                                 {locale === "en" ? "Day" : "日"}
                               </Label>
                               <Input
@@ -331,7 +331,7 @@ export default function TuitionPage() {
                               />
                             </div>
                             <div className="space-y-1">
-                              <Label htmlFor={`child-${index}-year`} className="text-sm text-gray-600">
+                              <Label htmlFor={`child-${index}-year`} className="text-sm text-muted-foreground">
                                 {locale === "en" ? "Year" : "年"}
                               </Label>
                               <Input
@@ -353,7 +353,7 @@ export default function TuitionPage() {
                         type="button"
                         onClick={addChild}
                         variant="outline"
-                        className="w-full border-[#324f7a] text-[#324f7a] hover:bg-[#324f7a]/10"
+                        className="w-full border-primary text-primary hover:bg-primary/10"
                       >
                         + {locale === "en" ? "Add Another Child" : "新增子女"}
                       </Button>
@@ -361,8 +361,8 @@ export default function TuitionPage() {
                   </div>
 
                   {/* Start Date */}
-                  <div className="border-t border-gray-200 pt-8">
-                    <h2 className="mb-6 flex items-center gap-2 text-2xl font-semibold text-[#324f7a]">
+                  <div className="border-t border-border pt-8">
+                    <h2 className="mb-6 flex items-center gap-2 text-2xl font-semibold text-primary">
                       <Clock className="h-6 w-6" />
                       {locale === "en" ? "Timeline" : "時間規劃"}
                     </h2>
@@ -406,7 +406,7 @@ export default function TuitionPage() {
                   </div>
 
                   {/* Comments */}
-                  <div className="border-t border-gray-200 pt-8">
+                  <div className="border-t border-border pt-8">
                     <div className="space-y-2">
                       <Label htmlFor="message">
                         {locale === "en" ? "Comments or Questions" : "備註或問題"}
@@ -421,11 +421,11 @@ export default function TuitionPage() {
                   </div>
 
                   {/* Submit Button */}
-                  <div className="border-t border-gray-200 pt-8">
+                  <div className="border-t border-border pt-8">
                     <Button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-[#f2a63b] py-6 text-lg font-semibold text-white hover:bg-[#f2a63b]/90 disabled:opacity-50"
+                      className="w-full bg-primary py-6 text-lg font-semibold text-white hover:bg-primary/90 disabled:opacity-50"
                     >
                       {isSubmitting
                         ? locale === "en"

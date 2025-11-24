@@ -89,20 +89,20 @@ export default function LocationsPage() {
               <div className="space-y-6">
                 {locationInfo.map((item) => (
                   <div key={item.label.en} className="flex items-start gap-4">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#324f7a]/10">
-                      <item.icon className="h-6 w-6 text-[#324f7a]" />
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-secondary">
+                      <item.icon className="h-6 w-6 text-primary" />
                     </div>
                     <div>
                       <p className="font-semibold text-foreground">{item.label[locale]}</p>
                       {item.href ? (
                         <a
                           href={item.href}
-                          className="mt-1 block text-gray-700 transition-colors hover:text-[#f2a63b]"
+                          className="mt-1 block text-muted-foreground transition-colors hover:text-primary"
                         >
                           {item.value}
                         </a>
                       ) : (
-                        <p className="mt-1 text-gray-700">{item.value}</p>
+                        <p className="mt-1 text-muted-foreground">{item.value}</p>
                       )}
                     </div>
                   </div>
@@ -114,12 +114,12 @@ export default function LocationsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="border-y border-border/40 bg-gradient-to-r from-[#f2a63b]/10 via-[#f2a63b]/5 to-white py-16">
+      <section className="border-y border-border/40 bg-secondary/20 py-16">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-semibold text-foreground">
             {locale === "en" ? "Ready to visit?" : "準備好參觀了嗎？"}
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-700">
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
             {locale === "en"
               ? "Schedule a personalized tour and see our classrooms, meet our bilingual teachers, and learn about our programs."
               : "預約專屬導覽，參觀教室、認識雙語師資，了解我們的課程內容。"}
@@ -127,13 +127,13 @@ export default function LocationsPage() {
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <a
               href="/admission/tuition"
-              className="inline-flex h-11 items-center justify-center rounded-md bg-[#f2a63b] px-8 text-sm font-medium text-white shadow transition-colors hover:bg-[#f2a63b]/90"
+              className="inline-flex h-11 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-white shadow transition-colors hover:bg-primary/90"
             >
               {locale === "en" ? "Schedule a Tour" : "預約參觀"}
             </a>
             <a
               href={`tel:${siteConfig.contact.phone.replace(/\D/g, "")}`}
-              className="inline-flex h-11 items-center justify-center rounded-md border border-[#324f7a] bg-transparent px-8 text-sm font-medium text-[#324f7a] shadow-sm transition-colors hover:bg-[#324f7a]/10"
+              className="inline-flex h-11 items-center justify-center rounded-md border border-primary bg-transparent px-8 text-sm font-medium text-primary shadow-sm transition-colors hover:bg-primary/10"
             >
               {locale === "en" ? "Call Us" : "電話聯絡"}
             </a>

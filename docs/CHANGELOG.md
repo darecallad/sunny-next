@@ -2,6 +2,28 @@
 
 All notable changes to the Sunny Child Care Next.js project will be documented in this file.
 
+## [November 24, 2025] - Visual Redesign & SEO Updates
+
+### 🎨 Visual Redesign: Nature & Growth
+**Reverted to the original "Nature & Growth" color scheme:**
+- **Primary:** Fresh Green (#7CB342) - Used for buttons, headers, and accents
+- **Secondary:** Cream (#FFF3E0) - Used for backgrounds and sidebars
+- **Accent:** Warm Orange (#FF9800) - Used for highlights and call-to-actions
+- **Background:** White (#FFFFFF) - Clean, fresh look
+- **Text:** Dark Gray (#424242) - High contrast for readability
+- **Updates Applied To:**
+  - Global CSS variables (`globals.css`)
+  - Email templates in API routes (`/api/tour`, `/api/contact`, `/api/send-reminders`)
+  - Test email script (`scripts/test-email.js`)
+
+### 🔍 SEO Enhancements
+**Targeted optimization for "San Jose day care":**
+- Added "San Jose day care" to high-priority keywords in Homepage metadata
+- Added "San Jose day care" to global keywords in Root Layout
+- Reinforced local search presence for San Jose area terms
+
+---
+
 ## [November 19, 2025] - Post-Launch Updates & SEO Enhancements
 
 ### 🚀 Post-Launch Improvements

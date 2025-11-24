@@ -66,17 +66,17 @@ async function sendReminderEmail(booking: any) {
       <head>
         <meta charset="utf-8">
         <style>
-          body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+          body { font-family: Arial, sans-serif; line-height: 1.6; color: #424242; }
           .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-          .header { background-color: #324f7a; color: white; padding: 30px; text-align: center; border-radius: 5px 5px 0 0; }
-          .content { background-color: #f9f9f9; padding: 30px; border-radius: 0 0 5px 5px; }
-          .highlight { background-color: #fff; padding: 20px; border-left: 4px solid #f2a63b; margin: 20px 0; border-radius: 3px; }
-          .info-box { background-color: #fff; padding: 15px; margin: 15px 0; border-radius: 3px; }
-          .button { background-color: #f2a63b; color: white; padding: 15px 30px; text-decoration: none; display: inline-block; border-radius: 5px; margin: 20px 0; font-weight: bold; }
-          .footer { margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; text-align: center; color: #666; font-size: 12px; }
+          .header { background-color: #7CB342; color: white; padding: 30px; text-align: center; border-radius: 5px 5px 0 0; }
+          .content { background-color: #FFFFFF; padding: 30px; border-radius: 0 0 5px 5px; }
+          .highlight { background-color: #FFF3E0; padding: 20px; border-left: 4px solid #FF9800; margin: 20px 0; border-radius: 3px; }
+          .info-box { background-color: #FFFFFF; padding: 15px; margin: 15px 0; border-radius: 3px; }
+          .button { background-color: #FF9800; color: white; padding: 15px 30px; text-decoration: none; display: inline-block; border-radius: 5px; margin: 20px 0; font-weight: bold; }
+          .footer { margin-top: 30px; padding-top: 20px; border-top: 1px solid #FFE0B2; text-align: center; color: #757575; font-size: 12px; }
           h1 { margin: 0; font-size: 28px; }
-          h2 { color: #324f7a; font-size: 20px; margin-top: 0; }
-          .label { font-weight: bold; color: #324f7a; }
+          h2 { color: #7CB342; font-size: 20px; margin-top: 0; }
+          .label { font-weight: bold; color: #7CB342; }
         </style>
       </head>
       <body>
@@ -98,8 +98,8 @@ async function sendReminderEmail(booking: any) {
               <p><span class="label">${isEnglish ? "Tour Language" : "導覽語言"}:</span> ${booking.tourDateTime.includes("Chinese") ? (isEnglish ? "Chinese (Mandarin)" : "中文（國語）") : (isEnglish ? "English" : "英文")}</p>
             </div>
 
-            <div style="background-color: #fff4e6; padding: 20px; border-radius: 5px; margin: 20px 0;">
-              <h3 style="margin-top: 0; color: #324f7a;">📍 ${isEnglish ? "Location" : "地點"}</h3>
+            <div style="background-color: #FFF3E0; padding: 20px; border-radius: 5px; margin: 20px 0;">
+              <h3 style="margin-top: 0; color: #7CB342;">📍 ${isEnglish ? "Location" : "地點"}</h3>
               <p><strong>Sunny Child Care Center</strong><br>
               2586 Seaboard Ave<br>
               San Jose, CA 95131</p>
@@ -107,8 +107,8 @@ async function sendReminderEmail(booking: any) {
             </div>
 
             ${isEnglish ? `
-            <div style="margin: 30px 0; padding: 20px; background-color: #e8f4f8; border-radius: 5px;">
-              <h3 style="margin-top: 0; color: #324f7a;">💡 What to Expect</h3>
+            <div style="margin: 30px 0; padding: 20px; background-color: #F1F8E9; border-radius: 5px;">
+              <h3 style="margin-top: 0; color: #7CB342;">💡 What to Expect</h3>
               <ul style="margin: 10px 0;">
                 <li>Tour of our classrooms and facilities</li>
                 <li>Meet our experienced teachers</li>
@@ -117,8 +117,8 @@ async function sendReminderEmail(booking: any) {
               </ul>
             </div>
             ` : `
-            <div style="margin: 30px 0; padding: 20px; background-color: #e8f4f8; border-radius: 5px;">
-              <h3 style="margin-top: 0; color: #324f7a;">💡 參觀內容</h3>
+            <div style="margin: 30px 0; padding: 20px; background-color: #F1F8E9; border-radius: 5px;">
+              <h3 style="margin-top: 0; color: #7CB342;">💡 參觀內容</h3>
               <ul style="margin: 10px 0;">
                 <li>參觀教室和設施</li>
                 <li>認識經驗豐富的教師團隊</li>

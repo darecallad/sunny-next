@@ -132,19 +132,19 @@ export async function POST(request: NextRequest) {
         <head>
           <meta charset="utf-8">
           <style>
-            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+            body { font-family: Arial, sans-serif; line-height: 1.6; color: #424242; }
             .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-            .header { background-color: #324f7a; color: white; padding: 20px; text-align: center; }
-            .content { background-color: #f9f9f9; padding: 30px; border-radius: 5px; margin-top: 20px; }
+            .header { background-color: #7CB342; color: white; padding: 20px; text-align: center; }
+            .content { background-color: #FFFFFF; padding: 30px; border-radius: 5px; margin-top: 20px; }
             .section { margin-bottom: 25px; }
-            .section-title { font-size: 18px; font-weight: bold; color: #324f7a; margin-bottom: 10px; border-bottom: 2px solid #f2a63b; padding-bottom: 5px; }
+            .section-title { font-size: 18px; font-weight: bold; color: #7CB342; margin-bottom: 10px; border-bottom: 2px solid #FF9800; padding-bottom: 5px; }
             .field { margin-bottom: 10px; }
-            .label { font-weight: bold; color: #324f7a; }
+            .label { font-weight: bold; color: #7CB342; }
             .value { margin-left: 10px; }
-            .message-box { background-color: white; padding: 20px; border-left: 4px solid #f2a63b; margin-top: 15px; }
-            .calendar-btn { display: inline-block; background-color: #f2a63b; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; font-weight: bold; margin: 10px 5px; }
-            .calendar-note { background-color: #fff3cd; border-left: 4px solid #f2a63b; padding: 15px; margin: 20px 0; }
-            .footer { margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; text-align: center; color: #666; font-size: 12px; }
+            .message-box { background-color: white; padding: 20px; border-left: 4px solid #FF9800; margin-top: 15px; }
+            .calendar-btn { display: inline-block; background-color: #FF9800; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; font-weight: bold; margin: 10px 5px; }
+            .calendar-note { background-color: #FFF3E0; border-left: 4px solid #FF9800; padding: 15px; margin: 20px 0; }
+            .footer { margin-top: 30px; padding-top: 20px; border-top: 1px solid #FFE0B2; text-align: center; color: #757575; font-size: 12px; }
           </style>
         </head>
         <body>

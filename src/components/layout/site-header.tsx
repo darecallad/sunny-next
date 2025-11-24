@@ -31,7 +31,7 @@ export function SiteHeader() {
   const { locale } = useLanguage();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#27466f]/95 text-white shadow-lg shadow-black/10 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-foreground/95 text-white shadow-lg shadow-black/10 backdrop-blur">
       <div className="container mx-auto flex items-center justify-between gap-4 px-4 py-4">
         <Link href="/" className="inline-flex items-center px-4 py-2">
           <Image
@@ -103,14 +103,14 @@ export function SiteHeader() {
         <div className="hidden flex-1 items-center justify-end gap-5 md:flex">
           <LanguageToggle />
           <div className="flex flex-col text-right">
-            <p className="text-[0.65rem] font-semibold uppercase tracking-[0.55em] text-[#f6e4a6]">
+            <p className="text-[0.65rem] font-semibold uppercase tracking-[0.55em] text-secondary">
               {locale === "en" ? "Call us" : "專線"}
             </p>
             <a
               className="inline-flex items-center gap-3 text-2xl font-bold text-white"
               href={`tel:${siteConfig.contact.phone.replace(/\D/g, "")}`}
             >
-              <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[#f6e4a6]/60 text-[#f6e4a6]">
+              <span className="flex h-9 w-9 items-center justify-center rounded-full border border-secondary/60 text-secondary">
                 <Phone className="h-4 w-4" />
               </span>
               <span className="tracking-wide">{siteConfig.contact.phone}</span>
@@ -119,7 +119,7 @@ export function SiteHeader() {
           <Button
             asChild
             size="lg"
-            className="rounded-full bg-[#f2a63b] px-8 text-base font-semibold text-[#1f2b3d] shadow-lg shadow-black/30 hover:bg-[#e7932c]"
+            className="rounded-full bg-primary px-8 text-base font-semibold text-primary-foreground shadow-lg shadow-black/30 hover:bg-primary/90"
           >
             <Link href="/admission/tuition">{locale === "en" ? "Book a tour" : "預約參觀"}</Link>
           </Button>

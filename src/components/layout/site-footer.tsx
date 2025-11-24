@@ -19,7 +19,7 @@ export function SiteFooter() {
   });
 
   return (
-    <footer className="bg-[#27466f] text-white">
+    <footer className="bg-foreground text-white">
       <div className="container mx-auto space-y-8 px-4 py-12">
         <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr_1fr]">
           <div className="space-y-4">
@@ -39,14 +39,14 @@ export function SiteFooter() {
             </p>
           </div>
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-wide text-amber-200">
+            <h4 className="text-xs font-semibold uppercase tracking-wide text-secondary">
               {locale === "en" ? "Contact us" : "聯絡資訊"}
             </h4>
             <div className="mt-3 space-y-1 text-sm">
               <p className="font-semibold text-white">{siteConfig.contact.address}</p>
               <p>{siteConfig.contact.hours[locale]}</p>
               <p>
-                <span className="font-semibold text-amber-200">
+                <span className="font-semibold text-secondary">
                   {locale === "en" ? "Phone" : "電話"}
                 </span>{" "}
                 <Link
@@ -57,7 +57,7 @@ export function SiteFooter() {
                 </Link>
               </p>
               <p>
-                <span className="font-semibold text-amber-200">Email</span>{" "}
+                <span className="font-semibold text-secondary">Email</span>{" "}
                 <Link className="text-white" href={`mailto:${siteConfig.contact.email}`}>
                   {siteConfig.contact.email}
                 </Link>
@@ -65,7 +65,7 @@ export function SiteFooter() {
             </div>
           </div>
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-wide text-amber-200">
+            <h4 className="text-xs font-semibold uppercase tracking-wide text-secondary">
               {locale === "en" ? "Quick links" : "快速連結"}
             </h4>
             <ul className="mt-3 columns-2 gap-4 text-sm">

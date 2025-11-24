@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     "childcare San Jose",
     "San Jose childcare",
     "daycare San Jose",
+    "San Jose day care",
     "preschool San Jose",
     "bilingual preschool San Jose",
     "Mandarin English daycare San Jose",

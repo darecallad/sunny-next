@@ -16,6 +16,7 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   keywords: [
     "childcare San Jose",
+    "San Jose day care",
     "bilingual preschool",
     "Mandarin English daycare",
     "Chinese immersion preschool San Jose",

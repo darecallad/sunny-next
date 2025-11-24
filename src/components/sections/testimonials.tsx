@@ -11,7 +11,7 @@ export function TestimonialsSection() {
   const { locale } = useLanguage();
   return (
     <section
-      className="bg-gradient-to-b from-white to-amber-50/60"
+      className="bg-gradient-to-b from-background to-secondary/30"
       id="testimonials"
     >
       <div className="container mx-auto px-4 py-16">

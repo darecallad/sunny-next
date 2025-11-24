@@ -55,14 +55,14 @@ export default function AboutPage() {
                 >
                   <div className={`space-y-4 ${isEven ? "" : "lg:col-start-2"}`}>
                     <div className="flex items-center gap-3">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#324f7a]/10">
-                        <Icon className="h-6 w-6 text-[#324f7a]" />
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-secondary">
+                        <Icon className="h-6 w-6 text-primary" />
                       </div>
                       <h2 className="text-2xl font-semibold text-foreground">
                         {principle.title[locale]}
                       </h2>
                     </div>
-                    <p className="text-lg leading-relaxed text-gray-700">
+                    <p className="text-lg leading-relaxed text-muted-foreground">
                       {principle.description[locale]}
                     </p>
                   </div>
@@ -86,16 +86,16 @@ export default function AboutPage() {
       </section>
 
       {/* Philosophy Statement */}
-      <section className="border-y border-border/40 bg-[#324f7a]/5 py-12">
+      <section className="border-y border-border/40 bg-secondary/20 py-12">
         <div className="container mx-auto px-4">
-          <p className="mx-auto max-w-4xl text-center text-lg font-medium text-gray-700">
+          <p className="mx-auto max-w-4xl text-center text-lg font-medium text-foreground">
             {aboutContent.philosophy[locale]}
           </p>
         </div>
       </section>
 
       {/* Our Story Section */}
-      <section className="bg-gradient-to-b from-white to-[#324f7a]/10 py-16">
+      <section className="bg-gradient-to-b from-background to-secondary/10 py-16">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-4xl">
             <h2 className="mb-8 text-center text-3xl font-semibold text-foreground sm:text-4xl">
@@ -106,7 +106,7 @@ export default function AboutPage() {
                 {aboutContent.story.paragraphs.map((paragraph, index) => (
                   <p
                     key={index}
-                    className="text-lg leading-relaxed text-gray-700"
+                    className="text-lg leading-relaxed text-muted-foreground"
                   >
                     {paragraph[locale]}
                   </p>
@@ -118,12 +118,12 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="border-t border-border/40 bg-gradient-to-r from-[#f2a63b]/10 via-[#f2a63b]/5 to-white py-16">
+      <section className="border-t border-border/40 bg-secondary/20 py-16">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-semibold text-foreground">
             {locale === "en" ? "Ready to join our family?" : "準備加入我們的大家庭了嗎？"}
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-700">
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
             {locale === "en"
               ? "Schedule a tour to experience our nurturing environment and meet our dedicated team."
               : "預約參觀，體驗我們溫馨的環境，認識我們敬業的團隊。"}
@@ -131,13 +131,13 @@ export default function AboutPage() {
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link
               href="/admission/tuition"
-              className="inline-flex h-11 items-center justify-center rounded-md bg-[#f2a63b] px-8 text-sm font-medium text-white shadow transition-colors hover:bg-[#f2a63b]/90"
+              className="inline-flex h-11 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-white shadow transition-colors hover:bg-primary/90"
             >
               {locale === "en" ? "Schedule a Tour" : "預約參觀"}
             </Link>
             <Link
               href={`tel:${siteConfig.contact.phone.replace(/\D/g, "")}`}
-              className="inline-flex h-11 items-center justify-center rounded-md border border-[#324f7a] bg-transparent px-8 text-sm font-medium text-[#324f7a] shadow-sm transition-colors hover:bg-[#324f7a]/10"
+              className="inline-flex h-11 items-center justify-center rounded-md border border-primary bg-transparent px-8 text-sm font-medium text-primary shadow-sm transition-colors hover:bg-primary/10"
             >
               {locale === "en" ? "Call Us" : "電話聯絡"}
             </Link>

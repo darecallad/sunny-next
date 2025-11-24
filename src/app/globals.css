@@ -45,71 +45,95 @@
 
 :root {
   --radius: 1rem;
-  --background: #fffaf4;
-  --foreground: #1f1608;
-  --card: #ffffff;
-  --card-foreground: #1f1608;
-  --popover: #ffffff;
-  --popover-foreground: #1f1608;
-  --primary: #f08a18;
-  --primary-foreground: #fff9f0;
-  --secondary: #fff0d5;
-  --secondary-foreground: #7c3a0a;
-  --muted: #fef3e7;
-  --muted-foreground: #705847;
-  --accent: #fdf6ec;
-  --accent-foreground: #6b4a32;
-  --destructive: #b3261e;
-  --border: #f0d6b0;
-  --input: #f0d6b0;
-  --ring: #fdba74;
-  --chart-1: #f59e0b;
-  --chart-2: #fb923c;
-  --chart-3: #f97316;
-  --chart-4: #fbbf24;
-  --chart-5: #facc15;
-  --sidebar: #fff7ea;
-  --sidebar-foreground: #1f1608;
-  --sidebar-primary: #f97316;
-  --sidebar-primary-foreground: #fff9f0;
-  --sidebar-accent: #ffe8c7;
-  --sidebar-accent-foreground: #5c3110;
-  --sidebar-border: #f0d6b0;
-  --sidebar-ring: #fdba74;
+  
+  /* Scheme 1: Nature & Growth (自然探索) */
+  --background: #FFFFFF;
+  --foreground: #424242;
+  
+  --card: #FFFFFF;
+  --card-foreground: #424242;
+  
+  --popover: #FFFFFF;
+  --popover-foreground: #424242;
+  
+  --primary: #7CB342; /* Fresh Green */
+  --primary-foreground: #FFFFFF;
+  
+  --secondary: #FFF3E0; /* Cream */
+  --secondary-foreground: #E65100; /* Dark Orange */
+  
+  --muted: #F1F8E9; /* Light Green */
+  --muted-foreground: #558B2F; /* Darker Green */
+  
+  --accent: #FF9800; /* Warm Orange */
+  --accent-foreground: #FFFFFF;
+  
+  --destructive: #EF5350;
+  --destructive-foreground: #FFFFFF;
+  
+  --border: #FFE0B2;
+  --input: #FFE0B2;
+  --ring: #7CB342;
+  
+  --chart-1: #7CB342;
+  --chart-2: #FF9800;
+  --chart-3: #8D6E63;
+  --chart-4: #AED581;
+  --chart-5: #FFCC80;
+  
+  --sidebar: #FFF3E0;
+  --sidebar-foreground: #424242;
+  --sidebar-primary: #7CB342;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #FF9800;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: #FFE0B2;
+  --sidebar-ring: #7CB342;
 }
 
 .dark {
-  --background: #190e05;
-  --foreground: #fdf7ee;
-  --card: #261103;
-  --card-foreground: #fef5e7;
-  --popover: #261103;
-  --popover-foreground: #fef5e7;
-  --primary: #fdb878;
-  --primary-foreground: #3e1a04;
-  --secondary: #3a1f0c;
-  --secondary-foreground: #fcdcbf;
-  --muted: #3a1f0c;
-  --muted-foreground: #f8d9bb;
-  --accent: #43230f;
-  --accent-foreground: #fcdcbf;
-  --destructive: #ffb4ab;
-  --border: #3d210f;
-  --input: #3d210f;
-  --ring: #f59e0b;
-  --chart-1: #fabb69;
-  --chart-2: #f9a345;
-  --chart-3: #fcd37c;
-  --chart-4: #fddfa3;
-  --chart-5: #fef3c7;
-  --sidebar: #1b0e05;
-  --sidebar-foreground: #faebd7;
-  --sidebar-primary: #fdb878;
-  --sidebar-primary-foreground: #2b1406;
-  --sidebar-accent: #3a1f0c;
-  --sidebar-accent-foreground: #fcdcbf;
-  --sidebar-border: #45250f;
-  --sidebar-ring: #f59e0b;
+  --background: #1A1A1A;
+  --foreground: #FAFAFA;
+  
+  --card: #2D2D2D;
+  --card-foreground: #FAFAFA;
+  
+  --popover: #2D2D2D;
+  --popover-foreground: #FAFAFA;
+  
+  --primary: #7CB342;
+  --primary-foreground: #FFFFFF;
+  
+  --secondary: #424242;
+  --secondary-foreground: #FAFAFA;
+  
+  --muted: #2D2D2D;
+  --muted-foreground: #A0A0A0;
+  
+  --accent: #FF9800;
+  --accent-foreground: #FFFFFF;
+  
+  --destructive: #EF5350;
+  --destructive-foreground: #FFFFFF;
+  
+  --border: #424242;
+  --input: #424242;
+  --ring: #7CB342;
+  
+  --chart-1: #7CB342;
+  --chart-2: #FF9800;
+  --chart-3: #8D6E63;
+  --chart-4: #AED581;
+  --chart-5: #FFCC80;
+  
+  --sidebar: #1A1A1A;
+  --sidebar-foreground: #FAFAFA;
+  --sidebar-primary: #7CB342;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #FF9800;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: #424242;
+  --sidebar-ring: #7CB342;
 }
 
 @layer base {

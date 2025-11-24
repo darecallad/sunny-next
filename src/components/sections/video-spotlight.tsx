@@ -9,7 +9,7 @@ export function VideoSpotlight() {
   const { locale } = useLanguage();
   return (
     <section className="container mx-auto px-4 py-16">
-      <Card className="overflow-hidden border-primary/20 bg-gradient-to-br from-white to-amber-50">
+      <Card className="overflow-hidden border-primary/20 bg-gradient-to-br from-background to-secondary/30">
         <CardContent className="grid gap-8 p-8 lg:grid-cols-2 lg:items-center">
           <div className="space-y-4">
             <Badge variant="secondary">{spotlight.badge[locale]}</Badge>

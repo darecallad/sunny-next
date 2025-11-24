@@ -42,15 +42,15 @@ export async function POST(req: NextRequest) {
         <head>
           <meta charset="utf-8">
           <style>
-            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+            body { font-family: Arial, sans-serif; line-height: 1.6; color: #424242; }
             .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-            .header { background: #324f7a; color: white; padding: 20px; border-radius: 8px 8px 0 0; }
-            .content { background: #f9f9f9; padding: 30px; border: 1px solid #e0e0e0; border-radius: 0 0 8px 8px; }
+            .header { background: #7CB342; color: white; padding: 20px; border-radius: 8px 8px 0 0; }
+            .content { background: #FFFFFF; padding: 30px; border: 1px solid #FFE0B2; border-radius: 0 0 8px 8px; }
             .field { margin-bottom: 20px; }
-            .label { font-weight: bold; color: #324f7a; display: block; margin-bottom: 5px; }
-            .value { background: white; padding: 12px; border-left: 4px solid #f2a63b; border-radius: 4px; }
-            .message-box { background: white; padding: 15px; border: 1px solid #ddd; border-radius: 4px; min-height: 100px; }
-            .footer { margin-top: 20px; padding-top: 20px; border-top: 2px solid #e0e0e0; color: #666; font-size: 14px; }
+            .label { font-weight: bold; color: #7CB342; display: block; margin-bottom: 5px; }
+            .value { background: white; padding: 12px; border-left: 4px solid #FF9800; border-radius: 4px; }
+            .message-box { background: white; padding: 15px; border: 1px solid #FFE0B2; border-radius: 4px; min-height: 100px; }
+            .footer { margin-top: 20px; padding-top: 20px; border-top: 2px solid #FFE0B2; color: #757575; font-size: 14px; }
           </style>
         </head>
         <body>
@@ -77,7 +77,7 @@ export async function POST(req: NextRequest) {
               <div class="field">
                 <span class="label">${locale === "zh" ? "電子郵件：" : "Email:"}</span>
                 <div class="value">
-                  <a href="mailto:${email}" style="color: #324f7a; text-decoration: none;">
+                  <a href="mailto:${email}" style="color: #7CB342; text-decoration: none;">
                     ${email}
                   </a>
                 </div>
@@ -86,7 +86,7 @@ export async function POST(req: NextRequest) {
               <div class="field">
                 <span class="label">${locale === "zh" ? "聯絡電話：" : "Phone:"}</span>
                 <div class="value">
-                  <a href="tel:${phone}" style="color: #324f7a; text-decoration: none;">
+                  <a href="tel:${phone}" style="color: #7CB342; text-decoration: none;">
                     ${phone}
                   </a>
                 </div>
@@ -139,14 +139,14 @@ export async function POST(req: NextRequest) {
         <head>
           <meta charset="utf-8">
           <style>
-            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+            body { font-family: Arial, sans-serif; line-height: 1.6; color: #424242; }
             .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-            .header { background: #324f7a; color: white; padding: 30px; text-align: center; border-radius: 8px 8px 0 0; }
-            .content { background: #f9f9f9; padding: 30px; border: 1px solid #e0e0e0; border-radius: 0 0 8px 8px; }
-            .highlight { background: #fff; padding: 15px; border-left: 4px solid #f2a63b; border-radius: 4px; margin: 20px 0; }
+            .header { background: #7CB342; color: white; padding: 30px; text-align: center; border-radius: 8px 8px 0 0; }
+            .content { background: #FFFFFF; padding: 30px; border: 1px solid #FFE0B2; border-radius: 0 0 8px 8px; }
+            .highlight { background: #FFF3E0; padding: 15px; border-left: 4px solid #FF9800; border-radius: 4px; margin: 20px 0; }
             .contact-info { background: white; padding: 20px; border-radius: 8px; margin: 20px 0; }
             .contact-info p { margin: 8px 0; }
-            a { color: #f2a63b; text-decoration: none; }
+            a { color: #FF9800; text-decoration: none; }
             a:hover { text-decoration: underline; }
           </style>
         </head>
@@ -159,7 +159,7 @@ export async function POST(req: NextRequest) {
               </p>
             </div>
             <div class="content">
-              <h2 style="color: #324f7a; margin-top: 0;">
+              <h2 style="color: #7CB342; margin-top: 0;">
                 ${locale === "zh" ? `${name}，您好！` : `Hello ${name}!`}
               </h2>
               

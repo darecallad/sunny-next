@@ -64,7 +64,7 @@ export function HeroSection() {
             </dl>
           </div>
           <div className="space-y-4">
-            <div className="relative overflow-hidden rounded-[32px] border border-white/30 bg-[#2a3f5f] text-white shadow-2xl shadow-primary/20">
+            <div className="relative overflow-hidden rounded-[32px] border border-white/30 bg-foreground text-white shadow-2xl shadow-primary/20">
               {/* Top image - visible */}
               <div className="relative h-64 w-full">
                 <Image
@@ -77,7 +77,7 @@ export function HeroSection() {
               </div>
               
               {/* Content section with darker background */}
-              <div className="relative bg-gradient-to-b from-[#2a3f5f] to-[#1a2940]">
+              <div className="relative bg-gradient-to-b from-foreground to-foreground/90">
                 <div className="flex flex-col gap-6 p-6">
                 <div className="flex items-center gap-3">
                   <span className="inline-flex h-14 w-14 items-center justify-center p-2">
@@ -97,7 +97,7 @@ export function HeroSection() {
                   </div>
                 </div>
                 <div className="rounded-2xl bg-white/15 p-5 backdrop-blur">
-                  <p className="text-sm uppercase tracking-[0.4em] text-amber-200">
+                  <p className="text-sm uppercase tracking-[0.4em] text-secondary">
                     {locale === "en" ? "Programs" : "課程"}
                   </p>
                   <p className="mt-1 text-2xl font-semibold">
@@ -108,7 +108,7 @@ export function HeroSection() {
                   <ul className="mt-4 space-y-4">
                     {careHighlights.map((item) => (
                       <li key={item.title.en} className="flex items-start gap-3">
-                        <span className="mt-1 rounded-full bg-white/20 p-2 text-amber-200">
+                        <span className="mt-1 rounded-full bg-white/20 p-2 text-secondary">
                           <item.icon className="h-5 w-5" />
                         </span>
                         <div>
@@ -122,7 +122,7 @@ export function HeroSection() {
                   </ul>
                 </div>
                 <div className="rounded-2xl bg-white/10 p-5 text-sm text-white/85 backdrop-blur">
-                  <p className="font-semibold uppercase tracking-[0.3em] text-amber-200">
+                  <p className="font-semibold uppercase tracking-[0.3em] text-secondary">
                     {locale === "en" ? "Visit us" : "歡迎來訪"}
                   </p>
                   <p className="text-base font-medium">{siteConfig.contact.address}</p>
