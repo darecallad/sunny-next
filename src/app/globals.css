@@ -46,15 +46,15 @@
 :root {
   --radius: 1rem;
   
-  /* Scheme 1: Nature & Growth (自然探索) */
+  /* Scheme 1: Nature & Growth (Warm & Bright Adjustment) */
   --background: #FFFFFF;
-  --foreground: #424242;
+  --foreground: #4E342E; /* Warm Dark Brown (was #424242) */
   
   --card: #FFFFFF;
-  --card-foreground: #424242;
+  --card-foreground: #4E342E;
   
   --popover: #FFFFFF;
-  --popover-foreground: #424242;
+  --popover-foreground: #4E342E;
   
   --primary: #7CB342; /* Fresh Green */
   --primary-foreground: #FFFFFF;
@@ -63,7 +63,7 @@
   --secondary-foreground: #E65100; /* Dark Orange */
   
   --muted: #F1F8E9; /* Light Green */
-  --muted-foreground: #558B2F; /* Darker Green */
+  --muted-foreground: #795548; /* Medium Brown (was Green) */
   
   --accent: #FF9800; /* Warm Orange */
   --accent-foreground: #FFFFFF;
@@ -82,7 +82,7 @@
   --chart-5: #FFCC80;
   
   --sidebar: #FFF3E0;
-  --sidebar-foreground: #424242;
+  --sidebar-foreground: #4E342E;
   --sidebar-primary: #7CB342;
   --sidebar-primary-foreground: #FFFFFF;
   --sidebar-accent: #FF9800;
@@ -104,7 +104,7 @@
   --primary: #7CB342;
   --primary-foreground: #FFFFFF;
   
-  --secondary: #424242;
+  --secondary: #4E342E;
   --secondary-foreground: #FAFAFA;
   
   --muted: #2D2D2D;
@@ -116,8 +116,8 @@
   --destructive: #EF5350;
   --destructive-foreground: #FFFFFF;
   
-  --border: #424242;
-  --input: #424242;
+  --border: #4E342E;
+  --input: #4E342E;
   --ring: #7CB342;
   
   --chart-1: #7CB342;
@@ -132,7 +132,7 @@
   --sidebar-primary-foreground: #FFFFFF;
   --sidebar-accent: #FF9800;
   --sidebar-accent-foreground: #FFFFFF;
-  --sidebar-border: #424242;
+  --sidebar-border: #4E342E;
   --sidebar-ring: #7CB342;
 }
 

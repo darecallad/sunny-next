@@ -190,7 +190,7 @@ export default function ContactPage() {
                     </p>
                     <Button
                       asChild
-                      className="w-full bg-primary hover:bg-primary/90"
+                      className="w-full bg-accent hover:bg-accent/90"
                     >
                       <a href="/admission/tuition">
                         {locale === "en" ? "Schedule a Tour" : "預約參觀"}
@@ -302,7 +302,7 @@ export default function ContactPage() {
                     <Button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-primary py-6 text-lg font-semibold text-white hover:bg-primary/90 disabled:opacity-50"
+                      className="w-full bg-accent py-6 text-lg font-semibold text-white hover:bg-accent/90 disabled:opacity-50"
                     >
                       <Send className="mr-2 h-5 w-5" />
                       {isSubmitting

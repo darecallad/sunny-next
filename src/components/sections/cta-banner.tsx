@@ -24,13 +24,13 @@ export function CtaBanner() {
           </p>
         </div>
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-          <Button asChild size="lg" variant="secondary" className="text-primary">
+          <Button asChild size="lg" className="bg-accent text-white hover:bg-accent/90">
             <Link href={ctaContent.primaryCta.href} className="flex items-center gap-2">
               {ctaContent.primaryCta.label[locale]}
               <ArrowRight className="h-4 w-4" />
             </Link>
           </Button>
-          <Button asChild size="lg" variant="ghost" className="text-primary-foreground">
+          <Button asChild size="lg" variant="ghost" className="text-primary-foreground hover:bg-white/10">
             <a href={`tel:${siteConfig.contact.phone.replace(/\D/g, "")}`}>
               {ctaContent.secondaryLabel[locale]} {siteConfig.contact.phone}
             </a>

@@ -12,7 +12,7 @@ export function AnnouncementBanner() {
   if (!isVisible) return null;
 
   return (
-    <div className="relative bg-gradient-to-r from-primary via-primary/90 to-primary text-primary-foreground">
+    <div className="relative bg-secondary text-secondary-foreground">
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between gap-4">
           <div className="flex-1 text-center">
@@ -31,7 +31,7 @@ export function AnnouncementBanner() {
           <Button
             variant="ghost"
             size="icon"
-            className="h-8 w-8 shrink-0 rounded-full text-white hover:bg-white/20"
+            className="h-8 w-8 shrink-0 rounded-full text-secondary-foreground hover:bg-black/5"
             onClick={() => setIsVisible(false)}
             aria-label={locale === "en" ? "Close announcement" : "關閉公告"}
           >

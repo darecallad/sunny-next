@@ -19,7 +19,7 @@ export function SiteFooter() {
   });
 
   return (
-    <footer className="bg-foreground text-white">
+    <footer className="bg-primary text-white">
       <div className="container mx-auto space-y-8 px-4 py-12">
         <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr_1fr]">
           <div className="space-y-4">

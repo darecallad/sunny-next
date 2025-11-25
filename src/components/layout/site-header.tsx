@@ -31,7 +31,7 @@ export function SiteHeader() {
   const { locale } = useLanguage();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-foreground/95 text-white shadow-lg shadow-black/10 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-primary text-white shadow-lg shadow-black/10 backdrop-blur">
       <div className="container mx-auto flex items-center justify-between gap-4 px-4 py-4">
         <Link href="/" className="inline-flex items-center px-4 py-2">
           <Image
@@ -119,7 +119,7 @@ export function SiteHeader() {
           <Button
             asChild
             size="lg"
-            className="rounded-full bg-primary px-8 text-base font-semibold text-primary-foreground shadow-lg shadow-black/30 hover:bg-primary/90"
+            className="rounded-full bg-accent px-8 text-base font-semibold text-white shadow-lg shadow-black/10 hover:bg-accent/90"
           >
             <Link href="/admission/tuition">{locale === "en" ? "Book a tour" : "預約參觀"}</Link>
           </Button>

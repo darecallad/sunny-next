@@ -34,12 +34,12 @@ export function HeroSection() {
               <h1 className="text-4xl font-semibold leading-tight text-foreground sm:text-5xl">
                 {heroContent.title[locale]}
               </h1>
-              <p className="text-lg font-medium text-gray-700">
+              <p className="text-lg font-medium text-foreground/80">
                 {heroContent.description[locale]}
               </p>
             </div>
             <div className="flex flex-wrap gap-4">
-              <Button asChild size="lg">
+              <Button asChild size="lg" className="bg-accent text-white hover:bg-accent/90">
                 <Link href={heroContent.primaryCta.href}>
                   {heroContent.primaryCta.label[locale]}
                 </Link>
@@ -64,7 +64,7 @@ export function HeroSection() {
             </dl>
           </div>
           <div className="space-y-4">
-            <div className="relative overflow-hidden rounded-[32px] border border-white/30 bg-foreground text-white shadow-2xl shadow-primary/20">
+            <div className="relative overflow-hidden rounded-[32px] border border-white/30 bg-primary text-white shadow-2xl shadow-primary/20">
               {/* Top image - visible */}
               <div className="relative h-64 w-full">
                 <Image
@@ -77,7 +77,7 @@ export function HeroSection() {
               </div>
               
               {/* Content section with darker background */}
-              <div className="relative bg-gradient-to-b from-foreground to-foreground/90">
+              <div className="relative bg-gradient-to-b from-primary to-primary/90">
                 <div className="flex flex-col gap-6 p-6">
                 <div className="flex items-center gap-3">
                   <span className="inline-flex h-14 w-14 items-center justify-center p-2">
