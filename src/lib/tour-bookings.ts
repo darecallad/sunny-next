@@ -1,5 +1,4 @@
-import { promises as fs } from "fs";
-import path from "path";
+import { kv } from "@vercel/kv";
 
 export interface TourBooking {
   id: string;
@@ -18,33 +17,21 @@ export interface TourBooking {
   reminderSent: boolean;
 }
 
-const BOOKINGS_FILE = path.join(process.cwd(), "data", "tour-bookings.json");
-
-// 確保資料目錄存在
-async function ensureDataDir() {
-  const dataDir = path.join(process.cwd(), "data");
-  try {
-    await fs.access(dataDir);
-  } catch {
-    await fs.mkdir(dataDir, { recursive: true });
-  }
-}
+const KV_KEY = "tour-bookings";
 
 // 讀取所有預約
 export async function getBookings(): Promise<TourBooking[]> {
   try {
-    await ensureDataDir();
-    const data = await fs.readFile(BOOKINGS_FILE, "utf-8");
-    return JSON.parse(data);
+    const bookings = await kv.get<TourBooking[]>(KV_KEY);
+    return bookings || [];
   } catch (error) {
-    // 如果檔案不存在，返回空陣列
+    console.error("Failed to fetch bookings from KV:", error);
     return [];
   }
 }
 
 // 儲存預約
 export async function saveBooking(booking: Omit<TourBooking, "id" | "createdAt" | "reminderSent">): Promise<TourBooking> {
-  await ensureDataDir();
   const bookings = await getBookings();
   
   const newBooking: TourBooking = {
@@ -55,7 +42,14 @@ export async function saveBooking(booking: Omit<TourBooking, "id" | "createdAt" 
   };
   
   bookings.push(newBooking);
-  await fs.writeFile(BOOKINGS_FILE, JSON.stringify(bookings, null, 2));
+  
+  try {
+    await kv.set(KV_KEY, bookings);
+  } catch (error) {
+    console.error("Failed to save booking to KV:", error);
+    // 在這裡我們只記錄錯誤，不拋出，以免影響郵件發送流程
+    // 但這意味著提醒功能對這筆預約會失效
+  }
   
   return newBooking;
 }
@@ -67,7 +61,11 @@ export async function updateBooking(id: string, updates: Partial<TourBooking>): 
   
   if (index !== -1) {
     bookings[index] = { ...bookings[index], ...updates };
-    await fs.writeFile(BOOKINGS_FILE, JSON.stringify(bookings, null, 2));
+    try {
+      await kv.set(KV_KEY, bookings);
+    } catch (error) {
+      console.error("Failed to update booking in KV:", error);
+    }
   }
 }
 
