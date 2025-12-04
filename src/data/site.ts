@@ -416,7 +416,7 @@ export const admissionProcessContent = {
 export const programsContent = {
   infant: {
     hero: {
-      title: { en: "Infant & Toddler", zh: "嬰幼班" },
+      title: { en: "Infant Care & Daycare in San Jose", zh: "聖荷西嬰兒托育與照顧" },
     },
     description: [
       {
@@ -460,7 +460,7 @@ export const programsContent = {
   },
   preschool: {
     hero: {
-      title: { en: "Preschool", zh: "幼兒園" },
+      title: { en: "Bilingual (Mandarin/English) Preschool in San Jose", zh: "聖荷西中英雙語幼兒園" },
     },
     description: [
       {
@@ -500,7 +500,7 @@ export const programsContent = {
   },
   kindergarten: {
     hero: {
-      title: { en: "Pre-K / TK / Kindergarten", zh: "學前班 / 過渡幼兒園 / 小學" },
+      title: { en: "Bilingual Kindergarten Prep & TK in San Jose", zh: "聖荷西幼小銜接與學前班" },
     },
     description: [
       {

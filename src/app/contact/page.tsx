@@ -320,6 +320,29 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      {/* Map Section */}
+      <section className="py-16 bg-secondary/10">
+        <div className="container mx-auto px-4">
+          <div className="mx-auto max-w-6xl">
+            <h2 className="mb-8 text-2xl font-bold text-primary text-center">
+              {locale === "en" ? "Visit Our Center" : "參觀我們的中心"}
+            </h2>
+            <div className="h-[450px] w-full overflow-hidden rounded-lg shadow-lg border border-border/50">
+              <iframe
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                loading="lazy"
+                allowFullScreen
+                referrerPolicy="no-referrer-when-downgrade"
+                src="https://maps.google.com/maps?q=2586%20Seaboard%20Ave%2C%20San%20Jose%2C%20CA%2095131&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                title="Sunny Child Care Location Map"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

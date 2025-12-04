@@ -2,6 +2,27 @@
 
 All notable changes to the Sunny Child Care Next.js project will be documented in this file.
 
+## [December 3, 2025] - SEO & GEO Optimization
+
+### 🌍 Local SEO (GEO) Enhancements
+- **Footer Optimization**: Added "Serving families in Berryessa, Milpitas, and North San Jose" to the footer to explicitly target key local neighborhoods.
+- **Contact Page Map**: Embedded a Google Map on the Contact Us page to improve local search signals and user experience.
+
+### 🔍 SEO Content Updates
+- **Homepage Metadata**: 
+  - Updated Title Tag to: "Sunny Child Care | Bilingual (Mandarin/English) Preschool in San Jose"
+  - Refined description to include specific service areas (Berryessa, Milpitas, North San Jose) and emphasize "Bilingual (Mandarin/English)".
+  - Expanded keyword list with high-value terms like "Bilingual preschool San Jose" and "Mandarin English daycare San Jose".
+- **Program Pages**:
+  - Updated H1 titles for Preschool and Kindergarten pages to accurately reflect "Bilingual" nature and remove incorrect "After School" references.
+  - Preschool: "Bilingual (Mandarin/English) Preschool in San Jose"
+  - Kindergarten: "Bilingual Kindergarten Prep & TK in San Jose"
+
+### 🎨 Visual Improvements
+- **CTA Buttons**: Standardized all "Schedule a Tour" buttons to use the **Orange Accent** color (`bg-accent`) for better visibility and conversion optimization across all pages.
+
+---
+
 ## [November 24, 2025] - Visual Redesign & SEO Updates
 
 ### 🎨 Visual Redesign: Nature & Growth
