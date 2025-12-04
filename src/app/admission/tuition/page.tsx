@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Calendar, Users, Clock } from "lucide-react";
 import { toast } from "sonner";
 
@@ -30,6 +30,22 @@ export default function TuitionPage() {
   const [children, setChildren] = useState<Child[]>([{ month: "", day: "", year: "" }]);
   const [startDate, setStartDate] = useState<string>("");
   const [tourDateTime, setTourDateTime] = useState<string>("");
+  const [bookingCounts, setBookingCounts] = useState<Record<string, number>>({});
+
+  useEffect(() => {
+    const fetchAvailability = async () => {
+      try {
+        const response = await fetch("/api/tour/availability");
+        if (response.ok) {
+          const data = await response.json();
+          setBookingCounts(data);
+        }
+      } catch (error) {
+        console.error("Failed to fetch availability", error);
+      }
+    };
+    fetchAvailability();
+  }, []);
 
   // US Federal Holidays 2025-2026
   const usHolidays = [
@@ -89,8 +105,14 @@ export default function TuitionPage() {
           ? `${month}/${day} ${weekday} ${morningTime} - ${morningTour}`
           : `${month}/${day} ${weekday} ${morningTime} ${morningTour}`;
         const morningValue = `${dateString} Friday 10:30 AM - Chinese Tour`;
+        const morningCount = bookingCounts[morningValue] || 0;
+        const isMorningFull = morningCount >= 4;
         
-        slots.push({ display: morningDisplay, value: morningValue });
+        slots.push({ 
+          display: isMorningFull ? `${morningDisplay} (Full)` : morningDisplay, 
+          value: morningValue,
+          disabled: isMorningFull
+        });
         
         // Afternoon slot: 3:30 PM - English Tour
         const afternoonTime = locale === "en" ? "3:30 PM" : "下午 3:30";
@@ -99,8 +121,14 @@ export default function TuitionPage() {
           ? `${month}/${day} ${weekday} ${afternoonTime} - ${afternoonTour}`
           : `${month}/${day} ${weekday} ${afternoonTime} ${afternoonTour}`;
         const afternoonValue = `${dateString} Friday 3:30 PM - English Tour`;
+        const afternoonCount = bookingCounts[afternoonValue] || 0;
+        const isAfternoonFull = afternoonCount >= 4;
         
-        slots.push({ display: afternoonDisplay, value: afternoonValue });
+        slots.push({ 
+          display: isAfternoonFull ? `${afternoonDisplay} (Full)` : afternoonDisplay, 
+          value: afternoonValue,
+          disabled: isAfternoonFull
+        });
         
         addedFridays++;
       }
@@ -377,7 +405,7 @@ export default function TuitionPage() {
                           </SelectTrigger>
                           <SelectContent className="min-w-[320px]">
                             {fridaySlots.map((slot, index) => (
-                              <SelectItem key={index} value={slot.value}>
+                              <SelectItem key={index} value={slot.value} disabled={slot.disabled}>
                                 {slot.display}
                               </SelectItem>
                             ))}

@@ -209,10 +209,6 @@ export async function POST(request: NextRequest) {
                   <span class="label">Desired Start Date / 期望開始日期:</span>
                   <span class="value">${startDate || "Not specified"}</span>
                 </div>
-                <div class="field">
-                  <span class="label">Language / 語言:</span>
-                  <span class="value">${locale === "en" ? "English" : "繁體中文"}</span>
-                </div>
               </div>
 
               ${
@@ -284,7 +280,6 @@ ${childrenInfo || "Not provided"}
 --------------------------------------------
 Tour Date & Time / 參觀日期時間: ${tourDateTime || "Not specified"}
 Desired Start Date / 期望開始日期: ${startDate || "Not specified"}
-Language / 語言: ${locale === "en" ? "English" : "繁體中文"}
 
 ${
   message
