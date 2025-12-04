@@ -79,17 +79,11 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
       {/* Hero Section */}
-      <section className="relative border-b border-border/40 py-24 text-white">
-        <div className="absolute inset-0 -z-10">
-          <Image
-            src="/images/banners/staffbanner.webp"
-            alt="Sunny Child Care Staff"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/40" />
-        </div>
+      <section 
+        className="relative border-b border-border/40 py-24 text-white bg-cover bg-center"
+        style={{ backgroundImage: "url('/images/banners/staffbanner.webp')" }}
+      >
+        <div className="absolute inset-0 bg-black/40" />
         <div className="container relative z-10 mx-auto px-4">
           <h1 className="text-4xl font-semibold sm:text-5xl">
             {locale === "en" ? "Contact Us" : "聯絡我們"}
