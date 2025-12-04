@@ -101,20 +101,27 @@ export async function POST(request: NextRequest) {
     }
 
     // 保存預約資訊（用於提醒郵件）
+    // 注意：在 Vercel 等 Serverless 環境中，寫入本地文件會失敗。
+    // 我們將其包裝在 try-catch 中，以免影響郵件發送。
     if (tourDate) {
-      await saveBooking({
-        firstName,
-        lastName,
-        email,
-        phone,
-        tourDateTime,
-        tourDate,
-        children: children || [],
-        chineseTour: tourDateTime?.includes("Chinese Tour") ? "Yes" : "No",
-        startDate: startDate || "",
-        message: message || "",
-        locale: locale || "en",
-      });
+      try {
+        await saveBooking({
+          firstName,
+          lastName,
+          email,
+          phone,
+          tourDateTime,
+          tourDate,
+          children: children || [],
+          chineseTour: tourDateTime?.includes("Chinese Tour") ? "Yes" : "No",
+          startDate: startDate || "",
+          message: message || "",
+          locale: locale || "en",
+        });
+      } catch (saveError) {
+        console.warn("Failed to save booking to local file (expected in serverless environment):", saveError);
+        // 繼續執行，發送郵件
+      }
     }
 
     // 準備子女資訊
