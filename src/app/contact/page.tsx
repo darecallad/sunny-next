@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import Image from "next/image";
 import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
 import { toast } from "sonner";
 
@@ -78,8 +79,18 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
       {/* Hero Section */}
-      <section className="border-b border-border/40 bg-primary py-16 text-white">
-        <div className="container mx-auto px-4">
+      <section className="relative border-b border-border/40 py-24 text-white">
+        <div className="absolute inset-0 -z-10">
+          <Image
+            src="/images/banners/staffbanner.webp"
+            alt="Sunny Child Care Staff"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/40" />
+        </div>
+        <div className="container relative z-10 mx-auto px-4">
           <h1 className="text-4xl font-semibold sm:text-5xl">
             {locale === "en" ? "Contact Us" : "聯絡我們"}
           </h1>
