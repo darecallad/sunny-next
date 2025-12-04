@@ -46,49 +46,49 @@
 :root {
   --radius: 1rem;
   
-  /* Scheme 1: Nature & Growth (Warm & Bright Adjustment) */
+  /* Scheme 3: Muted Warmth (Soft Orange/Beige/Sage) */
   --background: #FFFFFF;
-  --foreground: #4E342E; /* Warm Dark Brown (was #424242) */
+  --foreground: #594A42; /* Softer Warm Brown */
   
   --card: #FFFFFF;
-  --card-foreground: #4E342E;
+  --card-foreground: #594A42;
   
   --popover: #FFFFFF;
-  --popover-foreground: #4E342E;
+  --popover-foreground: #594A42;
   
-  --primary: #7CB342; /* Fresh Green */
+  --primary: #D4843E; /* Muted Warm Orange */
   --primary-foreground: #FFFFFF;
   
-  --secondary: #FFF3E0; /* Cream */
-  --secondary-foreground: #E65100; /* Dark Orange */
+  --secondary: #F4EEE0; /* Soft Beige */
+  --secondary-foreground: #594A42;
   
-  --muted: #F1F8E9; /* Light Green */
-  --muted-foreground: #795548; /* Medium Brown (was Green) */
+  --muted: #F4EEE0;
+  --muted-foreground: #8C7B70;
   
-  --accent: #FF9800; /* Warm Orange */
+  --accent: #9FB586; /* Sage Green */
   --accent-foreground: #FFFFFF;
   
   --destructive: #EF5350;
   --destructive-foreground: #FFFFFF;
   
-  --border: #FFE0B2;
-  --input: #FFE0B2;
-  --ring: #7CB342;
+  --border: #E6D5C4;
+  --input: #E6D5C4;
+  --ring: #D4843E;
   
-  --chart-1: #7CB342;
-  --chart-2: #FF9800;
-  --chart-3: #8D6E63;
-  --chart-4: #AED581;
-  --chart-5: #FFCC80;
+  --chart-1: #D4843E;
+  --chart-2: #9FB586;
+  --chart-3: #594A42;
+  --chart-4: #FFCC80;
+  --chart-5: #AED581;
   
   --sidebar: #FFF3E0;
-  --sidebar-foreground: #4E342E;
-  --sidebar-primary: #7CB342;
+  --sidebar-foreground: #5D4037;
+  --sidebar-primary: #FB8C00;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #FF9800;
+  --sidebar-accent: #8BC34A;
   --sidebar-accent-foreground: #FFFFFF;
   --sidebar-border: #FFE0B2;
-  --sidebar-ring: #7CB342;
+  --sidebar-ring: #FB8C00;
 }
 
 .dark {

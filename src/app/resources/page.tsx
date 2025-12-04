@@ -103,7 +103,7 @@ export default function ResourcesPage() {
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link
               href="/admission/tuition"
-              className="inline-flex h-11 items-center justify-center rounded-md bg-accent px-8 text-sm font-medium text-white shadow transition-colors hover:bg-accent/90"
+              className="inline-flex h-11 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-white shadow transition-colors hover:bg-primary/90"
             >
               {locale === "en" ? "Schedule a Tour" : "預約參觀"}
             </Link>

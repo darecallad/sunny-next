@@ -39,7 +39,7 @@ export function HeroSection() {
               </p>
             </div>
             <div className="flex flex-wrap gap-4">
-              <Button asChild size="lg" className="bg-accent text-white hover:bg-accent/90">
+              <Button asChild size="lg" className="bg-primary text-white hover:bg-primary/90">
                 <Link href={heroContent.primaryCta.href}>
                   {heroContent.primaryCta.label[locale]}
                 </Link>

@@ -31,7 +31,7 @@ export function SiteHeader() {
   const { locale } = useLanguage();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-primary text-white shadow-lg shadow-black/10 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-primary text-white shadow-lg shadow-black/5 backdrop-blur">
       <div className="container mx-auto flex items-center justify-between gap-4 px-4 py-4">
         <Link href="/" className="inline-flex items-center px-4 py-2">
           <Image
@@ -52,7 +52,7 @@ export function SiteHeader() {
                 <NavigationMenuItem key={item.title.en}>
                   {item.children && item.children.length ? (
                     <>
-                      <NavigationMenuTrigger className="bg-transparent text-base font-semibold text-white/90 hover:text-white">
+                      <NavigationMenuTrigger className="bg-transparent text-base font-semibold text-white/90 hover:text-white data-[state=open]:text-white">
                         {item.title[locale]}
                       </NavigationMenuTrigger>
                       <NavigationMenuContent>
@@ -67,7 +67,7 @@ export function SiteHeader() {
                                   <div className="text-sm font-semibold text-foreground">
                                     {child.title[locale]}
                                     {child.badge && (
-                                      <Badge className="ml-2" variant="secondary">
+                                      <Badge className="ml-2 bg-accent text-white hover:bg-accent/90">
                                         {child.badge[locale]}
                                       </Badge>
                                     )}

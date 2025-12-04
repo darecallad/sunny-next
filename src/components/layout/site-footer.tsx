@@ -39,7 +39,7 @@ export function SiteFooter() {
             </p>
           </div>
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-wide text-secondary">
+            <h4 className="text-xs font-semibold uppercase tracking-wide text-white/90">
               {locale === "en" ? "Contact us" : "聯絡資訊"}
             </h4>
             <div className="mt-3 space-y-1 text-sm">
@@ -51,26 +51,26 @@ export function SiteFooter() {
               </p>
               <p>{siteConfig.contact.hours[locale]}</p>
               <p>
-                <span className="font-semibold text-secondary">
+                <span className="font-semibold text-white/90">
                   {locale === "en" ? "Phone" : "電話"}
                 </span>{" "}
                 <Link
-                  className="text-white"
+                  className="text-white hover:text-white/90"
                   href={`tel:${siteConfig.contact.phone.replace(/\D/g, "")}`}
                 >
                   {siteConfig.contact.phone}
                 </Link>
               </p>
               <p>
-                <span className="font-semibold text-secondary">Email</span>{" "}
-                <Link className="text-white" href={`mailto:${siteConfig.contact.email}`}>
+                <span className="font-semibold text-white/90">Email</span>{" "}
+                <Link className="text-white hover:text-white/90" href={`mailto:${siteConfig.contact.email}`}>
                   {siteConfig.contact.email}
                 </Link>
               </p>
             </div>
           </div>
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-wide text-secondary">
+            <h4 className="text-xs font-semibold uppercase tracking-wide text-white/90">
               {locale === "en" ? "Quick links" : "快速連結"}
             </h4>
             <ul className="mt-3 columns-2 gap-4 text-sm">

@@ -24,7 +24,7 @@ export function CtaBanner() {
           </p>
         </div>
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-          <Button asChild size="lg" className="bg-accent text-white hover:bg-accent/90">
+          <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90">
             <Link href={ctaContent.primaryCta.href} className="flex items-center gap-2">
               {ctaContent.primaryCta.label[locale]}
               <ArrowRight className="h-4 w-4" />

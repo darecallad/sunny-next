@@ -25,17 +25,14 @@ All notable changes to the Sunny Child Care Next.js project will be documented i
 
 ## [November 24, 2025] - Visual Redesign & SEO Updates
 
-### 🎨 Visual Redesign: Nature & Growth
-**Reverted to the original "Nature & Growth" color scheme:**
-- **Primary:** Fresh Green (#7CB342) - Used for buttons, headers, and accents
-- **Secondary:** Cream (#FFF3E0) - Used for backgrounds and sidebars
-- **Accent:** Warm Orange (#FF9800) - Used for highlights and call-to-actions
-- **Background:** White (#FFFFFF) - Clean, fresh look
-- **Text:** Dark Gray (#424242) - High contrast for readability
-- **Updates Applied To:**
-  - Global CSS variables (`globals.css`)
-  - Email templates in API routes (`/api/tour`, `/api/contact`, `/api/send-reminders`)
-  - Test email script (`scripts/test-email.js`)
+### 🎨 Visual Redesign: Sunny Warmth
+**Updated color scheme to a warmer, daycare-friendly palette:**
+- **Primary:** Warm Orange (`#FB8C00`) - Replaces the saturated Green. Used for main buttons and highlights.
+- **Secondary:** Cream (`#FFF3E0`) - Used for backgrounds (Footer, Sidebar) to maintain warmth.
+- **Accent:** Soft Green (`#8BC34A`) - Replaces Orange. Used for nature accents and secondary elements.
+- **Header:** Updated to White background (`bg-white`) with Brown text for a cleaner, lighter look that lets the logo breathe.
+- **Footer:** Updated to Cream background (`bg-secondary`) with Brown text for a cohesive, warm finish.
+- **Buttons:** Main CTA buttons updated to **Orange** (`bg-primary`) to maintain high visibility and warmth.
 
 ### 🔍 SEO Enhancements
 **Targeted optimization for "San Jose day care":**

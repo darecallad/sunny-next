@@ -425,7 +425,7 @@ export default function TuitionPage() {
                     <Button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-accent py-6 text-lg font-semibold text-white hover:bg-accent/90 disabled:opacity-50"
+                      className="w-full bg-primary py-6 text-lg font-semibold text-white hover:bg-primary/90 disabled:opacity-50"
                     >
                       {isSubmitting
                         ? locale === "en"
