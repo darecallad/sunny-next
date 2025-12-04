@@ -46,38 +46,44 @@
 :root {
   --radius: 1rem;
   
-  /* Scheme 3: Muted Warmth (Soft Orange/Beige/Sage) */
-  --background: #FFFFFF;
-  --foreground: #594A42; /* Softer Warm Brown */
+  /* Scheme 4: 60-30-10 Muted Daycare (Warm White / Sienna / Sage) */
+  
+  /* 60% - Neutral Backgrounds */
+  --background: #FFFCF7; /* Warm White */
+  --foreground: #5C4D45; /* Dark Warm Brown (Text) */
   
   --card: #FFFFFF;
-  --card-foreground: #594A42;
+  --card-foreground: #5C4D45;
   
   --popover: #FFFFFF;
-  --popover-foreground: #594A42;
+  --popover-foreground: #5C4D45;
   
-  --primary: #D4843E; /* Muted Warm Orange */
+  /* 30% - Primary Brand (Header, Footer, Main Blocks) */
+  /* Needs to be dark enough for White Logo visibility */
+  --primary: #C07234; /* Muted Sienna/Burnt Orange */
   --primary-foreground: #FFFFFF;
   
-  --secondary: #F4EEE0; /* Soft Beige */
-  --secondary-foreground: #594A42;
+  /* Secondary - Used for section backgrounds/cards */
+  --secondary: #F4EFE6; /* Oatmeal/Beige */
+  --secondary-foreground: #5C4D45;
   
-  --muted: #F4EEE0;
-  --muted-foreground: #8C7B70;
-  
-  --accent: #9FB586; /* Sage Green */
+  /* 10% - Accent (Highlights, Badges, Icons) */
+  --accent: #8FA893; /* Sage Green */
   --accent-foreground: #FFFFFF;
   
-  --destructive: #EF5350;
+  --muted: #F4EFE6;
+  --muted-foreground: #8D7F75;
+  
+  --destructive: #E57373;
   --destructive-foreground: #FFFFFF;
   
   --border: #E6D5C4;
   --input: #E6D5C4;
-  --ring: #D4843E;
+  --ring: #C07234;
   
-  --chart-1: #D4843E;
-  --chart-2: #9FB586;
-  --chart-3: #594A42;
+  --chart-1: #C07234;
+  --chart-2: #8FA893;
+  --chart-3: #5C4D45;
   --chart-4: #FFCC80;
   --chart-5: #AED581;
   
