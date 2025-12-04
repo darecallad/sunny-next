@@ -2,6 +2,23 @@
 
 All notable changes to the Sunny Child Care Next.js project will be documented in this file.
 
+## [December 4, 2025] - Booking System & Infrastructure Updates
+
+### 🔧 Infrastructure Fixes
+- **Vercel KV Integration**: Migrated tour booking storage from local JSON files to **Vercel KV (Redis)**.
+  - Fixed "500 Internal Server Error" on production caused by read-only file system in Vercel serverless environment.
+  - Ensured booking data persistence and reliability for the reminder system.
+
+### ✨ Feature Enhancements
+- **Booking Capacity Management**: 
+  - Implemented a limit of **4 bookings per time slot**.
+  - Added real-time availability checking.
+  - Slots with 4 or more bookings now display as **"(Full)"** and are disabled in the selection dropdown.
+- **Email Notification Updates**:
+  - Removed the "Language" field from the automated confirmation emails sent to parents and administration, as it was redundant.
+
+---
+
 ## [December 3, 2025] - SEO & GEO Optimization
 
 ### 🌍 Local SEO (GEO) Enhancements
