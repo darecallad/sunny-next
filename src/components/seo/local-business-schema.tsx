@@ -37,14 +37,28 @@ export function LocalBusinessSchema() {
     },
     servesCuisine: "Nutritious meals, Organic options",
     hasMap: "https://maps.google.com/?q=2586+Seaboard+Ave,+San+Jose,+CA+95131",
-    areaServed: {
-      "@type": "City",
-      name: "San Jose",
-      containedIn: {
-        "@type": "State",
-        name: "California",
+    areaServed: [
+      {
+        "@type": "City",
+        name: "San Jose",
+        containedIn: { "@type": "State", name: "California" },
       },
-    },
+      {
+        "@type": "City",
+        name: "Milpitas",
+        containedIn: { "@type": "State", name: "California" },
+      },
+      {
+        "@type": "City",
+        name: "Cupertino",
+        containedIn: { "@type": "State", name: "California" },
+      },
+      {
+        "@type": "City",
+        name: "Santa Clara",
+        containedIn: { "@type": "State", name: "California" },
+      },
+    ],
     knowsLanguage: ["English", "Chinese", "Mandarin"],
     availableLanguage: ["English", "Chinese"],
     aggregateRating: {

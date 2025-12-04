@@ -108,6 +108,36 @@ export default function LocationsPage() {
                   </div>
                 ))}
               </div>
+
+              {/* Neighborhoods & Directions (GEO Optimization) */}
+              <div className="rounded-xl border border-border bg-secondary/30 p-8">
+                <h3 className="text-xl font-semibold text-foreground mb-4">
+                  {locale === "en" ? "Serving Our Community" : "服務社區"}
+                </h3>
+                <div className="space-y-4 text-muted-foreground">
+                  <p>
+                    {locale === "en" 
+                      ? "Our center is easily accessible from major highways (I-680, I-880) and serves families throughout the South Bay area:"
+                      : "我們的中心鄰近主要高速公路 (I-680, I-880)，交通便利，服務南灣各地區家庭："}
+                  </p>
+                  <ul className="grid grid-cols-2 gap-2 list-disc pl-5">
+                    <li>North San Jose (95131, 95132)</li>
+                    <li>Berryessa / Penitencia Creek</li>
+                    <li>Milpitas (95035)</li>
+                    <li>Santa Clara (95054)</li>
+                    <li>Alum Rock / East San Jose</li>
+                    <li>Cupertino (Commuter friendly)</li>
+                  </ul>
+                  <p className="text-sm pt-2">
+                    {locale === "en"
+                      ? "Just 5 minutes from the Great Mall and Berryessa BART Station."
+                      : "距離 Great Mall 和 Berryessa BART 站僅 5 分鐘車程。"}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="h-[400px] overflow-hidden rounded-xl border border-border shadow-sm lg:h-auto">
+              {/* Google Maps Embed Code Here */}
             </div>
           </div>
         </div>

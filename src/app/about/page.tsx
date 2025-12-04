@@ -41,6 +41,61 @@ export default function AboutPage() {
       {/* Principles Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
+          {/* EEAT: Trust & Qualifications Section */}
+          <div className="mb-16 rounded-2xl bg-secondary/30 p-8 lg:p-12">
+            <div className="mx-auto max-w-3xl text-center">
+              <h2 className="text-3xl font-semibold text-foreground">
+                {locale === "en" ? "Why Families Trust Us" : "為什麼家長信賴我們"}
+              </h2>
+              <p className="mt-4 text-lg text-muted-foreground">
+                {locale === "en" 
+                  ? "We combine professional expertise with a loving environment to provide the highest standard of care."
+                  : "我們結合專業知識與充滿愛的環境，提供最高標準的照護服務。"}
+              </p>
+            </div>
+            <div className="mt-10 grid gap-8 sm:grid-cols-3">
+              <div className="text-center">
+                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
+                  <Shield className="h-6 w-6" />
+                </div>
+                <h3 className="mt-4 font-semibold text-foreground">
+                  {locale === "en" ? "State Licensed" : "政府立案"}
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  {locale === "en" 
+                    ? "Fully licensed facility meeting all California health & safety standards."
+                    : "完全符合加州健康與安全標準的合格立案設施。"}
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
+                  <Users className="h-6 w-6" />
+                </div>
+                <h3 className="mt-4 font-semibold text-foreground">
+                  {locale === "en" ? "Qualified Teachers" : "專業師資"}
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  {locale === "en" 
+                    ? "Bilingual educators with ECE units and CPR/First Aid certification."
+                    : "具備幼教專業學分及 CPR/急救證照的雙語教師。"}
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
+                  <Heart className="h-6 w-6" />
+                </div>
+                <h3 className="mt-4 font-semibold text-foreground">
+                  {locale === "en" ? "Proven Experience" : "豐富經驗"}
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  {locale === "en" 
+                    ? "Years of dedicated service to the San Jose community."
+                    : "多年深耕聖荷西社區，擁有豐富的幼兒教育經驗。"}
+                </p>
+              </div>
+            </div>
+          </div>
+
           <div className="space-y-16">
             {aboutContent.principles.map((principle, index) => {
               const Icon = principleIcons[index];

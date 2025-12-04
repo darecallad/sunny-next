@@ -8,17 +8,19 @@ import { VideoSpotlight } from "@/components/sections/video-spotlight";
 import { LocalBusinessSchema } from "@/components/seo/local-business-schema";
 
 export const metadata: Metadata = {
-  title: "Sunny Child Care | Bilingual (Mandarin/English) Preschool in San Jose",
+  title: "Sunny Child Care | Mandarin Daycare, Preschool & Childcare in San Jose",
   description:
-    "Top-rated bilingual (Mandarin/English) preschool & daycare in San Jose (95131). Serving families in San Jose, Milpitas & Cupertino with infant care to kindergarten. 聖荷西首選中英雙語幼兒園。",
+    "Top-rated Mandarin daycare and preschool in San Jose (95131). We provide premier childcare services with a bilingual curriculum. Serving Berryessa, Milpitas & Cupertino.",
   keywords: [
+    "Mandarin daycare San Jose",
+    "daycare San Jose",
+    "preschool in San Jose",
+    "childcare San Jose",
     "Bilingual preschool San Jose",
     "Mandarin English daycare San Jose",
     "infant care San Jose",
     "Chinese immersion preschool",
     "San Jose childcare 95131",
-    "preschool in San Jose",
-    "Mandarin daycare San Jose",
     "Berryessa childcare",
     "Milpitas preschool",
     "Cupertino preschool",
@@ -28,9 +30,9 @@ export const metadata: Metadata = {
     "中文幼兒園 San Jose",
   ],
   openGraph: {
-    title: "Sunny Child Care | San Jose Bilingual Preschool & Childcare | 中英雙語幼兒園",
+    title: "Sunny Child Care | Mandarin Daycare & Preschool in San Jose",
     description:
-      "Premier Mandarin-English immersion daycare with infant, toddler, preschool & kindergarten programs. Nutritious meals, STEAM curriculum, caring bilingual staff. 聖荷西中英雙語幼兒園。",
+      "Premier Mandarin-English immersion daycare and childcare in San Jose. Infant, toddler, preschool & kindergarten programs. Serving San Jose, Milpitas, and Cupertino.",
     url: "https://www.sunnychildcare.com",
     siteName: "Sunny Child Care",
     locale: "en_US",

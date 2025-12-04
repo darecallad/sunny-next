@@ -88,6 +88,8 @@ export function SiteFooter() {
         <div className="py-2 text-center text-xs text-white/70">
           <p>
             © {new Date().getFullYear()} {siteConfig.name}. {locale === "en" ? "All rights reserved." : "版權所有"}
+            <span className="mx-2">|</span>
+            <span>{locale === "en" ? "State Licensed Facility" : "加州立案合格設施"}</span>
           </p>
         </div>
       </div>

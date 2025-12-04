@@ -129,15 +129,15 @@ export const navigation: NavItem[] = [
 
 export const heroContent = {
   eyebrow: {
-    en: "Mandarin-English Immersion",
-    zh: "中英雙語沉浸",
+    en: "Mandarin-English Immersion in San Jose",
+    zh: "聖荷西中英雙語沉浸",
   },
   title: {
-    en: "Grow confident, curious, and bilingual",
+    en: "Premier Bilingual (Mandarin-English) Daycare & Preschool in San Jose",
     zh: "自信、好奇、雙語力一起綻放",
   },
   description: {
-    en: "Sunny Child Care blends play-based academics, nutritious meals, and a bilingual community so every child feels at home while reaching their fullest potential.",
+    en: "Sunny Child Care provides top-rated bilingual childcare in San Jose. We blend play-based academics, nutritious meals, and a warm community for infants to kindergarten.",
     zh: "Sunny 將遊戲式課程、營養熱食與家的溫度結合，讓孩子每天都期待上學。",
   },
   primaryCta: {
@@ -145,7 +145,7 @@ export const heroContent = {
     href: "/admission/tuition",
   },
   secondaryCta: {
-    label: { en: "Download brochure", zh: "下載簡介" },
+    label: { en: "About Sunny", zh: "關於我們" },
     href: "/about",
   },
   stats: [
