@@ -8,9 +8,9 @@ import { VideoSpotlight } from "@/components/sections/video-spotlight";
 import { LocalBusinessSchema } from "@/components/seo/local-business-schema";
 
 export const metadata: Metadata = {
-  title: "Sunny Child Care | Mandarin Daycare, Preschool & Childcare in San Jose",
+  title: "Best Daycare & Child Care in San Jose, CA | Sunny Child Care",
   description:
-    "Top-rated Mandarin daycare and preschool in San Jose (95131). We provide premier childcare services with a bilingual curriculum. Serving Berryessa, Milpitas & Cupertino.",
+    "Top-rated Child Care & Daycare in San Jose, CA. Premier Mandarin-English bilingual preschool serving Mountain View, Sunnyvale, Cupertino, Santa Clara, Milpitas, Fremont, and surrounding areas. Enroll now!",
   keywords: [
     "Mandarin daycare San Jose",
     "daycare San Jose",
@@ -25,14 +25,22 @@ export const metadata: Metadata = {
     "Milpitas preschool",
     "Cupertino preschool",
     "North San Jose daycare",
+    "Mountain View daycare",
+    "Sunnyvale childcare",
+    "Santa Clara preschool",
+    "Fremont daycare",
+    "Newark childcare",
+    "San Lorenzo preschool",
+    "Los Altos daycare",
+    "Campbell childcare",
     "san jose 雙語幼兒園",
     "聖荷西幼兒園",
     "中文幼兒園 San Jose",
   ],
   openGraph: {
-    title: "Sunny Child Care | Mandarin Daycare & Preschool in San Jose",
+    title: "Best Daycare & Child Care in San Jose, CA | Sunny Child Care",
     description:
-      "Premier Mandarin-English immersion daycare and childcare in San Jose. Infant, toddler, preschool & kindergarten programs. Serving San Jose, Milpitas, and Cupertino.",
+      "Premier Mandarin-English immersion daycare and childcare in San Jose. Infant, toddler, preschool & kindergarten programs. Serving San Jose, Milpitas, Cupertino, Santa Clara, and Sunnyvale.",
     url: "https://www.sunnychildcare.com",
     siteName: "Sunny Child Care",
     locale: "en_US",

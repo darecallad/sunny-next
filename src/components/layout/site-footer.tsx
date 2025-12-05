@@ -84,6 +84,30 @@ export function SiteFooter() {
             </ul>
           </div>
         </div>
+        
+        <div className="border-t border-white/20 pt-8">
+          <h4 className="mb-4 text-xs font-semibold uppercase tracking-wide text-white/90">
+            {locale === "en" ? "Service Areas" : "服務區域"}
+          </h4>
+          <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-white/70">
+            {[
+              "Mountain View",
+              "Sunnyvale",
+              "Cupertino",
+              "Santa Clara",
+              "San Jose",
+              "Milpitas",
+              "Fremont",
+              "Newark",
+              "San Lorenzo",
+              "Los Altos",
+              "Campbell"
+            ].map((city) => (
+              <span key={city}>{city}</span>
+            ))}
+          </div>
+        </div>
+
         <Separator className="border-white/20" />
         <div className="py-2 text-center text-xs text-white/70">
           <p>

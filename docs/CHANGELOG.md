@@ -2,6 +2,20 @@
 
 All notable changes to the Sunny Child Care Next.js project will be documented in this file.
 
+## [December 5, 2025] - Service Area Expansion & SEO Ranking Optimization
+
+### 🌍 Service Area Expansion
+- **Footer Update**: Added a dedicated "Service Areas" section in the footer listing key cities: Mountain View, Sunnyvale, Cupertino, Santa Clara, San Jose, Milpitas, Fremont, Newark, San Lorenzo, Los Altos, and Campbell. This improves local SEO signals for these specific locations.
+
+### 🚀 SEO & Ranking Optimization
+- **Competitive Title Strategy**: Updated the Homepage Title to **"Best Daycare & Child Care in San Jose, CA | Sunny Child Care"**.
+  - Designed to match and outrank top competitors (Yelp, Care.com) by using high-intent keywords ("Best Daycare", "Child Care") directly in the title.
+- **Metadata Enhancement**:
+  - **Description**: Rewrote the meta description to be punchy and keyword-rich, explicitly listing the expanded service areas to capture search intent from surrounding cities.
+  - **Keywords**: Significantly expanded the global and homepage keyword lists to include "daycare", "childcare", and "preschool" combinations for all newly added service cities (e.g., "Mountain View daycare", "Fremont preschool").
+
+---
+
 ## [December 4, 2025] - Booking System & Infrastructure Updates
 
 ### 🔧 Infrastructure Fixes
