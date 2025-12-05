@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us | Sunny Child Care San Jose | 關於我們",
+  title: "Best Bilingual Daycare Team in San Jose | About Sunny Child Care",
   description:
-    "Learn about Sunny Child Care's 30-year legacy in San Jose providing exceptional Mandarin-English bilingual education. 了解 Sunny 30 年來的雙語教育傳承與理念。Experienced teachers, safe environment, nurturing care for children 0-5.",
+    "Learn about Sunny Child Care's 30-year legacy in San Jose providing exceptional Mandarin-English bilingual education. Serving Mountain View, Sunnyvale, Cupertino, Santa Clara, Milpitas, Fremont, and surrounding areas.",
   keywords: [
     "about Sunny Child Care San Jose",
     "bilingual preschool San Jose",
@@ -14,12 +14,22 @@ export const metadata: Metadata = {
     "safe childcare environment",
     "nurturing daycare San Jose",
     "childcare San Jose 95131",
+    "Mountain View daycare",
+    "Sunnyvale childcare",
+    "Cupertino preschool",
+    "Santa Clara daycare",
+    "Milpitas childcare",
+    "Fremont preschool",
+    "Newark daycare",
+    "San Lorenzo childcare",
+    "Los Altos preschool",
+    "Campbell daycare",
     "關於 Sunny",
     "雙語教育理念",
     "聖荷西幼兒園介紹",
   ],
   openGraph: {
-    title: "About Us | Sunny Child Care San Jose | 關於我們",
+    title: "Best Bilingual Daycare Team in San Jose | About Sunny Child Care",
     description:
       "30+ years of bilingual education excellence. Learn about our health-first approach, nurturing environment, and commitment to developing confident, curious, bilingual children.",
     url: "https://www.sunnychildcare.com/about",

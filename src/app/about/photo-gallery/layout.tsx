@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Photo Gallery | Campus & Activities | Sunny Child Care San Jose",
+  title: "Daycare & Preschool Photo Gallery in San Jose | Sunny Child Care",
   description:
-    "Explore Sunny Child Care's photo gallery featuring our classrooms, Halloween celebrations, Easter parties, and daily activities. See our vibrant bilingual learning environment in San Jose.",
+    "Explore Sunny Child Care's photo gallery featuring our classrooms, Halloween celebrations, Easter parties, and daily activities. See our vibrant bilingual learning environment serving San Jose, Milpitas, and Cupertino.",
   keywords: [
     "daycare photo gallery San Jose",
     "preschool photos",
@@ -14,9 +14,14 @@ export const metadata: Metadata = {
     "Halloween party photos",
     "Easter celebration pictures",
     "childcare facility photos",
+    "Mountain View daycare photos",
+    "Sunnyvale childcare gallery",
+    "Cupertino preschool images",
+    "Santa Clara daycare photos",
+    "Milpitas childcare gallery",
   ],
   openGraph: {
-    title: "Photo Gallery | Sunny Child Care San Jose",
+    title: "Daycare & Preschool Photo Gallery in San Jose | Sunny Child Care",
     description:
       "View photos of our vibrant learning spaces, special celebrations, and daily activities at Sunny Child Care's bilingual preschool in San Jose.",
     url: "https://www.sunnychildcare.com/about/photo-gallery",

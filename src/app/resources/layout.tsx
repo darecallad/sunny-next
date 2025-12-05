@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Parent & Staff Resources | Brightwheel Portal | Sunny Child Care San Jose",
+  title: "Parent Resources for Best Daycare in San Jose | Sunny Child Care",
   description:
-    "Access parent resources at Sunny Child Care San Jose including Brightwheel communication portal, school calendars, parent handbook, enrollment forms, and staff resources. Stay connected with your child's San Jose childcare.",
+    "Access parent resources at Sunny Child Care San Jose including Brightwheel communication portal, school calendars, parent handbook, enrollment forms, and staff resources. Serving families in Mountain View, Sunnyvale, Cupertino, Santa Clara, Milpitas, and Fremont.",
   keywords: [
     "parent resources San Jose",
     "Brightwheel portal San Jose",
@@ -14,9 +14,14 @@ export const metadata: Metadata = {
     "staff resources San Jose",
     "daycare portal San Jose CA",
     "preschool resources San Jose 95131",
+    "Mountain View daycare resources",
+    "Sunnyvale childcare portal",
+    "Cupertino preschool handbook",
+    "Santa Clara daycare calendar",
+    "Milpitas childcare forms",
   ],
   openGraph: {
-    title: "Parent & Staff Resources | Sunny Child Care",
+    title: "Parent Resources for Best Daycare in San Jose | Sunny Child Care",
     description:
       "Access Brightwheel portal, school calendars, parent handbook, and enrollment resources. Everything you need to stay connected with your child's care.",
     url: "https://www.sunnychildcare.com/resources",

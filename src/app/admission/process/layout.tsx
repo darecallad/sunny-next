@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Enrollment Process | How to Join Sunny Child Care in San Jose, CA",
+  title: "Enrollment Process for Best Daycare in San Jose | Sunny Child Care",
   description:
-    "Simple 4-step enrollment at Sunny Child Care San Jose: Schedule a campus tour, submit application, complete enrollment via Brightwheel, and join our bilingual community. Serving San Jose families since 1995.",
+    "Simple 4-step enrollment at Sunny Child Care San Jose: Schedule a campus tour, submit application, complete enrollment via Brightwheel, and join our bilingual community. Serving Mountain View, Sunnyvale, Cupertino, Santa Clara, Milpitas, Fremont, and surrounding areas.",
   keywords: [
     "childcare enrollment process San Jose",
     "daycare admission San Jose",
@@ -13,9 +13,14 @@ export const metadata: Metadata = {
     "campus tour San Jose",
     "admission requirements San Jose",
     "enroll childcare San Jose 95131",
+    "Mountain View daycare enrollment",
+    "Sunnyvale childcare admission",
+    "Cupertino preschool registration",
+    "Santa Clara daycare sign up",
+    "Milpitas childcare enrollment",
   ],
   openGraph: {
-    title: "Enrollment Process | Join Sunny Child Care",
+    title: "Enrollment Process for Best Daycare in San Jose | Sunny Child Care",
     description:
       "Easy 4-step enrollment: Tour our campus, apply online, complete Brightwheel enrollment, and start. Schedule your tour today at (510) 333-5943.",
     url: "https://www.sunnychildcare.com/admission/process",

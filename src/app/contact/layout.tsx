@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Sunny Child Care San Jose | 聯絡我們",
+  title: "Contact Best Daycare in San Jose | Sunny Child Care",
   description:
-    "Contact Sunny Child Care at 2586 Seaboard Ave, San Jose, CA 95131 for enrollment inquiries, campus tours, or questions about our bilingual Mandarin-English programs. 歡迎聯繫 Sunny Child Care 詢問入學、預約參觀或了解雙語課程。",
+    "Contact Sunny Child Care at 2586 Seaboard Ave, San Jose, CA 95131 for enrollment inquiries, campus tours, or questions about our bilingual Mandarin-English programs. Serving Mountain View, Sunnyvale, Cupertino, Santa Clara, Milpitas, Fremont, and surrounding areas.",
   keywords: [
     "contact Sunny Child Care San Jose",
     "childcare contact San Jose",
@@ -15,13 +15,18 @@ export const metadata: Metadata = {
     "childcare questions San Jose",
     "Mandarin preschool contact",
     "San Jose daycare contact 95131",
+    "Mountain View daycare contact",
+    "Sunnyvale childcare inquiry",
+    "Cupertino preschool contact",
+    "Santa Clara daycare questions",
+    "Milpitas childcare contact",
     "聯絡我們",
     "聖荷西幼兒園電話",
     "預約參觀",
     "入學諮詢",
   ],
   openGraph: {
-    title: "Contact Us | Sunny Child Care San Jose | 聯絡我們",
+    title: "Contact Best Daycare in San Jose | Sunny Child Care",
     description:
       "Get in touch with Sunny Child Care for enrollment inquiries and campus tours. We're here to answer your questions about our bilingual programs. 歡迎聯繫我們。",
     url: "https://www.sunnychildcare.com/contact",

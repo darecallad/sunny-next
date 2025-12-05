@@ -10,6 +10,12 @@ All notable changes to the Sunny Child Care Next.js project will be documented i
 ### 🚀 SEO & Ranking Optimization
 - **Competitive Title Strategy**: Updated the Homepage Title to **"Best Daycare & Child Care in San Jose, CA | Sunny Child Care"**.
   - Designed to match and outrank top competitors (Yelp, Care.com) by using high-intent keywords ("Best Daycare", "Child Care") directly in the title.
+- **Site-wide Metadata Overhaul**:
+  - Applied the "Best [Service] in San Jose" title strategy to **all subpages** (About, Contact, Programs, Admissions, etc.) to maximize search visibility across the entire site.
+  - **Examples**:
+    - "Best Bilingual Preschool in San Jose" (Preschool Page)
+    - "Best Infant & Toddler Care in San Jose" (Infant Page)
+    - "Contact Best Daycare in San Jose" (Contact Page)
 - **Metadata Enhancement**:
   - **Description**: Rewrote the meta description to be punchy and keyword-rich, explicitly listing the expanded service areas to capture search intent from surrounding cities.
   - **Keywords**: Significantly expanded the global and homepage keyword lists to include "daycare", "childcare", and "preschool" combinations for all newly added service cities (e.g., "Mountain View daycare", "Fremont preschool").
