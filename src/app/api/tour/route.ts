@@ -314,6 +314,92 @@ This email was automatically sent from Sunny Child Care website
 
     await transporter.sendMail(mailOptions);
 
+    // --- Send confirmation email to parent ---
+    const isChineseTour = tourDateTime?.includes("Chinese Tour");
+    
+    const parentSubject = isChineseTour 
+      ? "預約參觀確認 - Sunny Child Care" 
+      : "Tour Confirmation - Sunny Child Care";
+
+    const parentHtml = `
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <meta charset="utf-8">
+          <style>
+            body { font-family: Arial, sans-serif; line-height: 1.6; color: #424242; }
+            .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+            .header { background-color: #FF9800; color: white; padding: 20px; text-align: center; border-radius: 5px 5px 0 0; }
+            .content { background-color: #FFFFFF; padding: 30px; border: 1px solid #FFE0B2; border-radius: 0 0 5px 5px; }
+            .info-box { background-color: #FFF3E0; padding: 20px; border-left: 4px solid #FF9800; margin: 20px 0; }
+            .footer { margin-top: 30px; padding-top: 20px; border-top: 1px solid #FFE0B2; text-align: center; color: #757575; font-size: 12px; }
+            .button { display: inline-block; background-color: #7CB342; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 10px; }
+          </style>
+        </head>
+        <body>
+          <div class="container">
+            <div class="header">
+              <h1>${isChineseTour ? "預約參觀確認" : "Tour Confirmation"}</h1>
+            </div>
+            <div class="content">
+              <p>${isChineseTour ? `${firstName} 您好，` : `Dear ${firstName},`}</p>
+              <p>
+                ${isChineseTour 
+                  ? "感謝您預約參觀 Sunny Child Care！我們已收到您的預約請求。" 
+                  : "Thank you for scheduling a tour with Sunny Child Care! We have received your booking request."}
+              </p>
+              
+              <div class="info-box">
+                <strong>${isChineseTour ? "參觀詳情：" : "Tour Details:"}</strong><br><br>
+                <strong>${isChineseTour ? "日期與時間：" : "Date & Time:"}</strong> ${tourDateTime}<br>
+                <strong>${isChineseTour ? "地點：" : "Location:"}</strong> 2586 Seaboard Ave, San Jose, CA 95131
+              </div>
+
+              <p>
+                ${isChineseTour 
+                  ? "請點擊下方按鈕將此行程加入您的 Google 日曆：" 
+                  : "Click the button below to add this tour to your Google Calendar:"}
+              </p>
+              
+              <div style="text-align: center;">
+                <a href="${generateGoogleCalendarLink(tourDateTime, firstName, lastName, email, phone)}" class="button">
+                  ${isChineseTour ? "📅 加入 Google 日曆" : "📅 Add to Google Calendar"}
+                </a>
+              </div>
+
+              <p style="margin-top: 20px;">
+                ${isChineseTour 
+                  ? "如果您需要更改或取消預約，請直接回覆此郵件或致電 (510) 333-5943。" 
+                  : "If you need to reschedule or cancel, please reply to this email or call us at (510) 333-5943."}
+              </p>
+
+              <p>
+                ${isChineseTour ? "期待與您見面！" : "We look forward to meeting you!"}
+              </p>
+            </div>
+            <div class="footer">
+              <p>Sunny Child Care | 2586 Seaboard Ave, San Jose, CA 95131</p>
+            </div>
+          </div>
+        </body>
+      </html>
+    `;
+
+    // Send email to parent
+    await transporter.sendMail({
+      from: `"Sunny Child Care" <${process.env.EMAIL_USER}>`,
+      to: email,
+      subject: parentSubject,
+      html: parentHtml,
+      attachments: tourDateTime ? [
+        {
+          filename: 'tour-booking.ics',
+          content: generateICS(tourDateTime, firstName, lastName, email, phone),
+          contentType: 'text/calendar; charset=utf-8; method=REQUEST'
+        }
+      ] : []
+    });
+
     return NextResponse.json({
       success: true,
       message: "Tour request sent successfully",
