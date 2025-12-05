@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Best Bilingual Daycare Team in San Jose | About Sunny Child Care",
+  title: "Best Bilingual Daycare Team in San Jose (2025) | About Sunny Child Care",
   description:
     "Learn about Sunny Child Care's 30-year legacy in San Jose providing exceptional Mandarin-English bilingual education. Serving Mountain View, Sunnyvale, Cupertino, Santa Clara, Milpitas, Fremont, and surrounding areas.",
   keywords: [

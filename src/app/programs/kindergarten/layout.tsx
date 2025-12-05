@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Best Kindergarten Prep & TK in San Jose | Sunny Child Care",
+  title: "Best Kindergarten Prep & TK in San Jose (2025) | Sunny Child Care",
   description:
     "Comprehensive kindergarten prep in San Jose, CA with STEAM-focused curriculum. Math, science, literacy, bilingual education prepare children ages 4-6 for academic success. Serving Mountain View, Sunnyvale, Cupertino, Santa Clara, Milpitas, Fremont, and surrounding areas.",
   keywords: [

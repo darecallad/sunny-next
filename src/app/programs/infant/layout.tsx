@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Best Infant & Toddler Care in San Jose | Sunny Child Care",
+  title: "Best Infant & Toddler Care in San Jose (2025) | Sunny Child Care",
   description:
     "Nurturing infant and toddler care in San Jose, CA with bilingual exposure. Flexible schedules, sensory activities, developmental focus for ages 6-36 months. Serving Mountain View, Sunnyvale, Cupertino, Santa Clara, Milpitas, Fremont, and surrounding areas.",
   keywords: [

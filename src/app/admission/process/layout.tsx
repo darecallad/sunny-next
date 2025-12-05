@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Enrollment Process for Best Daycare in San Jose | Sunny Child Care",
+  title: "Enrollment Process for Best Daycare in San Jose (2025) | Sunny Child Care",
   description:
     "Simple 4-step enrollment at Sunny Child Care San Jose: Schedule a campus tour, submit application, complete enrollment via Brightwheel, and join our bilingual community. Serving Mountain View, Sunnyvale, Cupertino, Santa Clara, Milpitas, Fremont, and surrounding areas.",
   keywords: [

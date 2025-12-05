@@ -8,7 +8,7 @@ import { VideoSpotlight } from "@/components/sections/video-spotlight";
 import { LocalBusinessSchema } from "@/components/seo/local-business-schema";
 
 export const metadata: Metadata = {
-  title: "Best Daycare & Child Care in San Jose, CA | Sunny Child Care",
+  title: "Best Daycare & Child Care in San Jose, CA (2025) | Sunny Child Care",
   description:
     "Top-rated Child Care & Daycare in San Jose, CA. Premier Mandarin-English bilingual preschool serving Mountain View, Sunnyvale, Cupertino, Santa Clara, Milpitas, Fremont, and surrounding areas. Enroll now!",
   keywords: [

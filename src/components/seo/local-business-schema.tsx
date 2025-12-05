@@ -58,6 +58,41 @@ export function LocalBusinessSchema() {
         name: "Santa Clara",
         containedIn: { "@type": "State", name: "California" },
       },
+      {
+        "@type": "City",
+        name: "Sunnyvale",
+        containedIn: { "@type": "State", name: "California" },
+      },
+      {
+        "@type": "City",
+        name: "Mountain View",
+        containedIn: { "@type": "State", name: "California" },
+      },
+      {
+        "@type": "City",
+        name: "Fremont",
+        containedIn: { "@type": "State", name: "California" },
+      },
+      {
+        "@type": "City",
+        name: "Newark",
+        containedIn: { "@type": "State", name: "California" },
+      },
+      {
+        "@type": "City",
+        name: "San Lorenzo",
+        containedIn: { "@type": "State", name: "California" },
+      },
+      {
+        "@type": "City",
+        name: "Los Altos",
+        containedIn: { "@type": "State", name: "California" },
+      },
+      {
+        "@type": "City",
+        name: "Campbell",
+        containedIn: { "@type": "State", name: "California" },
+      },
     ],
     knowsLanguage: ["English", "Chinese", "Mandarin"],
     availableLanguage: ["English", "Chinese"],
