@@ -121,12 +121,12 @@ export default function LocationsPage() {
                       : "我們的中心鄰近主要高速公路 (I-680, I-880)，交通便利，服務南灣各地區家庭："}
                   </p>
                   <ul className="grid grid-cols-2 gap-2 list-disc pl-5">
-                    <li>North San Jose (95131, 95132)</li>
-                    <li>Berryessa / Penitencia Creek</li>
-                    <li>Milpitas (95035)</li>
-                    <li>Santa Clara (95054)</li>
-                    <li>Alum Rock / East San Jose</li>
-                    <li>Cupertino (Commuter friendly)</li>
+                    <li>San Jose (North, East, Berryessa)</li>
+                    <li>Milpitas & Fremont</li>
+                    <li>Santa Clara & Sunnyvale</li>
+                    <li>Cupertino & Mountain View</li>
+                    <li>Newark & San Lorenzo</li>
+                    <li>Los Altos & Campbell</li>
                   </ul>
                   <p className="text-sm pt-2">
                     {locale === "en"
