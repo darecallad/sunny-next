@@ -44,11 +44,6 @@ export function SiteFooter() {
             </h4>
             <div className="mt-3 space-y-1 text-sm">
               <p className="font-semibold text-white">{siteConfig.contact.address}</p>
-              <p className="text-xs text-white/70">
-                {locale === "en" 
-                  ? "Serving San Jose, Milpitas, Cupertino, Santa Clara, Sunnyvale, Mountain View, Fremont, and surrounding areas" 
-                  : "服務 San Jose, Milpitas, Cupertino, Santa Clara, Sunnyvale, Mountain View, Fremont 及周邊地區"}
-              </p>
               <p>{siteConfig.contact.hours[locale]}</p>
               <p>
                 <span className="font-semibold text-white/90">
