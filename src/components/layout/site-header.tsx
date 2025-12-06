@@ -151,12 +151,13 @@ export function SiteHeader() {
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-80">
-              <SheetHeader>
+            <SheetContent side="right" className="w-80 flex flex-col gap-0 sm:max-w-sm">
+              <SheetHeader className="px-6 py-4">
                 <SheetTitle>Navigate</SheetTitle>
               </SheetHeader>
-              <div className="mt-6 space-y-6 pl-4">
-                {navigation.map((item) => (
+              <div className="flex-1 overflow-y-auto px-6 py-6">
+                <div className="space-y-6">
+                  {navigation.map((item) => (
                   <div key={item.title.en} className="space-y-2">
                     <p
                       className="font-semibold text-sm text-muted-foreground pl-2"
@@ -187,7 +188,8 @@ export function SiteHeader() {
                   </Link>
                 </Button>
               </div>
-            </SheetContent>
+            </div>
+          </SheetContent>
           </Sheet>
         </div>
       </div>
