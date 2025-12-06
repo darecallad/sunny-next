@@ -1,9 +1,18 @@
 import { MetadataRoute } from "next";
+import { getSortedPostsData } from "@/lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://www.sunnychildcare.com";
+  const posts = getSortedPostsData();
 
-  return [
+  const blogUrls = posts.map((post) => ({
+    url: `${baseUrl}/resources/blog/${post.id}`,
+    lastModified: new Date(post.date),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  const routes = [
     {
       url: baseUrl,
       lastModified: new Date(),
@@ -65,6 +74,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     },
     {
+      url: `${baseUrl}/resources/blog`,
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/about/photo-gallery`,
       lastModified: new Date(),
       changeFrequency: "weekly",
@@ -77,4 +92,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
   ];
+
+  return [...routes, ...blogUrls] as MetadataRoute.Sitemap;
 }
