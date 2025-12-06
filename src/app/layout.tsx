@@ -4,7 +4,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { Toaster } from "@/components/ui/sonner";
 import { siteConfig } from "@/data/site";
 import { LanguageProvider } from "@/context/language-context";
-import { montserrat, notoSans } from "@/lib/fonts";
+import { montserrat, notoSans, playfair } from "@/lib/fonts";
 import { LocalBusinessSchema } from "@/components/seo/local-business-schema";
 import "./globals.css";
 
@@ -98,7 +98,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-scroll-behavior="smooth">
-      <body className={`${montserrat.variable} ${notoSans.variable} antialiased`}>
+      <body className={`${montserrat.variable} ${notoSans.variable} ${playfair.variable} antialiased`}>
         <LocalBusinessSchema />
         <LanguageProvider>
           <div className="flex min-h-screen flex-col bg-background text-foreground">
