@@ -52,7 +52,10 @@ export function SiteHeader() {
                 <NavigationMenuItem key={item.title.en}>
                   {item.children && item.children.length ? (
                     <>
-                      <NavigationMenuTrigger className="bg-transparent text-base font-semibold text-white/90 hover:text-white data-[state=open]:text-white">
+                      <NavigationMenuTrigger
+                        className="bg-transparent text-base font-semibold text-white/90 hover:text-white data-[state=open]:text-white"
+                        suppressHydrationWarning
+                      >
                         {item.title[locale]}
                       </NavigationMenuTrigger>
                       <NavigationMenuContent>
@@ -64,16 +67,25 @@ export function SiteHeader() {
                                   href={child.href ?? "#"}
                                   className="block rounded-lg p-3 leading-none no-underline transition-colors hover:bg-primary/5"
                                 >
-                                  <div className="text-sm font-semibold text-foreground">
+                                  <div
+                                    className="text-sm font-semibold text-foreground"
+                                    suppressHydrationWarning
+                                  >
                                     {child.title[locale]}
                                     {child.badge && (
-                                      <Badge className="ml-2 bg-accent text-white hover:bg-accent/90">
+                                      <Badge
+                                        className="ml-2 bg-accent text-white hover:bg-accent/90"
+                                        suppressHydrationWarning
+                                      >
                                         {child.badge[locale]}
                                       </Badge>
                                     )}
                                   </div>
                                   {child.description && (
-                                    <p className="mt-1 text-sm text-muted-foreground">
+                                    <p
+                                      className="mt-1 text-sm text-muted-foreground"
+                                      suppressHydrationWarning
+                                    >
                                       {child.description[locale]}
                                     </p>
                                   )}
@@ -89,6 +101,7 @@ export function SiteHeader() {
                       <Link
                         className="text-base font-semibold text-white/90 hover:text-white"
                         href={item.href ?? "#"}
+                        suppressHydrationWarning
                       >
                         {item.title[locale]}
                       </Link>
@@ -103,7 +116,10 @@ export function SiteHeader() {
         <div className="hidden flex-1 items-center justify-end gap-5 md:flex">
           <LanguageToggle />
           <div className="flex flex-col text-right">
-            <p className="text-[0.65rem] font-semibold uppercase tracking-[0.55em] text-secondary">
+            <p
+              className="text-[0.65rem] font-semibold uppercase tracking-[0.55em] text-secondary"
+              suppressHydrationWarning
+            >
               {locale === "en" ? "Call us" : "專線"}
             </p>
             <a
@@ -121,7 +137,9 @@ export function SiteHeader() {
             size="lg"
             className="rounded-full bg-accent px-8 text-base font-semibold text-white shadow-lg shadow-black/10 hover:bg-accent/90"
           >
-            <Link href="/admission/tuition">{locale === "en" ? "Book a tour" : "預約參觀"}</Link>
+            <Link href="/admission/tuition" suppressHydrationWarning>
+              {locale === "en" ? "Book a tour" : "預約參觀"}
+            </Link>
           </Button>
         </div>
 
@@ -140,7 +158,10 @@ export function SiteHeader() {
               <div className="mt-6 space-y-6 pl-4">
                 {navigation.map((item) => (
                   <div key={item.title.en} className="space-y-2">
-                    <p className="font-semibold text-sm text-muted-foreground pl-2">
+                    <p
+                      className="font-semibold text-sm text-muted-foreground pl-2"
+                      suppressHydrationWarning
+                    >
                       {item.title[locale]}
                     </p>
                     <div className="space-y-1">
@@ -151,6 +172,7 @@ export function SiteHeader() {
                             href={child.href ?? "#"}
                             className="block rounded-lg px-4 py-2 text-base font-medium text-foreground hover:bg-muted"
                             onClick={() => setOpen(false)}
+                            suppressHydrationWarning
                           >
                             {child.title[locale]}
                           </Link>

@@ -67,11 +67,19 @@ export default function TuitionPage() {
   const generateFridaySlots = () => {
     const slots = [];
     const today = new Date();
-    const currentDay = today.getDay(); // 0 = Sunday, 5 = Friday
+    
+    // Set minimum date to Jan 16, 2026
+    const minDate = new Date("2026-01-16T00:00:00");
+    
+    // Start looking from the later of today or minDate
+    const startDate = today < minDate ? minDate : today;
+    
+    const currentDay = startDate.getDay(); // 0 = Sunday, 5 = Friday
     
     // Calculate days until next Friday
     let daysUntilFriday = (5 - currentDay + 7) % 7;
-    if (daysUntilFriday === 0) {
+    
+    if (daysUntilFriday === 0 && startDate.toDateString() === today.toDateString()) {
       // If today is Friday, check if it's past 3:30 PM
       const currentHour = today.getHours();
       const currentMinute = today.getMinutes();
@@ -86,8 +94,8 @@ export default function TuitionPage() {
     let weekOffset = 0;
     
     while (addedFridays < 3) {
-      const targetDate = new Date(today);
-      targetDate.setDate(today.getDate() + daysUntilFriday + (weekOffset * 7));
+      const targetDate = new Date(startDate);
+      targetDate.setDate(startDate.getDate() + daysUntilFriday + (weekOffset * 7));
       
       const year = targetDate.getFullYear();
       const month = targetDate.getMonth() + 1;
