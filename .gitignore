@@ -43,3 +43,6 @@ next-env.d.ts
 # tour booking data (contains personal information)
 /data/
 data/tour-bookings.json
+
+.vercel
+.env*.local
