@@ -124,7 +124,13 @@ export const navigation: NavItem[] = [
       { title: { en: "Contact Us", zh: "聯絡我們" }, href: "/contact" },
     ],
   },
-  { title: { en: "Resources", zh: "親職資源" }, href: "/resources" },
+  {
+    title: { en: "Resources", zh: "親職資源" },
+    children: [
+      { title: { en: "Parent Resources", zh: "家長資源" }, href: "/resources" },
+      { title: { en: "Parenting Blog", zh: "育兒部落格" }, href: "/resources/blog" },
+    ],
+  },
 ];
 
 export const heroContent = {
