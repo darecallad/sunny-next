@@ -65,13 +65,32 @@ Chinese: [吸引人的問句？] [痛點解決]。住 San Jose 的爸媽們，�
 -->
 ```
 
-## 5. Example Workflow for AI
-When asked to write a blog post, follow this process:
-1.  **Think:** What is the parent's pain point? How would Director Jessie advise them?
-2.  **Draft English:** Write conversationally, inserting "San Jose" naturally.
-3.  **Draft Chinese:** Translate thoughts (not words) into natural Taiwanese Mandarin.
-4.  **Format:** Apply Markdown, Frontmatter, Separator, and Spacing.
-5.  **Append:** Add the SEO Metadata block at the end.
+## 5. AI Automation Workflow (AI 自動化流程)
+When asked to "create a blog post for [Date]" or similar requests, follow this strict protocol:
+
+### Step 1: Content Generation
+1.  **Topic Selection:** Choose a parenting topic relevant to the season or common toddler struggles (e.g., sleep, picky eating, separation anxiety).
+    *   **Constraint:** Check existing files in `content/blog/` to **avoid duplicates**.
+    *   **Constraint:** Do NOT fabricate specific school events or policies. Stick to general "Director Jessie" wisdom or standard industry practices unless verified in `docs/`.
+2.  **Drafting:** Write the full markdown content following the **Style & Tone** and **Structure** guidelines above.
+3.  **Date:** Set the `date` field in frontmatter to the requested date (YYYY-MM-DD).
+
+### Step 2: Image Handling
+1.  **Filename Convention:** Determine a descriptive filename for the image (e.g., `toddler-sharing-toys.png`).
+2.  **Frontmatter:** Set the `image` field in the markdown **immediately** to this path: `/images/blog/[your-filename].png`.
+3.  **Prompt Generation:** At the end of your response to the user, provide a specific **Image Generation Prompt** for Gemini 3 Pro or Midjourney.
+    *   *Format:*
+        > **Image Generation Prompt:**
+        > **Subject:** [Description of scene]
+        > **Action:** [What are they doing?]
+        > **Atmosphere:** Warm, golden-hour lighting, soft creamy background (consistent with "Warm & Editorial" style).
+        > **Style:** High-quality lifestyle photography, depth of field.
+        > **Filename:** `[your-filename].png` (Please save the image with this name).
+
+### Step 3: Final Output
+*   Present the Markdown code block first.
+*   Present the Image Prompt second.
+*   Remind the user to save the image to `public/images/blog/`.
 
 ## 6. Content Checklist
 - [ ] Does it sound like Director Jessie (Warm, 10+ years exp)?
