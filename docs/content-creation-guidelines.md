@@ -33,6 +33,13 @@ This document serves as the **System Prompt** for creating blog content for Sunn
 
 ### A. Frontmatter (YAML)
 Standard Hugo/Next.js frontmatter with bilingual titles and excerpts.
+*   **title / titleZh:** Catchy, emotional titles.
+*   **excerpt / excerptZh:** **CRITICAL FOR SEO.** This is your Meta Description.
+    *   Must be under 160 characters.
+    *   Must include keywords (San Jose, Daycare, etc.) naturally.
+    *   Must be a "hook" to get clicks.
+*   **image:** Path to the image (e.g., `/images/blog/filename.png`).
+*   **date:** YYYY-MM-DD.
 
 ### B. English Content
 1.  **Opening:** Empathetic icebreaker. Acknowledge the parent's struggle or feeling.
@@ -52,27 +59,18 @@ Standard Hugo/Next.js frontmatter with bilingual titles and excerpts.
     *   **Visual Spacing:** Must add `<br/><br/>` before the final link.
     *   **Link:** `[預約參觀，和 Jessie 園長聊聊](/admission/tuition)`
 
-### E. SEO Metadata Block (Mandatory at End of File)
-Must be placed at the very bottom of the markdown file, inside HTML comments.
-
-```html
-<!-- 
-SEO Metadata
-URL Slug 建議： [target-keyword-rich-slug-san-jose]
-SEO Meta Description (150字內)： 
-English: [Curious question?] [Value proposition]. At Sunny Child Care in San Jose, [Benefit].
-Chinese: [吸引人的問句？] [痛點解決]。住 San Jose 的爸媽們，來看看 Sunny Child Care 園長的分享。
--->
-```
-
 ## 5. AI Automation Workflow (AI 自動化流程)
 When asked to "create a blog post for [Date]" or similar requests, follow this strict protocol:
 
 ### Step 1: Content Generation
-1.  **Topic Selection:** Choose a parenting topic relevant to the season or common toddler struggles (e.g., sleep, picky eating, separation anxiety).
+1.  **Topic & Slug Selection:**
+    *   Choose a parenting topic relevant to the season or common toddler struggles.
+    *   **Generate an SEO-friendly Slug:** Use lowercase, hyphens, and include keywords (e.g., `toddler-sharing-tips-san-jose`).
+    *   **Filename:** Use this slug for the file: `content/blog/[slug].md`.
     *   **Constraint:** Check existing files in `content/blog/` to **avoid duplicates**.
-    *   **Constraint:** Do NOT fabricate specific school events or policies. Stick to general "Director Jessie" wisdom or standard industry practices unless verified in `docs/`.
-2.  **Drafting:** Write the full markdown content following the **Style & Tone** and **Structure** guidelines above.
+2.  **Drafting:** Write the full markdown content.
+    *   **SEO Integration:** Ensure the `excerpt` and `excerptZh` in the frontmatter are written as high-quality Meta Descriptions (using the keywords).
+    *   **NO Comment Block:** Do NOT put SEO metadata in comments at the bottom. Put it in the frontmatter.
 3.  **Date:** Set the `date` field in frontmatter to the requested date (YYYY-MM-DD).
 
 ### Step 2: Image Handling
@@ -98,4 +96,15 @@ When asked to "create a blog post for [Date]" or similar requests, follow this s
 - [ ] Is the Chinese natural (No AI-speak)?
 - [ ] Are there 3 actionable tips?
 - [ ] Is the `<br/><br/>` spacing present before CTA?
-- [ ] Is the SEO Metadata block present at the bottom?
+- [ ] Is the filename SEO-optimized (keywords included)?
+- [ ] Are `excerpt` and `excerptZh` optimized for SEO?
+
+## 7. Technical Implementation Notes (For AI Coding Agents)
+If you are asked to modify the **React Code** (e.g., `BlogFeed.tsx` or `ArticleClient.tsx`) that renders these blog posts, you must follow these rules to prevent Next.js warnings:
+
+### Image Component Rules
+When using the Next.js `<Image />` component with the `fill` prop:
+1.  **MANDATORY:** You MUST include the `sizes` prop.
+    *   **Blog Feed Cards:** `sizes="(max-width: 768px) 100vw, 350px"` (or appropriate card width).
+    *   **Article Header:** `sizes="(max-width: 768px) 100vw, 800px"` (or appropriate container width).
+2.  **Reason:** This prevents the "Image with src ... has 'fill' but is missing 'sizes' prop" warning and improves performance.

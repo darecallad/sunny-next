@@ -49,7 +49,10 @@ export function getSortedPostsData(): BlogPost[] {
   });
 
   // Filter out future posts (Time-Release Logic)
-  const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
+  // Use San Jose time (PST/PDT) to determine "today" instead of UTC
+  const today = new Date().toLocaleDateString("en-CA", {
+    timeZone: "America/Los_Angeles",
+  });
   const publishedPosts = allPostsData.filter((post) => post.date <= today);
 
   // Sort posts by date

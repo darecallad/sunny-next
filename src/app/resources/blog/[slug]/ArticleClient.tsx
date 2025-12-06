@@ -57,6 +57,7 @@ export default function ArticleClient({ postData }: ArticleClientProps) {
             src={postData.image}
             alt={postData.title}
             fill
+            sizes="(max-width: 768px) 100vw, 800px"
             className="object-cover"
             priority
           />
