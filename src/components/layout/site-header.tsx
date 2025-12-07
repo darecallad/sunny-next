@@ -33,14 +33,13 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-primary text-white shadow-lg shadow-black/5 backdrop-blur">
       <div className="container mx-auto flex items-center justify-between gap-4 px-4 py-4">
-        <Link href="/" className="inline-flex items-center px-4 py-2">
+        <Link href="/" className="inline-flex items-center">
           <Image
             src="/images/Flogo.png"
             alt="Sunny Child Care - Bilingual Childcare & Preschool in San Jose logo"
-            width={200}
-            height={56}
-            className="h-12 w-auto object-contain md:h-12 lg:h-12"
-            style={{ height: 'clamp(56px, 15vw, 64px)' }}
+            width={240}
+            height={80}
+            className="h-16 w-auto object-contain"
             priority
           />
         </Link>
@@ -115,22 +114,8 @@ export function SiteHeader() {
 
         <div className="hidden flex-1 items-center justify-end gap-5 md:flex">
           <LanguageToggle />
-          <div className="flex flex-col text-right">
-            <p
-              className="text-[0.65rem] font-semibold uppercase tracking-[0.55em] text-secondary"
-              suppressHydrationWarning
-            >
-              {locale === "en" ? "Call us" : "專線"}
-            </p>
-            <a
-              className="inline-flex items-center gap-3 text-2xl font-bold text-white"
-              href={`tel:${siteConfig.contact.phone.replace(/\D/g, "")}`}
-            >
-              <span className="flex h-9 w-9 items-center justify-center rounded-full border border-secondary/60 text-secondary">
-                <Phone className="h-4 w-4" />
-              </span>
-              <span className="tracking-wide">{siteConfig.contact.phone}</span>
-            </a>
+          <div className="text-lg font-bold text-white">
+            {siteConfig.contact.phone}
           </div>
           <Button
             asChild

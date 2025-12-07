@@ -24,13 +24,13 @@ export function SiteFooter() {
         <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr_1fr]">
           <div className="space-y-4">
             <div className="w-full max-w-sm">
-              <Link href="/" className="inline-flex w-full items-center justify-center px-4 py-3">
+              <Link href="/" className="inline-flex items-center justify-start py-3">
                 <Image
                   src="/images/Flogo.png"
                   alt="Sunny Child Care - Bilingual Mandarin-English Preschool San Jose"
-                  width={220}
-                  height={64}
-                  className="h-12 w-full object-contain"
+                  width={240}
+                  height={80}
+                  className="h-16 w-auto object-contain"
                 />
               </Link>
             </div>
