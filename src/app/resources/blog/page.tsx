@@ -1,6 +1,8 @@
 import { getSortedPostsData } from "@/lib/blog";
 import BlogFeed from "./BlogFeed";
 
+export const revalidate = 3600; // Revalidate every hour
+
 export default function BlogPage() {
   const posts = getSortedPostsData();
   
