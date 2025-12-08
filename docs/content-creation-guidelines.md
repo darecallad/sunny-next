@@ -63,6 +63,22 @@ Standard Hugo/Next.js frontmatter with bilingual titles and excerpts.
     *   **Visual Spacing:** Must add `<br/><br/>` before the final link.
     *   **Link:** `[預約參觀，和 Jessie 園長聊聊](/admission/tuition)`
 
+### E. Conversational Tip Blocks (口語化提示框)
+To enhance the warm, expert tone, each of the "Core Advice" points can end with a blockquote tip.
+
+*   **Rule:** The phrasing of this tip should be **varied and conversational**, not robotic. Avoid using the same intro phrase for every tip in an article.
+*   **Format:** Use the markdown blockquote `>`.
+*   **Good Examples (English):**
+    > > **Director Jessie's Tip:** ...
+    > > **A little secret from my director's desk:** ...
+    > > **My advice after 10+ years:** ...
+    > > **Here's a pro-tip from our classrooms:** ...
+*   **Good Examples (Chinese - 台灣繁體中文):**
+    > > **Jessie 園長的小撇步：** ...
+    > > **來自園長辦公室的小秘密：** ...
+    > > **我10多年的經驗之談：** ...
+    > > **一個來自我們教室的專業建議：** ...
+
 ## 5. AI Automation Workflow (AI 自動化流程)
 When asked to "create a blog post for [Date]" or similar requests, follow this strict protocol:
 
@@ -112,3 +128,43 @@ When using the Next.js `<Image />` component with the `fill` prop:
     *   **Blog Feed Cards:** `sizes="(max-width: 768px) 100vw, 350px"` (or appropriate card width).
     *   **Article Header:** `sizes="(max-width: 768px) 100vw, 800px"` (or appropriate container width).
 2.  **Reason:** This prevents the "Image with src ... has 'fill' but is missing 'sizes' prop" warning and improves performance.
+
+## 8. Future Content Strategy & Ideas (未來內容策略方向)
+
+To capture more long-tail and high-intent search traffic, future content should expand beyond general parenting tips into more specific, value-driven categories.
+
+### a. Hyper-Local "Best Of" Guides (超在地化「口袋名單」指南)
+Create resource guides that position Sunny as a central, knowledgeable community hub. These are highly shareable and attract parents actively seeking things to do in their specific area.
+*   **Goal:** Rank for searches like "toddler activities san jose" or "kid friendly parks berryessa".
+*   **Examples:**
+    *   "The Top 5 Toddler-Friendly Parks in San Jose's Berryessa Neighborhood"
+    *   "A Parent's Guide to Rainy Day Activities in North San Jose"
+    *   "Best Kid-Friendly Coffee Shops near the Great Mall"
+    *   "Stroller-Friendly Trails in Alum Rock Park"
+
+### b. Answering Parent's Search Queries (回答家長的「Google 搜尋」)
+Address specific, often complex, questions that parents google. These posts target high-intent, long-tail keywords and establish you as an expert.
+*   **Goal:** Capture traffic from problem-aware parents seeking immediate, expert answers.
+*   **Examples:**
+    *   "How to Handle Toddler Jet Lag After a Trip to Asia (San Jose Parent Guide)"
+    *   "Mandarin Immersion vs. Bilingual Preschool: What's the Right Choice in the Bay Area?"
+    *   "When Should My Child Start Learning a Second Language?"
+    *   "Is My Toddler Ready for Preschool? A Checklist for San Jose Parents"
+
+### c. "A Day at Sunny" Series (「Sunny 的一天」系列)
+Show, don't just tell. These posts give prospective parents a transparent, inside look at the daily experience, building trust and excitement.
+*   **Goal:** Answer the question "What is it *really* like at Sunny?" and reduce anxiety for new parents.
+*   **Examples:**
+    *   "A Day in the Life: Our Infant Room Routine"
+    *   "What's for Lunch? A Look at Our Wholesome, Chef-Designed Menu"
+    *   "From Circle Time to STEAM: A Glimpse into Our Preschooler's Day"
+    *   "Celebrating Holidays at Sunny: How We Blend Cultures and Create Joy"
+
+### d. Curriculum Deep Dives (深入課程核心)
+Go beyond the "what" and explain the "why" of your educational philosophy. This content appeals to parents who are deeply invested in pedagogical approaches.
+*   **Goal:** Attract discerning parents who are comparing different educational philosophies.
+*   **Examples:**
+    *   "The Power of Play-Based STEAM: How We Build Future Innovators"
+    *   "More Than Just Words: Nurturing Social-Emotional Skills in a Bilingual Setting"
+    *   "Why We Don't Use Flashcards: The Power of Project-Based Learning"
+    *   "The Role of Music and Movement in Language Acquisition"
