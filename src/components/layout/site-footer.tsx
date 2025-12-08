@@ -44,6 +44,9 @@ export function SiteFooter() {
             </h4>
             <div className="mt-3 space-y-1 text-sm">
               <p className="font-semibold text-white">{siteConfig.contact.address}</p>
+              <p className="text-xs text-white/70 mb-2">
+                {locale === "en" ? "Near Berryessa BART & Great Mall" : "鄰近 Berryessa BART 與 Great Mall"}
+              </p>
               <p>{siteConfig.contact.hours[locale]}</p>
               <p>
                 <span className="font-semibold text-white/90">

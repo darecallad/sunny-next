@@ -114,30 +114,50 @@ export default function LocationsPage() {
                 <h3 className="text-xl font-semibold text-foreground mb-4">
                   {locale === "en" ? "Serving Our Community" : "服務社區"}
                 </h3>
-                <div className="space-y-4 text-muted-foreground">
-                  <p>
-                    {locale === "en" 
-                      ? "Our center is easily accessible from major highways (I-680, I-880) and serves families throughout the South Bay area:"
-                      : "我們的中心鄰近主要高速公路 (I-680, I-880)，交通便利，服務南灣各地區家庭："}
-                  </p>
-                  <ul className="grid grid-cols-2 gap-2 list-disc pl-5">
-                    <li>San Jose (North, East, Berryessa)</li>
-                    <li>Milpitas & Fremont</li>
-                    <li>Santa Clara & Sunnyvale</li>
-                    <li>Cupertino & Mountain View</li>
-                    <li>Newark & San Lorenzo</li>
-                    <li>Los Altos & Campbell</li>
-                  </ul>
-                  <p className="text-sm pt-2">
-                    {locale === "en"
-                      ? "Just 5 minutes from the Great Mall and Berryessa BART Station."
-                      : "距離 Great Mall 和 Berryessa BART 站僅 5 分鐘車程。"}
-                  </p>
+                <div className="space-y-6 text-muted-foreground">
+                  <div>
+                    <h4 className="font-medium text-foreground mb-2">
+                      {locale === "en" ? "Neighborhoods" : "鄰近社區"}
+                    </h4>
+                    <ul className="grid grid-cols-2 gap-x-4 gap-y-1 list-disc pl-5 text-sm">
+                      <li>Berryessa / North San Jose</li>
+                      <li>Milpitas (Great Mall area)</li>
+                      <li>Alviso & Santa Clara</li>
+                      <li>Penitencia Creek</li>
+                      <li>Mission San Jose (Fremont)</li>
+                      <li>North Valley</li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-medium text-foreground mb-2">
+                      {locale === "en" ? "Convenient for Parents at" : "方便前往的科技園區"}
+                    </h4>
+                    <p className="text-sm">
+                      {locale === "en" 
+                        ? "Ideal for families working at nearby tech hubs:" 
+                        : "非常適合在以下科技園區工作的家長："}
+                    </p>
+                    <ul className="mt-1 grid grid-cols-2 gap-x-4 gap-y-1 list-disc pl-5 text-sm">
+                      <li>Cisco Systems (5 mins)</li>
+                      <li>Samsung Semiconductor (5 mins)</li>
+                      <li>KLA (8 mins)</li>
+                      <li>Western Digital (8 mins)</li>
+                    </ul>
+                  </div>
+
+                  <div className="pt-2 border-t border-border/50">
+                    <p className="text-sm font-medium text-foreground">
+                      {locale === "en" ? "Public Transit" : "大眾運輸"}
+                    </p>
+                    <p className="text-sm mt-1">
+                      {locale === "en"
+                        ? "Located just 3 minutes from Berryessa BART Station and VTA transit centers."
+                        : "距離 Berryessa BART 站和 VTA 轉運中心僅 3 分鐘車程。"}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="h-[400px] overflow-hidden rounded-xl border border-border shadow-sm lg:h-auto">
-              {/* Google Maps Embed Code Here */}
             </div>
           </div>
         </div>
