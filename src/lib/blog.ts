@@ -30,7 +30,9 @@ export function getSortedPostsData(): BlogPost[] {
 
   // Get file names under /content/blog
   const fileNames = fs.readdirSync(postsDirectory);
-  const allPostsData = fileNames.map((fileName) => {
+  const allPostsData = fileNames
+    .filter((fileName) => fileName.endsWith(".md"))
+    .map((fileName) => {
     // Remove ".md" from file name to get id
     const id = fileName.replace(/\.md$/, "");
 
@@ -70,7 +72,9 @@ export function getAllPostIds() {
     return [];
   }
   const fileNames = fs.readdirSync(postsDirectory);
-  return fileNames.map((fileName) => {
+  return fileNames
+    .filter((fileName) => fileName.endsWith(".md"))
+    .map((fileName) => {
     return {
       params: {
         slug: fileName.replace(/\.md$/, ""),
