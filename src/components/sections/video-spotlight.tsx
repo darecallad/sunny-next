@@ -22,7 +22,7 @@ export function VideoSpotlight() {
             <iframe
               className="h-full w-full"
               src={`https://www.youtube.com/embed/${spotlight.videoId}?autoplay=0&mute=1&loop=1&playlist=${spotlight.videoId}`}
-              title="Sunny Child Care tour"
+              title="Sunny Child Care - Virtual Campus Tour Video"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               loading="lazy"
             />

@@ -10,10 +10,10 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: siteConfig.name,
-    template: `%s | ${siteConfig.name}`,
+    default: "Sunny Child Care | Mandarin Bilingual Daycare & Preschool in San Jose",
+    template: `%s | Sunny Child Care San Jose`,
   },
-  description: siteConfig.description,
+  description: "Sunny Child Care offers a loving, Mandarin bilingual immersion environment for infants, toddlers, and preschoolers in San Jose, CA. Nurturing growth through play-based learning.",
   keywords: [
     "childcare San Jose",
     "San Jose day care",
@@ -53,10 +53,10 @@ export const metadata: Metadata = {
     apple: "/images/sunny-logomark.png",
   },
   openGraph: {
-    title: siteConfig.name,
-    description: siteConfig.description,
+    title: "Sunny Child Care | Mandarin Bilingual Daycare & Preschool in San Jose",
+    description: "Sunny Child Care offers a loving, Mandarin bilingual immersion environment for infants, toddlers, and preschoolers in San Jose, CA. Nurturing growth through play-based learning.",
     url: "https://www.sunnychildcare.com",
-    siteName: siteConfig.name,
+    siteName: "Sunny Child Care San Jose",
     locale: "en_US",
     alternateLocale: ["zh_CN"],
     type: "website",
@@ -71,8 +71,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: siteConfig.name,
-    description: siteConfig.description,
+    title: "Sunny Child Care | Mandarin Bilingual Daycare & Preschool in San Jose",
+    description: "Sunny Child Care offers a loving, Mandarin bilingual immersion environment for infants, toddlers, and preschoolers in San Jose, CA. Nurturing growth through play-based learning.",
     images: ["/images/hero-pexels.jpg"],
   },
   robots: {
