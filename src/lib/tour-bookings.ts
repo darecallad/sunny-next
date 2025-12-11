@@ -68,8 +68,8 @@ export async function saveBooking(booking: Omit<TourBooking, "id" | "createdAt" 
     await kv.set(KV_KEY, bookings);
   } catch (error) {
     console.error("Failed to save booking to KV:", error);
-    // 在這裡我們只記錄錯誤，不拋出，以免影響郵件發送流程
-    // 但這意味著提醒功能對這筆預約會失效
+    // 拋出錯誤，讓上層處理（停止發送郵件）
+    throw error;
   }
   
   return newBooking;

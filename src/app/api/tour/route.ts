@@ -121,8 +121,15 @@ export async function POST(request: NextRequest) {
         });
         bookingId = savedBooking.id;
       } catch (saveError) {
-        console.warn("Failed to save booking to local file (expected in serverless environment):", saveError);
-        // 繼續執行，發送郵件
+        console.error("CRITICAL ERROR: Failed to save booking to KV store:", saveError);
+        // 如果無法儲存預約，我們應該停止流程並報錯，否則會產生無法取消的「幽靈預約」
+        return NextResponse.json(
+          { 
+            error: "Failed to save booking", 
+            details: "Database connection error. Please try again later." 
+          },
+          { status: 500 }
+        );
       }
     }
 
