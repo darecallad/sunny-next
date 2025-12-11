@@ -15,7 +15,7 @@ const programs = [
       zh: "為 6 週至 24 個月的寶寶提供溫暖照護。專注於感官探索、動作發展與情感安全感。",
     },
     href: "/programs/infant",
-    image: "/images/banners/about.webp", // Using existing image as placeholder if specific ones aren't available
+    image: "/images/banners/infant.webp",
   },
   {
     title: { en: "Preschool", zh: "幼兒園" },
@@ -24,7 +24,7 @@ const programs = [
       zh: "為 2-4 歲幼兒設計的遊戲式學習。培養社交技巧、雙語基礎與創造力表達。",
     },
     href: "/programs/preschool",
-    image: "/images/banners/hero-pexels.jpg",
+    image: "/images/banners/preschool.webp",
   },
   {
     title: { en: "TK / Kindergarten", zh: "學前 / 小學" },
@@ -33,7 +33,7 @@ const programs = [
       zh: "為 4-6 歲兒童準備的入學銜接。進階雙語讀寫、數學概念與專題式探究。",
     },
     href: "/programs/kindergarten",
-    image: "/images/banners/location.jpg",
+    image: "/images/banners/kindergarten.webp",
   },
 ];
 
