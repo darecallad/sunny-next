@@ -1,4 +1,4 @@
-import { kv } from "@vercel/kv";
+import { redis } from "@/lib/redis";
 
 export interface TourBooking {
   id: string;
@@ -23,10 +23,10 @@ const KV_KEY = "tour-bookings";
 // 讀取所有預約
 export async function getBookings(): Promise<TourBooking[]> {
   try {
-    const bookings = await kv.get<TourBooking[]>(KV_KEY);
-    return bookings || [];
+    const data = await redis.get(KV_KEY);
+    return data ? JSON.parse(data) : [];
   } catch (error) {
-    console.error("Failed to fetch bookings from KV:", error);
+    console.error("Failed to fetch bookings from Redis:", error);
     return [];
   }
 }
@@ -42,10 +42,10 @@ export async function cancelBooking(id: string): Promise<boolean> {
   bookings.splice(index, 1);
   
   try {
-    await kv.set(KV_KEY, bookings);
+    await redis.set(KV_KEY, JSON.stringify(bookings));
     return true;
   } catch (error) {
-    console.error("Failed to delete booking from KV:", error);
+    console.error("Failed to delete booking from Redis:", error);
     return false;
   }
 }
@@ -65,9 +65,9 @@ export async function saveBooking(booking: Omit<TourBooking, "id" | "createdAt" 
   bookings.push(newBooking);
   
   try {
-    await kv.set(KV_KEY, bookings);
+    await redis.set(KV_KEY, JSON.stringify(bookings));
   } catch (error) {
-    console.error("Failed to save booking to KV:", error);
+    console.error("Failed to save booking to Redis:", error);
     // 拋出錯誤，讓上層處理（停止發送郵件）
     throw error;
   }
@@ -83,9 +83,9 @@ export async function updateBooking(id: string, updates: Partial<TourBooking>): 
   if (index !== -1) {
     bookings[index] = { ...bookings[index], ...updates };
     try {
-      await kv.set(KV_KEY, bookings);
+      await redis.set(KV_KEY, JSON.stringify(bookings));
     } catch (error) {
-      console.error("Failed to update booking in KV:", error);
+      console.error("Failed to update booking in Redis:", error);
     }
   }
 }
