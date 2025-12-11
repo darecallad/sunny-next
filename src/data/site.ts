@@ -110,25 +110,88 @@ export const navigation: NavItem[] = [
   {
     title: { en: "Programs", zh: "課程介紹" },
     children: [
-      { title: { en: "Infant & Toddler", zh: "嬰幼班" }, href: "/programs/infant" },
-      { title: { en: "Preschool", zh: "幼兒園" }, href: "/programs/preschool" },
-      { title: { en: "TK / Kindergarten", zh: "學前 / 小學" }, href: "/programs/kindergarten" },
-      { title: { en: "Menus", zh: "營養餐點" }, href: "/programs/menus" },
+      { 
+        title: { en: "Infant & Toddler", zh: "嬰幼班" }, 
+        href: "/programs/infant",
+        description: {
+          en: "Nurturing care for ages 0-2",
+          zh: "為 0-2 歲寶寶提供溫暖照護",
+        }
+      },
+      { 
+        title: { en: "Preschool", zh: "幼兒園" }, 
+        href: "/programs/preschool",
+        description: {
+          en: "Play-based learning for ages 2-4",
+          zh: "為 2-4 歲幼兒設計的遊戲式學習",
+        }
+      },
+      { 
+        title: { en: "TK / Kindergarten", zh: "學前 / 小學" }, 
+        href: "/programs/kindergarten",
+        description: {
+          en: "School readiness for ages 4-6",
+          zh: "為 4-6 歲兒童準備的入學銜接",
+        }
+      },
+      { 
+        title: { en: "Menus", zh: "營養餐點" }, 
+        href: "/programs/menus",
+        description: {
+          en: "Nutritious, freshly prepared meals",
+          zh: "每日新鮮現做的營養餐點",
+        }
+      },
     ],
   },
   {
     title: { en: "Admission", zh: "入學資訊" },
     children: [
-      { title: { en: "Process", zh: "入學流程" }, href: "/admission/process" },
-      { title: { en: "Tuition & Openings", zh: "學費與名額" }, href: "/admission/tuition" },
-      { title: { en: "Contact Us", zh: "聯絡我們" }, href: "/contact" },
+      { 
+        title: { en: "Process", zh: "入學流程" }, 
+        href: "/admission/process",
+        description: {
+          en: "Step-by-step guide to enrollment",
+          zh: "詳細入學申請步驟說明",
+        }
+      },
+      { 
+        title: { en: "Tuition & Openings", zh: "學費與名額" }, 
+        href: "/admission/tuition",
+        description: {
+          en: "Current rates and availability",
+          zh: "最新學費標準與名額資訊",
+        }
+      },
+      { 
+        title: { en: "Contact Us", zh: "聯絡我們" }, 
+        href: "/contact",
+        description: {
+          en: "Get in touch with our team",
+          zh: "與我們聯繫，了解更多",
+        }
+      },
     ],
   },
   {
     title: { en: "Resources", zh: "親職資源" },
     children: [
-      { title: { en: "Parent Resources", zh: "家長資源" }, href: "/resources" },
-      { title: { en: "Parenting Blog", zh: "育兒部落格" }, href: "/resources/blog" },
+      { 
+        title: { en: "Parent Resources", zh: "家長資源" }, 
+        href: "/resources",
+        description: {
+          en: "Helpful guides and forms",
+          zh: "實用的育兒指南與表格",
+        }
+      },
+      { 
+        title: { en: "Parenting Blog", zh: "育兒部落格" }, 
+        href: "/resources/blog",
+        description: {
+          en: "Tips and insights for families",
+          zh: "分享育兒知識與觀點",
+        }
+      },
     ],
   },
 ];
