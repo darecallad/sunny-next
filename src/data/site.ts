@@ -392,29 +392,89 @@ export const aboutContent = {
       zh: "在 Sunny，我們秉持以下核心理念：",
     },
   },
-  principles: [
-    {
-      title: { en: "Health, Safety, and Wellness", zh: "健康、安全與福祉" },
-      description: {
-        en: "Safety and wellness is our top priority, and we take it very seriously. We leave no detail, big or small, unattended when it comes to ensuring the well-being of your children. You can trust that your child is in the most capable hands every day at our center.",
-        zh: "安全與健康是我們的首要任務，我們非常重視這一點。無論大小細節，我們都不會忽略孩子的福祉。您可以放心，孩子每天都在我們最專業的照顧下。",
+  mission: {
+    title: { en: "Our Mission", zh: "我們的使命" },
+    description: [
+      {
+        en: "At the core of our mission is the unwavering dedication to providing families with a nurturing and enriching environment that feels like a second home.",
+        zh: "我們的使命核心是堅定不移地為家庭提供一個像第二個家一樣的培育和豐富環境。",
       },
+      {
+        en: "We believe that a child's world expands with every step, crawl, roll, or hop into our classrooms.",
+        zh: "我們相信，孩子的世界會隨著每一步、每一次爬行、滾動或跳躍進入我們的教室而擴展。",
+      }
+    ]
+  },
+  features: [
+    {
+      title: { en: "Health & Safety", zh: "健康與安全" },
+      description: {
+        en: "Safety and wellness is our top priority. We leave no detail unattended when it comes to ensuring the well-being of your children.",
+        zh: "安全與健康是我們的首要任務。我們不忽略任何細節，確保您孩子的福祉。",
+      }
     },
     {
-      title: { en: "Fostering Personal Development", zh: "培養個人發展" },
+      title: { en: "Personal Growth", zh: "個人成長" },
       description: {
-        en: "Education extends beyond acquiring knowledge; it's about nurturing the social and emotional growth that will serve children throughout their lives. In each of our classrooms, we create a micro-community where every child is supported in achieving success on their own terms.",
-        zh: "教育不僅僅是知識的獲取；更重要的是培養社交和情感成長，這將陪伴孩子一生。在每個教室中，我們創造一個小型社群，讓每個孩子都能以自己的方式獲得成功。",
-      },
+        en: "Education extends beyond knowledge; it's about nurturing social and emotional growth that serves children throughout their lives.",
+        zh: "教育不僅是知識；更是培養伴隨孩子一生的社交和情感成長。",
+      }
     },
     {
-      title: { en: "Teachers Who Become Family", zh: "像家人一樣的老師" },
+      title: { en: "Caring Teachers", zh: "充滿愛心的老師" },
       description: {
-        en: "Our teachers are not just educators; they are caregivers who genuinely care. They go beyond the role of teaching, taking into account each child's unique needs. At Sunny Child Care, your child will find mentors who believe in them, instilling the confidence to explore new experiences and form meaningful friendships.",
-        zh: "我們的老師不僅是教育者；他們是真心關懷的照顧者。他們超越教學角色，考慮每個孩子的獨特需求。在 Sunny，您的孩子會找到相信他們的導師，培養探索新體驗和建立有意義友誼的信心。",
-      },
+        en: "Our teachers are caregivers who genuinely care, going beyond teaching to meet each child's unique needs.",
+        zh: "我們的老師是真心關懷的照顧者，超越教學角色，滿足每個孩子的獨特需求。",
+      }
     },
+    {
+      title: { en: "Play-Based", zh: "遊戲式學習" },
+      description: {
+        en: "We believe learning through play is the most effective way for children to explore and understand the world.",
+        zh: "我們相信遊戲式學習是孩子探索和理解世界最有效的方式。",
+      }
+    },
+    {
+      title: { en: "Bilingual", zh: "雙語環境" },
+      description: {
+        en: "Immersive Mandarin-English environment that naturally fosters language acquisition and cultural appreciation.",
+        zh: "沉浸式中英雙語環境，自然培養語言習得和文化欣賞。",
+      }
+    },
+    {
+      title: { en: "Community", zh: "緊密社群" },
+      description: {
+        en: "We build strong partnerships with families, creating a supportive community for everyone.",
+        zh: "我們與家庭建立緊密夥伴關係，為每個人創造支持性的社群。",
+      }
+    }
   ],
+  principles: {
+    title: { en: "Our Core Principles", zh: "我們的核心原則" },
+    list: [
+      {
+        title: { en: "Health, Safety, and Wellness", zh: "健康、安全與福祉" },
+        description: {
+          en: "Safety and wellness is our top priority, and we take it very seriously. We leave no detail, big or small, unattended when it comes to ensuring the well-being of your children. You can trust that your child is in the most capable hands every day at our center.",
+          zh: "安全與健康是我們的首要任務，我們非常重視這一點。無論大小細節，我們都不會忽略孩子的福祉。您可以放心，孩子每天都在我們最專業的照顧下。",
+        },
+      },
+      {
+        title: { en: "Fostering Personal Development", zh: "培養個人發展" },
+        description: {
+          en: "Education extends beyond acquiring knowledge; it's about nurturing the social and emotional growth that will serve children throughout their lives. In each of our classrooms, we create a micro-community where every child is supported in achieving success on their own terms.",
+          zh: "教育不僅僅是知識的獲取；更重要的是培養社交和情感成長，這將陪伴孩子一生。在每個教室中，我們創造一個小型社群，讓每個孩子都能以自己的方式獲得成功。",
+        },
+      },
+      {
+        title: { en: "Teachers Who Become Family", zh: "像家人一樣的老師" },
+        description: {
+          en: "Our teachers are not just educators; they are caregivers who genuinely care. They go beyond the role of teaching, taking into account each child's unique needs. At Sunny Child Care, your child will find mentors who believe in them, instilling the confidence to explore new experiences and form meaningful friendships.",
+          zh: "我們的老師不僅是教育者；他們是真心關懷的照顧者。他們超越教學角色，考慮每個孩子的獨特需求。在 Sunny，您的孩子會找到相信他們的導師，培養探索新體驗和建立有意義友誼的信心。",
+        },
+      },
+    ]
+  },
   philosophy: {
     en: "We uphold these principles within a curriculum and philosophical framework that is rooted in play and research-based approaches.",
     zh: "我們在以遊戲和研究為基礎的課程和哲學框架中堅持這些原則。",
