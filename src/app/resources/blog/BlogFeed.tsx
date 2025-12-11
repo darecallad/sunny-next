@@ -23,6 +23,9 @@ export default function BlogFeed({ posts, categories }: BlogFeedProps) {
       ? posts
       : posts.filter((post) => post.category === selectedCategory);
 
+  const featuredPost = selectedCategory === "All" && filteredPosts.length > 0 ? filteredPosts[0] : null;
+  const gridPosts = featuredPost ? filteredPosts.slice(1) : filteredPosts;
+
   return (
     <div className="relative min-h-[60vh]">
       {/* Decorative Background */}
@@ -65,13 +68,60 @@ export default function BlogFeed({ posts, categories }: BlogFeedProps) {
         </div>
       </div>
 
+      {/* Featured Post */}
+      {featuredPost && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-16 max-w-7xl mx-auto"
+        >
+          <Link
+            href={`/resources/blog/${featuredPost.id}`}
+            className="group relative grid md:grid-cols-2 gap-8 bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-stone-100"
+          >
+            <div className="relative h-64 md:h-auto overflow-hidden">
+              <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors z-10" />
+              <Image
+                src={featuredPost.image}
+                alt={featuredPost.title}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute top-6 left-6 z-20">
+                <span className="px-4 py-1.5 text-sm font-bold tracking-wider uppercase bg-white/90 backdrop-blur text-orange-600 rounded-full shadow-sm">
+                  Featured
+                </span>
+              </div>
+            </div>
+            <div className="p-8 md:p-12 flex flex-col justify-center">
+              <div className="flex items-center gap-2 text-sm font-medium text-stone-400 mb-4">
+                <Calendar className="w-4 h-4" />
+                {featuredPost.date}
+                <span className="mx-2">•</span>
+                <span className="text-orange-600 font-bold">{featuredPost.category}</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-stone-800 mb-6 group-hover:text-orange-600 transition-colors leading-tight font-serif">
+                {locale === "zh" ? featuredPost.titleZh : featuredPost.title}
+              </h2>
+              <p className="text-stone-500 text-lg mb-8 leading-relaxed line-clamp-3">
+                {locale === "zh" ? (featuredPost.excerptZh || featuredPost.excerpt) : featuredPost.excerpt}
+              </p>
+              <div className="flex items-center text-orange-600 font-bold group-hover:translate-x-2 transition-transform duration-300">
+                {locale === "zh" ? "閱讀完整文章" : "Read Full Article"}
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </div>
+            </div>
+          </Link>
+        </motion.div>
+      )}
+
       {/* Grid Layout */}
       <motion.div 
         layout
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
       >
         <AnimatePresence mode="popLayout">
-          {filteredPosts.map((post) => (
+          {gridPosts.map((post) => (
             <motion.div
               layout
               initial={{ opacity: 0, scale: 0.9 }}

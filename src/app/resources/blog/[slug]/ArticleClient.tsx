@@ -9,9 +9,10 @@ import { motion, useScroll, useSpring } from "framer-motion";
 
 interface ArticleClientProps {
   postData: BlogPost;
+  relatedPosts?: BlogPost[];
 }
 
-export default function ArticleClient({ postData }: ArticleClientProps) {
+export default function ArticleClient({ postData, relatedPosts = [] }: ArticleClientProps) {
   const { locale } = useLanguage();
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -147,6 +148,39 @@ export default function ArticleClient({ postData }: ArticleClientProps) {
               </button>
            </div>
         </div>
+
+        {/* Related Posts */}
+        {relatedPosts.length > 0 && (
+          <div className="mt-20">
+            <h3 className="text-2xl font-bold text-stone-800 mb-8 font-serif">
+              {locale === "zh" ? "更多文章" : "More to Read"}
+            </h3>
+            <div className="grid gap-8 md:grid-cols-3">
+              {relatedPosts.map((post) => (
+                <Link 
+                  key={post.id} 
+                  href={`/resources/blog/${post.id}`}
+                  className="group block"
+                >
+                  <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 bg-stone-100">
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                  </div>
+                  <h4 className="font-bold text-stone-800 group-hover:text-orange-600 transition-colors line-clamp-2 mb-2">
+                    {locale === "zh" ? post.titleZh : post.title}
+                  </h4>
+                  <p className="text-sm text-stone-500 line-clamp-2">
+                    {locale === "zh" ? (post.excerptZh || post.excerpt) : post.excerpt}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </article>
   );
