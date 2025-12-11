@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import { MapPin, Phone, Mail, Clock, UtensilsCrossed, Navigation, ExternalLink } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, UtensilsCrossed, Navigation, ExternalLink, Heart } from "lucide-react";
 import { useLanguage } from "@/context/language-context";
 import { siteConfig } from "@/data/site";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -61,7 +61,30 @@ export default function LocationsPage() {
     { en: "Alum Rock", zh: "阿倫羅克" },
     { en: "Santa Clara", zh: "聖塔克拉拉" },
     { en: "North San Jose", zh: "聖荷西北區" },
+    { en: "Sunnyvale", zh: "桑尼維爾" },
+    { en: "Cupertino", zh: "庫比蒂諾" },
+    { en: "Evergreen", zh: "常青區" },
+    { en: "East Foothills", zh: "東麓地區" },
+    { en: "Japantown", zh: "日本城" },
+    { en: "Downtown San Jose", zh: "聖荷西市中心" },
+    { en: "South Bay", zh: "南灣地區" },
+    { en: "Silicon Valley", zh: "矽谷" },
   ];
+
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05
+      }
+    }
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 10 },
+    show: { opacity: 1, y: 0 }
+  };
 
   return (
     <div className="min-h-screen bg-stone-50" ref={containerRef}>
@@ -120,7 +143,7 @@ export default function LocationsPage() {
                   {locale === "en" ? "Contact Information" : "聯絡資訊"}
                 </h2>
                 <div className="space-y-8">
-                  {locationInfo.map((item, index) => (
+                  {locationInfo.map((infoItem, index) => (
                     <motion.div 
                       key={index}
                       initial={{ opacity: 0, y: 10 }}
@@ -130,24 +153,24 @@ export default function LocationsPage() {
                       className="group flex items-start gap-5"
                     >
                       <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-amber-50 flex items-center justify-center text-amber-600 group-hover:bg-amber-500 group-hover:text-white transition-all duration-300 shadow-sm">
-                        <item.icon size={24} />
+                        <infoItem.icon size={24} />
                       </div>
                       <div className="flex-grow">
                         <p className="text-sm font-medium text-stone-500 uppercase tracking-wider mb-1">
-                          {item.label[locale]}
+                          {infoItem.label[locale]}
                         </p>
                         <p className="text-lg font-medium text-stone-800 leading-snug">
-                          {item.value}
+                          {infoItem.value}
                         </p>
-                        {item.href && (
+                        {infoItem.href && (
                           <a
-                            href={item.href}
-                            target={item.external ? "_blank" : undefined}
-                            rel={item.external ? "noopener noreferrer" : undefined}
+                            href={infoItem.href}
+                            target={infoItem.external ? "_blank" : undefined}
+                            rel={infoItem.external ? "noopener noreferrer" : undefined}
                             className="inline-flex items-center text-amber-600 text-sm font-medium mt-2 hover:text-amber-700 transition-colors"
                           >
-                            {item.action?.[locale]} 
-                            {item.external ? <ExternalLink size={14} className="ml-1" /> : <Navigation size={14} className="ml-1" />}
+                            {infoItem.action?.[locale]} 
+                            {infoItem.external ? <ExternalLink size={14} className="ml-1" /> : <Navigation size={14} className="ml-1" />}
                           </a>
                         )}
                       </div>
@@ -162,22 +185,34 @@ export default function LocationsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
-                className="bg-stone-900 text-white rounded-3xl shadow-xl p-8"
+                className="bg-gradient-to-br from-stone-900 to-stone-800 text-white rounded-3xl shadow-xl p-8 relative overflow-hidden"
               >
-                <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-                  <MapPin className="text-amber-400" />
+                {/* Decorative background element */}
+                <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-white/5 rounded-full blur-2xl" />
+                <div className="absolute bottom-0 left-0 -mb-4 -ml-4 w-32 h-32 bg-amber-500/10 rounded-full blur-3xl" />
+
+                <h3 className="text-xl font-bold mb-6 flex items-center gap-2 relative z-10">
+                  <Heart className="text-amber-400 fill-amber-400" size={20} />
                   {locale === "en" ? "Serving Families In" : "服務地區"}
                 </h3>
-                <div className="flex flex-wrap gap-3">
+                
+                <motion.div 
+                  variants={container}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true }}
+                  className="flex flex-wrap gap-2 relative z-10"
+                >
                   {servingAreas.map((area, i) => (
-                    <span 
+                    <motion.span 
                       key={i}
-                      className="px-4 py-2 bg-white/10 rounded-full text-sm font-medium hover:bg-white/20 transition-colors cursor-default"
+                      variants={item}
+                      className="px-3 py-1.5 bg-white/10 hover:bg-white/20 border border-white/5 rounded-lg text-sm font-medium transition-colors cursor-default backdrop-blur-sm"
                     >
                       {area[locale]}
-                    </span>
+                    </motion.span>
                   ))}
-                </div>
+                </motion.div>
               </motion.div>
             </div>
 
