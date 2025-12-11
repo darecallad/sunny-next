@@ -63,8 +63,8 @@ export const siteConfig = {
     },
   },
   socials: [
-    { title: "Instagram", href: "https://www.instagram.com/sunnychildcare" },
-    { title: "Facebook", href: "https://www.facebook.com/sunnychildcare" },
+    { title: "Instagram", href: "https://www.instagram.com/sunnychildcare_skyport/" },
+    { title: "Facebook", href: "https://www.facebook.com/Sunnychildcare2015/" },
     { title: "YouTube", href: "https://www.youtube.com/@sunnychildcare" },
   ],
 };
