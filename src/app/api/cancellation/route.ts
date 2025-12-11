@@ -21,6 +21,7 @@ export async function POST(request: NextRequest) {
     const booking = bookings.find((b) => b.id === id);
 
     if (!booking) {
+      console.error(`Cancellation failed: Booking ID ${id} not found. Available IDs: ${bookings.map(b => b.id).join(', ')}`);
       return NextResponse.json({ error: "Booking not found" }, { status: 404 });
     }
 

@@ -395,11 +395,13 @@ This email was automatically sent from Sunny Child Care website
     `;
 
     // Send email to parent
+    const origin = request.headers.get("origin") || "https://www.sunnychildcare.com";
+    
     await transporter.sendMail({
       from: `"Sunny Child Care" <${process.env.EMAIL_USER}>`,
       to: email,
       subject: parentSubject,
-      html: parentHtml,
+      html: parentHtml.replace(/https:\/\/www\.sunnychildcare\.com/g, origin),
       attachments: tourDateTime ? [
         {
           filename: 'tour-booking.ics',
