@@ -15,6 +15,7 @@ export interface TourBooking {
   locale: string;
   createdAt: string;
   reminderSent: boolean;
+  status?: 'confirmed' | 'cancelled';
 }
 
 const KV_KEY = "tour-bookings";
@@ -30,8 +31,26 @@ export async function getBookings(): Promise<TourBooking[]> {
   }
 }
 
+// 取消預約
+export async function cancelBooking(id: string): Promise<boolean> {
+  const bookings = await getBookings();
+  const index = bookings.findIndex((b) => b.id === id);
+  
+  if (index === -1) return false;
+  
+  bookings[index].status = 'cancelled';
+  
+  try {
+    await kv.set(KV_KEY, bookings);
+    return true;
+  } catch (error) {
+    console.error("Failed to update booking status in KV:", error);
+    return false;
+  }
+}
+
 // 儲存預約
-export async function saveBooking(booking: Omit<TourBooking, "id" | "createdAt" | "reminderSent">): Promise<TourBooking> {
+export async function saveBooking(booking: Omit<TourBooking, "id" | "createdAt" | "reminderSent" | "status">): Promise<TourBooking> {
   const bookings = await getBookings();
   
   const newBooking: TourBooking = {
@@ -39,6 +58,7 @@ export async function saveBooking(booking: Omit<TourBooking, "id" | "createdAt" 
     id: `tour-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
     createdAt: new Date().toISOString(),
     reminderSent: false,
+    status: 'confirmed',
   };
   
   bookings.push(newBooking);

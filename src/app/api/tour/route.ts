@@ -103,9 +103,10 @@ export async function POST(request: NextRequest) {
     // 保存預約資訊（用於提醒郵件）
     // 注意：在 Vercel 等 Serverless 環境中，寫入本地文件會失敗。
     // 我們將其包裝在 try-catch 中，以免影響郵件發送。
+    let bookingId = "";
     if (tourDate) {
       try {
-        await saveBooking({
+        const savedBooking = await saveBooking({
           firstName,
           lastName,
           email,
@@ -118,6 +119,7 @@ export async function POST(request: NextRequest) {
           message: message || "",
           locale: locale || "en",
         });
+        bookingId = savedBooking.id;
       } catch (saveError) {
         console.warn("Failed to save booking to local file (expected in serverless environment):", saveError);
         // 繼續執行，發送郵件
@@ -369,9 +371,16 @@ This email was automatically sent from Sunny Child Care website
 
               <p style="margin-top: 20px;">
                 ${isChineseTour 
-                  ? "如果您需要更改或取消預約，請直接回覆此郵件或致電 (510) 333-5943。" 
-                  : "If you need to reschedule or cancel, please reply to this email or call us at (510) 333-5943."}
+                  ? "如果您需要更改預約，請直接回覆此郵件或致電 (510) 333-5943。" 
+                  : "If you need to reschedule, please reply to this email or call us at (510) 333-5943."}
               </p>
+              ${bookingId ? `
+              <p style="margin-top: 10px;">
+                ${isChineseTour 
+                  ? `如需取消預約，請<a href="https://www.sunnychildcare.com/tour/cancel?id=${bookingId}">點擊此處</a>。` 
+                  : `To cancel your booking, please <a href="https://www.sunnychildcare.com/tour/cancel?id=${bookingId}">click here</a>.`}
+              </p>
+              ` : ""}
 
               <p>
                 ${isChineseTour ? "期待與您見面！" : "We look forward to meeting you!"}
