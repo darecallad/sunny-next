@@ -48,10 +48,6 @@ export const metadata: Metadata = {
       "zh-CN": "/",
     },
   },
-  icons: {
-    icon: "/images/sunny-logomark.png",
-    apple: "/images/sunny-logomark.png",
-  },
   openGraph: {
     title: "Sunny Child Care | Mandarin Bilingual Daycare & Preschool in San Jose",
     description: "Sunny Child Care offers a loving, Mandarin bilingual immersion environment for infants, toddlers, and preschoolers in San Jose, CA. Nurturing growth through play-based learning.",
