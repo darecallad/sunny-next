@@ -2,8 +2,9 @@
 
 import { useState, useRef } from "react";
 import Image from "next/image";
-import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Send, MessageSquare, Globe, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
+import { motion } from "framer-motion";
 
 import { useLanguage } from "@/context/language-context";
 import { Button } from "@/components/ui/button";
@@ -18,6 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { siteConfig } from "@/data/site";
 
 export default function ContactPage() {
   const { locale } = useLanguage();
@@ -77,273 +79,283 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
+    <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section 
-        className="relative border-b border-border/40 py-24 text-white bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/banners/staffbanner.webp')" }}
-      >
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="container relative z-10 mx-auto px-4">
-          <h1 className="text-4xl font-semibold sm:text-5xl">
-            {locale === "en" ? "Contact Us" : "聯絡我們"}
-          </h1>
-          <p className="mt-6 max-w-3xl text-xl text-white/95">
-            {locale === "en"
-              ? "Have questions about our programs or enrollment? We're here to help. Fill out the form below and we'll get back to you as soon as possible."
-              : "對我們的課程或入學有任何疑問嗎？我們隨時為您服務。請填寫下方表單，我們會盡快回覆您。"}
-          </p>
+      <section className="relative h-[40vh] min-h-[300px] w-full overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('/images/banners/staffbanner.webp')",
+            backgroundPosition: "50% 40%"
+          }}
+        >
+          <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]" />
+        </div>
+        <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center text-white">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className="font-serif text-4xl font-bold md:text-5xl lg:text-6xl">
+              {locale === "en" ? "Contact Us" : "聯絡我們"}
+            </h1>
+            <p className="mt-4 max-w-2xl text-lg text-white/90 md:text-xl">
+              {locale === "en"
+                ? "We'd love to hear from you. Reach out with any questions."
+                : "我們很樂意聽取您的意見。如有任何問題，請隨時聯絡我們。"}
+            </p>
+          </motion.div>
         </div>
       </section>
 
       {/* Main Content */}
-      <section className="py-16">
+      <section className="py-16 md:py-24 bg-slate-50">
         <div className="container mx-auto px-4">
-          <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-5">
+          <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-5">
             {/* Contact Information - 2 columns */}
-            <div className="lg:col-span-2">
-              <Card className="h-full bg-white shadow-lg">
-                <CardContent className="p-8">
-                  <h2 className="mb-6 text-2xl font-bold text-primary">
-                    {locale === "en" ? "Get in Touch" : "聯絡資訊"}
-                  </h2>
+            <div className="lg:col-span-2 space-y-8">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+              >
+                <h2 className="text-3xl font-serif font-bold text-slate-800 mb-8">
+                  {locale === "en" ? "Get in Touch" : "聯絡資訊"}
+                </h2>
 
-                  <div className="space-y-6">
-                    {/* Phone */}
-                    <div className="flex gap-4">
-                      <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-secondary">
-                        <Phone className="h-6 w-6 text-secondary-foreground" />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-primary">
-                          {locale === "en" ? "Phone" : "電話"}
-                        </p>
-                        <a
-                          href="tel:+15103335943"
-                          className="text-muted-foreground hover:text-primary"
-                        >
-                          (510) 333-5943
-                        </a>
-                      </div>
+                <div className="space-y-6">
+                  {/* Phone */}
+                  <div className="group flex gap-4 rounded-xl bg-white p-5 shadow-sm transition-all hover:shadow-md hover:translate-x-1">
+                    <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                      <Phone className="h-6 w-6" />
                     </div>
-
-                    {/* Email */}
-                    <div className="flex gap-4">
-                      <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-secondary">
-                        <Mail className="h-6 w-6 text-secondary-foreground" />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-primary">
-                          {locale === "en" ? "Email" : "電子郵件"}
-                        </p>
-                        <a
-                          href="mailto:Center.admin@sunnychildcare.com"
-                          className="text-muted-foreground hover:text-primary"
-                        >
-                          Center.admin@sunnychildcare.com
-                        </a>
-                      </div>
-                    </div>
-
-                    {/* Address */}
-                    <div className="flex gap-4">
-                      <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-secondary">
-                        <MapPin className="h-6 w-6 text-secondary-foreground" />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-primary">
-                          {locale === "en" ? "Address" : "地址"}
-                        </p>
-                        <a
-                          href="https://www.google.com/maps/place/Sunny+Child+Care+Center/@37.3951,-121.9113"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-muted-foreground hover:text-primary"
-                        >
-                          2586 Seaboard Ave<br />
-                          San Jose, CA 95131
-                        </a>
-                      </div>
-                    </div>
-
-                    {/* Hours */}
-                    <div className="flex gap-4">
-                      <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-secondary">
-                        <Clock className="h-6 w-6 text-secondary-foreground" />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-primary">
-                          {locale === "en" ? "Hours" : "營業時間"}
-                        </p>
-                        <p className="text-muted-foreground">
-                          {locale === "en"
-                            ? "Mon – Fri"
-                            : "週一至週五"}
-                          <br />
-                          8:30 AM – 6:00 PM
-                        </p>
-                      </div>
+                    <div>
+                      <p className="font-semibold text-slate-800">
+                        {locale === "en" ? "Phone" : "電話"}
+                      </p>
+                      <a
+                        href={`tel:${siteConfig.contact.phone.replace(/\D/g, "")}`}
+                        className="text-slate-600 hover:text-blue-600 transition-colors"
+                      >
+                        {siteConfig.contact.phone}
+                      </a>
                     </div>
                   </div>
 
-                  {/* CTA */}
-                  <div className="mt-8 rounded-lg bg-secondary/20 p-6">
-                    <p className="mb-4 font-semibold text-primary">
-                      {locale === "en"
-                        ? "Ready to visit?"
-                        : "準備好參觀了嗎？"}
+                  {/* Email */}
+                  <div className="group flex gap-4 rounded-xl bg-white p-5 shadow-sm transition-all hover:shadow-md hover:translate-x-1">
+                    <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-amber-100 text-amber-600 group-hover:bg-amber-600 group-hover:text-white transition-colors">
+                      <Mail className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-slate-800">
+                        {locale === "en" ? "Email" : "電子郵件"}
+                      </p>
+                      <a
+                        href={`mailto:${siteConfig.contact.email}`}
+                        className="text-slate-600 hover:text-amber-600 transition-colors break-all"
+                      >
+                        {siteConfig.contact.email}
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Address */}
+                  <div className="group flex gap-4 rounded-xl bg-white p-5 shadow-sm transition-all hover:shadow-md hover:translate-x-1">
+                    <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-green-100 text-green-600 group-hover:bg-green-600 group-hover:text-white transition-colors">
+                      <MapPin className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-slate-800">
+                        {locale === "en" ? "Address" : "地址"}
+                      </p>
+                      <a
+                        href="https://www.google.com/maps/place/Sunny+Child+Care+Center/@37.3951,-121.9113"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-slate-600 hover:text-green-600 transition-colors"
+                      >
+                        {siteConfig.contact.address}
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Hours */}
+                  <div className="group flex gap-4 rounded-xl bg-white p-5 shadow-sm transition-all hover:shadow-md hover:translate-x-1">
+                    <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-purple-100 text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-colors">
+                      <Clock className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-slate-800">
+                        {locale === "en" ? "Hours" : "營業時間"}
+                      </p>
+                      <p className="text-slate-600">
+                        {siteConfig.contact.hours[locale]}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* CTA */}
+                <div className="mt-8 rounded-2xl bg-white p-8 shadow-lg border border-blue-100 relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110" />
+                  <div className="relative z-10">
+                    <h3 className="mb-3 text-xl font-bold text-slate-800">
+                      {locale === "en" ? "Ready to visit?" : "準備好參觀了嗎？"}
+                    </h3>
+                    <p className="mb-6 text-slate-600">
+                      {locale === "en" 
+                        ? "Schedule a tour to see our campus in person." 
+                        : "預約參觀，親自體驗我們的校園環境。"}
                     </p>
                     <Button
                       asChild
-                      className="w-full bg-primary hover:bg-primary/90"
+                      className="w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white shadow-md hover:shadow-lg transition-all"
                     >
-                      <a href="/admission/tuition">
+                      <a href="/admission/tuition" className="flex items-center justify-center gap-2">
                         {locale === "en" ? "Schedule a Tour" : "預約參觀"}
+                        <ArrowRight className="h-4 w-4" />
                       </a>
                     </Button>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </motion.div>
             </div>
 
             {/* Contact Form - 3 columns */}
             <div className="lg:col-span-3">
-              <Card className="bg-white shadow-lg">
-                <CardContent className="p-8">
-                  <h2 className="mb-6 text-2xl font-bold text-primary">
-                    {locale === "en" ? "Send us a Message" : "發送訊息"}
-                  </h2>
-
-                  <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
-                    {/* Name */}
-                    <div className="space-y-2">
-                      <Label htmlFor="name">
-                        {locale === "en" ? "Name" : "姓名"} *
-                      </Label>
-                      <Input
-                        type="text"
-                        id="name"
-                        name="name"
-                        required
-                        placeholder={
-                          locale === "en" ? "Your name" : "請輸入您的姓名"
-                        }
-                      />
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <Card className="border-none shadow-2xl bg-white/80 backdrop-blur-md overflow-hidden relative group">
+                  <div className="absolute inset-0 bg-gradient-to-br from-amber-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amber-400 via-orange-500 to-amber-400 bg-[length:200%_100%] animate-shimmer" />
+                  <CardContent className="p-8 relative z-10">
+                    <div className="mb-8">
+                      <h2 className="text-2xl font-bold text-slate-800 flex items-center gap-3">
+                        <MessageSquare className="h-6 w-6 text-amber-500" />
+                        {locale === "en" ? "Send us a Message" : "發送訊息"}
+                      </h2>
+                      <p className="mt-2 text-slate-600">
+                        {locale === "en" 
+                          ? "Fill out the form below and we'll get back to you as soon as possible." 
+                          : "請填寫下方表單，我們會盡快回覆您。"}
+                      </p>
                     </div>
 
-                    {/* Email */}
-                    <div className="space-y-2">
-                      <Label htmlFor="email">
-                        {locale === "en" ? "Email Address" : "電子郵件"} *
-                      </Label>
-                      <Input
-                        type="email"
-                        id="email"
-                        name="email"
-                        required
-                        placeholder={
-                          locale === "en"
-                            ? "your.email@example.com"
-                            : "your.email@example.com"
-                        }
-                      />
-                    </div>
+                    <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+                      <div className="grid gap-6 md:grid-cols-2">
+                        {/* Name */}
+                        <div className="space-y-2">
+                          <Label htmlFor="name">
+                            {locale === "en" ? "Name" : "姓名"} *
+                          </Label>
+                          <Input
+                            type="text"
+                            id="name"
+                            name="name"
+                            required
+                            className="bg-slate-50 border-slate-200 focus:border-amber-500 focus:ring-amber-500"
+                            placeholder={locale === "en" ? "Your name" : "請輸入您的姓名"}
+                          />
+                        </div>
 
-                    {/* Phone */}
-                    <div className="space-y-2">
-                      <Label htmlFor="phone">
-                        {locale === "en" ? "Phone Number" : "聯絡電話"} *
-                      </Label>
-                      <Input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        required
-                        placeholder={
-                          locale === "en" ? "(510) 333-5943" : "(510) 333-5943"
-                        }
-                      />
-                    </div>
+                        {/* Phone */}
+                        <div className="space-y-2">
+                          <Label htmlFor="phone">
+                            {locale === "en" ? "Phone Number" : "聯絡電話"} *
+                          </Label>
+                          <Input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            required
+                            className="bg-slate-50 border-slate-200 focus:border-amber-500 focus:ring-amber-500"
+                            placeholder="(510) 333-5943"
+                          />
+                        </div>
+                      </div>
 
-                    {/* Preferred Language */}
-                    <div className="space-y-2">
-                      <Label htmlFor="preferredLanguage">
-                        {locale === "en" ? "Preferred Language" : "首選語言"} *
-                      </Label>
-                      <Select
-                        value={preferredLanguage}
-                        onValueChange={setPreferredLanguage}
-                        required
+                      <div className="grid gap-6 md:grid-cols-2">
+                        {/* Email */}
+                        <div className="space-y-2">
+                          <Label htmlFor="email">
+                            {locale === "en" ? "Email Address" : "電子郵件"} *
+                          </Label>
+                          <Input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                            className="bg-slate-50 border-slate-200 focus:border-amber-500 focus:ring-amber-500"
+                            placeholder="your.email@example.com"
+                          />
+                        </div>
+
+                        {/* Preferred Language */}
+                        <div className="space-y-2">
+                          <Label htmlFor="preferredLanguage">
+                            {locale === "en" ? "Preferred Language" : "首選語言"} *
+                          </Label>
+                          <Select
+                            value={preferredLanguage}
+                            onValueChange={setPreferredLanguage}
+                            required
+                          >
+                            <SelectTrigger id="preferredLanguage" className="bg-slate-50 border-slate-200 focus:border-amber-500 focus:ring-amber-500">
+                              <SelectValue placeholder={locale === "en" ? "Select language" : "選擇語言"} />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="en">English</SelectItem>
+                              <SelectItem value="zh">中文</SelectItem>
+                            </SelectContent>
+                          </Select>
+                        </div>
+                      </div>
+
+                      {/* Message */}
+                      <div className="space-y-2">
+                        <Label htmlFor="message">
+                          {locale === "en" ? "Message" : "訊息內容"} *
+                        </Label>
+                        <Textarea
+                          id="message"
+                          name="message"
+                          rows={6}
+                          required
+                          className="bg-slate-50 border-slate-200 focus:border-amber-500 focus:ring-amber-500"
+                          placeholder={
+                            locale === "en"
+                              ? "Tell us about your inquiry..."
+                              : "請告訴我們您的需求..."
+                          }
+                        />
+                      </div>
+
+                      <Button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="w-full h-14 text-lg font-semibold bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500 bg-[length:200%_100%] animate-shimmer text-white shadow-xl shadow-amber-500/30 transition-all hover:scale-[1.02] hover:shadow-amber-500/40 rounded-xl"
                       >
-                        <SelectTrigger id="preferredLanguage">
-                          <SelectValue placeholder={locale === "en" ? "Select language" : "選擇語言"} />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="en">English</SelectItem>
-                          <SelectItem value="zh">中文</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    {/* Message */}
-                    <div className="space-y-2">
-                      <Label htmlFor="message">
-                        {locale === "en" ? "Message" : "訊息內容"} *
-                      </Label>
-                      <Textarea
-                        id="message"
-                        name="message"
-                        rows={6}
-                        required
-                        placeholder={
-                          locale === "en"
-                            ? "Tell us about your inquiry..."
-                            : "請告訴我們您的問題..."
-                        }
-                      />
-                    </div>
-
-                    {/* Submit Button */}
-                    <Button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full bg-primary py-6 text-lg font-semibold text-white hover:bg-primary/90 disabled:opacity-50"
-                    >
-                      <Send className="mr-2 h-5 w-5" />
-                      {isSubmitting
-                        ? locale === "en"
-                          ? "Sending..."
-                          : "傳送中..."
-                        : locale === "en"
-                        ? "Send Message"
-                        : "發送訊息"}
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Map Section */}
-      <section className="py-16 bg-secondary/10">
-        <div className="container mx-auto px-4">
-          <div className="mx-auto max-w-6xl">
-            <h2 className="mb-8 text-2xl font-bold text-primary text-center">
-              {locale === "en" ? "Visit Our Center" : "參觀我們的中心"}
-            </h2>
-            <div className="h-[450px] w-full overflow-hidden rounded-lg shadow-lg border border-border/50">
-              <iframe
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                loading="lazy"
-                allowFullScreen
-                referrerPolicy="no-referrer-when-downgrade"
-                src="https://maps.google.com/maps?q=2586%20Seaboard%20Ave%2C%20San%20Jose%2C%20CA%2095131&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                title="Sunny Child Care Location Map"
-              ></iframe>
+                        {isSubmitting ? (
+                          <span className="flex items-center gap-2">
+                            <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                            {locale === "en" ? "Sending..." : "傳送中..."}
+                          </span>
+                        ) : (
+                          <span className="flex items-center gap-2">
+                            <Send className="h-5 w-5" />
+                            {locale === "en" ? "Send Message" : "發送訊息"}
+                          </span>
+                        )}
+                      </Button>
+                    </form>
+                  </CardContent>
+                </Card>
+              </motion.div>
             </div>
           </div>
         </div>
