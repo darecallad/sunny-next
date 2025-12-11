@@ -38,13 +38,14 @@ export async function cancelBooking(id: string): Promise<boolean> {
   
   if (index === -1) return false;
   
-  bookings[index].status = 'cancelled';
+  // 完全刪除該筆預約
+  bookings.splice(index, 1);
   
   try {
     await kv.set(KV_KEY, bookings);
     return true;
   } catch (error) {
-    console.error("Failed to update booking status in KV:", error);
+    console.error("Failed to delete booking from KV:", error);
     return false;
   }
 }
