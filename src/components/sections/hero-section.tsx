@@ -21,20 +21,21 @@ export function HeroSection() {
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-white/60 to-white/70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-white/40 sm:from-white/90 sm:via-white/60 sm:to-transparent" />
       </div>
       
-      <div className="container relative z-10 mx-auto px-4 py-12">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_380px] lg:items-center">
+      <div className="container relative z-10 mx-auto px-4 py-12 lg:py-24">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_400px] lg:items-center">
           <div className="space-y-8">
             <div className="space-y-4">
-              <p className="inline-block rounded-md bg-white/90 px-4 py-2 text-sm font-bold uppercase tracking-[0.3em] text-primary shadow-md backdrop-blur-sm">
+              <div className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary backdrop-blur-sm">
+                <span className="mr-2 flex h-2 w-2 rounded-full bg-primary"></span>
                 {heroContent.eyebrow[locale]}
-              </p>
-              <h1 className="text-4xl font-semibold leading-tight text-foreground sm:text-5xl">
+              </div>
+              <h1 className="text-4xl font-bold leading-tight text-foreground sm:text-5xl lg:text-6xl">
                 {heroContent.title[locale]}
               </h1>
-              <p className="text-lg font-medium text-foreground/80">
+              <p className="max-w-2xl text-lg font-medium text-foreground/80 sm:text-xl">
                 {heroContent.description[locale]}
               </p>
             </div>
