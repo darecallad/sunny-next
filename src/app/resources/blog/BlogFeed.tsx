@@ -3,10 +3,11 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Calendar, Layers } from "lucide-react";
+import { Calendar, Layers, ArrowRight } from "lucide-react";
 import type { BlogPost } from "@/lib/blog";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/context/language-context";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface BlogFeedProps {
   posts: BlogPost[];
@@ -22,20 +23,29 @@ export default function BlogFeed({ posts, categories }: BlogFeedProps) {
       ? posts
       : posts.filter((post) => post.category === selectedCategory);
 
+  const featuredPost = selectedCategory === "All" && filteredPosts.length > 0 ? filteredPosts[0] : null;
+  const gridPosts = featuredPost ? filteredPosts.slice(1) : filteredPosts;
+
   return (
-    <div>
+    <div className="relative min-h-[60vh]">
+      {/* Decorative Background */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10 bg-[#F9F9F5]">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-100/40 rounded-full blur-3xl mix-blend-multiply animate-blob" />
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-amber-100/40 rounded-full blur-3xl mix-blend-multiply animate-blob animation-delay-2000" />
+        <div className="absolute -bottom-32 left-1/3 w-96 h-96 bg-rose-100/40 rounded-full blur-3xl mix-blend-multiply animate-blob animation-delay-4000" />
+      </div>
+
       {/* Controls: Filter */}
-      <div className="sticky top-20 z-10 mb-8 flex justify-center bg-stone-50/95 px-4 py-4 backdrop-blur-sm sm:rounded-xl">
-        {/* Category Filter */}
-        <div className="overflow-x-auto">
-          <div className="flex gap-3">
+      <div className="sticky top-24 z-30 mb-12 flex justify-center px-4">
+        <div className="bg-white/80 backdrop-blur-md shadow-lg shadow-stone-200/50 rounded-full p-1.5 border border-white/50 overflow-x-auto max-w-full">
+          <div className="flex gap-1">
             <button
               onClick={() => setSelectedCategory("All")}
               className={cn(
-                "whitespace-nowrap rounded-full px-6 py-2 text-sm font-bold transition-all",
+                "whitespace-nowrap rounded-full px-6 py-2 text-sm font-bold transition-all duration-300",
                 selectedCategory === "All"
-                  ? "bg-stone-900 text-white shadow-md"
-                  : "bg-white text-stone-600 hover:bg-stone-200"
+                  ? "bg-stone-900 text-white shadow-md scale-105"
+                  : "bg-transparent text-stone-600 hover:bg-stone-100"
               )}
             >
               All
@@ -45,10 +55,10 @@ export default function BlogFeed({ posts, categories }: BlogFeedProps) {
                 key={category}
                 onClick={() => setSelectedCategory(category)}
                 className={cn(
-                  "whitespace-nowrap rounded-full px-6 py-2 text-sm font-bold transition-all",
+                  "whitespace-nowrap rounded-full px-6 py-2 text-sm font-bold transition-all duration-300",
                   selectedCategory === category
-                    ? "bg-stone-900 text-white shadow-md"
-                    : "bg-white text-stone-600 hover:bg-stone-200"
+                    ? "bg-stone-900 text-white shadow-md scale-105"
+                    : "bg-transparent text-stone-600 hover:bg-stone-100"
                 )}
               >
                 {category}
@@ -58,86 +68,140 @@ export default function BlogFeed({ posts, categories }: BlogFeedProps) {
         </div>
       </div>
 
-      {/* Grid Layout (Flex Wrap for Centering) */}
-      <div className="flex flex-wrap justify-center gap-6">
-        {filteredPosts.map((post) => (
+      {/* Featured Post */}
+      {featuredPost && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-16 max-w-7xl mx-auto"
+        >
           <Link
-            key={post.id}
-            href={`/resources/blog/${post.id}`}
-            className="group relative block w-full max-w-[350px] rounded-2xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+            href={`/resources/blog/${featuredPost.id}`}
+            className="group relative grid md:grid-cols-2 gap-8 bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-stone-100"
           >
-            {/* Image Container */}
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-t-2xl bg-stone-200">
+            <div className="relative h-64 md:h-auto overflow-hidden">
+              <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors z-10" />
               <Image
-                src={post.image}
-                alt={post.title}
+                src={featuredPost.image}
+                alt={featuredPost.title}
                 fill
-                sizes="(max-width: 768px) 100vw, 350px"
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              
-              {/* Category Tag (Top Right) */}
-              <div className="absolute right-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-stone-800 backdrop-blur-md shadow-sm">
-                {post.category}
-              </div>
-
-              {/* Multiple Images Indicator */}
-              {post.images && post.images.length > 1 && (
-                <div className="absolute left-3 top-3 rounded bg-black/50 px-1.5 py-0.5 text-xs text-white backdrop-blur-sm">
-                  <Layers className="h-3 w-3" />
-                </div>
-              )}
-            </div>
-
-            {/* Central Logo (Overlapping) */}
-            <div className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 transform">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white p-1 shadow-md">
-                <Image
-                  src="/images/sunny-logomark.png"
-                  alt="Sunny Logo"
-                  width={40}
-                  height={40}
-                  className="h-full w-full object-contain"
-                />
+              <div className="absolute top-6 left-6 z-20">
+                <span className="px-4 py-1.5 text-sm font-bold tracking-wider uppercase bg-white/90 backdrop-blur text-orange-600 rounded-full shadow-sm">
+                  Featured
+                </span>
               </div>
             </div>
-
-            {/* Content */}
-            <div className="px-4 pb-4 pt-8 text-center">
-              {/* Title */}
-              <h2 className="mb-2 line-clamp-2 text-lg font-bold leading-snug text-stone-900 group-hover:text-orange-600">
-                {locale === "zh" ? post.titleZh : post.title}
+            <div className="p-8 md:p-12 flex flex-col justify-center">
+              <div className="flex items-center gap-2 text-sm font-medium text-stone-400 mb-4">
+                <Calendar className="w-4 h-4" />
+                {featuredPost.date}
+                <span className="mx-2">•</span>
+                <span className="text-orange-600 font-bold">{featuredPost.category}</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-stone-800 mb-6 group-hover:text-orange-600 transition-colors leading-tight font-serif">
+                {locale === "zh" ? featuredPost.titleZh : featuredPost.title}
               </h2>
-
-              {/* Excerpt (Partial Content) - Hidden by default, shown on hover */}
-              <div className="max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-in-out group-hover:max-h-24 group-hover:opacity-100">
-                <p className="mb-4 line-clamp-3 text-sm text-stone-500">
-                  {locale === "zh" ? (post.excerptZh || post.excerpt) : post.excerpt}
-                </p>
-              </div>
-
-              {/* Footer: Author & Read Time */}
-              <div className="mt-4 grid grid-cols-2 border-t border-stone-100 pt-3">
-                <div className="flex items-center justify-center border-r border-stone-100 px-2">
-                  <span className="text-xs font-bold text-stone-700">
-                    {locale === "zh" ? "陽光幼兒園" : "Sunny Child Care"}
-                  </span>
-                </div>
-                <div className="flex items-center justify-center px-2 text-stone-400">
-                  <Calendar className="mr-1 h-3.5 w-3.5" />
-                  <span className="text-xs">{post.date}</span>
-                </div>
+              <p className="text-stone-500 text-lg mb-8 leading-relaxed line-clamp-3">
+                {locale === "zh" ? (featuredPost.excerptZh || featuredPost.excerpt) : featuredPost.excerpt}
+              </p>
+              <div className="flex items-center text-orange-600 font-bold group-hover:translate-x-2 transition-transform duration-300">
+                {locale === "zh" ? "閱讀完整文章" : "Read Full Article"}
+                <ArrowRight className="w-5 h-5 ml-2" />
               </div>
             </div>
           </Link>
-        ))}
-      </div>
+        </motion.div>
+      )}
+
+      {/* Grid Layout */}
+      <motion.div 
+        layout
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
+      >
+        <AnimatePresence mode="popLayout">
+          {gridPosts.map((post) => (
+            <motion.div
+              layout
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.3 }}
+              key={post.id}
+            >
+              <Link
+                href={`/resources/blog/${post.id}`}
+                className="group relative block h-full rounded-3xl bg-white shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-orange-500/10 overflow-hidden border border-stone-100"
+              >
+                {/* Image Container */}
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-stone-100">
+                  {/* Shine Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:animate-shimmer z-10 pointer-events-none" />
+                  
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  
+                  {/* Category Tag */}
+                  <div className="absolute top-4 left-4 z-20">
+                    <span className="px-3 py-1 text-xs font-bold tracking-wider uppercase bg-white/90 backdrop-blur text-orange-600 rounded-full shadow-sm">
+                      {post.category}
+                    </span>
+                  </div>
+
+                  {/* Multiple Images Indicator */}
+                  {post.images && post.images.length > 1 && (
+                    <div className="absolute top-4 right-4 z-20 rounded-full bg-black/50 px-2 py-1 text-xs text-white backdrop-blur-sm flex items-center gap-1">
+                      <Layers className="h-3 w-3" />
+                      <span>{post.images.length}</span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Content */}
+                <div className="p-6 flex flex-col h-[calc(100%-aspect-[4/3])]">
+                  {/* Date */}
+                  <div className="flex items-center gap-2 text-xs font-medium text-stone-400 mb-3">
+                    <Calendar className="w-3.5 h-3.5" />
+                    {post.date}
+                  </div>
+
+                  {/* Title */}
+                  <h2 className="text-xl font-bold text-stone-800 mb-3 line-clamp-2 group-hover:text-orange-600 transition-colors">
+                    {locale === "zh" ? post.titleZh : post.title}
+                  </h2>
+
+                  {/* Excerpt */}
+                  <p className="text-stone-500 text-sm line-clamp-3 mb-6 leading-relaxed flex-grow">
+                    {locale === "zh" ? (post.excerptZh || post.excerpt) : post.excerpt}
+                  </p>
+
+                  {/* Read More Link */}
+                  <div className="flex items-center text-orange-600 text-sm font-bold opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 mt-auto">
+                    {locale === "zh" ? "閱讀更多" : "Read Article"}
+                    <ArrowRight className="w-4 h-4 ml-1" />
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
 
       {/* Empty State */}
       {filteredPosts.length === 0 && (
-        <div className="py-20 text-center text-stone-500">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="py-20 text-center text-stone-500"
+        >
           <p>No posts found in this category.</p>
-        </div>
+        </motion.div>
       )}
     </div>
   );
