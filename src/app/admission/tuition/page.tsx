@@ -1,12 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Calendar, Users, Clock } from "lucide-react";
-import { toast } from "sonner";
-
 import { useLanguage } from "@/context/language-context";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -17,6 +13,22 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Card, CardContent } from "@/components/ui/card";
+import { toast } from "sonner";
+import { 
+  Calendar, 
+  Clock, 
+  Users, 
+  Baby, 
+  MessageSquare, 
+  CheckCircle2,
+  MapPin,
+  Phone,
+  Mail,
+  CalendarCheck
+} from "lucide-react";
+import { motion } from "framer-motion";
+import { siteConfig } from "@/data/site";
 
 type Child = {
   month: string;
@@ -227,254 +239,376 @@ export default function TuitionPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
+    <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section 
-        className="border-b border-border/40 py-16 bg-cover bg-center relative"
-        style={{
-          backgroundImage: "url('/images/banners/booking.jpg')",
-          backgroundPosition: "50% 70%",
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/40" />
-        <div className="container mx-auto px-4 relative z-10">
-          <h1 className="text-4xl font-semibold text-white sm:text-5xl">
-            {locale === "en" ? "Tuition & Openings" : "學費與名額"}
-          </h1>
-          <p className="mt-6 max-w-3xl text-xl text-white/95">
-            {locale === "en"
-              ? "Complete the form to learn about our center team and schedule a visit."
-              : "填寫表單，了解我們的教學團隊並預約參觀。"}
-          </p>
+      <section className="relative h-[40vh] min-h-[300px] w-full overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('/images/banners/booking.jpg')",
+            backgroundPosition: "50% 70%"
+          }}
+        >
+          <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]" />
+        </div>
+        <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center text-white">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className="font-serif text-4xl font-bold md:text-5xl lg:text-6xl">
+              {locale === "en" ? "Schedule a Visit" : "預約參觀"}
+            </h1>
+            <p className="mt-4 max-w-2xl text-lg text-white/90 md:text-xl">
+              {locale === "en" 
+                ? "Come see our classrooms, meet our teachers, and ask questions." 
+                : "歡迎參觀我們的教室，認識我們的老師，並提出您的問題。"}
+            </p>
+          </motion.div>
         </div>
       </section>
 
-      {/* Form Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="mx-auto max-w-4xl">
-            <Card className="bg-white shadow-xl">
-              <CardContent className="p-8">
-                <form onSubmit={handleSubmit} className="space-y-8">
-                  {/* Parent Information */}
-                  <div>
-                    <h2 className="mb-6 flex items-center gap-2 text-2xl font-semibold text-primary">
-                      <Users className="h-6 w-6" />
-                      {locale === "en" ? "Your Information" : "您的資訊"}
-                    </h2>
-                    <div className="grid gap-6 md:grid-cols-2">
-                      <div className="space-y-2">
-                        <Label htmlFor="firstName">
-                          {locale === "en" ? "First Name" : "名字"} *
-                        </Label>
-                        <Input
-                          type="text"
-                          id="firstName"
-                          name="firstName"
-                          required
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="lastName">
-                          {locale === "en" ? "Last Name" : "姓氏"} *
-                        </Label>
-                        <Input
-                          type="text"
-                          id="lastName"
-                          name="lastName"
-                          required
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="email">
-                          {locale === "en" ? "Email Address" : "電子郵件"} *
-                        </Label>
-                        <Input
-                          type="email"
-                          id="email"
-                          name="email"
-                          required
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="phone">
-                          {locale === "en" ? "Phone Number" : "聯絡電話"} *
-                        </Label>
-                        <Input
-                          type="tel"
-                          id="phone"
-                          name="phone"
-                          required
-                        />
-                      </div>
+      <section className="py-16 md:py-24 bg-slate-50 relative overflow-hidden">
+        {/* Decorative background elements */}
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+          <div className="absolute top-20 left-10 w-64 h-64 bg-blue-100/40 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 right-10 w-80 h-80 bg-amber-100/40 rounded-full blur-3xl" />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid gap-12 lg:grid-cols-12">
+            {/* Left Column: Info */}
+            <div className="lg:col-span-5 space-y-8">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+              >
+                <h2 className="text-3xl font-serif font-bold text-slate-800 mb-6">
+                  {locale === "en" ? "Why Tour Sunny?" : "為什麼要參觀 Sunny？"}
+                </h2>
+                <div className="space-y-6">
+                  <div className="group flex gap-4 p-4 rounded-xl transition-colors hover:bg-white hover:shadow-sm">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                      <Users className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-lg text-slate-800 mb-1">
+                        {locale === "en" ? "Meet the Teachers" : "認識老師"}
+                      </h3>
+                      <p className="text-slate-600">
+                        {locale === "en" 
+                          ? "See our passionate educators in action and how they interact with children." 
+                          : "親眼看看我們充滿熱情的教育工作者如何與孩子互動。"}
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="group flex gap-4 p-4 rounded-xl transition-colors hover:bg-white hover:shadow-sm">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center text-amber-600 group-hover:bg-amber-600 group-hover:text-white transition-colors">
+                      <CheckCircle2 className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-lg text-slate-800 mb-1">
+                        {locale === "en" ? "Experience the Environment" : "體驗環境"}
+                      </h3>
+                      <p className="text-slate-600">
+                        {locale === "en" 
+                          ? "Walk through our safe, clean, and stimulating classrooms and play areas." 
+                          : "參觀我們安全、乾淨且充滿啟發性的教室和遊戲區。"}
+                      </p>
                     </div>
                   </div>
 
-                  {/* Child Information */}
-                  <div className="border-t border-border pt-8">
-                    <h2 className="mb-6 flex items-center gap-2 text-2xl font-semibold text-primary">
-                      <Users className="h-6 w-6" />
-                      {locale === "en" ? "Child Information" : "子女資訊"} *
-                    </h2>
-                    <div className="space-y-4">
-                      {children.map((child, index) => (
-                        <div key={index} className="rounded-lg border border-border bg-secondary/10 p-4">
-                          <div className="mb-3 flex items-center justify-between">
-                            <p className="font-medium text-foreground">
-                              {locale === "en" ? `Child ${index + 1} - Date of Birth` : `子女 ${index + 1} - 出生日期`}
-                            </p>
-                            {children.length > 1 && (
-                              <button
-                                type="button"
-                                onClick={() => removeChild(index)}
-                                className="text-sm text-destructive hover:text-destructive/80"
-                              >
-                                {locale === "en" ? "Remove" : "移除"}
-                              </button>
-                            )}
+                  <div className="group flex gap-4 p-4 rounded-xl transition-colors hover:bg-white hover:shadow-sm">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-green-600 group-hover:bg-green-600 group-hover:text-white transition-colors">
+                      <MessageSquare className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-lg text-slate-800 mb-1">
+                        {locale === "en" ? "Ask Questions" : "提問"}
+                      </h3>
+                      <p className="text-slate-600">
+                        {locale === "en" 
+                          ? "Get detailed answers about our curriculum, schedule, and philosophy." 
+                          : "詳細了解我們的課程、時間表和教育理念。"}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-12 p-8 bg-white rounded-2xl shadow-lg border border-slate-100 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full" />
+                  <h3 className="font-semibold text-lg text-slate-800 mb-6 relative z-10">
+                    {locale === "en" ? "Contact Information" : "聯絡資訊"}
+                  </h3>
+                  <div className="space-y-5 relative z-10">
+                    <div className="flex items-center gap-4 text-slate-600 group">
+                      <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-blue-50 transition-colors">
+                        <MapPin className="w-5 h-5 text-blue-500" />
+                      </div>
+                      <span>{siteConfig.contact.address}</span>
+                    </div>
+                    <div className="flex items-center gap-4 text-slate-600 group">
+                      <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-blue-50 transition-colors">
+                        <Phone className="w-5 h-5 text-blue-500" />
+                      </div>
+                      <a href={`tel:${siteConfig.contact.phone.replace(/\D/g, "")}`} className="hover:text-blue-600 transition-colors font-medium">
+                        {siteConfig.contact.phone}
+                      </a>
+                    </div>
+                    <div className="flex items-center gap-4 text-slate-600 group">
+                      <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-blue-50 transition-colors">
+                        <Mail className="w-5 h-5 text-blue-500" />
+                      </div>
+                      <a href={`mailto:${siteConfig.contact.email}`} className="hover:text-blue-600 transition-colors font-medium">
+                        {siteConfig.contact.email}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Right Column: Form */}
+            <div className="lg:col-span-7">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <Card className="border-none shadow-2xl bg-white/80 backdrop-blur-md overflow-hidden relative group">
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-500 bg-[length:200%_100%] animate-shimmer" />
+                  <CardContent className="p-6 md:p-8 relative z-10">
+                    <form onSubmit={handleSubmit} className="space-y-8">
+                      {/* Parent Information */}
+                      <div>
+                        <h2 className="mb-6 flex items-center gap-2 text-xl font-semibold text-slate-800 border-b pb-2">
+                          <Users className="h-5 w-5 text-blue-500" />
+                          {locale === "en" ? "Your Information" : "您的資訊"}
+                        </h2>
+                        <div className="grid gap-6 md:grid-cols-2">
+                          <div className="space-y-2">
+                            <Label htmlFor="firstName">
+                              {locale === "en" ? "First Name" : "名字"} *
+                            </Label>
+                            <Input
+                              type="text"
+                              id="firstName"
+                              name="firstName"
+                              required
+                              className="bg-slate-50 border-slate-200 focus:border-blue-500 focus:ring-blue-500"
+                            />
                           </div>
-                          <div className="grid grid-cols-3 gap-3">
-                            <div className="space-y-1">
-                              <Label htmlFor={`child-${index}-month`} className="text-sm text-muted-foreground">
-                                {locale === "en" ? "Month" : "月"}
-                              </Label>
-                              <Input
-                                id={`child-${index}-month`}
-                                type="number"
-                                min="1"
-                                max="12"
-                                placeholder="MM"
-                                value={child.month}
-                                onChange={(e) => updateChild(index, "month", e.target.value)}
-                                required
-                                className="text-center"
-                              />
-                            </div>
-                            <div className="space-y-1">
-                              <Label htmlFor={`child-${index}-day`} className="text-sm text-muted-foreground">
-                                {locale === "en" ? "Day" : "日"}
-                              </Label>
-                              <Input
-                                id={`child-${index}-day`}
-                                type="number"
-                                min="1"
-                                max="31"
-                                placeholder="DD"
-                                value={child.day}
-                                onChange={(e) => updateChild(index, "day", e.target.value)}
-                                required
-                                className="text-center"
-                              />
-                            </div>
-                            <div className="space-y-1">
-                              <Label htmlFor={`child-${index}-year`} className="text-sm text-muted-foreground">
-                                {locale === "en" ? "Year" : "年"}
-                              </Label>
-                              <Input
-                                id={`child-${index}-year`}
-                                type="number"
-                                min="2017"
-                                max={new Date().getFullYear()}
-                                placeholder="YYYY"
-                                value={child.year}
-                                onChange={(e) => updateChild(index, "year", e.target.value)}
-                                required
-                                className="text-center"
-                              />
-                            </div>
+                          <div className="space-y-2">
+                            <Label htmlFor="lastName">
+                              {locale === "en" ? "Last Name" : "姓氏"} *
+                            </Label>
+                            <Input
+                              type="text"
+                              id="lastName"
+                              name="lastName"
+                              required
+                              className="bg-slate-50 border-slate-200 focus:border-blue-500 focus:ring-blue-500"
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label htmlFor="email">
+                              {locale === "en" ? "Email Address" : "電子郵件"} *
+                            </Label>
+                            <Input
+                              type="email"
+                              id="email"
+                              name="email"
+                              required
+                              className="bg-slate-50 border-slate-200 focus:border-blue-500 focus:ring-blue-500"
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label htmlFor="phone">
+                              {locale === "en" ? "Phone Number" : "聯絡電話"} *
+                            </Label>
+                            <Input
+                              type="tel"
+                              id="phone"
+                              name="phone"
+                              required
+                              className="bg-slate-50 border-slate-200 focus:border-blue-500 focus:ring-blue-500"
+                            />
                           </div>
                         </div>
-                      ))}
-                      <Button
-                        type="button"
-                        onClick={addChild}
-                        variant="outline"
-                        className="w-full border-primary text-primary hover:bg-primary/10"
-                      >
-                        + {locale === "en" ? "Add Another Child" : "新增子女"}
-                      </Button>
-                    </div>
-                  </div>
-
-                  {/* Start Date */}
-                  <div className="border-t border-border pt-8">
-                    <h2 className="mb-6 flex items-center gap-2 text-2xl font-semibold text-primary">
-                      <Clock className="h-6 w-6" />
-                      {locale === "en" ? "Timeline" : "時間規劃"}
-                    </h2>
-                    <div className="space-y-6">
-                      <div className="space-y-2">
-                        <Label htmlFor="tourDateTime">
-                          {locale === "en" ? "Preferred Tour Date & Time" : "偏好參觀日期時間"}
-                        </Label>
-                        <Select value={tourDateTime} onValueChange={setTourDateTime} name="tourDateTime">
-                          <SelectTrigger className="w-full">
-                            <SelectValue placeholder={locale === "en" ? "Select a tour time..." : "請選擇參觀時間..."} />
-                          </SelectTrigger>
-                          <SelectContent className="min-w-[320px]">
-                            {fridaySlots.map((slot, index) => (
-                              <SelectItem key={index} value={slot.value} disabled={slot.disabled}>
-                                {slot.display}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
                       </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="startDate">
-                          {locale === "en" ? "Desired Start Date" : "期望開始日期"}
-                        </Label>
-                        <Select value={startDate} onValueChange={setStartDate} name="startDate">
-                          <SelectTrigger className="w-full">
-                            <SelectValue placeholder={locale === "en" ? "Select..." : "請選擇..."} />
-                          </SelectTrigger>
-                          <SelectContent className="min-w-[200px]">
-                            <SelectItem value="Within a Month">{locale === "en" ? "Within a Month" : "一個月內"}</SelectItem>
-                            <SelectItem value="1-3 Months">{locale === "en" ? "1-3 Months" : "1-3 個月"}</SelectItem>
-                            <SelectItem value="3-6 Months">{locale === "en" ? "3-6 Months" : "3-6 個月"}</SelectItem>
-                            <SelectItem value="6-9 Months">{locale === "en" ? "6-9 Months" : "6-9 個月"}</SelectItem>
-                            <SelectItem value="9+ Months">{locale === "en" ? "9+ Months" : "9 個月以上"}</SelectItem>
-                            <SelectItem value="Unsure">{locale === "en" ? "Unsure at this time" : "尚未確定"}</SelectItem>
-                          </SelectContent>
-                        </Select>
+
+                      {/* Child Information */}
+                      <div>
+                        <h2 className="mb-6 flex items-center gap-2 text-xl font-semibold text-slate-800 border-b pb-2">
+                          <Baby className="h-5 w-5 text-blue-500" />
+                          {locale === "en" ? "Child Information" : "子女資訊"} *
+                        </h2>
+                        <div className="space-y-4">
+                          {children.map((child, index) => (
+                            <div key={index} className="rounded-xl border border-slate-200 bg-slate-50/50 p-5 transition-all hover:border-blue-200">
+                              <div className="mb-4 flex items-center justify-between">
+                                <p className="font-medium text-slate-700">
+                                  {locale === "en" ? `Child ${index + 1} - Date of Birth` : `子女 ${index + 1} - 出生日期`}
+                                </p>
+                                {children.length > 1 && (
+                                  <button
+                                    type="button"
+                                    onClick={() => removeChild(index)}
+                                    className="text-sm text-red-500 hover:text-red-600 font-medium transition-colors"
+                                  >
+                                    {locale === "en" ? "Remove" : "移除"}
+                                  </button>
+                                )}
+                              </div>
+                              <div className="grid grid-cols-3 gap-4">
+                                <div className="space-y-1">
+                                  <Label htmlFor={`child-${index}-month`} className="text-xs text-slate-500 uppercase tracking-wider">
+                                    {locale === "en" ? "Month" : "月"}
+                                  </Label>
+                                  <Input
+                                    id={`child-${index}-month`}
+                                    type="number"
+                                    min="1"
+                                    max="12"
+                                    placeholder="MM"
+                                    value={child.month}
+                                    onChange={(e) => updateChild(index, "month", e.target.value)}
+                                    required
+                                    className="text-center bg-white"
+                                  />
+                                </div>
+                                <div className="space-y-1">
+                                  <Label htmlFor={`child-${index}-day`} className="text-xs text-slate-500 uppercase tracking-wider">
+                                    {locale === "en" ? "Day" : "日"}
+                                  </Label>
+                                  <Input
+                                    id={`child-${index}-day`}
+                                    type="number"
+                                    min="1"
+                                    max="31"
+                                    placeholder="DD"
+                                    value={child.day}
+                                    onChange={(e) => updateChild(index, "day", e.target.value)}
+                                    required
+                                    className="text-center bg-white"
+                                  />
+                                </div>
+                                <div className="space-y-1">
+                                  <Label htmlFor={`child-${index}-year`} className="text-xs text-slate-500 uppercase tracking-wider">
+                                    {locale === "en" ? "Year" : "年"}
+                                  </Label>
+                                  <Input
+                                    id={`child-${index}-year`}
+                                    type="number"
+                                    min="2017"
+                                    max={new Date().getFullYear()}
+                                    placeholder="YYYY"
+                                    value={child.year}
+                                    onChange={(e) => updateChild(index, "year", e.target.value)}
+                                    required
+                                    className="text-center bg-white"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                          <Button
+                            type="button"
+                            onClick={addChild}
+                            variant="outline"
+                            className="w-full border-dashed border-slate-300 text-slate-600 hover:border-blue-400 hover:text-blue-600 hover:bg-blue-50"
+                          >
+                            + {locale === "en" ? "Add Another Child" : "新增子女"}
+                          </Button>
+                        </div>
                       </div>
-                    </div>
-                  </div>
 
-                  {/* Comments */}
-                  <div className="border-t border-border pt-8">
-                    <div className="space-y-2">
-                      <Label htmlFor="message">
-                        {locale === "en" ? "Comments or Questions" : "備註或問題"}
-                      </Label>
-                      <Textarea
-                        id="message"
-                        name="message"
-                        rows={5}
-                        placeholder={locale === "en" ? "What would you like to learn on your tour?" : "您想在參觀時了解什麼？"}
-                      />
-                    </div>
-                  </div>
+                      {/* Start Date */}
+                      <div>
+                        <h2 className="mb-6 flex items-center gap-2 text-xl font-semibold text-slate-800 border-b pb-2">
+                          <Clock className="h-5 w-5 text-blue-500" />
+                          {locale === "en" ? "Timeline" : "時間規劃"}
+                        </h2>
+                        <div className="space-y-6">
+                          <div className="space-y-2">
+                            <Label htmlFor="tourDateTime">
+                              {locale === "en" ? "Preferred Tour Date & Time" : "偏好參觀日期時間"}
+                            </Label>
+                            <Select value={tourDateTime} onValueChange={setTourDateTime} name="tourDateTime">
+                              <SelectTrigger className="w-full bg-slate-50 border-slate-200">
+                                <SelectValue placeholder={locale === "en" ? "Select a tour time..." : "請選擇參觀時間..."} />
+                              </SelectTrigger>
+                              <SelectContent className="min-w-[320px]">
+                                {fridaySlots.map((slot, index) => (
+                                  <SelectItem key={index} value={slot.value} disabled={slot.disabled}>
+                                    {slot.display}
+                                  </SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
+                          </div>
+                          <div className="space-y-2">
+                            <Label htmlFor="startDate">
+                              {locale === "en" ? "Desired Start Date" : "期望開始日期"}
+                            </Label>
+                            <Select value={startDate} onValueChange={setStartDate} name="startDate">
+                              <SelectTrigger className="w-full bg-slate-50 border-slate-200">
+                                <SelectValue placeholder={locale === "en" ? "Select..." : "請選擇..."} />
+                              </SelectTrigger>
+                              <SelectContent className="min-w-[200px]">
+                                <SelectItem value="Within a Month">{locale === "en" ? "Within a Month" : "一個月內"}</SelectItem>
+                                <SelectItem value="1-3 Months">{locale === "en" ? "1-3 Months" : "1-3 個月"}</SelectItem>
+                                <SelectItem value="3-6 Months">{locale === "en" ? "3-6 Months" : "3-6 個月"}</SelectItem>
+                                <SelectItem value="6-9 Months">{locale === "en" ? "6-9 Months" : "6-9 個月"}</SelectItem>
+                                <SelectItem value="9+ Months">{locale === "en" ? "9+ Months" : "9 個月以上"}</SelectItem>
+                                <SelectItem value="Unsure">{locale === "en" ? "Unsure at this time" : "尚未確定"}</SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </div>
+                        </div>
+                      </div>
 
-                  {/* Submit Button */}
-                  <div className="border-t border-border pt-8">
-                    <Button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full bg-primary py-6 text-lg font-semibold text-white hover:bg-primary/90 disabled:opacity-50"
-                    >
-                      {isSubmitting
-                        ? locale === "en"
-                          ? "Sending..."
-                          : "傳送中..."
-                        : locale === "en"
-                        ? "Schedule Tour"
-                        : "預約參觀"}
-                    </Button>
-                  </div>
-                </form>
-              </CardContent>
-            </Card>
+                      {/* Comments */}
+                      <div>
+                        <div className="space-y-2">
+                          <Label htmlFor="message">
+                            {locale === "en" ? "Comments or Questions" : "備註或問題"}
+                          </Label>
+                          <Textarea
+                            id="message"
+                            name="message"
+                            rows={4}
+                            className="bg-slate-50 border-slate-200 focus:border-blue-500 focus:ring-blue-500"
+                            placeholder={locale === "en" ? "What would you like to learn on your tour?" : "您想在參觀時了解什麼？"}
+                          />
+                        </div>
+                      </div>
+
+                      {/* Submit Button */}
+                      <div className="pt-4">
+                        <Button
+                          type="submit"
+                          disabled={isSubmitting}
+                          className="w-full h-14 text-lg font-semibold bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 bg-[length:200%_100%] animate-shimmer text-white shadow-xl shadow-blue-500/30 transition-all hover:scale-[1.02] hover:shadow-blue-500/40 rounded-xl"
+                        >
+                          {isSubmitting
+                            ? locale === "en"
+                              ? "Sending..."
+                              : "傳送中..."
+                            : locale === "en"
+                            ? "Schedule Tour"
+                            : "預約參觀"}
+                        </Button>
+                      </div>
+                    </form>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
