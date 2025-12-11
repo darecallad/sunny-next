@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import { MapPin, Phone, Mail, Clock, UtensilsCrossed, Navigation, ExternalLink, Heart } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, UtensilsCrossed, Navigation, ExternalLink, Heart, Star } from "lucide-react";
 import { useLanguage } from "@/context/language-context";
 import { siteConfig } from "@/data/site";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -176,6 +176,42 @@ export default function LocationsPage() {
                       </div>
                     </motion.div>
                   ))}
+                </div>
+              </motion.div>
+
+              {/* Google Reviews Card */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="bg-white/90 backdrop-blur-xl rounded-3xl shadow-xl p-8 border border-white/50 relative overflow-hidden group"
+              >
+                <div className="absolute -right-6 -top-6 w-24 h-24 bg-amber-100 rounded-full opacity-50 group-hover:scale-150 transition-transform duration-500" />
+                
+                <div className="relative z-10">
+                  <div className="flex items-center gap-1 mb-3">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <Star key={star} className="fill-amber-400 text-amber-400" size={20} />
+                    ))}
+                  </div>
+                  <h3 className="text-xl font-bold text-stone-800 mb-2">
+                    {locale === "en" ? "Trusted by Families" : "家長信賴的選擇"}
+                  </h3>
+                  <p className="text-stone-600 mb-6 leading-relaxed">
+                    {locale === "en" 
+                      ? "See why parents love Sunny Child Care Center on Google Maps." 
+                      : "在 Google 地圖上查看家長對我們的評價。"}
+                  </p>
+                  <a 
+                    href="https://www.google.com/maps/place/Sunny+Child+Care+Center/@37.3789405,-121.940731,17z/data=!4m8!3m7!1s0x808fcbd7e7cb599b:0x5feb29d49ff1cc8d!8m2!3d37.3789363!4d-121.9381561!9m1!1b1!16s%2Fg%2F11v9vt1x4y?entry=ttu&g_ep=EgoyMDI1MTIwOC4wIKXMDSoASAFQAw%3D%3D"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-amber-600 font-bold hover:text-amber-700 transition-colors group-hover:translate-x-1 duration-300"
+                  >
+                    {locale === "en" ? "Read Google Reviews" : "閱讀 Google 評論"}
+                    <ExternalLink size={16} />
+                  </a>
                 </div>
               </motion.div>
 
