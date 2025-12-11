@@ -7,7 +7,7 @@ import {
   Utensils, 
   Apple, 
   Carrot, 
-  Fish, 
+  Soup, 
   Milk, 
   Wheat, 
   Leaf, 
@@ -54,23 +54,23 @@ export default function MenusPage() {
     }
   ];
 
-  // Sample Menu Data (Static for visual "Surprise")
+  // Sample Menu Data (Based on actual menu examples)
   const sampleMenu = [
     {
       meal: { en: "Morning Snack", zh: "早點" },
-      items: { en: "Seasonal Fruits & Yogurt", zh: "時令水果與優格" },
+      items: { en: "Seasonal Fresh Fruits & Organic Milk", zh: "時令鮮果與有機牛奶" },
       icon: Apple,
       color: "text-rose-500 bg-rose-50"
     },
     {
       meal: { en: "Lunch", zh: "午餐" },
-      items: { en: "Brown Rice, Steamed Fish, Stir-fried Veggies", zh: "糙米飯、清蒸魚、炒時蔬" },
-      icon: Fish,
+      items: { en: "Chicken & Onion Rice Bowl, Miso Soup", zh: "日式洋蔥雞肉蓋飯、味噌湯" },
+      icon: Soup,
       color: "text-blue-500 bg-blue-50"
     },
     {
       meal: { en: "Afternoon Snack", zh: "午點" },
-      items: { en: "Whole Wheat Toast & Milk", zh: "全麥吐司與牛奶" },
+      items: { en: "Handmade Dumplings, Tomato & Egg Soup", zh: "手工水餃、番茄蛋花湯" },
       icon: Wheat,
       color: "text-amber-500 bg-amber-50"
     }
@@ -196,13 +196,23 @@ export default function MenusPage() {
                 ))}
               </div>
               
-              <div className="mt-8 p-4 bg-lime-50 rounded-xl border border-lime-100 flex gap-3">
-                <Carrot className="text-lime-600 flex-shrink-0" size={20} />
-                <p className="text-sm text-lime-800">
-                  {locale === "en" 
-                    ? "We accommodate food allergies and dietary restrictions. Please inform us during enrollment." 
-                    : "我們配合食物過敏和飲食限制。請在註冊時告知我們。"}
-                </p>
+              <div className="mt-8 space-y-3">
+                <div className="p-4 bg-lime-50 rounded-xl border border-lime-100 flex gap-3">
+                  <Milk className="text-lime-600 flex-shrink-0" size={20} />
+                  <p className="text-sm text-lime-800">
+                    {locale === "en" 
+                      ? "Organic milk is served with all meals. Fresh fruit is offered daily." 
+                      : "所有餐點均附有機牛奶。每日提供新鮮水果。"}
+                  </p>
+                </div>
+                <div className="p-4 bg-orange-50 rounded-xl border border-orange-100 flex gap-3">
+                  <Carrot className="text-orange-600 flex-shrink-0" size={20} />
+                  <p className="text-sm text-orange-800">
+                    {locale === "en" 
+                      ? "We accommodate food allergies and dietary restrictions." 
+                      : "我們配合食物過敏和飲食限制。"}
+                  </p>
+                </div>
               </div>
             </motion.div>
 
