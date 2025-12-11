@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { careHighlights, heroContent, siteConfig } from "@/data/site";
 import { useLanguage } from "@/context/language-context";
+import heroImg from "@/public/images/hero-pexels.jpg";
 
 export function HeroSection() {
   const { locale } = useLanguage();
@@ -15,11 +16,12 @@ export function HeroSection() {
       {/* Background image with overlay */}
       <div className="absolute inset-0">
         <Image
-          src="/images/hero-pexels.jpg"
+          src={heroImg}
           alt="Happy children learning and playing at Sunny Child Care bilingual preschool in San Jose"
           fill
           className="object-cover"
           priority
+          placeholder="blur"
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-white/40 sm:from-white/90 sm:via-white/60 sm:to-transparent" />
@@ -105,10 +107,11 @@ export function HeroSection() {
               {/* Top image - visible */}
               <div className="relative h-64 w-full">
                 <Image
-                  src="/images/hero-pexels.jpg"
+                  src={heroImg}
                   alt="Diverse group of children engaging in bilingual learning activities at Sunny Child Care"
                   fill
                   className="object-cover"
+                  placeholder="blur"
                   sizes="(min-width: 1024px) 380px, 90vw"
                 />
               </div>

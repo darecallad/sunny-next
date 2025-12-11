@@ -7,6 +7,11 @@ import { useLanguage } from "@/context/language-context";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
+// Static imports for better performance and blur placeholders
+import infantImg from "@/public/images/banners/infant.webp";
+import preschoolImg from "@/public/images/banners/preschool.webp";
+import kindergartenImg from "@/public/images/banners/kindergarten.webp";
+
 const programs = [
   {
     title: { en: "Infant & Toddler", zh: "嬰幼班" },
@@ -15,7 +20,7 @@ const programs = [
       zh: "為 6 週至 24 個月的寶寶提供溫暖照護。專注於感官探索、動作發展與情感安全感。",
     },
     href: "/programs/infant",
-    image: "/images/banners/infant.webp",
+    image: infantImg,
   },
   {
     title: { en: "Preschool", zh: "幼兒園" },
@@ -24,7 +29,7 @@ const programs = [
       zh: "為 2-4 歲幼兒設計的遊戲式學習。培養社交技巧、雙語基礎與創造力表達。",
     },
     href: "/programs/preschool",
-    image: "/images/banners/preschool.webp",
+    image: preschoolImg,
   },
   {
     title: { en: "TK / Kindergarten", zh: "學前 / 小學" },
@@ -33,7 +38,7 @@ const programs = [
       zh: "為 4-6 歲兒童準備的入學銜接。進階雙語讀寫、數學概念與專題式探究。",
     },
     href: "/programs/kindergarten",
-    image: "/images/banners/kindergarten.webp",
+    image: kindergartenImg,
   },
 ];
 
@@ -62,6 +67,7 @@ export function ProgramsPreview() {
                   src={program.image}
                   alt={program.title[locale]}
                   fill
+                  placeholder="blur"
                   className="object-cover transition-transform duration-500 hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
