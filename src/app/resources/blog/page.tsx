@@ -10,14 +10,14 @@ export default function BlogPage() {
   const categories = Array.from(new Set(posts.map((post) => post.category)));
 
   return (
-    <div className="min-h-screen bg-stone-50 pb-20 pt-32">
-      <div className="container mx-auto px-4">
+    <div className="min-h-screen pb-20 pt-32 relative overflow-hidden">
+      <div className="container mx-auto px-4 relative z-10">
         {/* Header Section */}
-        <div className="mb-8 text-center">
-          <h1 className="mb-2 text-3xl font-bold text-stone-800 md:text-4xl">
+        <div className="mb-12 text-center">
+          <h1 className="mb-3 text-4xl font-bold text-stone-800 md:text-5xl font-serif">
             Parenting Blog
           </h1>
-          <p className="text-lg font-medium text-stone-600">育兒部落格</p>
+          <p className="text-xl font-medium text-stone-500">育兒部落格</p>
         </div>
 
         {/* Client-side Feed with Filtering */}
