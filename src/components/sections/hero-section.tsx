@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { careHighlights, heroContent, siteConfig } from "@/data/site";
 import { useLanguage } from "@/context/language-context";
-import heroImg from "@/public/images/hero-pexels.jpg";
+import heroImg from "../../../public/images/hero-pexels.jpg";
 
 export function HeroSection() {
   const { locale } = useLanguage();

@@ -8,9 +8,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
 // Static imports for better performance and blur placeholders
-import infantImg from "@/public/images/banners/infant.webp";
-import preschoolImg from "@/public/images/banners/preschool.webp";
-import kindergartenImg from "@/public/images/banners/kindergarten.webp";
+import infantImg from "../../../public/images/banners/infant.webp";
+import preschoolImg from "../../../public/images/banners/preschool.webp";
+import kindergartenImg from "../../../public/images/banners/kindergarten.webp";
 
 const programs = [
   {
