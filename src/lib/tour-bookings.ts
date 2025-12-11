@@ -103,3 +103,35 @@ export async function getBookingsNeedingReminder(): Promise<TourBooking[]> {
       !booking.reminderSent
   );
 }
+
+// 清理過期預約（刪除昨天及之前的預約）
+export async function cleanupOldBookings(): Promise<number> {
+  const bookings = await getBookings();
+  
+  // 取得今天的日期 (PST)
+  // 由於伺服器可能在 UTC，我們需要小心處理
+  // 這裡我們簡單地使用 UTC 日期，因為 tourDate 也是 YYYY-MM-DD 格式
+  // 如果 tourDate 小於今天，就刪除
+  const now = new Date();
+  // 轉換為 PST 時間 (UTC-8)
+  const pstDate = new Date(now.toLocaleString("en-US", { timeZone: "America/Los_Angeles" }));
+  const todayStr = pstDate.toISOString().split("T")[0];
+  
+  const activeBookings = bookings.filter(booking => {
+    // 如果 tourDate 大於或等於今天，保留
+    return booking.tourDate >= todayStr;
+  });
+  
+  const deletedCount = bookings.length - activeBookings.length;
+  
+  if (deletedCount > 0) {
+    try {
+      await redis.set(KV_KEY, JSON.stringify(activeBookings));
+      console.log(`Cleaned up ${deletedCount} old bookings.`);
+    } catch (error) {
+      console.error("Failed to cleanup old bookings:", error);
+    }
+  }
+  
+  return deletedCount;
+}

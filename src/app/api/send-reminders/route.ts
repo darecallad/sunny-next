@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { transporter } from "@/lib/email";
-import { getBookingsNeedingReminder, updateBooking } from "@/lib/tour-bookings";
+import { getBookingsNeedingReminder, updateBooking, cleanupOldBookings } from "@/lib/tour-bookings";
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,6 +12,11 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
+    // 1. 清理過期預約
+    const deletedCount = await cleanupOldBookings();
+    console.log(`Cleanup: Deleted ${deletedCount} past bookings.`);
+
+    // 2. 發送提醒
     const bookingsToRemind = await getBookingsNeedingReminder();
     
     if (bookingsToRemind.length === 0) {
@@ -19,6 +24,7 @@ export async function POST(request: NextRequest) {
         success: true,
         message: "No reminders to send",
         count: 0,
+        deletedCount,
       });
     }
 

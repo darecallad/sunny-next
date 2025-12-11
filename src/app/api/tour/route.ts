@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { transporter } from "@/lib/email";
-import { saveBooking } from "@/lib/tour-bookings";
+import { saveBooking, getBookings } from "@/lib/tour-bookings";
 
 // 生成 .ics 日曆文件內容
 function generateICS(tourDateTime: string, firstName: string, lastName: string, email: string, phone: string): string {
@@ -89,6 +89,19 @@ export async function POST(request: NextRequest) {
         { error: "Missing required fields" },
         { status: 400 }
       );
+    }
+
+    // 檢查該時段是否已滿 (最多 4 組)
+    if (tourDateTime) {
+      const bookings = await getBookings();
+      const existingBookingsCount = bookings.filter(b => b.tourDateTime === tourDateTime).length;
+      
+      if (existingBookingsCount >= 4) {
+        return NextResponse.json(
+          { error: "This time slot is fully booked. Please choose another time." },
+          { status: 400 }
+        );
+      }
     }
 
     // 從 tourDateTime 提取日期 (YYYY-MM-DD)
