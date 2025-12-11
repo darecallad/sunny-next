@@ -4,6 +4,10 @@ import { cancelBooking, getBookings } from "@/lib/tour-bookings";
 
 export const dynamic = 'force-dynamic';
 
+export async function GET() {
+  return NextResponse.json({ status: "Cancellation API is active" });
+}
+
 export async function POST(request: NextRequest) {
   try {
     const { id } = await request.json();
