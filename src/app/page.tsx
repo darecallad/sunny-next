@@ -5,7 +5,10 @@ import { HeroSection } from "@/components/sections/hero-section";
 import { TestimonialsSection } from "@/components/sections/testimonials";
 import { ValueGrid } from "@/components/sections/value-grid";
 import { VideoSpotlight } from "@/components/sections/video-spotlight";
-import { LocalBusinessSchema } from "@/components/seo/local-business-schema";
+import { ProgramsPreview } from "@/components/sections/programs-preview";
+import { LocationSection } from "@/components/sections/location-section";
+import { JsonLd } from "@/components/json-ld";
+import { ScrollAnimation } from "@/components/ui/scroll-animation";
 
 export const metadata: Metadata = {
   title: "Best Daycare & Child Care in San Jose, CA (2025) | Sunny Child Care",
@@ -81,14 +84,34 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      <LocalBusinessSchema />
+      <JsonLd />
       <AnnouncementBanner />
       <div className="space-y-0">
         <HeroSection />
-        <ValueGrid />
-        <VideoSpotlight />
-        <TestimonialsSection />
-        <CtaBanner />
+        
+        <ScrollAnimation>
+          <ValueGrid />
+        </ScrollAnimation>
+        
+        <ScrollAnimation>
+          <ProgramsPreview />
+        </ScrollAnimation>
+        
+        <ScrollAnimation>
+          <VideoSpotlight />
+        </ScrollAnimation>
+        
+        <ScrollAnimation>
+          <TestimonialsSection />
+        </ScrollAnimation>
+        
+        <ScrollAnimation>
+          <LocationSection />
+        </ScrollAnimation>
+        
+        <ScrollAnimation>
+          <CtaBanner />
+        </ScrollAnimation>
       </div>
     </>
   );

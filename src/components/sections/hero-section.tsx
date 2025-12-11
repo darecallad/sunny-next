@@ -2,10 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
 import { careHighlights, heroContent, siteConfig } from "@/data/site";
 import { useLanguage } from "@/context/language-context";
+import heroImg from "../../../public/images/hero-pexels.jpg";
 
 export function HeroSection() {
   const { locale } = useLanguage();
@@ -14,31 +16,58 @@ export function HeroSection() {
       {/* Background image with overlay */}
       <div className="absolute inset-0">
         <Image
-          src="/images/hero-pexels.jpg"
+          src={heroImg}
           alt="Happy children learning and playing at Sunny Child Care bilingual preschool in San Jose"
           fill
           className="object-cover"
           priority
+          placeholder="blur"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-white/60 to-white/70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-white/40 sm:from-white/90 sm:via-white/60 sm:to-transparent" />
       </div>
       
-      <div className="container relative z-10 mx-auto px-4 py-12">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_380px] lg:items-center">
-          <div className="space-y-8">
+      <div className="container relative z-10 mx-auto px-4 py-12 lg:py-24">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_400px] lg:items-center">
+          <motion.div 
+            className="space-y-8"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
             <div className="space-y-4">
-              <p className="inline-block rounded-md bg-white/90 px-4 py-2 text-sm font-bold uppercase tracking-[0.3em] text-primary shadow-md backdrop-blur-sm">
+              <motion.div 
+                className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary backdrop-blur-sm"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+              >
+                <span className="mr-2 flex h-2 w-2 rounded-full bg-primary"></span>
                 {heroContent.eyebrow[locale]}
-              </p>
-              <h1 className="text-4xl font-semibold leading-tight text-foreground sm:text-5xl">
+              </motion.div>
+              <motion.h1 
+                className="text-4xl font-bold leading-tight text-foreground sm:text-5xl lg:text-6xl"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+              >
                 {heroContent.title[locale]}
-              </h1>
-              <p className="text-lg font-medium text-foreground/80">
+              </motion.h1>
+              <motion.p 
+                className="max-w-2xl text-lg font-medium text-foreground/80 sm:text-xl"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+              >
                 {heroContent.description[locale]}
-              </p>
+              </motion.p>
             </div>
-            <div className="flex flex-wrap gap-4">
+            <motion.div 
+              className="flex flex-wrap gap-4"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+            >
               <Button asChild size="lg" className="bg-primary text-white hover:bg-primary/90">
                 <Link href={heroContent.primaryCta.href}>
                   {heroContent.primaryCta.label[locale]}
@@ -49,8 +78,13 @@ export function HeroSection() {
                   {heroContent.secondaryCta.label[locale]}
                 </Link>
               </Button>
-            </div>
-            <dl className="grid gap-4 sm:grid-cols-3">
+            </motion.div>
+            <motion.dl 
+              className="grid gap-4 sm:grid-cols-3"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6 }}
+            >
               {heroContent.stats.map((stat) => (
                 <div key={stat.label.en}>
                   <dt className="text-xs uppercase tracking-wide text-muted-foreground">
@@ -61,17 +95,23 @@ export function HeroSection() {
                   </dd>
                 </div>
               ))}
-            </dl>
-          </div>
-          <div className="space-y-4">
+            </motion.dl>
+          </motion.div>
+          <motion.div 
+            className="space-y-4"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          >
             <div className="relative overflow-hidden rounded-[32px] border border-white/30 bg-primary text-white shadow-2xl shadow-primary/20">
               {/* Top image - visible */}
               <div className="relative h-64 w-full">
                 <Image
-                  src="/images/hero-pexels.jpg"
+                  src={heroImg}
                   alt="Diverse group of children engaging in bilingual learning activities at Sunny Child Care"
                   fill
                   className="object-cover"
+                  placeholder="blur"
                   sizes="(min-width: 1024px) 380px, 90vw"
                 />
               </div>
@@ -131,7 +171,7 @@ export function HeroSection() {
               </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
