@@ -14,7 +14,7 @@ function CancelContent() {
     if (!id) return;
     setStatus('loading');
     try {
-      const res = await fetch('/api/tour/cancel', {
+      const res = await fetch('/api/tour-cancel', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id }),
