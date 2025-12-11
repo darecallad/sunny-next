@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { transporter } from "@/lib/email";
 import { cancelBooking, getBookings } from "@/lib/tour-bookings";
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(request: NextRequest) {
   try {
     const { id } = await request.json();
