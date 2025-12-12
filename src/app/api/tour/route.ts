@@ -2,6 +2,22 @@ import { NextRequest, NextResponse } from "next/server";
 import { transporter } from "@/lib/email";
 import { saveBooking, getBookings } from "@/lib/tour-bookings";
 
+// Helper function to sanitize inputs
+function escapeHtml(unsafe: string): string {
+  if (!unsafe) return "";
+  return unsafe
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function escapeICS(unsafe: string): string {
+  if (!unsafe) return "";
+  return unsafe.replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\n/g, "\\n");
+}
+
 // 生成 .ics 日曆文件內容
 function generateICS(tourDateTime: string, firstName: string, lastName: string, email: string, phone: string): string {
   // 解析 tour date/time (格式: "2025-11-22 (Friday) - 10:30 AM - Chinese Tour")
@@ -40,7 +56,14 @@ function generateICS(tourDateTime: string, firstName: string, lastName: string, 
   const uid = `tour-${Date.now()}@sunnychildcare.com`;
   
   const language = isChinese ? "Chinese/中文" : "English";
-  const description = `Campus Tour for ${firstName} ${lastName}\\n\\nContact:\\nEmail: ${email}\\nPhone: ${phone}\\n\\nLanguage: ${language}\\n\\nLocation: Sunny Child Care\\n2586 Seaboard Ave, San Jose, CA 95131`;
+  
+  // Sanitize for ICS
+  const safeFirstName = escapeICS(firstName);
+  const safeLastName = escapeICS(lastName);
+  const safeEmail = escapeICS(email);
+  const safePhone = escapeICS(phone);
+  
+  const description = `Campus Tour for ${safeFirstName} ${safeLastName}\\n\\nContact:\\nEmail: ${safeEmail}\\nPhone: ${safePhone}\\n\\nLanguage: ${language}\\n\\nLocation: Sunny Child Care\\n2586 Seaboard Ave, San Jose, CA 95131`;
   
   return `BEGIN:VCALENDAR
 VERSION:2.0
@@ -52,13 +75,13 @@ UID:${uid}
 DTSTAMP:${dtstamp}
 DTSTART:${dtstart}
 DTEND:${dtend}
-SUMMARY:Campus Tour - ${firstName} ${lastName} (${language})
+SUMMARY:Campus Tour - ${safeFirstName} ${safeLastName} (${language})
 DESCRIPTION:${description}
 LOCATION:Sunny Child Care, 2586 Seaboard Ave, San Jose, CA 95131
 STATUS:CONFIRMED
 SEQUENCE:0
 ORGANIZER;CN=Sunny Child Care:mailto:Center.admin@sunnychildcare.com
-ATTENDEE;CN=${firstName} ${lastName};RSVP=TRUE:mailto:${email}
+ATTENDEE;CN=${safeFirstName} ${safeLastName};RSVP=TRUE:mailto:${safeEmail}
 BEGIN:VALARM
 TRIGGER:-PT24H
 ACTION:DISPLAY
@@ -91,6 +114,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Sanitize inputs for HTML
+    const safeFirstName = escapeHtml(firstName);
+    const safeLastName = escapeHtml(lastName);
+    const safeEmail = escapeHtml(email);
+    const safePhone = escapeHtml(phone);
+    const safeMessage = escapeHtml(message || "");
+    const safeStartDate = escapeHtml(startDate || "");
+
     // 檢查該時段是否已滿 (最多 4 組)
     if (tourDateTime) {
       const bookings = await getBookings();
@@ -120,16 +151,16 @@ export async function POST(request: NextRequest) {
     if (tourDate) {
       try {
         const savedBooking = await saveBooking({
-          firstName,
-          lastName,
-          email,
-          phone,
+          firstName: safeFirstName,
+          lastName: safeLastName,
+          email: safeEmail,
+          phone: safePhone,
           tourDateTime,
           tourDate,
           children: children || [],
           chineseTour: tourDateTime?.includes("Chinese Tour") ? "Yes" : "No",
-          startDate: startDate || "",
-          message: message || "",
+          startDate: safeStartDate,
+          message: safeMessage,
           locale: locale || "en",
         });
         bookingId = savedBooking.id;
@@ -150,9 +181,37 @@ export async function POST(request: NextRequest) {
     const childrenInfo = children
       ?.map(
         (child: { month: string; day: string; year: string }, index: number) =>
-          `Child ${index + 1}: ${child.month}/${child.day}/${child.year}`
+          `Child ${index + 1}: ${escapeHtml(child.month)}/${escapeHtml(child.day)}/${escapeHtml(child.year)}`
       )
       .join("\n                ");
+
+    // 生成 Google Calendar 鏈接的函數
+    function generateGoogleCalendarLink(tourDateTime: string, firstName: string, lastName: string, email: string, phone: string): string {
+      const dateMatch = tourDateTime.match(/^(\d{4}-\d{2}-\d{2})/);
+      const timeMatch = tourDateTime.match(/(\d{1,2}:\d{2}\s*[AP]M)/i);
+      const isChinese = tourDateTime.includes("Chinese");
+      
+      if (!dateMatch || !timeMatch) return "#";
+      
+      const tourDate = dateMatch[1].replace(/-/g, "");
+      const tourTime = timeMatch[1];
+      const [time, meridiem] = tourTime.split(" ");
+      let [hours, minutes] = time.split(":").map(Number);
+      
+      if (meridiem.toUpperCase() === "PM" && hours !== 12) hours += 12;
+      if (meridiem.toUpperCase() === "AM" && hours === 12) hours = 0;
+      
+      const startTime = `${hours.toString().padStart(2, '0')}${minutes.toString().padStart(2, '0')}00`;
+      const endHours = (hours + 1) % 24;
+      const endTime = `${endHours.toString().padStart(2, '0')}${minutes.toString().padStart(2, '0')}00`;
+      
+      const language = isChinese ? "Chinese/中文" : "English";
+      const title = encodeURIComponent(`Campus Tour - ${firstName} ${lastName} (${language})`);
+      const description = encodeURIComponent(`Campus Tour\n\nContact:\nEmail: ${email}\nPhone: ${phone}\n\nLanguage: ${language}\n\nLocation: Sunny Child Care\n2586 Seaboard Ave, San Jose, CA 95131`);
+      const location = encodeURIComponent("Sunny Child Care, 2586 Seaboard Ave, San Jose, CA 95131");
+      
+      return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${tourDate}T${startTime}/${tourDate}T${endTime}&details=${description}&location=${location}&ctz=America/Los_Angeles`;
+    }
 
     // 準備郵件內容 - HTML 格式
     const htmlContent = `
@@ -187,7 +246,7 @@ export async function POST(request: NextRequest) {
               <strong>📅 Quick Add to Calendar:</strong><br>
               Click the button below or open the attached .ics file to add this tour to your Google Calendar.
               <div style="text-align: center; margin-top: 15px;">
-                <a href="${generateGoogleCalendarLink(tourDateTime, firstName, lastName, email, phone)}" class="calendar-btn" target="_blank">
+                <a href="${generateGoogleCalendarLink(tourDateTime, safeFirstName, safeLastName, safeEmail, safePhone)}" class="calendar-btn" target="_blank">
                   ➕ Add to Google Calendar
                 </a>
               </div>
@@ -201,15 +260,15 @@ export async function POST(request: NextRequest) {
                 <div class="section-title">👤 Parent Information / 家長資訊</div>
                 <div class="field">
                   <span class="label">Name / 姓名:</span>
-                  <span class="value">${firstName} ${lastName}</span>
+                  <span class="value">${safeFirstName} ${safeLastName}</span>
                 </div>
                 <div class="field">
                   <span class="label">Email:</span>
-                  <span class="value">${email}</span>
+                  <span class="value">${safeEmail}</span>
                 </div>
                 <div class="field">
                   <span class="label">Phone / 電話:</span>
-                  <span class="value">${phone}</span>
+                  <span class="value">${safePhone}</span>
                 </div>
               </div>
 
@@ -229,17 +288,17 @@ export async function POST(request: NextRequest) {
                 </div>
                 <div class="field">
                   <span class="label">Desired Start Date / 期望開始日期:</span>
-                  <span class="value">${startDate || "Not specified"}</span>
+                  <span class="value">${safeStartDate || "Not specified"}</span>
                 </div>
               </div>
 
               ${
-                message
+                safeMessage
                   ? `
               <div class="section">
                 <div class="section-title">💬 Comments / 備註</div>
                 <div class="message-box">
-                  <div style="white-space: pre-wrap;">${message}</div>
+                  <div style="white-space: pre-wrap;">${safeMessage}</div>
                 </div>
               </div>
               `
@@ -255,34 +314,6 @@ export async function POST(request: NextRequest) {
       </html>
     `;
 
-    // 生成 Google Calendar 鏈接的函數
-    function generateGoogleCalendarLink(tourDateTime: string, firstName: string, lastName: string, email: string, phone: string): string {
-      const dateMatch = tourDateTime.match(/^(\d{4}-\d{2}-\d{2})/);
-      const timeMatch = tourDateTime.match(/(\d{1,2}:\d{2}\s*[AP]M)/i);
-      const isChinese = tourDateTime.includes("Chinese");
-      
-      if (!dateMatch || !timeMatch) return "#";
-      
-      const tourDate = dateMatch[1].replace(/-/g, "");
-      const tourTime = timeMatch[1];
-      const [time, meridiem] = tourTime.split(" ");
-      let [hours, minutes] = time.split(":").map(Number);
-      
-      if (meridiem.toUpperCase() === "PM" && hours !== 12) hours += 12;
-      if (meridiem.toUpperCase() === "AM" && hours === 12) hours = 0;
-      
-      const startTime = `${hours.toString().padStart(2, '0')}${minutes.toString().padStart(2, '0')}00`;
-      const endHours = (hours + 1) % 24;
-      const endTime = `${endHours.toString().padStart(2, '0')}${minutes.toString().padStart(2, '0')}00`;
-      
-      const language = isChinese ? "Chinese/中文" : "English";
-      const title = encodeURIComponent(`Campus Tour - ${firstName} ${lastName} (${language})`);
-      const description = encodeURIComponent(`Campus Tour\n\nContact:\nEmail: ${email}\nPhone: ${phone}\n\nLanguage: ${language}\n\nLocation: Sunny Child Care\n2586 Seaboard Ave, San Jose, CA 95131`);
-      const location = encodeURIComponent("Sunny Child Care, 2586 Seaboard Ave, San Jose, CA 95131");
-      
-      return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${tourDate}T${startTime}/${tourDate}T${endTime}&details=${description}&location=${location}&ctz=America/Los_Angeles`;
-    }
-
     // 準備純文字版本
     const textContent = `
 新的預約參觀申請 / New Tour Request
@@ -290,9 +321,9 @@ export async function POST(request: NextRequest) {
 
 👤 PARENT INFORMATION / 家長資訊
 --------------------------------------------
-Name / 姓名: ${firstName} ${lastName}
-Email: ${email}
-Phone / 電話: ${phone}
+Name / 姓名: ${safeFirstName} ${safeLastName}
+Email: ${safeEmail}
+Phone / 電話: ${safePhone}
 
 👶 CHILD INFORMATION / 子女資訊
 --------------------------------------------
@@ -301,13 +332,13 @@ ${childrenInfo || "Not provided"}
 📅 TOUR DETAILS / 參觀詳情
 --------------------------------------------
 Tour Date & Time / 參觀日期時間: ${tourDateTime || "Not specified"}
-Desired Start Date / 期望開始日期: ${startDate || "Not specified"}
+Desired Start Date / 期望開始日期: ${safeStartDate || "Not specified"}
 
 ${
-  message
+  safeMessage
     ? `💬 COMMENTS / 備註
 --------------------------------------------
-${message}
+${safeMessage}
 --------------------------------------------`
     : ""
 }
@@ -321,14 +352,14 @@ This email was automatically sent from Sunny Child Care website
     const mailOptions = {
       from: `"Sunny Child Care Tour Request" <${process.env.EMAIL_USER}>`,
       to: "Center.admin@sunnychildcare.com",
-      replyTo: email,
-      subject: `🌟 新預約參觀 / New Tour Request - ${firstName} ${lastName}`,
+      replyTo: safeEmail,
+      subject: `🌟 新預約參觀 / New Tour Request - ${safeFirstName} ${safeLastName}`,
       text: textContent,
       html: htmlContent,
       attachments: tourDateTime ? [
         {
           filename: 'tour-booking.ics',
-          content: generateICS(tourDateTime, firstName, lastName, email, phone),
+          content: generateICS(tourDateTime, safeFirstName, safeLastName, safeEmail, safePhone),
           contentType: 'text/calendar; charset=utf-8; method=REQUEST'
         }
       ] : []
@@ -364,7 +395,7 @@ This email was automatically sent from Sunny Child Care website
               <h1>${isChineseTour ? "預約參觀確認" : "Tour Confirmation"}</h1>
             </div>
             <div class="content">
-              <p>${isChineseTour ? `${firstName} 您好，` : `Dear ${firstName},`}</p>
+              <p>${isChineseTour ? `${safeFirstName} 您好，` : `Dear ${safeFirstName},`}</p>
               <p>
                 ${isChineseTour 
                   ? "感謝您預約參觀 Sunny Child Care！我們已收到您的預約請求。" 
@@ -384,7 +415,7 @@ This email was automatically sent from Sunny Child Care website
               </p>
               
               <div style="text-align: center;">
-                <a href="${generateGoogleCalendarLink(tourDateTime, firstName, lastName, email, phone)}" class="button">
+                <a href="${generateGoogleCalendarLink(tourDateTime, safeFirstName, safeLastName, safeEmail, safePhone)}" class="button">
                   ${isChineseTour ? "📅 加入 Google 日曆" : "📅 Add to Google Calendar"}
                 </a>
               </div>
@@ -419,13 +450,13 @@ This email was automatically sent from Sunny Child Care website
     
     await transporter.sendMail({
       from: `"Sunny Child Care" <${process.env.EMAIL_USER}>`,
-      to: email,
+      to: safeEmail,
       subject: parentSubject,
       html: parentHtml.replace(/https:\/\/www\.sunnychildcare\.com/g, origin),
       attachments: tourDateTime ? [
         {
           filename: 'tour-booking.ics',
-          content: generateICS(tourDateTime, firstName, lastName, email, phone),
+          content: generateICS(tourDateTime, safeFirstName, safeLastName, safeEmail, safePhone),
           contentType: 'text/calendar; charset=utf-8; method=REQUEST'
         }
       ] : []

@@ -12,9 +12,21 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+// Helper function to sanitize inputs
+function escapeHtml(unsafe: string): string {
+  if (!unsafe) return "";
+  return unsafe
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
 export async function POST(req: NextRequest) {
   try {
-    const { name, email, phone, message, preferredLanguage, locale } = await req.json();
+    const body = await req.json();
+    const { name, email, phone, message, preferredLanguage, locale } = body;
 
     // Validate required fields
     if (!name || !email || !phone || !message || !preferredLanguage) {
@@ -23,6 +35,13 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       );
     }
+
+    // Sanitize inputs
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safePhone = escapeHtml(phone);
+    const safeMessage = escapeHtml(message);
+    const safeLanguage = escapeHtml(preferredLanguage);
 
     const timestamp = new Date().toLocaleString("en-US", {
       timeZone: "America/Los_Angeles",
@@ -33,8 +52,8 @@ export async function POST(req: NextRequest) {
     // Email to admin
     const adminSubject =
       locale === "zh"
-        ? `[Sunny Child Care] 新聯絡表單提交 - ${name}`
-        : `[Sunny Child Care] New Contact Form Submission - ${name}`;
+        ? `[Sunny Child Care] 新聯絡表單提交 - ${safeName}`
+        : `[Sunny Child Care] New Contact Form Submission - ${safeName}`;
 
     const adminHtml = `
       <!DOCTYPE html>
@@ -71,14 +90,14 @@ export async function POST(req: NextRequest) {
 
               <div class="field">
                 <span class="label">${locale === "zh" ? "姓名：" : "Name:"}</span>
-                <div class="value">${name}</div>
+                <div class="value">${safeName}</div>
               </div>
 
               <div class="field">
                 <span class="label">${locale === "zh" ? "電子郵件：" : "Email:"}</span>
                 <div class="value">
-                  <a href="mailto:${email}" style="color: #7CB342; text-decoration: none;">
-                    ${email}
+                  <a href="mailto:${safeEmail}" style="color: #7CB342; text-decoration: none;">
+                    ${safeEmail}
                   </a>
                 </div>
               </div>
@@ -86,15 +105,15 @@ export async function POST(req: NextRequest) {
               <div class="field">
                 <span class="label">${locale === "zh" ? "聯絡電話：" : "Phone:"}</span>
                 <div class="value">
-                  <a href="tel:${phone}" style="color: #7CB342; text-decoration: none;">
-                    ${phone}
+                  <a href="tel:${safePhone}" style="color: #7CB342; text-decoration: none;">
+                    ${safePhone}
                   </a>
                 </div>
               </div>
 
               <div class="field">
                 <span class="label">${locale === "zh" ? "訊息內容：" : "Message:"}</span>
-                <div class="message-box">${message.replace(/\n/g, "<br>")}</div>
+                <div class="message-box">${safeMessage.replace(/\n/g, "<br>")}</div>
               </div>
 
               <div class="field">
