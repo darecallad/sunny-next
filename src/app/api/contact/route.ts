@@ -31,7 +31,6 @@ export async function POST(req: NextRequest) {
     const safeEmail = escapeHtml(email);
     const safePhone = escapeHtml(phone);
     const safeMessage = escapeHtml(message);
-    const safeLanguage = escapeHtml(preferredLanguage);
 
     const timestamp = new Date().toLocaleString("en-US", {
       timeZone: "America/Los_Angeles",

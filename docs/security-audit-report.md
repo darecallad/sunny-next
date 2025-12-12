@@ -24,7 +24,7 @@ A comprehensive security audit was performed on the codebase, focusing on API en
 **Affected File:**
 - `src/app/api/tour/route.ts`
 
-**Fix:** Implemented `escapeICS` helper function to escape special characters (`;`, `,`, `\`, `\n`) and used `escapeHtml` for fields used in the calendar event description to ensure safe rendering.
+**Fix:** Implemented `escapeICS` helper function to escape special characters (`;`, `,`, `\`, `\n`) in all user-supplied fields used in the calendar event to ensure safe rendering.
 
 ## Codebase Review
 
