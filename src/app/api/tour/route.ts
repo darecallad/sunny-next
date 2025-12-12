@@ -1,22 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { transporter } from "@/lib/email";
 import { saveBooking, getBookings } from "@/lib/tour-bookings";
-
-// Helper function to sanitize inputs
-function escapeHtml(unsafe: string): string {
-  if (!unsafe) return "";
-  return unsafe
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
-}
-
-function escapeICS(unsafe: string): string {
-  if (!unsafe) return "";
-  return unsafe.replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\n/g, "\\n");
-}
+import { escapeHtml, escapeICS } from "@/lib/sanitization";
 
 // 生成 .ics 日曆文件內容
 function generateICS(tourDateTime: string, firstName: string, lastName: string, email: string, phone: string): string {
@@ -246,7 +231,7 @@ export async function POST(request: NextRequest) {
               <strong>📅 Quick Add to Calendar:</strong><br>
               Click the button below or open the attached .ics file to add this tour to your Google Calendar.
               <div style="text-align: center; margin-top: 15px;">
-                <a href="${generateGoogleCalendarLink(tourDateTime, safeFirstName, safeLastName, safeEmail, safePhone)}" class="calendar-btn" target="_blank">
+                <a href="${generateGoogleCalendarLink(tourDateTime, firstName, lastName, email, phone)}" class="calendar-btn" target="_blank">
                   ➕ Add to Google Calendar
                 </a>
               </div>
@@ -352,14 +337,14 @@ This email was automatically sent from Sunny Child Care website
     const mailOptions = {
       from: `"Sunny Child Care Tour Request" <${process.env.EMAIL_USER}>`,
       to: "Center.admin@sunnychildcare.com",
-      replyTo: safeEmail,
-      subject: `🌟 新預約參觀 / New Tour Request - ${safeFirstName} ${safeLastName}`,
+      replyTo: email,
+      subject: `🌟 新預約參觀 / New Tour Request - ${firstName} ${lastName}`,
       text: textContent,
       html: htmlContent,
       attachments: tourDateTime ? [
         {
           filename: 'tour-booking.ics',
-          content: generateICS(tourDateTime, safeFirstName, safeLastName, safeEmail, safePhone),
+          content: generateICS(tourDateTime, firstName, lastName, email, phone),
           contentType: 'text/calendar; charset=utf-8; method=REQUEST'
         }
       ] : []
@@ -415,7 +400,7 @@ This email was automatically sent from Sunny Child Care website
               </p>
               
               <div style="text-align: center;">
-                <a href="${generateGoogleCalendarLink(tourDateTime, safeFirstName, safeLastName, safeEmail, safePhone)}" class="button">
+                <a href="${generateGoogleCalendarLink(tourDateTime, firstName, lastName, email, phone)}" class="button">
                   ${isChineseTour ? "📅 加入 Google 日曆" : "📅 Add to Google Calendar"}
                 </a>
               </div>
@@ -450,13 +435,13 @@ This email was automatically sent from Sunny Child Care website
     
     await transporter.sendMail({
       from: `"Sunny Child Care" <${process.env.EMAIL_USER}>`,
-      to: safeEmail,
+      to: email,
       subject: parentSubject,
       html: parentHtml.replace(/https:\/\/www\.sunnychildcare\.com/g, origin),
       attachments: tourDateTime ? [
         {
           filename: 'tour-booking.ics',
-          content: generateICS(tourDateTime, safeFirstName, safeLastName, safeEmail, safePhone),
+          content: generateICS(tourDateTime, firstName, lastName, email, phone),
           contentType: 'text/calendar; charset=utf-8; method=REQUEST'
         }
       ] : []

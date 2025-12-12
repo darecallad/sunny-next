@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { escapeHtml } from "@/lib/sanitization";
 
 // Email configuration
 const transporter = nodemailer.createTransport({
@@ -11,17 +12,6 @@ const transporter = nodemailer.createTransport({
     pass: process.env.EMAIL_PASSWORD,
   },
 });
-
-// Helper function to sanitize inputs
-function escapeHtml(unsafe: string): string {
-  if (!unsafe) return "";
-  return unsafe
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
-}
 
 export async function POST(req: NextRequest) {
   try {
@@ -52,8 +42,8 @@ export async function POST(req: NextRequest) {
     // Email to admin
     const adminSubject =
       locale === "zh"
-        ? `[Sunny Child Care] 新聯絡表單提交 - ${safeName}`
-        : `[Sunny Child Care] New Contact Form Submission - ${safeName}`;
+        ? `[Sunny Child Care] 新聯絡表單提交 - ${name}`
+        : `[Sunny Child Care] New Contact Form Submission - ${name}`;
 
     const adminHtml = `
       <!DOCTYPE html>

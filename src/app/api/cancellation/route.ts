@@ -1,19 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { transporter } from "@/lib/email";
 import { cancelBooking, getBookings } from "@/lib/tour-bookings";
+import { escapeHtml } from "@/lib/sanitization";
 
 export const dynamic = 'force-dynamic';
-
-// Helper function to sanitize inputs
-function escapeHtml(unsafe: string): string {
-  if (!unsafe) return "";
-  return unsafe
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
-}
 
 export async function GET() {
   return NextResponse.json({ status: "Cancellation API is active" });
@@ -53,7 +43,7 @@ export async function POST(request: NextRequest) {
     const mailOptions = {
       from: `"Sunny Child Care System" <${process.env.EMAIL_USER}>`,
       to: "Center.admin@sunnychildcare.com",
-      subject: `❌ 預約已取消 / Tour Cancelled - ${safeFirstName} ${safeLastName}`,
+      subject: `❌ 預約已取消 / Tour Cancelled - ${booking.firstName} ${booking.lastName}`,
       html: `
         <div style="font-family: Arial, sans-serif; padding: 20px;">
           <h2 style="color: #d32f2f;">預約已取消 / Tour Cancelled</h2>

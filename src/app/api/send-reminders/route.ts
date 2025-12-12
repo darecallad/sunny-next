@@ -1,17 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { transporter } from "@/lib/email";
 import { getBookingsNeedingReminder, updateBooking, cleanupOldBookings } from "@/lib/tour-bookings";
-
-// Helper function to sanitize inputs
-function escapeHtml(unsafe: string): string {
-  if (!unsafe) return "";
-  return unsafe
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
-}
+import { escapeHtml } from "@/lib/sanitization";
 
 export async function POST(request: NextRequest) {
   try {
