@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
-import { escapeHtml } from "@/lib/sanitization";
+import { escapeHtml, sanitizeHeader, isValidEmail, isValidPhone } from "@/lib/sanitization";
 
 // Email configuration
 const transporter = nodemailer.createTransport({
@@ -26,6 +26,21 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // Validate formats
+    if (!isValidEmail(email)) {
+      return NextResponse.json(
+        { error: "Invalid email format" },
+        { status: 400 }
+      );
+    }
+
+    if (!isValidPhone(phone)) {
+      return NextResponse.json(
+        { error: "Invalid phone format" },
+        { status: 400 }
+      );
+    }
+
     // Sanitize inputs
     const safeName = escapeHtml(name);
     const safeEmail = escapeHtml(email);
@@ -41,8 +56,8 @@ export async function POST(req: NextRequest) {
     // Email to admin
     const adminSubject =
       locale === "zh"
-        ? `[Sunny Child Care] 新聯絡表單提交 - ${name}`
-        : `[Sunny Child Care] New Contact Form Submission - ${name}`;
+        ? `[Sunny Child Care] 新聯絡表單提交 - ${sanitizeHeader(name)}`
+        : `[Sunny Child Care] New Contact Form Submission - ${sanitizeHeader(name)}`;
 
     const adminHtml = `
       <!DOCTYPE html>
@@ -130,7 +145,7 @@ export async function POST(req: NextRequest) {
     await transporter.sendMail({
       from: `"Sunny Child Care" <${process.env.EMAIL_USER}>`,
       to: "Center.admin@sunnychildcare.com",
-      replyTo: email,
+      replyTo: sanitizeHeader(email),
       subject: adminSubject,
       html: adminHtml,
     });

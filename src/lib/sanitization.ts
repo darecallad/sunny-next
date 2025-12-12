@@ -24,3 +24,33 @@ export function escapeICS(unsafe: string): string {
     .replace(/,/g, "\\,")
     .replace(/\n/g, "\\n");
 }
+
+/**
+ * Sanitizes a string for use in email headers (Subject, To, From, etc.).
+ * Removes newlines to prevent Header Injection (CRLF injection).
+ * Does NOT HTML escape, as headers are plain text.
+ */
+export function sanitizeHeader(unsafe: string): string {
+  if (!unsafe) return "";
+  // Remove line breaks and control characters
+  return unsafe.replace(/[\r\n\u0000-\u001F\u007F]/g, "");
+}
+
+/**
+ * Validates an email address format.
+ */
+export function isValidEmail(email: string): boolean {
+  // Basic email regex
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+/**
+ * Validates a phone number format.
+ * Allows digits, spaces, dashes, plus sign, and parentheses.
+ */
+export function isValidPhone(phone: string): boolean {
+  // Allow digits, spaces, +, -, (, )
+  const phoneRegex = /^[0-9+\-\s()]*$/;
+  return phoneRegex.test(phone) && phone.replace(/\D/g, '').length >= 7; // At least 7 digits
+}

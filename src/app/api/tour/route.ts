@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { transporter } from "@/lib/email";
 import { saveBooking, getBookings } from "@/lib/tour-bookings";
-import { escapeHtml, escapeICS } from "@/lib/sanitization";
+import { escapeHtml, escapeICS, sanitizeHeader } from "@/lib/sanitization";
 
 // 生成 .ics 日曆文件內容
 function generateICS(tourDateTime: string, firstName: string, lastName: string, email: string, phone: string): string {
@@ -337,8 +337,8 @@ This email was automatically sent from Sunny Child Care website
     const mailOptions = {
       from: `"Sunny Child Care Tour Request" <${process.env.EMAIL_USER}>`,
       to: "Center.admin@sunnychildcare.com",
-      replyTo: email,
-      subject: `🌟 新預約參觀 / New Tour Request - ${firstName} ${lastName}`,
+      replyTo: sanitizeHeader(email),
+      subject: `🌟 新預約參觀 / New Tour Request - ${sanitizeHeader(firstName)} ${sanitizeHeader(lastName)}`,
       text: textContent,
       html: htmlContent,
       attachments: tourDateTime ? [

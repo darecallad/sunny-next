@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { transporter } from "@/lib/email";
 import { cancelBooking, getBookings } from "@/lib/tour-bookings";
-import { escapeHtml } from "@/lib/sanitization";
+import { escapeHtml, sanitizeHeader } from "@/lib/sanitization";
 
 export const dynamic = 'force-dynamic';
 
@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
     const mailOptions = {
       from: `"Sunny Child Care System" <${process.env.EMAIL_USER}>`,
       to: "Center.admin@sunnychildcare.com",
-      subject: `❌ 預約已取消 / Tour Cancelled - ${booking.firstName} ${booking.lastName}`,
+      subject: `❌ 預約已取消 / Tour Cancelled - ${sanitizeHeader(booking.firstName)} ${sanitizeHeader(booking.lastName)}`,
       html: `
         <div style="font-family: Arial, sans-serif; padding: 20px;">
           <h2 style="color: #d32f2f;">預約已取消 / Tour Cancelled</h2>
