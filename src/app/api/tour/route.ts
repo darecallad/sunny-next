@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { transporter } from "@/lib/email";
 import { saveBooking, getBookings } from "@/lib/tour-bookings";
-import { escapeHtml, escapeICS, sanitizeHeader } from "@/lib/sanitization";
+import { escapeHtml, escapeICS, sanitizeHeader, isValidEmail, isValidPhone } from "@/lib/sanitization";
 
 // 生成 .ics 日曆文件內容
 function generateICS(tourDateTime: string, firstName: string, lastName: string, email: string, phone: string): string {
@@ -99,6 +99,21 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Validate formats
+    if (!isValidEmail(email)) {
+      return NextResponse.json(
+        { error: "Invalid email format" },
+        { status: 400 }
+      );
+    }
+
+    if (!isValidPhone(phone)) {
+      return NextResponse.json(
+        { error: "Invalid phone format" },
+        { status: 400 }
+      );
+    }
+
     // Sanitize inputs for HTML
     const safeFirstName = escapeHtml(firstName);
     const safeLastName = escapeHtml(lastName);
@@ -136,16 +151,16 @@ export async function POST(request: NextRequest) {
     if (tourDate) {
       try {
         const savedBooking = await saveBooking({
-          firstName: safeFirstName,
-          lastName: safeLastName,
-          email: safeEmail,
-          phone: safePhone,
+          firstName,
+          lastName,
+          email,
+          phone,
           tourDateTime,
           tourDate,
           children: children || [],
           chineseTour: tourDateTime?.includes("Chinese Tour") ? "Yes" : "No",
-          startDate: safeStartDate,
-          message: safeMessage,
+          startDate: startDate || "",
+          message: message || "",
           locale: locale || "en",
         });
         bookingId = savedBooking.id;

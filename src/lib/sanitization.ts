@@ -51,6 +51,6 @@ export function isValidEmail(email: string): boolean {
  */
 export function isValidPhone(phone: string): boolean {
   // Allow digits, spaces, +, -, (, )
-  const phoneRegex = /^[0-9+\-\s()]*$/;
+  const phoneRegex = /^[0-9+\-\s()]+$/;
   return phoneRegex.test(phone) && phone.replace(/\D/g, '').length >= 7; // At least 7 digits
 }
