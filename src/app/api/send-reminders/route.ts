@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { transporter } from "@/lib/email";
 import { getBookingsNeedingReminder, updateBooking, cleanupOldBookings } from "@/lib/tour-bookings";
+import { escapeHtml } from "@/lib/sanitization";
 
 export async function POST(request: NextRequest) {
   try {
@@ -63,6 +64,10 @@ export async function POST(request: NextRequest) {
 async function sendReminderEmail(booking: any) {
   const isEnglish = booking.locale === "en";
   
+  // Sanitize inputs
+  const safeFirstName = escapeHtml(booking.firstName);
+  const safeLastName = escapeHtml(booking.lastName);
+  
   // 格式化日期時間顯示
   const tourDateDisplay = formatTourDateTime(booking.tourDateTime, booking.locale);
   
@@ -100,7 +105,7 @@ async function sendReminderEmail(booking: any) {
             </div>
 
             <div class="info-box">
-              <p><span class="label">${isEnglish ? "Name" : "姓名"}:</span> ${booking.firstName} ${booking.lastName}</p>
+              <p><span class="label">${isEnglish ? "Name" : "姓名"}:</span> ${safeFirstName} ${safeLastName}</p>
               <p><span class="label">${isEnglish ? "Tour Language" : "導覽語言"}:</span> ${booking.tourDateTime.includes("Chinese") ? (isEnglish ? "Chinese (Mandarin)" : "中文（國語）") : (isEnglish ? "English" : "英文")}</p>
             </div>
 
@@ -165,7 +170,7 @@ ${isEnglish ? "Your tour is tomorrow!" : "您的參觀預約在明天！"}
 📅 ${isEnglish ? "Tour Details" : "參觀詳情"}
 ${tourDateDisplay}
 
-${isEnglish ? "Name" : "姓名"}: ${booking.firstName} ${booking.lastName}
+${isEnglish ? "Name" : "姓名"}: ${safeFirstName} ${safeLastName}
 ${isEnglish ? "Tour Language" : "導覽語言"}: ${booking.tourDateTime.includes("Chinese") ? (isEnglish ? "Chinese (Mandarin)" : "中文（國語）") : (isEnglish ? "English" : "英文")}
 
 📍 ${isEnglish ? "Location" : "地點"}

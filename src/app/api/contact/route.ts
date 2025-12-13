@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { escapeHtml, sanitizeHeader, isValidEmail, isValidPhone } from "@/lib/sanitization";
 
 // Email configuration
 const transporter = nodemailer.createTransport({
@@ -14,7 +15,8 @@ const transporter = nodemailer.createTransport({
 
 export async function POST(req: NextRequest) {
   try {
-    const { name, email, phone, message, preferredLanguage, locale } = await req.json();
+    const body = await req.json();
+    const { name, email, phone, message, preferredLanguage, locale } = body;
 
     // Validate required fields
     if (!name || !email || !phone || !message || !preferredLanguage) {
@@ -23,6 +25,27 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       );
     }
+
+    // Validate formats
+    if (!isValidEmail(email)) {
+      return NextResponse.json(
+        { error: "Invalid email format" },
+        { status: 400 }
+      );
+    }
+
+    if (!isValidPhone(phone)) {
+      return NextResponse.json(
+        { error: "Invalid phone format" },
+        { status: 400 }
+      );
+    }
+
+    // Sanitize inputs
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safePhone = escapeHtml(phone);
+    const safeMessage = escapeHtml(message);
 
     const timestamp = new Date().toLocaleString("en-US", {
       timeZone: "America/Los_Angeles",
@@ -33,8 +56,8 @@ export async function POST(req: NextRequest) {
     // Email to admin
     const adminSubject =
       locale === "zh"
-        ? `[Sunny Child Care] 新聯絡表單提交 - ${name}`
-        : `[Sunny Child Care] New Contact Form Submission - ${name}`;
+        ? `[Sunny Child Care] 新聯絡表單提交 - ${sanitizeHeader(name)}`
+        : `[Sunny Child Care] New Contact Form Submission - ${sanitizeHeader(name)}`;
 
     const adminHtml = `
       <!DOCTYPE html>
@@ -71,14 +94,14 @@ export async function POST(req: NextRequest) {
 
               <div class="field">
                 <span class="label">${locale === "zh" ? "姓名：" : "Name:"}</span>
-                <div class="value">${name}</div>
+                <div class="value">${safeName}</div>
               </div>
 
               <div class="field">
                 <span class="label">${locale === "zh" ? "電子郵件：" : "Email:"}</span>
                 <div class="value">
-                  <a href="mailto:${email}" style="color: #7CB342; text-decoration: none;">
-                    ${email}
+                  <a href="mailto:${sanitizeHeader(email)}" style="color: #7CB342; text-decoration: none;">
+                    ${safeEmail}
                   </a>
                 </div>
               </div>
@@ -86,15 +109,15 @@ export async function POST(req: NextRequest) {
               <div class="field">
                 <span class="label">${locale === "zh" ? "聯絡電話：" : "Phone:"}</span>
                 <div class="value">
-                  <a href="tel:${phone}" style="color: #7CB342; text-decoration: none;">
-                    ${phone}
+                  <a href="tel:${sanitizeHeader(phone)}" style="color: #7CB342; text-decoration: none;">
+                    ${safePhone}
                   </a>
                 </div>
               </div>
 
               <div class="field">
                 <span class="label">${locale === "zh" ? "訊息內容：" : "Message:"}</span>
-                <div class="message-box">${message.replace(/\n/g, "<br>")}</div>
+                <div class="message-box">${safeMessage.replace(/\n/g, "<br>")}</div>
               </div>
 
               <div class="field">
@@ -122,7 +145,7 @@ export async function POST(req: NextRequest) {
     await transporter.sendMail({
       from: `"Sunny Child Care" <${process.env.EMAIL_USER}>`,
       to: "Center.admin@sunnychildcare.com",
-      replyTo: email,
+      replyTo: sanitizeHeader(email),
       subject: adminSubject,
       html: adminHtml,
     });
