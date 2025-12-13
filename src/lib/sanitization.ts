@@ -3,7 +3,7 @@
  * Prevents XSS attacks when injecting user input into HTML emails.
  */
 export function escapeHtml(unsafe: string): string {
-  if (!unsafe) return "";
+  if (typeof unsafe !== "string" || !unsafe) return "";
   return unsafe
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
@@ -17,7 +17,7 @@ export function escapeHtml(unsafe: string): string {
  * Prevents injection attacks and formatting issues in calendar files.
  */
 export function escapeICS(unsafe: string): string {
-  if (!unsafe) return "";
+  if (typeof unsafe !== "string" || !unsafe) return "";
   return unsafe
     .replace(/\\/g, "\\\\")
     .replace(/;/g, "\\;")
@@ -31,7 +31,7 @@ export function escapeICS(unsafe: string): string {
  * Does NOT HTML escape, as headers are plain text.
  */
 export function sanitizeHeader(unsafe: string): string {
-  if (!unsafe) return "";
+  if (typeof unsafe !== "string" || !unsafe) return "";
   // Remove line breaks and control characters
   return unsafe.replace(/[\r\n\u0000-\u001F\u007F]/g, "");
 }

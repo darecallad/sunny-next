@@ -100,7 +100,7 @@ export async function POST(req: NextRequest) {
               <div class="field">
                 <span class="label">${locale === "zh" ? "電子郵件：" : "Email:"}</span>
                 <div class="value">
-                  <a href="mailto:${safeEmail}" style="color: #7CB342; text-decoration: none;">
+                  <a href="mailto:${sanitizeHeader(email)}" style="color: #7CB342; text-decoration: none;">
                     ${safeEmail}
                   </a>
                 </div>
@@ -109,7 +109,7 @@ export async function POST(req: NextRequest) {
               <div class="field">
                 <span class="label">${locale === "zh" ? "聯絡電話：" : "Phone:"}</span>
                 <div class="value">
-                  <a href="tel:${safePhone}" style="color: #7CB342; text-decoration: none;">
+                  <a href="tel:${sanitizeHeader(phone)}" style="color: #7CB342; text-decoration: none;">
                     ${safePhone}
                   </a>
                 </div>
